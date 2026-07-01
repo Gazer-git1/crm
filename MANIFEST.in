@@ -1,4 +1,0 @@
-include *.txt
-include *.md
-recursive-include public *
-recursive-include gazer_custom *
