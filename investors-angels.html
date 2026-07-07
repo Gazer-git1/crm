@@ -1035,7 +1035,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">Choose your dream home</p>
-              <p class="steps__step-desc">You find the perfect property.</p>
             </div>
           </div>
           <div class="steps__item">
@@ -1045,7 +1044,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">We buy it for you</p>
-              <p class="steps__step-desc">Our investors acquire the property.</p>
             </div>
           </div>
           <div class="steps__item">
@@ -1055,7 +1053,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">Lease it from us with no down payment</p>
-              <p class="steps__step-desc">Move in and start living right away.</p>
             </div>
           </div>
           <div class="steps__item">
@@ -1065,7 +1062,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">Pay rent &amp; build your equity</p>
-              <p class="steps__step-desc">Part of your payments builds your ownership.</p>
             </div>
           </div>
           <div class="steps__item">
@@ -1075,7 +1071,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">Get approved for a mortgage</p>
-              <p class="steps__step-desc">We help you qualify with ease.</p>
             </div>
           </div>
           <div class="steps__item">
@@ -1085,7 +1080,6 @@
             </div>
             <div class="steps__body">
               <p class="steps__step-title">Own your home outright</p>
-              <p class="steps__step-desc">The home is fully yours.</p>
             </div>
           </div>
         </div>
@@ -1333,6 +1327,9 @@
     window.addEventListener('resize', function () { moveGlowTo(activeItem); });
 
     moveGlowTo(activeItem);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { moveGlowTo(activeItem); });
+    }
   })();
 
   (function () {
