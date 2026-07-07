@@ -1078,6 +1078,9 @@
     window.addEventListener('resize', function () { moveGlowTo(activeItem); });
 
     moveGlowTo(activeItem);
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () { moveGlowTo(activeItem); });
+    }
   })();
 
   (function () {
