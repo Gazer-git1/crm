@@ -581,20 +581,47 @@
 
 
   /* ============ FAQ PAGE ============ */
-  .faq { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
-  .faq__content { width: 430px; flex-shrink: 0; display: flex; flex-direction: column; gap: 24px; }
+  .faq { display: flex; align-items: stretch; gap: 64px; height: calc(100vh - 100px); padding: var(--space-y) var(--space-x); width: 100%; }
+  .faq__content { width: 430px; flex-shrink: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  .faq__content-top { display: flex; flex-direction: column; gap: 24px; }
   .faq__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .faq__title { font-family: var(--font-serif); font-size: 50px; line-height: 1.1; margin: 0; font-weight: 400; }
   .faq__title-line--gold { color: var(--color-gold); }
   .faq__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
-  .faq__help { border: 1px solid var(--color-bronze); border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 20px; margin-top: 8px; }
+  .faq__help { position: relative; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .faq__help::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
   .faq__help-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
   .faq__help-icon svg { width: 22px; height: 22px; }
   .faq__help-title { font-size: 18px; line-height: 1.4; color: var(--color-white); font-weight: 400; margin: 0; }
   .faq__help-btn { width: 100%; justify-content: space-between; }
 
-  .faq__list { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-  .faq__item { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
+  .faq__list {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-bronze) transparent;
+  }
+  .faq__list::-webkit-scrollbar { width: 6px; }
+  .faq__list::-webkit-scrollbar-track { background: transparent; }
+  .faq__list::-webkit-scrollbar-thumb { background: var(--color-bronze); border-radius: 3px; }
+  .faq__item { flex-shrink: 0; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
   .faq__question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: none; border: none; text-align: left; font-family: var(--font-sans); font-size: 17px; color: var(--color-text-secondary); }
   .faq__question:hover { color: var(--color-white); }
   .faq__icon { position: relative; width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.25s ease; }
@@ -820,10 +847,11 @@
     .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
 
     /* faq page */
-    .faq { flex-direction: column; padding: 64px 20px; gap: 40px; }
-    .faq__content { width: 100%; }
+    .faq { flex-direction: column; height: auto; padding: 64px 20px; gap: 40px; }
+    .faq__content { width: 100%; gap: 40px; }
     .faq__title { font-size: 32px; }
     .faq__desc { font-size: 16px; }
+    .faq__list { height: auto; overflow: visible; padding-right: 0; }
     .faq__question { padding: 18px 20px; font-size: 15px; }
     .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
   }
@@ -872,9 +900,11 @@
     <main>
       <section class="faq">
         <div class="faq__content">
-          <span class="faq__eyebrow">FAQ</span>
-          <h1 class="faq__title">Frequently Asked<br><span class="faq__title-line--gold">Questions</span></h1>
-          <p class="faq__desc">Everything you need to know<br>about Lease-to-Own.</p>
+          <div class="faq__content-top">
+            <span class="faq__eyebrow">FAQ</span>
+            <h1 class="faq__title">Frequently Asked<br><span class="faq__title-line--gold">Questions</span></h1>
+            <p class="faq__desc">Everything you need to know<br>about Lease-to-Own.</p>
+          </div>
 
           <div class="faq__help">
             <span class="faq__help-icon" aria-hidden="true">
