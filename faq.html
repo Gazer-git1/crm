@@ -151,8 +151,8 @@
     justify-content: space-between;
     padding-block: 20px;
   }
-  .header__logo { display: flex; align-items: center; height: 74px; width: 165px; }
-  .header__logo-mark { height: 74px; width: 165px; }
+  .header__logo { display: flex; align-items: center; height: 100px; width: 223px; }
+  .header__logo-mark { height: 100px; width: 223px; }
   .header__nav { position: relative; }
   .header__nav-list { display: flex; align-items: center; gap: 16px; height: 100%; }
   .header__nav-item { height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10px; position: relative; z-index: 1; }
@@ -168,19 +168,17 @@
     transition: color 0.25s ease;
   }
   .header__nav-item--active .header__nav-link { color: var(--color-gold); font-weight: 700; }
-  .header__nav-glow {
+  .header__nav-item::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 81px;
-    z-index: 0;
+    inset: 0;
+    z-index: -1;
     pointer-events: none;
     background: radial-gradient(ellipse 79% 62% at 50% 0%, rgba(191, 163, 96, 0.4) 0%, rgba(143, 122, 72, 0.3) 25%, rgba(96, 82, 48, 0.2) 50%, rgba(48, 41, 24, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
     opacity: 0;
+    transition: opacity 0.25s ease;
   }
-  .header__nav-glow.is-visible { opacity: 1; }
+  .header__nav-item:hover::after, .header__nav-item--active::after { opacity: 1; }
   .header__cta { width: 200px; flex-shrink: 0; }
   .header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
   .header__burger {
@@ -689,7 +687,7 @@
       border-radius: 2px;
       background: var(--color-btn-grad);
     }
-    .header__nav-glow { display: none; }
+    .header__nav-item::after { display: none; }
     .header__nav-link {
       width: 100%;
       height: auto;
@@ -852,7 +850,6 @@
         </a>
 
         <nav class="header__nav" id="primaryNav">
-          <span class="header__nav-glow" id="navGlow" aria-hidden="true"></span>
           <ul class="header__nav-list" id="navList">
             <li class="header__nav-item"><a class="header__nav-link" href="investors-angels.html">HOME</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="#">OWNERS</a></li>
@@ -1137,45 +1134,6 @@
         setMenu(false);
       });
     });
-  })();
-
-  (function () {
-    var navEl = document.getElementById('primaryNav');
-    var list = document.getElementById('navList');
-    var glow = document.getElementById('navGlow');
-    if (!navEl || !list || !glow) return;
-
-    var items = Array.prototype.slice.call(list.querySelectorAll('.header__nav-item'));
-    var activeItem = list.querySelector('.header__nav-item--active') || items[0];
-
-    function offsetLeftRelativeTo(el, ancestor) {
-      var x = 0;
-      while (el && el !== ancestor) {
-        x += el.offsetLeft;
-        el = el.offsetParent;
-      }
-      return x;
-    }
-
-    function moveGlowTo(item) {
-      if (!item) return;
-      glow.style.width = item.offsetWidth + 'px';
-      glow.style.transform = 'translateX(' + offsetLeftRelativeTo(item, navEl) + 'px)';
-      glow.classList.add('is-visible');
-    }
-
-    items.forEach(function (item) {
-      item.addEventListener('mouseenter', function () { moveGlowTo(item); });
-    });
-
-    list.addEventListener('mouseleave', function () { moveGlowTo(activeItem); });
-
-    window.addEventListener('resize', function () { moveGlowTo(activeItem); });
-
-    moveGlowTo(activeItem);
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(function () { moveGlowTo(activeItem); });
-    }
   })();
 
   (function () {
