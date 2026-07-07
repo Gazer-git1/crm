@@ -467,9 +467,16 @@
       page.style.zoom = scale;
     }
 
+    function scheduleFit() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(fitPage);
+      });
+    }
+
     window.addEventListener('resize', fitPage);
-    window.addEventListener('load', fitPage);
+    window.addEventListener('load', scheduleFit);
     fitPage();
+    scheduleFit();
   })();
 
   (function () {
