@@ -667,5 +667,10 @@
     .legal__section h2 { font-size: 22px; }
 
     /* cookie banner */
-    .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+    .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 10px; padding: 16px; transform: translateY(calc(100% + 12px)); }
+    .cookie-banner__title { font-size: 14px; margin: 0 0 4px; }
+    .cookie-banner__desc { font-size: 11px; line-height: 1.4; }
+    .cookie-banner__actions { gap: 8px; }
+    .cookie-banner__actions .btn { padding: 8px 14px; font-size: 12px; }
+    .cookie-banner__actions .btn--text { padding: 8px 6px; }
   }
