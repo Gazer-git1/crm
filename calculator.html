@@ -151,54 +151,80 @@
   /* ============ CALCULATOR HERO ============ */
   .calc-hero {
     position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    height: 560px;
+    height: 620px;
     padding: 0 var(--space-x) var(--space-y);
     width: 100%;
     overflow: hidden;
-    background: radial-gradient(ellipse 60% 90% at 82% 30%, rgba(191, 163, 96, 0.16) 0%, rgba(0, 0, 0, 0) 70%), var(--color-bg);
   }
+  .calc-hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .calc-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .calc-hero__overlay {
     position: absolute;
     inset: 0;
     z-index: -1;
     background: linear-gradient(90deg, rgb(0, 0, 0) 32%, rgba(0, 0, 0, 0) 68%);
   }
-  .calc-hero__decor { position: absolute; right: 0; top: 0; height: 100%; width: 55%; z-index: -1; opacity: 0.9; }
-  .calc-hero__content { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; width: 700px; }
+  .calc-hero__content { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; width: 844px; }
   .calc-hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
-  .calc-hero__title { font-family: var(--font-serif); font-size: 64px; line-height: 1.05; margin: 0; font-weight: 400; }
+  .calc-hero__title { font-family: var(--font-serif); font-size: 80px; line-height: 1; margin: 0; font-weight: 400; }
   .calc-hero__title-line--gold { color: var(--color-gold); display: block; }
-  .calc-hero__desc { font-size: 20px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 300; }
-  .calc-hero__currency { position: absolute; right: var(--space-x); bottom: var(--space-y); display: flex; flex-direction: column; gap: 8px; }
+  .calc-hero__desc { font-size: 30px; line-height: 1.2; color: var(--color-text-secondary); font-weight: 400; width: 500px; }
+  .calc-hero__currency { position: absolute; right: var(--space-x); bottom: var(--space-y); display: flex; flex-direction: column; gap: 8px; z-index: 5; }
   .calc-hero__currency-label { font-size: 14px; color: var(--color-text-secondary); }
-  .calc-hero__currency-select {
+
+  .currency-select { position: relative; width: 220px; }
+  .currency-select__trigger {
     position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
-    width: 220px;
+    width: 100%;
     height: 52px;
     padding: 0 16px;
     border: 1px solid var(--color-border);
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.02);
-  }
-  .calc-hero__currency-select svg:first-child { width: 18px; height: 18px; color: var(--color-gold-dark); flex-shrink: 0; }
-  .calc-hero__currency-select select {
-    appearance: none;
-    -webkit-appearance: none;
-    background: transparent;
-    border: none;
     color: var(--color-white);
     font-size: 16px;
-    flex: 1 0 0;
-    outline: none;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
   }
-  .calc-hero__currency-select select option { background: var(--color-bg-secondary); color: var(--color-white); }
-  .calc-hero__currency-select svg:last-child { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; pointer-events: none; }
+  .currency-select__trigger:hover, .currency-select.is-open .currency-select__trigger { border-color: var(--color-gold-dark); background: rgba(250, 208, 107, 0.05); }
+  .currency-select__trigger svg:first-child { width: 18px; height: 18px; color: var(--color-gold-dark); flex-shrink: 0; }
+  .currency-select__value { flex: 1 0 0; text-align: left; }
+  .currency-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
+  .currency-select.is-open .currency-select__chevron { transform: rotate(180deg); }
+  .currency-select__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .currency-select.is-open .currency-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .currency-select__option {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
+    font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .currency-select__option:last-child { border-bottom: none; }
+  .currency-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
+  .currency-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+  .currency-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
+  .currency-select__option.is-selected .currency-select__option-check { opacity: 1; }
 
   /* ============ CALCULATOR MAIN ============ */
   .calc-main { display: flex; align-items: flex-start; gap: 48px; padding: var(--space-y) var(--space-x); width: 100%; background: var(--color-bg); }
@@ -274,7 +300,7 @@
   .stat-cell { padding: 28px 24px; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
   .stat-cell:last-child { border-right: none; }
   .stat-cell__label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .stat-cell__value { font-family: var(--font-serif); font-size: 30px; color: var(--color-white); line-height: 1.1; }
+  .stat-cell__value { font-family: var(--font-sans); font-weight: 700; font-size: 28px; color: var(--color-white); line-height: 1.2; }
   .stat-cell__delta { font-size: 15px; font-weight: 600; color: var(--color-gold); }
   .stat-cell__caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.3; }
 
@@ -284,11 +310,11 @@
   .chart-card__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
   .chart-card__endpoints { display: flex; align-items: flex-start; justify-content: space-between; }
   .chart-card__point-label { font-size: 14px; color: var(--color-text-muted); margin-bottom: 8px; }
-  .chart-card__point-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-white); }
+  .chart-card__point-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-white); }
   .chart-card__point--end { text-align: right; }
   .chart-card__svg { width: 100%; height: auto; display: block; }
   .chart-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
-  .chart-card__side-delta { font-family: var(--font-serif); font-size: 28px; color: var(--color-gold); }
+  .chart-card__side-delta { font-family: var(--font-sans); font-weight: 700; font-size: 26px; color: var(--color-gold); }
   .chart-card__side-pct { font-size: 18px; font-weight: 600; color: var(--color-gold); }
   .chart-card__side-caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
 
@@ -303,12 +329,12 @@
   .notice-card__breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .notice-card__box { border: 1px solid var(--color-border); border-radius: 4px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
   .notice-card__box-label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .notice-card__box-value { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
+  .notice-card__box-value { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--color-white); }
   .notice-card__foot { font-size: 13px; color: var(--color-text-muted); }
   .notice-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 16px; }
   .notice-card__side-title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
   .notice-card__side-box { border: 1px solid var(--color-gold-dark); border-radius: 4px; padding: 14px 20px; width: 100%; }
-  .notice-card__side-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-gold); }
+  .notice-card__side-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-gold); }
   .notice-card__side-caption { font-size: 13px; color: var(--color-text-muted); }
 
   /* ============ MORTGAGE PAYMENT ROW ============ */
@@ -317,7 +343,7 @@
   .mortgage-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .mortgage-box { background: var(--color-bg-footer); border: 1px solid var(--color-border); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
   .mortgage-box__years { font-size: 13px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .mortgage-box__amount { font-family: var(--font-serif); font-size: 24px; color: var(--color-white); }
+  .mortgage-box__amount { font-family: var(--font-sans); font-weight: 700; font-size: 22px; color: var(--color-white); }
   .mortgage-box__amount span { font-size: 14px; color: var(--color-text-muted); font-family: var(--font-sans); }
 
   /* ============ TRANSITION ROW ============ */
@@ -326,7 +352,7 @@
   .transition-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .transition-box { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
   .transition-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .transition-box__value { font-family: var(--font-serif); font-size: 22px; color: var(--color-gold); }
+  .transition-box__value { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--color-gold); }
   .transition-box__caption { font-size: 12px; color: var(--color-text-muted); }
 
   /* ============ DETAILED BREAKDOWN ============ */
@@ -352,8 +378,14 @@
   .breakdown-card__note svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--color-text-muted); }
   .breakdown-card__foot { padding: 20px 24px; border-top: 1px solid var(--color-border); text-align: center; display: flex; flex-direction: column; gap: 6px; }
   .breakdown-card__foot-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
-  .breakdown-card__foot-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-white); }
+  .breakdown-card__foot-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-white); }
   .breakdown-card__foot-caption { font-size: 12px; color: var(--color-text-muted); }
+  .breakdown-card__foot--positive {
+    background: linear-gradient(180deg, rgba(76, 175, 100, 0.14) 0%, rgba(76, 175, 100, 0.04) 100%);
+    border-top: 1px solid rgba(110, 200, 130, 0.4);
+  }
+  .breakdown-card__foot--positive .breakdown-card__foot-label { color: #7fd99a; }
+  .breakdown-card__foot--positive .breakdown-card__foot-value { color: #a7ecb8; }
 
   /* ============ SUMMARY ============ */
   .summary { padding: 0 var(--space-x) var(--space-y); width: 100%; background: var(--color-bg); display: flex; flex-direction: column; gap: 40px; }
@@ -362,21 +394,33 @@
   .summary__icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gold); }
   .summary__icon svg { width: 22px; height: 22px; }
   .summary__text { font-size: 18px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; max-width: 900px; }
-  .summary__stats { position: relative; display: flex; border: 1px solid var(--color-border); border-radius: 8px; padding: 40px 20px; }
+  .summary__stats { position: relative; display: flex; border-radius: 8px; padding: 40px 20px; }
+  .summary__stats::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
   .summary__stat { flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; min-width: 0; }
-  .summary__stat-value { font-family: var(--font-serif); font-size: 34px; color: var(--color-gold); }
+  .summary__stat-value { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); }
   .summary__stat-label { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-text-secondary); line-height: 1.3; }
 
   /* ============ FINAL CTA (reused pattern) ============ */
-  .final-cta { position: relative; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
+  .final-cta { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
   .final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .final-cta__bg { position: absolute; top: -25%; left: 0; width: 100%; height: 150%; object-fit: cover; }
+  .final-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .final-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.55); z-index: -1; }
   .final-cta__content { display: flex; flex-direction: column; gap: 16px; }
   .final-cta__title { font-family: var(--font-serif); font-size: 44px; line-height: 1.1; margin: 0; }
   .final-cta__desc { font-size: 20px; color: var(--color-text-secondary); }
   .final-cta__note { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--color-white); opacity: 0.85; }
-  .final-cta__note svg { width: 16px; height: 16px; color: var(--color-gold); flex-shrink: 0; }
+  .final-cta__note img { width: 18px; height: 18px; flex-shrink: 0; }
   .final-cta__cta { width: 320px; flex-shrink: 0; }
 
   /* ============ FOOTER ============ */
@@ -487,12 +531,11 @@
 
     /* calc hero */
     .calc-hero { height: auto; padding: 90px 20px 40px; }
-    .calc-hero__decor { display: none; }
     .calc-hero__content { width: 100%; gap: 16px; }
     .calc-hero__title { font-size: 34px; }
-    .calc-hero__desc { font-size: 15px; }
+    .calc-hero__desc { font-size: 16px; width: 100%; }
     .calc-hero__currency { position: static; margin-top: 20px; }
-    .calc-hero__currency-select { width: 100%; }
+    .currency-select { width: 100%; }
 
     /* calc main */
     .calc-main { flex-direction: column; padding: 40px 20px; gap: 32px; }
@@ -584,26 +627,10 @@
     <main>
       <!-- CALCULATOR HERO -->
       <section class="calc-hero">
+        <div class="calc-hero__bg-wrap">
+          <img class="calc-hero__bg" src="assets/calc-hero-bg.png" alt="Gold geometric marble pattern background">
+        </div>
         <div class="calc-hero__overlay" aria-hidden="true"></div>
-        <svg class="calc-hero__decor" viewBox="0 0 900 560" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-          <g stroke="#d3a769" stroke-opacity="0.35" stroke-width="1">
-            <line x1="900" y1="60" x2="700" y2="200"/>
-            <line x1="700" y1="200" x2="780" y2="360"/>
-            <line x1="700" y1="200" x2="560" y2="260"/>
-            <line x1="780" y1="360" x2="600" y2="440"/>
-            <line x1="560" y1="260" x2="600" y2="440"/>
-            <line x1="900" y1="60" x2="820" y2="20"/>
-          </g>
-          <line x1="880" y1="120" x2="580" y2="470" stroke="#fad06b" stroke-width="2" stroke-opacity="0.85"/>
-          <g fill="#d3a769">
-            <circle cx="900" cy="60" r="3"/>
-            <circle cx="700" cy="200" r="3"/>
-            <circle cx="780" cy="360" r="3"/>
-            <circle cx="560" cy="260" r="3"/>
-            <circle cx="600" cy="440" r="4"/>
-            <circle cx="820" cy="20" r="2.5"/>
-          </g>
-        </svg>
         <div class="calc-hero__content">
           <p class="calc-hero__eyebrow">Calculator</p>
           <h1 class="calc-hero__title">
@@ -614,15 +641,27 @@
         </div>
         <div class="calc-hero__currency">
           <span class="calc-hero__currency-label">Currency</span>
-          <label class="calc-hero__currency-select">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
-            <select id="currencySelect">
-              <option value="USD" selected>USD</option>
-              <option value="AED">AED</option>
-              <option value="EUR">EUR</option>
-            </select>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-          </label>
+          <div class="currency-select" id="currencySelect">
+            <button type="button" class="currency-select__trigger" id="currencyTrigger" aria-haspopup="listbox" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+              <span class="currency-select__value" id="currencyValue">USD</span>
+              <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="currency-select__panel" id="currencyPanel" role="listbox">
+              <button type="button" class="currency-select__option is-selected" data-currency="USD" role="option" aria-selected="true">
+                <span>USD — US Dollar</span>
+                <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              </button>
+              <button type="button" class="currency-select__option" data-currency="AED" role="option" aria-selected="false">
+                <span>AED — UAE Dirham</span>
+                <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              </button>
+              <button type="button" class="currency-select__option" data-currency="EUR" role="option" aria-selected="false">
+                <span>EUR — Euro</span>
+                <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -840,7 +879,7 @@
               <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">DLD Registration</span><span class="breakdown-row__value">Included</span></div>
             </div>
-            <div class="breakdown-card__foot">
+            <div class="breakdown-card__foot breakdown-card__foot--positive">
               <span class="breakdown-card__foot-label">Your Equity at Transition</span>
               <span class="breakdown-card__foot-value" id="equityAtTransition">$201,600</span>
               <span class="breakdown-card__foot-caption" id="equityAtTransitionCaption">(26.88% of original price)</span>
@@ -924,14 +963,14 @@
       <!-- FINAL CTA -->
       <section class="final-cta">
         <div class="final-cta__bg-wrap">
-          <img class="final-cta__bg" src="assets/future-bg.jpg" alt="Living room interior overlooking a city skyline at night">
+          <img class="final-cta__bg" src="assets/calc-cta-bg.png" alt="Living room interior overlooking a city skyline at night">
         </div>
         <div class="final-cta__overlay" aria-hidden="true"></div>
         <div class="final-cta__content">
           <h2 class="final-cta__title">Ready to see if you qualify?</h2>
           <p class="final-cta__desc">Take the first step toward owning your dream home.</p>
           <div class="final-cta__note">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <img src="assets/icons/icon-calculator-ok.svg" alt="">
             <span>Your agreement is registered with the Dubai Land Department (DLD) for your protection.</span>
           </div>
         </div>
@@ -1316,10 +1355,46 @@
       });
     });
 
-    el('currencySelect').addEventListener('change', function () {
-      state.currency = this.value;
-      compute();
-    });
+    (function () {
+      var wrap = el('currencySelect');
+      var trigger = el('currencyTrigger');
+      var panel = el('currencyPanel');
+      var valueLabel = el('currencyValue');
+      var options = panel.querySelectorAll('.currency-select__option');
+
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!wrap.classList.contains('is-open'));
+      });
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          var code = opt.getAttribute('data-currency');
+          state.currency = code;
+          valueLabel.textContent = code;
+          setOpen(false);
+          compute();
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
 
     el('calculateBtn').addEventListener('click', function () {
       compute();
