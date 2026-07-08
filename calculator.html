@@ -454,7 +454,19 @@
   .final-cta__cta { width: 320px; flex-shrink: 0; }
 
   /* ============ FOOTER ============ */
-  .footer { position: relative; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
+  .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
+  .footer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: #000;
+    z-index: -1;
+    pointer-events: none;
+  }
   .footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
   .footer__top { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
   .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 32px; }
