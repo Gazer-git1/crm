@@ -389,7 +389,7 @@
   .breakdown-row__label { color: var(--color-text-secondary); }
   .breakdown-row__label-sub { display: block; font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
   .breakdown-row__value { color: var(--color-white); font-weight: 600; text-align: right; white-space: nowrap; }
-  .breakdown-row--divider { border-top: 1px solid var(--color-border); padding-top: 16px; margin-top: -4px; }
+  .breakdown-row--divider { padding-top: 16px; }
   .breakdown-row--highlight .breakdown-row__label,
   .breakdown-row--highlight .breakdown-row__value { color: var(--color-gold); }
   .breakdown-card__mini-title { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-gold); margin: 4px 0 4px; }
@@ -938,7 +938,7 @@
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Mortgage<br>Required</span>
-                <span class="breakdown-row__value" id="mtMortgageRequired">72 months</span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">$683,500</span>
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">vs. Final<br>Property Value</span>
@@ -1301,7 +1301,7 @@
       /* --- breakdown: at mortgage transition --- */
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
       el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
-      el('mtMortgageRequired').textContent = leaseMonths + ' months';
+      el('mtMortgageRequired').textContent = fmtMoney(mortgageRequired);
       el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
       el('mtMortgage10').textContent = fmtMoney(mortgage10) + ' /mo';
       el('mtMortgage15').textContent = fmtMoney(mortgage15) + ' /mo';
