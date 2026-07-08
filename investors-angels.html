@@ -203,6 +203,7 @@
   /* ============ HERO (section_1) ============ */
   .hero {
     position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -484,7 +485,7 @@
   .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
 
   /* ============ FINAL CTA (section_7) ============ */
-  .final-cta { position: relative; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
+  .final-cta { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
   .final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
   .final-cta__bg { position: absolute; top: -97.06%; left: 0; width: 100%; height: 270.14%; object-fit: cover; }
   .final-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.6); z-index: -1; }
@@ -825,7 +826,7 @@
         </nav>
 
         <div class="header__actions">
-          <button class="btn btn--outline header__cta" type="button">Get Started</button>
+          <a class="btn btn--outline header__cta" href="calculator.html">Get Started</a>
           <button class="header__burger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
             <span></span><span></span><span></span>
           </button>
@@ -849,10 +850,10 @@
             </h1>
             <p class="hero__subtitle">Lease-to-Own your future home<br>and become the owner, faster.</p>
           </div>
-          <button class="btn btn--gradient" type="button">
+          <a class="btn btn--gradient" href="calculator.html">
             I Want My Home
             <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-          </button>
+          </a>
         </div>
       </section>
 
@@ -1125,10 +1126,10 @@
               <p class="calc-banner__desc">Use our calculator to see your options and monthly payments.</p>
             </div>
           </div>
-          <button class="btn btn--gradient" type="button">
+          <a class="btn btn--gradient" href="calculator.html">
             Try Calculator
             <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-          </button>
+          </a>
         </div>
       </section>
 
@@ -1174,7 +1175,7 @@
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="#">How it Works</a></li>
               <li><a class="footer__column-link" href="#">Owners</a></li>
-              <li><a class="footer__column-link" href="#">Calculator</a></li>
+              <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
               <li><a class="footer__column-link" href="#">Guarantees</a></li>
               <li><a class="footer__column-link" href="faq.html">FAQ</a></li>
             </ul>
