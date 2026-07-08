@@ -243,15 +243,16 @@
 
   /* ============ INVEST FEATURES PANEL ============ */
   .invest-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .invest-features::before {
+  .invest-features::before, .invest-features::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
     height: 1px;
     background: var(--divider-grad);
   }
+  .invest-features::before { top: 0; }
+  .invest-features::after { bottom: 0; }
   .invest-features__panel {
     position: relative;
     display: grid;

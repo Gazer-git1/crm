@@ -250,15 +250,16 @@
 
   /* ============ OWNERS FEATURES PANEL ============ */
   .owners-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .owners-features::before {
+  .owners-features::before, .owners-features::after {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
     height: 1px;
     background: var(--divider-grad);
   }
+  .owners-features::before { top: 0; }
+  .owners-features::after { bottom: 0; }
   .owners-features__panel {
     position: relative;
     display: grid;
