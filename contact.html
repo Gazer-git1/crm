@@ -60,6 +60,7 @@
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; background: var(--color-bg-footer); }
   body {
+    min-height: 100vh;
     background: var(--color-bg);
     color: var(--color-white);
     font-family: var(--font-sans);
@@ -643,7 +644,7 @@
   .faq__item.is-open .faq__answer { max-height: 400px; }
 
   /* ============ CONTACT PAGE ============ */
-  .contact { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
+  .contact { display: flex; align-items: flex-start; gap: 64px; padding: 200px var(--space-x) var(--space-y); width: 100%; }
   .contact__content { width: 430px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; }
   .contact__content-top { display: flex; flex-direction: column; gap: 24px; }
   .contact__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
@@ -675,9 +676,7 @@
   .contact__social { display: flex; flex-direction: column; gap: 12px; }
   .contact__social-label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-muted); }
   .contact__social-links { display: flex; gap: 12px; }
-  .contact__social-link { width: 40px; height: 40px; border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.25s ease, background-color 0.25s ease; }
-  .contact__social-link:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); }
-  .contact__social-link img { width: 18px; height: 18px; }
+  .contact__social-link img { width: 40px; height: 40px; }
 
   .contact__form-wrap { position: relative; flex: 1 0 0; min-width: 0; border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 28px; }
   .contact__form-wrap::before {
@@ -944,7 +943,7 @@
     .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
 
     /* contact page */
-    .contact { flex-direction: column; align-items: stretch; padding: 64px 20px; gap: 40px; }
+    .contact { flex-direction: column; align-items: stretch; padding: 120px 20px 64px; gap: 40px; }
     .contact__content { width: 100%; }
     .contact__title { font-size: 32px; }
     .contact__desc { font-size: 16px; }
