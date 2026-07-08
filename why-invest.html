@@ -247,10 +247,21 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 56px 32px;
-    border: 1px solid var(--color-border);
     border-radius: 24px;
     padding: 64px 56px;
     width: 100%;
+  }
+  .invest-features__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
   .invest-features__item {
     display: flex;
@@ -285,7 +296,7 @@
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(90deg, rgba(10, 8, 6, 0.85) 0%, rgba(10, 8, 6, 0.45) 45%, rgba(10, 8, 6, 0.15) 100%);
+    background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
   }
   .invest-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
   .invest-cta__title-line--gold { color: var(--color-gold); display: block; }
@@ -519,17 +530,19 @@
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
     /* hero */
-    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 48px; gap: 0; }
-    .hero__bg-wrap { position: relative; inset: auto; height: 280px; width: 100%; }
-    .hero__content { width: 100%; padding: 32px 20px 0; gap: 24px; }
+    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
+    .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
+    .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; }
     .hero__title { font-size: 36px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__cta-row { flex-wrap: wrap; width: 100%; }
-    .hero__cta-row .btn { flex: 1 1 auto; }
+    .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
+    .hero__cta-row .btn { width: 100%; }
 
     /* invest features panel */
     .invest-features { padding: 48px 20px; }
     .invest-features__panel { grid-template-columns: 1fr 1fr; gap: 40px 20px; padding: 40px 20px; border-radius: 16px; }
+    .invest-features__panel::before { border-radius: 16px; }
     .invest-features__title { max-width: none; }
     .invest-features__desc { max-width: none; }
 
@@ -592,7 +605,10 @@
       <!-- HERO -->
       <section class="hero">
         <div class="hero__bg-wrap">
-          <img class="hero__bg" src="assets/1.png" alt="Dubai skyline at night with the Burj Khalifa lit up">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/mobile-1.png">
+            <img class="hero__bg" src="assets/1.png" alt="Dubai skyline at night with the Burj Khalifa lit up">
+          </picture>
         </div>
         <div class="hero__content">
           <div class="hero__heading-block">
