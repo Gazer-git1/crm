@@ -258,7 +258,16 @@
   .hero__avatars-text { font-size: 16px; color: var(--color-text-secondary); width: 240px; }
 
   /* ============ OWNERS FEATURES GRID ============ */
-  .owners-features { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; padding: 0 var(--space-x); }
+  .owners-features { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; padding: 0 var(--space-x); }
+  .owners-features::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
   .owners-features__item {
     position: relative;
     display: flex;
