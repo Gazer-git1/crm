@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cookie Policy — Investors' Angels</title>
+<title>How It Works — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
+<meta name="description" content="A simple path to your own home. We make homeownership possible sooner, without the usual barriers.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/cookie-policy.html">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/how-it-works.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="Cookie Policy — Investors' Angels">
-<meta property="og:description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
-<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
-<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/cookie-policy.html">
+<meta property="og:title" content="How It Works — Investors' Angels">
+<meta property="og:description" content="A simple path to your own home. We make homeownership possible sooner, without the usual barriers.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/How-it-works1.png">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/how-it-works.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cookie Policy — Investors' Angels">
-<meta name="twitter:description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<meta name="twitter:title" content="How It Works — Investors' Angels">
+<meta name="twitter:description" content="A simple path to your own home. We make homeownership possible sooner, without the usual barriers.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/How-it-works1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -120,7 +120,6 @@
   .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
   .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
   .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
-  .btn--text--lg { font-size: 20px; }
 
   /* ============ HEADER ============ */
   .header {
@@ -201,18 +200,19 @@
   .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .header__nav-footer { display: none; }
 
-  /* ============ HERO (section_1) ============ */
+  /* ============ HERO ============ */
   .hero {
     position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    height: 900px;
-    padding: 0 var(--space-x) var(--space-y);
+    justify-content: center;
+    height: 800px;
+    padding: 0 var(--space-x);
     width: 100%;
   }
   .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .hero__bg { position: absolute; top: 0; left: 25.85%; width: 107.14%; height: 100%; object-fit: cover; }
+  .hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
   .hero__overlay {
     position: absolute;
     inset: 0;
@@ -229,6 +229,7 @@
     width: 844px;
   }
   .hero__heading-block { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+  .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .hero__title {
     font-family: var(--font-serif);
     font-size: 80px;
@@ -239,33 +240,17 @@
   .hero__title-line { display: block; }
   .hero__title-line--gold { color: var(--color-gold); }
   .hero__subtitle {
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 26px;
+    line-height: 1.3;
     color: var(--color-text-secondary);
-    width: 500px;
+    width: 100%;
     font-weight: 400;
   }
-  .hero__avatars-block { display: flex; align-items: center; gap: 16px; }
-  .hero__avatars { display: flex; }
-  .hero__avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: -12px;
-  }
-  .hero__avatars-text { font-size: 16px; color: var(--color-text-secondary); width: 240px; }
+  .hero__cta-row { display: flex; align-items: center; gap: 16px; }
 
-  /* ============ FEATURES (section_2) ============ */
-  .features {
-    position: relative;
-    background: var(--color-bg-alt);
-    display: flex;
-    height: 200px;
-    gap: 64px;
-    padding: 80px var(--space-x);
-    width: 100%;
-  }
-  .features::before, .features::after {
+  /* ============ HOW IT WORKS LIST PANEL ============ */
+  .hiw-list { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .hiw-list::before, .hiw-list::after {
     content: "";
     position: absolute;
     left: 0;
@@ -273,227 +258,77 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .features::before { top: 0; }
-  .features::after { bottom: 0; }
-  .features__item { display: flex; flex: 1 0 0; gap: 24px; align-items: center; min-width: 0; }
-  .features__icon {
-    width: 60px;
-    height: 60px;
-    border: 1px solid var(--color-border);
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-  .features__icon img { width: 30px; height: 30px; }
-  .features__body { display: flex; flex-direction: column; gap: 8px; flex: 1 0 0; min-width: 0; font-size: 20px; }
-  .features__title { font-family: var(--font-serif); color: var(--color-white); }
-  .features__desc { font-weight: 300; line-height: 1.2; color: var(--color-text-muted); }
-
-  /* ============ WHY / TABLE (section_3) ============ */
-  .why {
-    background: var(--color-bg-secondary);
-    display: flex;
-    align-items: center;
-    gap: 60px;
-    padding: var(--space-y) var(--space-x);
-    width: 100%;
-  }
-  .why__content { display: flex; flex-direction: column; gap: 40px; width: 490px; flex-shrink: 0; }
-  .why__heading-block { display: flex; flex-direction: column; gap: 16px; }
-  .why__title { font-family: var(--font-serif); font-size: 50px; line-height: 1; margin: 0; }
-  .why__desc { font-size: 24px; font-weight: 200; line-height: 1.4; }
-
-  .table { position: relative; flex: 1 0 0; border: 1px solid var(--color-border); border-radius: 4px; min-width: 0; }
-  .table__highlight-bg { position: absolute; left: 589px; top: -1px; width: 180px; height: 360px; background: var(--color-highlight-grad); }
-  .table__row { display: flex; align-items: stretch; height: 60px; border-bottom: 1px solid var(--color-border); position: relative; }
-  .table__row:last-child { border-bottom: none; }
-  .table__cell {
-    width: 180px;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-right: 1px solid var(--color-border);
-  }
-  .table__cell:last-child { border-right: none; }
-  .table__cell--label {
-    flex: 1 0 0;
-    width: auto;
-    min-width: 0;
-    justify-content: center;
-    text-align: left;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    padding-left: 24px;
-  }
-  .table__label-title { font-size: 16px; color: var(--color-gold); }
-  .table__label-desc { font-size: 14px; color: var(--color-text-muted); }
-  .table__head-label { font-size: 16px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); }
-  .table__head-label--highlight { color: var(--color-gold); font-weight: 700; }
-  .table__value { font-size: 14px; color: var(--color-text-secondary); }
-  .table__value--highlight { color: var(--color-gold-dark); font-weight: 600; }
-  .table__icon { width: 20px; height: 20px; }
-
-  /* mobile-only comparison table: frozen label column + horizontally scrolling value columns */
-  .table-mobile { display: none; }
-  .table-mobile__inner { display: flex; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
-  .table-mobile__labels { flex: 0 0 160px; border-right: 1px solid var(--color-border); touch-action: none; }
-  .table-mobile__scroll { flex: 1; min-width: 0; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; touch-action: pan-x; }
-  .table-mobile__scroll::-webkit-scrollbar { display: none; }
-  .table-mobile__cols { display: flex; }
-  .table-mobile__col { flex: 0 0 140px; min-width: 0; border-right: 1px solid var(--color-border); }
-  .table-mobile__col:last-child { border-right: none; }
-  .table-mobile__col--highlight { background: var(--color-highlight-grad); }
-  .table-mobile__row {
-    height: 82px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    padding: 4px 10px;
-    border-bottom: 1px solid var(--color-border);
-    text-align: center;
-  }
-  .table-mobile__row:last-child { border-bottom: none; }
-  .table-mobile__labels .table-mobile__row { align-items: flex-start; text-align: left; padding: 4px 14px; }
-  .table-mobile__row--head { font-size: 14px; font-weight: 600; text-transform: uppercase; color: var(--color-text-secondary); overflow-wrap: break-word; word-break: break-word; }
-  .table-mobile__row--head.table__head-label--highlight { color: var(--color-gold); font-weight: 700; }
-  .table-mobile__label-title { font-size: 16px; color: var(--color-gold); }
-  .table-mobile__label-desc { font-size: 13px; line-height: 1.25; color: var(--color-text-muted); }
-  .table-mobile__row .table__value { font-size: 16px; }
-  .table-mobile__row .table__icon { width: 22px; height: 22px; }
-  .table-mobile__progress { height: 3px; background: rgba(255, 255, 255, 0.12); border-radius: 2px; margin-top: 16px; position: relative; overflow: hidden; }
-  .table-mobile__progress-bar { position: absolute; top: 0; left: 0; height: 100%; width: 33.333%; background: var(--color-gold); border-radius: 2px; }
-
-  /* ============ HOW IT WORKS (section_4) ============ */
-  .steps {
+  .hiw-list::before { top: 0; }
+  .hiw-list::after { bottom: 0; }
+  .hiw-list__panel {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 64px;
-    padding: var(--space-y) var(--space-x);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: 96px;
+    row-gap: 48px;
+    border-radius: 24px;
+    padding: 64px 56px;
     width: 100%;
   }
-  .steps::before, .steps::after {
+  .hiw-list__panel::before {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .steps::before { top: 0; }
-  .steps::after { bottom: 0; }
-  .steps__decor {
-    position: absolute;
-    left: 300px;
-    top: 262px;
-    width: 1320px;
-    height: 243px;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     pointer-events: none;
   }
-  .steps__header { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
-  .steps__title { font-family: var(--font-serif); font-size: 50px; line-height: 1; margin: 0; }
-  .steps__list { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; position: relative; }
-  .steps__item { display: flex; flex-direction: column; align-items: center; gap: 24px; width: 200px; text-align: center; }
-  .steps__icon-block { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  .steps__number {
-    width: 60px;
-    height: 60px;
-    border-radius: 100px;
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
+  .hiw-list__item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hiw-list__item.is-visible { opacity: 1; transform: translateY(0); }
+  .hiw-list__number {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(250, 208, 107, 0.35);
+    background: rgba(250, 208, 107, 0.06);
+    font-family: var(--font-sans);
     font-weight: 700;
-    font-size: 24px;
-    color: var(--color-gold-dark);
+    font-size: 17px;
+    color: var(--color-gold);
   }
-  .steps__icon { width: 40px; height: 40px; }
-  .steps__body { display: flex; flex-direction: column; gap: 10px; }
-  .steps__step-title { font-family: var(--font-serif); font-size: 20px; line-height: 24px; color: var(--color-white); }
-  .steps__step-desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
+  .hiw-list__icon { width: 40px; height: 40px; flex-shrink: 0; transition: transform 0.4s ease, filter 0.4s ease; }
+  .hiw-list__item:hover .hiw-list__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
+  .hiw-list__text { display: flex; flex-direction: column; gap: 6px; }
+  .hiw-list__title { font-family: var(--font-serif); font-size: 20px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
+  .hiw-list__desc { font-size: 16px; line-height: 1.55; color: var(--color-text-secondary); font-weight: 400; }
 
-  /* ============ FUTURE (section_5) ============ */
-  .future { position: relative; display: flex; align-items: flex-start; justify-content: flex-end; height: 700px; padding: 0 var(--space-x); width: 100%; }
-  .future::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .future__bg-wrap { position: absolute; left: 1px; top: 0; width: 906px; height: 699px; overflow: hidden; }
-  .future__bg { position: absolute; top: -0.01%; left: -27.12%; width: 137%; height: 100.02%; object-fit: cover; }
-  .future__panel {
+  /* ============ HOW IT WORKS CTA BAND ============ */
+  .hiw-cta {
     position: relative;
-    background: var(--color-bg);
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    justify-content: center;
-    padding: 80px;
-    width: 800px;
-    height: 700px;
-  }
-  .future__heading-block { display: flex; flex-direction: column; gap: 16px; }
-  .future__title { font-family: var(--font-serif); font-size: 50px; line-height: 1; margin: 0; }
-  .future__title-line--gold { color: var(--color-gold); }
-  .future__desc { font-size: 24px; font-weight: 200; line-height: 1.4; }
-  .future__stats { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
-  .future__stat { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
-  .future__stat-icon { width: 32px; height: 32px; }
-  .future__stat-text { font-size: 16px; line-height: 20px; color: var(--color-gold); text-align: center; }
-  .future__cta { width: 100%; }
-
-  /* ============ CALCULATOR BANNER (section_6) ============ */
-  .calc-banner { position: relative; display: flex; align-items: center; height: 200px; padding: 80px var(--space-x); width: 100%; }
-  .calc-banner::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .calc-banner__box {
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
+    isolation: isolate;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1 0 0;
-    padding: 40px;
+    height: 260px;
+    padding: 0 var(--space-x);
+    width: 100%;
   }
-  .calc-banner__info { display: flex; gap: 32px; align-items: center; flex: 1 0 0; min-width: 0; }
-  .calc-banner__icon { width: 60px; height: 60px; border: 1px solid var(--color-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .calc-banner__icon img { width: 30px; height: 30px; }
-  .calc-banner__text { display: flex; flex-direction: column; gap: 10px; white-space: nowrap; }
-  .calc-banner__title { font-family: var(--font-serif); font-size: 32px; line-height: 1; color: var(--color-white); }
-  .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
-
-  /* ============ FINAL CTA (section_7) ============ */
-  .final-cta { position: relative; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
-  .final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .final-cta__bg { position: absolute; top: -97.06%; left: 0; width: 100%; height: 270.14%; object-fit: cover; }
-  .final-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.6); z-index: -1; }
-  .final-cta__content { display: flex; flex-direction: column; gap: 16px; white-space: nowrap; }
-  .final-cta__title { font-family: var(--font-serif); font-size: 48px; line-height: 1; margin: 0; }
-  .final-cta__title-line--gold { color: var(--color-gold); display: block; }
-  .final-cta__desc { font-size: 20px; color: var(--color-text-secondary); }
-  .final-cta__action { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 360px; }
-  .final-cta__cta { width: 100%; }
-  .final-cta__note { font-size: 16px; color: var(--color-white); opacity: 0.8; white-space: nowrap; }
+  .hiw-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .hiw-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.55); z-index: -1; }
+  .hiw-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
+  .hiw-cta__title-line--gold { color: var(--color-gold); display: block; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -521,21 +356,6 @@
   .footer__bottom-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .footer__lock { width: 13.33px; height: 13.33px; }
   .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
-
-  /* ============ LEGAL PAGES ============ */
-  .legal { padding: 200px var(--space-x) var(--space-y); width: 100%; }
-  .legal__container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
-  .legal__title { font-family: var(--font-serif); font-size: 56px; line-height: 1.1; margin: 0; }
-  .legal__updated { font-size: 15px; color: var(--color-text-muted); }
-  .legal__intro { font-size: 18px; font-weight: 300; line-height: 1.6; color: var(--color-text-secondary); }
-  .legal__body { display: flex; flex-direction: column; gap: 36px; }
-  .legal__section h2 { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--color-gold); margin: 0 0 14px; }
-  .legal__section h3 { font-size: 17px; font-weight: 700; color: var(--color-white); margin: 20px 0 8px; }
-  .legal__section p { font-size: 16px; line-height: 1.7; color: var(--color-text-secondary); font-weight: 300; margin: 0 0 12px; }
-  .legal__section ul { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; padding-left: 22px; }
-  .legal__section li { list-style: disc; font-size: 16px; line-height: 1.6; color: var(--color-text-secondary); font-weight: 300; }
-  .legal__section a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
-  .legal__section a:hover { color: #ffe1a3; }
 
   /* ============ COOKIE BANNER ============ */
   .cookie-banner {
@@ -704,7 +524,7 @@
       width: 15px;
       height: 15px;
       flex-shrink: 0;
-      background: url('../icons/icon-arrow-outline.svg') center / contain no-repeat;
+      background: url('assets/icons/icon-arrow-outline.svg') center / contain no-repeat;
       opacity: 0.45;
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
@@ -739,79 +559,31 @@
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
     /* hero */
-    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 48px; gap: 0; }
-    .hero__bg-wrap { position: relative; inset: auto; height: 280px; width: 100%; }
-    .hero__bg { left: 0; width: 100%; }
+    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
+    .hero__bg-wrap { position: absolute; inset: auto; top: -60px; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 32px 20px 0; gap: 24px; }
+    .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; align-items: center; }
+    .hero__heading-block { align-items: center; text-align: center; }
     .hero__title { font-size: 36px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__avatars-block { flex-wrap: wrap; }
-    .hero__avatars-text { width: auto; max-width: 220px; }
+    .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
+    .hero__cta-row .btn { width: 100%; }
 
-    /* features */
-    .features { flex-direction: column; height: auto; gap: 28px; padding: 48px 20px; }
-    .features__body { font-size: 17px; }
+    /* how it works list panel */
+    .hiw-list { padding: 48px 20px; }
+    .hiw-list__panel { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; gap: 32px; padding: 32px 20px; border-radius: 16px; }
+    .hiw-list__panel::before { border-radius: 16px; }
+    .hiw-list__item { align-items: center; gap: 16px; }
+    .hiw-list__number { width: 44px; height: 44px; font-size: 14px; }
+    .hiw-list__icon { width: 32px; height: 32px; }
+    .hiw-list__title { font-size: 17px; }
+    .hiw-list__desc { font-size: 15px; }
 
-    /* why + table */
-    .why { flex-direction: column; align-items: stretch; height: auto; gap: 32px; padding: 64px 20px; }
-    .why__content { width: 100%; }
-    .why__title { font-size: 34px; }
-    .why__desc { font-size: 18px; }
-    .table { display: none; }
-    .table-mobile { display: block; margin-right: -20px; }
-    .table-mobile__inner { border-radius: 4px 0 0 4px; }
-
-    /* how it works */
-    .steps { padding: 64px 20px; gap: 32px; }
-    .steps__decor { display: none; }
-    .steps__title { font-size: 34px; }
-    .steps__list {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 16px;
-      border-radius: 24px;
-      padding: 32px 16px;
-    }
-    .steps__list::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 24px;
-      padding: 1px;
-      background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-    .steps__item { width: 100%; }
-
-    /* more than a home */
-    .future { flex-direction: column; height: auto; padding: 0; }
-    .future__bg-wrap { position: relative; left: 0; top: 0; width: 100%; height: 280px; }
-    .future__panel { width: 100%; height: auto; padding: 40px 20px; gap: 32px; }
-    .future__title { font-size: 34px; }
-    .future__desc { font-size: 18px; }
-    .future__stats { flex-wrap: nowrap; gap: 8px; }
-    .future__stat { flex: 1 1 0; min-width: 0; gap: 8px; }
-    .future__stat-icon { width: 24px; height: 24px; }
-    .future__stat-text { font-size: 12px; line-height: 15px; }
-
-    /* calculator banner */
-    .calc-banner { height: auto; padding: 48px 20px; }
-    .calc-banner__box { flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 28px 20px; }
-    .calc-banner__info { flex-direction: column; align-items: center; text-align: center; }
-    .calc-banner__text { align-items: center; white-space: normal; }
-    .calc-banner__title { font-size: 26px; }
-
-    /* final cta */
-    .final-cta { flex-direction: column; align-items: center; justify-content: center; height: auto; padding: 56px 20px; gap: 28px; text-align: center; }
-    .final-cta__content { align-items: center; white-space: normal; }
-    .final-cta__title { font-size: 34px; }
-    .final-cta__action { width: 100%; max-width: 320px; }
-    .final-cta__note { white-space: normal; }
+    /* how it works cta band */
+    .hiw-cta { flex-direction: column; align-items: center; justify-content: center; text-align: center; height: auto; padding: 56px 24px; gap: 28px; }
+    .hiw-cta__title { font-size: 30px; }
+    .hiw-cta .btn { width: 100%; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -819,12 +591,6 @@
     .footer__brand { order: 2; }
     .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
     .footer__column { width: calc(50% - 12px); }
-
-    /* legal pages */
-    .legal { padding: 120px 20px 64px; }
-    .legal__title { font-size: 32px; }
-    .legal__intro { font-size: 16px; }
-    .legal__section h2 { font-size: 22px; }
 
     /* cookie banner */
     .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
@@ -846,8 +612,8 @@
             <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="/#">ABOUT</a></li>
+            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">ABOUT</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="faq-investors.html">FAQ</a></li>
           </ul>
 
@@ -870,52 +636,101 @@
         </div>
       </div>
     </header>
-
-    <main class="legal">
-      <div class="legal__container">
-        <h1 class="legal__title">Cookie Policy</h1>
-        <p class="legal__updated">Last updated: July 7, 2026</p>
-        <p class="legal__intro">This Cookie Policy explains how Investors' Angels ("we", "us", "our") uses cookies and similar tracking technologies on our website. It should be read alongside our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-
-        <div class="legal__body">
-          <section class="legal__section">
-            <h2>1. What Are Cookies</h2>
-            <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently, remember your preferences, and provide information to the site owners.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>2. Types of Cookies We Use</h2>
-            <h3>Strictly Necessary Cookies</h3>
-            <p>Required for the website to function properly, such as remembering your cookie consent choice and enabling secure navigation. These cannot be disabled.</p>
-            <h3>Performance &amp; Analytics Cookies</h3>
-            <p>Help us understand how visitors interact with our website by collecting anonymous information, such as which pages are visited most often, so we can improve the experience.</p>
-            <h3>Functional Cookies</h3>
-            <p>Allow the website to remember choices you make (such as language or region) to provide a more personalized experience.</p>
-            <h3>Marketing Cookies</h3>
-            <p>Used to track visitors across websites to display relevant advertising and measure the effectiveness of our marketing campaigns.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>3. Third-Party Cookies</h2>
-            <p>Some cookies are placed by third-party services that appear on our pages, such as analytics providers and social media platforms. We do not control these cookies, and we encourage you to review the relevant third party's cookie policy for more information.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>4. Managing Your Cookie Preferences</h2>
-            <p>When you first visit our website, you can choose to accept or decline non-essential cookies via the banner presented to you. You can also control or delete cookies at any time through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>5. Changes to This Policy</h2>
-            <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our operations. Any changes will be posted on this page with a revised "last updated" date.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions about this Cookie Policy, please contact us at <a href="mailto:privacy@investorsangels.com">privacy@investorsangels.com</a>.</p>
-          </section>
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero__bg-wrap">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/How-it-works1-mob.png">
+            <img class="hero__bg" src="assets/How-it-works1.png" alt="Modern villa with an illuminated pool at dusk, symbolizing the home you'll own">
+          </picture>
         </div>
-      </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="hero__heading-block">
+            <span class="hero__eyebrow">How It Works</span>
+            <h1 class="hero__title">
+              <span class="hero__title-line">A Simple Path to</span>
+              <span class="hero__title-line hero__title-line--gold">Your Own Home</span>
+            </h1>
+            <p class="hero__subtitle">We make homeownership possible sooner, without the usual barriers.</p>
+          </div>
+          <div class="hero__cta-row">
+            <a class="btn btn--gradient" href="calculator.html">
+              Check Your Eligibility
+              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS LIST PANEL -->
+      <section class="hiw-list">
+        <div class="hiw-list__panel">
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">01</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works6.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">Choose your dream home</p>
+              <p class="hiw-list__desc">You find the perfect property that fits your life.</p>
+            </div>
+          </div>
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">02</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works5.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">We buy it for you</p>
+              <p class="hiw-list__desc">Our investors purchase the property on your behalf.</p>
+            </div>
+          </div>
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">03</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works4.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">Lease it to you</p>
+              <p class="hiw-list__desc">Move in and start living in your future home right away.</p>
+            </div>
+          </div>
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">04</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works3.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">Pay rent &amp; build your equity</p>
+              <p class="hiw-list__desc">Part of your payment goes toward ownership, not just rent.</p>
+            </div>
+          </div>
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">05</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works2.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">Get approved for a mortgage</p>
+              <p class="hiw-list__desc">We help you qualify with ease when you're ready.</p>
+            </div>
+          </div>
+          <div class="hiw-list__item">
+            <span class="hiw-list__number">06</span>
+            <img class="hiw-list__icon" src="assets/icons/How-it-works1.svg" alt="">
+            <div class="hiw-list__text">
+              <p class="hiw-list__title">Own your home outright</p>
+              <p class="hiw-list__desc">The home is fully yours. The journey is complete.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS CTA BAND -->
+      <section class="hiw-cta">
+        <img class="hiw-cta__bg" src="assets/How-it-works2.png" alt="">
+        <div class="hiw-cta__overlay" aria-hidden="true"></div>
+        <h2 class="hiw-cta__title">
+          <span class="hiw-cta__title-line">Start living</span>
+          <span class="hiw-cta__title-line hiw-cta__title-line--gold">your future today.</span>
+        </h2>
+        <a class="btn btn--gradient" href="calculator.html">
+          Book Your Eligibility
+          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+        </a>
+      </section>
     </main>
 
     <footer class="footer">
@@ -944,19 +759,19 @@
           <div class="footer__column">
             <p class="footer__column-title">For Investors</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="/#">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="#">How Investing Works</a></li>
               <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
-              <li><a class="footer__column-link" href="/#">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="contact.html">Become an Investor</a></li>
               <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
             </ul>
           </div>
           <div class="footer__column">
             <p class="footer__column-title">Company</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="/#">About Us</a></li>
-              <li><a class="footer__column-link" href="/#">Our Team</a></li>
-              <li><a class="footer__column-link" href="/#">Partners</a></li>
-              <li><a class="footer__column-link" href="/#">News &amp; Insights</a></li>
+              <li><a class="footer__column-link" href="#">About Us</a></li>
+              <li><a class="footer__column-link" href="#">Our Team</a></li>
+              <li><a class="footer__column-link" href="#">Partners</a></li>
+              <li><a class="footer__column-link" href="#">News &amp; Insights</a></li>
               <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
             </ul>
           </div>
@@ -965,7 +780,7 @@
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
               <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a class="footer__column-link" href="/#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
               <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
             </ul>
           </div>
@@ -1029,6 +844,31 @@
   })();
 
   (function () {
+    var items = document.querySelectorAll('.hiw-list__item');
+    if (!items.length) return;
+
+    items.forEach(function (item, i) {
+      item.style.transitionDelay = (i * 70) + 'ms';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (item) { item.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    items.forEach(function (item) { observer.observe(item); });
+  })();
+
+  (function () {
     var burger = document.querySelector('.header__burger');
     var nav = document.getElementById('primaryNav');
     var header = document.querySelector('.header');
@@ -1087,5 +927,6 @@
     });
   })();
 </script>
+
 </body>
 </html>
