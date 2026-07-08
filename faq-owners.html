@@ -630,11 +630,8 @@
   .faq__help-btn { width: 100%; justify-content: space-between; }
 
   .faq__list { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-  .faq__list--empty { align-items: center; justify-content: center; min-height: 400px; text-align: center; }
-  .faq__empty { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
-  .faq__empty-title { font-size: 20px; color: var(--color-white); font-weight: 400; margin: 0; }
-  .faq__empty-desc { font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; margin: 0; }
-  .faq__empty-link { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
+  .faq__category { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold-brand); margin: 24px 0 0; }
+  .faq__category:first-child { margin-top: 0; }
   .faq__item { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
   .faq__question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: none; border: none; text-align: left; font-family: var(--font-sans); font-size: 17px; color: var(--color-text-secondary); }
   .faq__question:hover { color: var(--color-white); }
@@ -649,7 +646,7 @@
   .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 24px; }
   .faq__answer ul { padding-left: 50px; display: flex; flex-direction: column; gap: 6px; }
   .faq__answer li { list-style: disc; }
-  .faq__item.is-open .faq__answer { max-height: 400px; }
+  .faq__item.is-open .faq__answer { max-height: 900px; }
 
   /* ============ WHATSAPP QUICK CONTACT ============ */
   .wa-fab {
@@ -963,7 +960,6 @@
           </div>
 
           <div class="faq__switcher" role="tablist" aria-label="Choose FAQ topic">
-            <a class="faq__switcher-link" href="faq.html">General</a>
             <a class="faq__switcher-link faq__switcher-link--active" href="faq-owners.html" aria-current="page">For Owners</a>
             <a class="faq__switcher-link" href="faq-investors.html">For Investors</a>
           </div>
@@ -984,10 +980,426 @@
           </div>
         </div>
 
-        <div class="faq__list faq__list--empty">
-          <div class="faq__empty">
-            <p class="faq__empty-title">Owner-specific questions are coming soon.</p>
-            <p class="faq__empty-desc">In the meantime, check the <a class="faq__empty-link" href="faq.html">general FAQ</a> or <a class="faq__empty-link" href="calculator.html">try the calculator</a>.</p>
+        <div class="faq__list">
+          <p class="faq__category">Getting Started</p>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Who can apply?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>You may be eligible if:</p>
+              <ul>
+                <li>Your verified household income is at least twice your expected monthly Lease-to-Own payment</li>
+                <li>You can provide a Security Deposit equal to three monthly Lease-to-Own payments</li>
+                <li>You satisfy our standard affordability and eligibility assessment</li>
+              </ul>
+              <p>Each application is reviewed individually.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Do I choose the property myself?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>You choose the property you want to live in and eventually own.</p>
+              <p>After our due diligence and approval process, Investors' Angels purchases that property specifically for you.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I choose any property in Dubai?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes, provided the property satisfies our investment, legal and underwriting criteria.</p>
+              <p>Before purchasing the property, Investors' Angels performs legal, financial and technical due diligence.</p>
+              <p>Only approved properties become eligible for the Lease-to-Own program.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Do I need a down payment?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>No.</p>
+              <p>You do not need to save a traditional mortgage down payment before moving into your future home.</p>
+              <p>Instead, you provide only a Security Deposit equal to three monthly Lease-to-Own payments.</p>
+              <p>You then begin building your Purchase Option Balance through your monthly payments while already living in your home.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What costs does Investors' Angels pay?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Investors' Angels covers all costs associated with acquiring the property, including:</p>
+              <ul>
+                <li>The purchase price</li>
+                <li>Transaction costs</li>
+                <li>Government registration fees</li>
+                <li>Program administration</li>
+              </ul>
+              <p>You are responsible only for:</p>
+              <ul>
+                <li>The Security Deposit</li>
+                <li>Your monthly Lease-to-Own payments</li>
+                <li>The normal costs of occupying and maintaining your home</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What documents do I need?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>The required documents depend on your country of residence and employment status.</p>
+              <p>Typically, we request:</p>
+              <ul>
+                <li>Proof of identity</li>
+                <li>Proof of income</li>
+                <li>Supporting financial information</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>How long does approval take?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Most applications are reviewed within a few business days after all required documents have been received.</p>
+            </div>
+          </div>
+
+          <p class="faq__category">Lease-to-Own</p>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>How does Lease-to-Own work?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>You choose the home.</p>
+              <p>Investors' Angels purchases it for you.</p>
+              <p>You move in immediately under a registered Lease-to-Own agreement.</p>
+              <p>Each monthly payment allows you to live in the property while gradually building your Purchase Option Balance toward buying the home.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What is included in my monthly payment?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Each monthly payment consists of two components:</p>
+              <ul>
+                <li>A Lease Payment for living in the property</li>
+                <li>A Purchase Option Balance contribution that brings you closer to owning your home</li>
+              </ul>
+              <p>No additional platform fees or administration fees are charged during the Lease-to-Own program.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What is the Purchase Option Balance?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>The Purchase Option Balance (POB) is the contractual amount you gradually accumulate toward the future purchase of your home.</p>
+              <p>Upon successful completion of the Lease-to-Own program, it is applied toward the purchase price of the property.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Do I own the property during the program?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>No.</p>
+              <p>The property remains legally owned by Investors' Angels until you successfully complete the Lease-to-Own Agreement and purchase your home.</p>
+              <p>However, the property is reserved exclusively for you under the terms of your agreement.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I renovate or personalise my home?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>Because you are planning to become the future owner, you are encouraged to make the property feel like your own, subject to the terms of your Lease-to-Own Agreement.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I choose my own furniture and interior?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Absolutely.</p>
+              <p>Unlike a rental property, this is your future home.</p>
+              <p>We want you to enjoy living there from the very first day.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Who pays maintenance and property expenses?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Just like any homeowner, you are responsible for the day-to-day costs of living in the property, including:</p>
+              <ul>
+                <li>Utilities</li>
+                <li>Service charges (where applicable)</li>
+                <li>Routine maintenance</li>
+                <li>Repairs</li>
+                <li>Other normal operating expenses</li>
+              </ul>
+              <p>These responsibilities are similar to those of a homeowner rather than a traditional tenant.</p>
+            </div>
+          </div>
+
+          <p class="faq__category">Buying Your Home</p>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Is the purchase price fixed?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>Your future purchase price is fixed when Investors' Angels acquires the property.</p>
+              <p>If you successfully complete the Lease-to-Own program, you purchase the property at that agreed price, regardless of future market value.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens if property prices increase?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>If your property increases in value during the Lease-to-Own program, you benefit from that appreciation.</p>
+              <p>Your purchase price remains fixed while the market value of your future home may continue to grow.</p>
+              <p>This means you are building both your Purchase Option Balance and your future equity in the property.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens if property prices decline?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Changes in market value do not affect the agreed purchase price or the terms of your Lease-to-Own Agreement.</p>
+              <p>Your purchase price remains fixed from the first day of the program.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>When can I apply for a mortgage?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Once you have accumulated the required Purchase Option Balance and satisfy the lending criteria of a participating bank.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I choose my own bank?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>Subject to the terms of the program, you may obtain financing from any participating lender willing to finance your purchase.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What if I don't want a mortgage?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>You may purchase the property using your own funds or any other approved source of financing.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I buy the property earlier?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>Early purchase may be possible in accordance with the terms of your Lease-to-Own Agreement.</p>
+            </div>
+          </div>
+
+          <p class="faq__category">If Something Changes</p>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens if I lose my job?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Please contact us immediately.</p>
+              <p>Our team will work with you to explore available options before any default occurs.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens if I miss a payment?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Your Lease-to-Own Agreement contains procedures for late payments and default.</p>
+              <p>We encourage you to contact us as early as possible so that appropriate solutions can be considered.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens if I can no longer continue?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>If you are no longer able to continue, please contact us as early as possible.</p>
+              <p>Depending on your circumstances, we will explore the available options before the Lease-to-Own Agreement reaches default.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What happens to my Purchase Option Balance if I default?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>The Purchase Option Balance is earned only upon the successful completion of the Lease-to-Own Agreement.</p>
+              <p>If the agreement is terminated due to default or breach of its terms, the Purchase Option Balance remains with the Company in accordance with the Lease-to-Own Agreement.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can I leave the program voluntarily?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>The terms for voluntary termination are described in your Lease-to-Own Agreement.</p>
+              <p>Please contact us before making any decision so we can discuss the available options.</p>
+            </div>
+          </div>
+
+          <p class="faq__category">General</p>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Why don't I need a down payment?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Traditional mortgages require a large upfront down payment before you can move into your home.</p>
+              <p>Our Lease-to-Own program replaces that requirement with a Security Deposit equal to three monthly payments.</p>
+              <p>Instead of saving for years before moving in, you begin living in your future home immediately while gradually building your Purchase Option Balance.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>What is the Security Deposit?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>The Security Deposit is equal to three monthly Lease-to-Own payments.</p>
+              <p>It demonstrates your commitment to the Lease-to-Own program and forms part of the contractual security arrangements.</p>
+              <p>It is not your mortgage down payment and does not form part of your Purchase Option Balance.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Why is Lease-to-Own different from renting?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Rent payments only give you the right to live in a property.</p>
+              <p>Lease-to-Own payments allow you to live in your future home while gradually working toward ownership.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Why would an investor buy a home for me?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Our investors are looking for long-term, asset-backed investments.</p>
+              <p>By purchasing your future home today, they receive predictable Lease-to-Own payments throughout the program.</p>
+              <p>When you successfully purchase the property, the investment is completed.</p>
+              <p>This creates a partnership where everyone's interests are aligned.</p>
+              <p>You receive your future home today.</p>
+              <p>The investor receives a long-term asset-backed investment.</p>
+              <p>And our success is measured by helping you become a homeowner.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Why doesn't the Company increase the purchase price if my home's value rises?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Because certainty is one of the core principles of our Lease-to-Own model.</p>
+              <p>Your purchase price is fixed from the first day.</p>
+              <p>If your home's value increases while you successfully complete the program, that appreciation belongs to you.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Why doesn't the Company simply keep the property if prices rise?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Because our success is measured by helping customers become homeowners.</p>
+              <p>Our goal is not to retain properties.</p>
+              <p>Our goal is to transfer ownership to customers who successfully complete the Lease-to-Own program.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span>Can foreigners apply?</span>
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <p>Yes.</p>
+              <p>Eligibility depends on UAE regulations, your residency status and our underwriting criteria.</p>
+            </div>
           </div>
         </div>
       </section>
