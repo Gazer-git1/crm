@@ -630,6 +630,8 @@
   .faq__help-btn { width: 100%; justify-content: space-between; }
 
   .faq__list { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .faq__category { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold-brand); margin: 24px 0 0; }
+  .faq__category:first-child { margin-top: 0; }
   .faq__item { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
   .faq__question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: none; border: none; text-align: left; font-family: var(--font-sans); font-size: 17px; color: var(--color-text-secondary); }
   .faq__question:hover { color: var(--color-white); }
@@ -644,7 +646,7 @@
   .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 24px; }
   .faq__answer ul { padding-left: 50px; display: flex; flex-direction: column; gap: 6px; }
   .faq__answer li { list-style: disc; }
-  .faq__item.is-open .faq__answer { max-height: 400px; }
+  .faq__item.is-open .faq__answer { max-height: 900px; }
 
   /* ============ WHATSAPP QUICK CONTACT ============ */
   .wa-fab {
@@ -979,13 +981,16 @@
         </div>
 
         <div class="faq__list">
+          <p class="faq__category">The Investment</p>
+
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
               <span>What am I actually investing in?</span>
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>You invest in an Asset-Backed Credit Linked Note (CLN). Each CLN finances one specific residential property acquired by Investors' Angels for one specific Lease-to-Own customer.</p>
+              <p>You invest in an Asset-Backed Credit Linked Note (CLN).</p>
+              <p>Each CLN finances one specific residential property acquired by Investors' Angels for one specific Lease-to-Own customer.</p>
             </div>
           </div>
 
@@ -1015,7 +1020,9 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Every CLN is linked to one identified residential property and one registered Lease-to-Own agreement. You always know exactly which property your investment finances.</p>
+              <p>Yes.</p>
+              <p>Every CLN is linked to one identified residential property and one registered Lease-to-Own agreement.</p>
+              <p>You always know exactly which property your investment finances.</p>
             </div>
           </div>
 
@@ -1025,7 +1032,9 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Every available CLN is listed individually. You decide which property, customer profile and investment opportunity best match your investment objectives.</p>
+              <p>Yes.</p>
+              <p>Every available CLN is listed individually.</p>
+              <p>You decide which property, customer profile and investment opportunity best match your investment objectives.</p>
             </div>
           </div>
 
@@ -1035,7 +1044,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Every investment includes a Property Passport containing:</p>
+              <p>Yes.</p>
+              <p>Every investment includes a Property Passport containing:</p>
               <ul>
                 <li>Purchase price</li>
                 <li>Current market value</li>
@@ -1053,9 +1063,13 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Every Property Passport includes an anonymised Customer Profile. You can review the customer's financial profile, payment capacity and investment risk indicators before making your investment decision.</p>
+              <p>Yes.</p>
+              <p>Every Property Passport includes an anonymised Customer Profile.</p>
+              <p>You can review the customer's financial profile, payment capacity and investment risk indicators before making your investment decision.</p>
             </div>
           </div>
+
+          <p class="faq__category">Returns</p>
 
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
@@ -1063,7 +1077,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Our standard investment model targets approximately 12% annual Investor IRR. Each investment opportunity displays its own projected IRR before you invest.</p>
+              <p>Our standard investment model targets approximately 12% annual Investor IRR.</p>
+              <p>Each investment opportunity displays its own projected IRR before you invest.</p>
             </div>
           </div>
 
@@ -1073,7 +1088,10 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Investor returns are generated from two sources. The first is the customer's monthly Lease-to-Own payments throughout the program. The second is the planned investment exit, typically when the customer purchases the property using a bank mortgage or another approved financing solution. This creates predictable long-term cash flows together with a clearly defined exit strategy.</p>
+              <p>Investor returns are generated from two sources.</p>
+              <p>The first is the customer's monthly Lease-to-Own payments throughout the program.</p>
+              <p>The second is the planned investment exit, typically when the customer purchases the property using a bank mortgage or another approved financing solution.</p>
+              <p>This creates predictable long-term cash flows together with a clearly defined exit strategy.</p>
             </div>
           </div>
 
@@ -1083,7 +1101,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Most Lease-to-Own programs last between 5 and 8 years. The expected investment term is displayed for every CLN.</p>
+              <p>Most Lease-to-Own programs last between 5 and 8 years.</p>
+              <p>The expected investment term is displayed for every CLN.</p>
             </div>
           </div>
 
@@ -1093,7 +1112,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Most investments conclude when the customer purchases the property using a bank mortgage or another approved financing solution. The proceeds are then used to redeem the related CLN and complete the investment.</p>
+              <p>Most investments conclude when the customer purchases the property using a bank mortgage or another approved financing solution.</p>
+              <p>The proceeds are then used to redeem the related CLN and complete the investment.</p>
             </div>
           </div>
 
@@ -1103,9 +1123,13 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Customers may complete the purchase before the scheduled maturity date in accordance with the Lease-to-Own Agreement. In such cases, the related CLN is redeemed earlier in accordance with its terms.</p>
+              <p>Yes.</p>
+              <p>Customers may complete the purchase before the scheduled maturity date in accordance with the Lease-to-Own Agreement.</p>
+              <p>In such cases, the related CLN is redeemed earlier in accordance with its terms.</p>
             </div>
           </div>
+
+          <p class="faq__category">The Customer</p>
 
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
@@ -1113,7 +1137,9 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Because the customer does not yet have the required down payment. Our Lease-to-Own program allows the customer to move into the property today while gradually building the Purchase Option Balance required to qualify for a future mortgage. For investors, this creates predictable long-term cash flows backed by a real residential asset.</p>
+              <p>Because the customer does not yet have the required down payment.</p>
+              <p>Our Lease-to-Own program allows the customer to move into the property today while gradually building the Purchase Option Balance required to qualify for a future mortgage.</p>
+              <p>For investors, this creates predictable long-term cash flows backed by a real residential asset.</p>
             </div>
           </div>
 
@@ -1123,7 +1149,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The Purchase Option Balance (POB) is the contractual amount accumulated by the customer toward the future purchase of the property. It is not a bank deposit and does not represent legal ownership of the property during the Lease-to-Own program.</p>
+              <p>The Purchase Option Balance (POB) is the contractual amount accumulated by the customer toward the future purchase of the property.</p>
+              <p>It is not a bank deposit and does not represent legal ownership of the property during the Lease-to-Own program.</p>
             </div>
           </div>
 
@@ -1133,7 +1160,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Customer Commitment Ratio (CCR) measures how much Purchase Option Balance the customer has accumulated compared to the original purchase price. As the CCR increases, the customer's financial commitment also increases, generally reducing the likelihood of voluntary default.</p>
+              <p>Customer Commitment Ratio (CCR) measures how much Purchase Option Balance the customer has accumulated compared to the original purchase price.</p>
+              <p>As the CCR increases, the customer's financial commitment also increases, generally reducing the likelihood of voluntary default.</p>
             </div>
           </div>
 
@@ -1143,9 +1171,14 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Every month the customer increases their Purchase Option Balance and moves closer to owning the property. The longer the customer stays in the program, the more they have to lose by defaulting. At the same time, any increase in the property's market value belongs to the customer once the Lease-to-Own agreement is successfully completed. As both the Purchase Option Balance and the property's value grow over time, the customer's financial incentive to complete the program becomes progressively stronger.</p>
+              <p>Every month the customer increases their Purchase Option Balance and moves closer to owning the property.</p>
+              <p>The longer the customer stays in the program, the more they have to lose by defaulting.</p>
+              <p>At the same time, any increase in the property's market value belongs to the customer once the Lease-to-Own agreement is successfully completed.</p>
+              <p>As both the Purchase Option Balance and the property's value grow over time, the customer's financial incentive to complete the program becomes progressively stronger.</p>
             </div>
           </div>
+
+          <p class="faq__category">Default &amp; Investment Protection</p>
 
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
@@ -1153,7 +1186,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The predefined Investment Policy is activated. Depending on the circumstances, Investors' Angels may:</p>
+              <p>The predefined Investment Policy is activated.</p>
+              <p>Depending on the circumstances, Investors' Angels may:</p>
               <ul>
                 <li>Introduce a new qualified Lease-to-Own customer</li>
                 <li>Sell the property</li>
@@ -1168,7 +1202,9 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The Purchase Option Balance is earned only upon the successful completion of the Lease-to-Own agreement. If the customer defaults or breaches the agreement, the Purchase Option Balance remains with the Company in accordance with the Lease-to-Own Agreement. This mechanism provides an additional layer of protection for investors.</p>
+              <p>The Purchase Option Balance is earned only upon the successful completion of the Lease-to-Own agreement.</p>
+              <p>If the customer defaults or breaches the agreement, the Purchase Option Balance remains with the Company in accordance with the Lease-to-Own Agreement.</p>
+              <p>This mechanism provides an additional layer of protection for investors.</p>
             </div>
           </div>
 
@@ -1178,7 +1214,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The Investment Policy is defined before the investment is offered. Investors know in advance how every default scenario will be managed.</p>
+              <p>The Investment Policy is defined before the investment is offered.</p>
+              <p>Investors know in advance how every default scenario will be managed.</p>
             </div>
           </div>
 
@@ -1188,7 +1225,10 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The Lease-to-Own agreement fixes the future purchase price at the original property price agreed when the property is acquired. If the property increases in value during the Lease-to-Own term, that appreciation belongs to the customer - provided the customer successfully completes the agreement. This creates an additional incentive for the customer to fulfil the program while also strengthening investor protection. If the customer defaults, the Lease-to-Own agreement may be terminated, the property returns fully to the Company's control, and Investors' Angels may either introduce a new Lease-to-Own customer or sell the property in accordance with the predefined Investment Policy.</p>
+              <p>The Lease-to-Own agreement fixes the future purchase price at the original property price agreed when the property is acquired.</p>
+              <p>If the property increases in value during the Lease-to-Own term, that appreciation belongs to the customer - provided the customer successfully completes the agreement.</p>
+              <p>This creates an additional incentive for the customer to fulfil the program while also strengthening investor protection.</p>
+              <p>If the customer defaults, the Lease-to-Own agreement may be terminated, the property returns fully to the Company's control, and Investors' Angels may either introduce a new Lease-to-Own customer or sell the property in accordance with the predefined Investment Policy.</p>
             </div>
           </div>
 
@@ -1198,7 +1238,9 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The customer's future purchase price remains fixed at the original purchase price agreed at the beginning of the Lease-to-Own program. If market values decline, the Company still owns the underlying property, and the investment continues to benefit from multiple protection layers, including the property itself, the Purchase Option Balance, the Customer Commitment Ratio, the customer's payment history and the predefined Investment Policy. Real estate markets may rise or fall, but investor protection is designed to rely on substantially more than future market appreciation alone.</p>
+              <p>The customer's future purchase price remains fixed at the original purchase price agreed at the beginning of the Lease-to-Own program.</p>
+              <p>If market values decline, the Company still owns the underlying property, and the investment continues to benefit from multiple protection layers, including the property itself, the Purchase Option Balance, the Customer Commitment Ratio, the customer's payment history and the predefined Investment Policy.</p>
+              <p>Real estate markets may rise or fall, but investor protection is designed to rely on substantially more than future market appreciation alone.</p>
             </div>
           </div>
 
@@ -1220,13 +1262,18 @@
             </div>
           </div>
 
+          <p class="faq__category">Exit &amp; Reporting</p>
+
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
               <span>Can I sell my CLN before maturity?</span>
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Credit Linked Notes (CLNs) may generally be transferred or sold to another eligible investor, subject to the terms of the relevant issuance and applicable securities regulations. A secondary market for structured notes already exists through banks and licensed investment brokers. The availability, pricing and timing of any sale depend on market conditions and investor demand.</p>
+              <p>Yes.</p>
+              <p>Credit Linked Notes (CLNs) may generally be transferred or sold to another eligible investor, subject to the terms of the relevant issuance and applicable securities regulations.</p>
+              <p>A secondary market for structured notes already exists through banks and licensed investment brokers.</p>
+              <p>The availability, pricing and timing of any sale depend on market conditions and investor demand.</p>
             </div>
           </div>
 
@@ -1236,7 +1283,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Our objective is to make CLNs available through licensed banks and investment brokers, subject to applicable regulations.</p>
+              <p>Yes.</p>
+              <p>Our objective is to make CLNs available through licensed banks and investment brokers, subject to applicable regulations.</p>
             </div>
           </div>
 
@@ -1284,7 +1332,8 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Subject to applicable securities regulations and investor eligibility requirements.</p>
+              <p>Yes.</p>
+              <p>Subject to applicable securities regulations and investor eligibility requirements.</p>
             </div>
           </div>
 
@@ -1307,13 +1356,22 @@
             </div>
           </div>
 
+          <p class="faq__category">Why This Model?</p>
+
           <div class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false">
               <span>Why shouldn't I simply buy a rental property myself?</span>
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Traditional residential rental properties typically generate 5–8% annual net rental yields, while requiring ongoing property management, tenant turnover, maintenance and an uncertain exit strategy. Our standard Lease-to-Own investment model targets approximately 12% annual Investor IRR while offering several additional advantages. Unlike a traditional tenant, a Lease-to-Own customer is working towards owning the property. Every monthly payment increases the customer's Purchase Option Balance and Customer Commitment Ratio, strengthening their financial commitment to complete the program. As the program progresses, the customer's incentive to walk away generally becomes stronger, not weaker. Your investment is made through an Asset-Backed Credit Linked Note (CLN) rather than direct property ownership. This means your investment may be transferred through the secondary market without requiring the underlying property to be sold or disrupting the customer's Lease-to-Own agreement, subject to market conditions and applicable regulations. Finally, your investment delivers more than financial returns. It helps responsible families become homeowners years earlier than would otherwise be possible.</p>
+              <p>Traditional residential rental properties typically generate 5–8% annual net rental yields, while requiring ongoing property management, tenant turnover, maintenance and an uncertain exit strategy.</p>
+              <p>Our standard Lease-to-Own investment model targets approximately 12% annual Investor IRR while offering several additional advantages.</p>
+              <p>Unlike a traditional tenant, a Lease-to-Own customer is working towards owning the property.</p>
+              <p>Every monthly payment increases the customer's Purchase Option Balance and Customer Commitment Ratio, strengthening their financial commitment to complete the program.</p>
+              <p>As the program progresses, the customer's incentive to walk away generally becomes stronger, not weaker.</p>
+              <p>Your investment is made through an Asset-Backed Credit Linked Note (CLN) rather than direct property ownership.</p>
+              <p>This means your investment may be transferred through the secondary market without requiring the underlying property to be sold or disrupting the customer's Lease-to-Own agreement, subject to market conditions and applicable regulations.</p>
+              <p>Finally, your investment delivers more than financial returns. It helps responsible families become homeowners years earlier than would otherwise be possible.</p>
             </div>
           </div>
 
@@ -1323,7 +1381,10 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Because certainty is one of the fundamental principles of the Lease-to-Own model. The purchase price is fixed on the day the property is acquired. Customers know exactly what they will pay if they successfully complete the program. This certainty allows customers to plan their future with confidence while aligning their interests with those of investors.</p>
+              <p>Because certainty is one of the fundamental principles of the Lease-to-Own model.</p>
+              <p>The purchase price is fixed on the day the property is acquired.</p>
+              <p>Customers know exactly what they will pay if they successfully complete the program.</p>
+              <p>This certainty allows customers to plan their future with confidence while aligning their interests with those of investors.</p>
             </div>
           </div>
         </div>
