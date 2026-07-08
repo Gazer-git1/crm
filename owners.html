@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cookie Policy — Investors' Angels</title>
+<title>For Owners — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
+<meta name="description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/cookie-policy.html">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/owners.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="Cookie Policy — Investors' Angels">
-<meta property="og:description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
-<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
-<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/cookie-policy.html">
+<meta property="og:title" content="For Owners — Investors' Angels">
+<meta property="og:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/future-bg.jpg">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/owners.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Cookie Policy — Investors' Angels">
-<meta name="twitter:description" content="Learn how Investors' Angels uses cookies and similar technologies to enhance your browsing experience and how you can manage your preferences.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<meta name="twitter:title" content="For Owners — Investors' Angels">
+<meta name="twitter:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/future-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -204,6 +204,7 @@
   /* ============ HERO (section_1) ============ */
   .hero {
     position: relative;
+    isolation: isolate;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -229,6 +230,7 @@
     width: 844px;
   }
   .hero__heading-block { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+  .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .hero__title {
     font-family: var(--font-serif);
     font-size: 80px;
@@ -254,6 +256,37 @@
     margin-right: -12px;
   }
   .hero__avatars-text { font-size: 16px; color: var(--color-text-secondary); width: 240px; }
+
+  /* ============ OWNERS FEATURES GRID ============ */
+  .owners-features { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+  .owners-features__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+    padding: 56px 32px;
+    border-right: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .owners-features__item:nth-child(4n) { border-right: none; }
+  .owners-features__item:nth-child(n+5) { border-bottom: none; }
+  .owners-features__icon { width: 48px; height: 48px; color: var(--color-gold); }
+  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-gold); font-weight: 400; }
+  .owners-features__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-secondary); font-weight: 300; }
+
+  /* ============ OWNERS CTA ============ */
+  .owners-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin: 64px var(--space-x) 0;
+    padding: 40px 48px;
+    border: 1px solid var(--color-bronze);
+    border-radius: 8px;
+  }
+  .owners-cta__text { font-family: var(--font-serif); font-size: 28px; color: var(--color-gold); font-weight: 400; margin: 0; }
 
   /* ============ FEATURES (section_2) ============ */
   .features {
@@ -578,6 +611,193 @@
   .cookie-banner__actions .btn { padding: 12px 20px; font-size: 14px; flex: 1 0 0; }
   .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
 
+
+  /* ============ FAQ PAGE ============ */
+  .faq { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
+  .faq__content {
+    width: 430px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+  }
+  .faq__content-top { display: flex; flex-direction: column; gap: 24px; }
+  .faq__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .faq__title { font-family: var(--font-serif); font-size: 50px; line-height: 1.1; margin: 0; font-weight: 400; }
+  .faq__title-line--gold { color: var(--color-gold); }
+  .faq__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
+  .faq__switcher { display: flex; flex-wrap: wrap; gap: 8px; }
+  .faq__switcher-link {
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    transition: color 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  .faq__switcher-link:hover { color: var(--color-white); border-color: var(--color-bronze-light); }
+  .faq__switcher-link--active { color: var(--color-gold); border-color: var(--color-bronze); background: rgba(211, 167, 105, 0.08); }
+  .faq__help { position: relative; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .faq__help::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .faq__help-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .faq__help-icon svg { width: 22px; height: 22px; }
+  .faq__help-title { font-size: 18px; line-height: 1.4; color: var(--color-white); font-weight: 400; margin: 0; }
+  .faq__help-btn { width: 100%; justify-content: space-between; }
+
+  .faq__list { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .faq__item { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
+  .faq__question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: none; border: none; text-align: left; font-family: var(--font-sans); font-size: 17px; color: var(--color-text-secondary); }
+  .faq__question:hover { color: var(--color-white); }
+  .faq__icon { position: relative; width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.25s ease; }
+  .faq__icon::before, .faq__icon::after { content: ""; position: absolute; background: var(--color-gold); }
+  .faq__icon::before { top: 50%; left: 0; width: 100%; height: 1.5px; transform: translateY(-50%); }
+  .faq__icon::after { left: 50%; top: 0; width: 1.5px; height: 100%; transform: translateX(-50%); transition: opacity 0.25s ease; }
+  .faq__item.is-open .faq__question { color: var(--color-gold); }
+  .faq__item.is-open .faq__icon { transform: rotate(45deg); }
+  .faq__answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .faq__answer p { padding: 0 28px 24px; margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; }
+  .faq__item.is-open .faq__answer { max-height: 400px; }
+
+  /* ============ CONTACT PAGE ============ */
+  .contact { display: flex; align-items: flex-start; gap: 64px; padding: 200px var(--space-x) var(--space-y); width: 100%; }
+  .contact__content { width: 430px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; }
+  .contact__content-top { display: flex; flex-direction: column; gap: 24px; }
+  .contact__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .contact__title { font-family: var(--font-serif); font-size: 50px; line-height: 1.1; margin: 0; font-weight: 400; }
+  .contact__title-line--gold { color: var(--color-gold); }
+  .contact__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
+
+  .contact__channels { display: flex; flex-direction: column; gap: 20px; }
+  .contact__channel { display: flex; align-items: center; gap: 16px; transition: transform 0.25s ease; }
+  .contact__channel:hover { transform: translateX(4px); }
+  .contact__channel-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .contact__channel-icon svg { width: 22px; height: 22px; }
+  .contact__channel-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .contact__channel-label { font-size: 13px; color: var(--color-text-muted); }
+  .contact__channel-value { font-size: 16px; color: var(--color-white); font-weight: 500; }
+
+  .contact__social { display: flex; flex-direction: column; gap: 12px; }
+  .contact__social-label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-muted); }
+  .contact__social-links { display: flex; gap: 12px; }
+  .contact__social-link img { width: 40px; height: 40px; }
+
+  .contact__form-wrap { position: relative; flex: 1 0 0; min-width: 0; border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 28px; }
+  .contact__form-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .contact__fields { display: flex; flex-direction: column; gap: 28px; }
+  .contact__form-title { font-family: var(--font-serif); font-size: 28px; font-weight: 400; margin: 0; }
+  .contact__form-row { display: flex; gap: 20px; }
+  .contact__field { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+  .contact__label { font-size: 14px; color: var(--color-text-secondary); }
+  .contact__input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .contact__input::placeholder { color: var(--color-text-muted); }
+  .contact__input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .contact__input.is-invalid { border-color: #e2635f; }
+  .contact__textarea { height: auto; padding: 14px 16px; resize: vertical; min-height: 140px; font-family: var(--font-sans); }
+  .contact__field-error { min-height: 14px; font-size: 12px; color: #e2635f; }
+  .contact__submit { align-self: flex-start; }
+  .contact__submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .contact__submit:disabled:hover { transform: none; box-shadow: none; }
+  .contact__submit:disabled::after { display: none; }
+  .contact__form-note { font-size: 13px; color: var(--color-text-muted); }
+
+  .topic-select { position: relative; width: 100%; }
+  .topic-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .topic-select__trigger:hover, .topic-select.is-open .topic-select__trigger { border-color: var(--color-gold-dark); background: var(--color-bg-secondary); }
+  .topic-select__value { flex: 1 0 0; text-align: left; }
+  .topic-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
+  .topic-select.is-open .topic-select__chevron { transform: rotate(180deg); }
+  .topic-select__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .topic-select.is-open .topic-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .topic-select__option {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
+    font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .topic-select__option:last-child { border-bottom: none; }
+  .topic-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
+  .topic-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+  .topic-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
+  .topic-select__option.is-selected .topic-select__option-check { opacity: 1; }
+
+  .contact__success { display: none; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .contact__success-icon { width: 56px; height: 56px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .contact__success-icon svg { width: 24px; height: 24px; }
+  .contact__success-title { font-family: var(--font-serif); font-size: 26px; font-weight: 400; margin: 0; }
+  .contact__success-desc { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); }
+  .contact-form.is-submitted .contact__fields { display: none; }
+  .contact-form.is-submitted .contact__success { display: flex; }
+
   /* ============ WHATSAPP QUICK CONTACT ============ */
   .wa-fab {
     position: fixed;
@@ -749,6 +969,15 @@
     .hero__avatars-block { flex-wrap: wrap; }
     .hero__avatars-text { width: auto; max-width: 220px; }
 
+    /* owners features grid */
+    .owners-features { grid-template-columns: 1fr; }
+    .owners-features__item { padding: 36px 20px; border-right: none !important; }
+    .owners-features__item:not(:last-child) { border-bottom: 1px solid var(--color-border) !important; }
+
+    /* owners cta */
+    .owners-cta { flex-direction: column; align-items: stretch; text-align: center; margin: 48px 20px 0; padding: 32px 24px; gap: 20px; }
+    .owners-cta__text { font-size: 22px; }
+
     /* features */
     .features { flex-direction: column; height: auto; gap: 28px; padding: 48px 20px; }
     .features__body { font-size: 17px; }
@@ -828,6 +1057,22 @@
 
     /* cookie banner */
     .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+
+    /* faq page */
+    .faq { flex-direction: column; align-items: stretch; padding: 64px 20px; gap: 40px; }
+    .faq__content { width: 100%; gap: 40px; position: static; min-height: auto; }
+    .faq__title { font-size: 32px; }
+    .faq__desc { font-size: 16px; }
+    .faq__question { padding: 18px 20px; font-size: 15px; }
+    .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
+
+    /* contact page */
+    .contact { flex-direction: column; align-items: stretch; padding: 120px 20px 64px; gap: 40px; }
+    .contact__content { width: 100%; }
+    .contact__title { font-size: 32px; }
+    .contact__desc { font-size: 16px; }
+    .contact__form-wrap { padding: 28px 20px; }
+    .contact__form-row { flex-direction: column; gap: 20px; }
   }
 </style>
 </head>
@@ -843,11 +1088,11 @@
         <nav class="header__nav" id="primaryNav">
           <ul class="header__nav-list" id="navList">
             <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="/#">WHY INVEST</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="/#">GUARANTEES</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="/#">HOW IT WORKS</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="/#">ABOUT</a></li>
+            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">WHY INVEST</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">GUARANTEES</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">ABOUT</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="faq.html">FAQ</a></li>
           </ul>
 
@@ -870,52 +1115,115 @@
         </div>
       </div>
     </header>
-
-    <main class="legal">
-      <div class="legal__container">
-        <h1 class="legal__title">Cookie Policy</h1>
-        <p class="legal__updated">Last updated: July 7, 2026</p>
-        <p class="legal__intro">This Cookie Policy explains how Investors' Angels ("we", "us", "our") uses cookies and similar tracking technologies on our website. It should be read alongside our <a href="privacy-policy.html">Privacy Policy</a>.</p>
-
-        <div class="legal__body">
-          <section class="legal__section">
-            <h2>1. What Are Cookies</h2>
-            <p>Cookies are small text files placed on your device when you visit a website. They are widely used to make websites work more efficiently, remember your preferences, and provide information to the site owners.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>2. Types of Cookies We Use</h2>
-            <h3>Strictly Necessary Cookies</h3>
-            <p>Required for the website to function properly, such as remembering your cookie consent choice and enabling secure navigation. These cannot be disabled.</p>
-            <h3>Performance &amp; Analytics Cookies</h3>
-            <p>Help us understand how visitors interact with our website by collecting anonymous information, such as which pages are visited most often, so we can improve the experience.</p>
-            <h3>Functional Cookies</h3>
-            <p>Allow the website to remember choices you make (such as language or region) to provide a more personalized experience.</p>
-            <h3>Marketing Cookies</h3>
-            <p>Used to track visitors across websites to display relevant advertising and measure the effectiveness of our marketing campaigns.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>3. Third-Party Cookies</h2>
-            <p>Some cookies are placed by third-party services that appear on our pages, such as analytics providers and social media platforms. We do not control these cookies, and we encourage you to review the relevant third party's cookie policy for more information.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>4. Managing Your Cookie Preferences</h2>
-            <p>When you first visit our website, you can choose to accept or decline non-essential cookies via the banner presented to you. You can also control or delete cookies at any time through your browser settings. Please note that disabling certain cookies may affect the functionality of our website.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>5. Changes to This Policy</h2>
-            <p>We may update this Cookie Policy from time to time to reflect changes in technology, legislation, or our operations. Any changes will be posted on this page with a revised "last updated" date.</p>
-          </section>
-
-          <section class="legal__section">
-            <h2>6. Contact Us</h2>
-            <p>If you have any questions about this Cookie Policy, please contact us at <a href="mailto:privacy@investorsangels.com">privacy@investorsangels.com</a>.</p>
-          </section>
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero__bg-wrap">
+          <img class="hero__bg" src="assets/future-bg.jpg" alt="Family looking out at the Dubai skyline from their home at sunset">
         </div>
-      </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="hero__heading-block">
+            <span class="hero__eyebrow">Owners</span>
+            <h1 class="hero__title">
+              <span class="hero__title-line">Live in <span class="hero__title-line--gold">Your Home.</span></span>
+              <span class="hero__title-line">Build <span class="hero__title-line--gold">Your Future.</span></span>
+            </h1>
+            <p class="hero__subtitle">More than a home. It's your tomorrow.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- OWNERS FEATURES GRID -->
+      <section class="owners-features">
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 20v-5h4v5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <p class="owners-features__title">Live in your home today</p>
+          <p class="owners-features__desc">In the home you choose. Create your space, your comfort, your life.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="12" cy="9.8" r="2.6" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M6.5 18c1-2.6 3-4.2 5.5-4.2s4.5 1.6 5.5 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p class="owners-features__title">Live as if it's already yours</p>
+          <p class="owners-features__desc">Don't wait years to start living the life you want.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="5.8" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="18.2" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M8 19c.5-2.8 2-4.3 4-4.3s3.5 1.5 4 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M3 19c.4-2 1.5-3.2 3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M21 19c-.4-2-1.5-3.2-3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p class="owners-features__title">Build equity every month</p>
+          <p class="owners-features__desc">While others pay rent and start over, you build your ownership.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="owners-features__title">Create, customize, make it yours</p>
+          <p class="owners-features__desc">Design, renovate, decorate. This is your home, not temporary housing.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 15.5l2-2 1.5 1.5L16 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.5 11.5H16v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="owners-features__title">Benefit from property value growth</p>
+          <p class="owners-features__desc">While you live and prepare for a mortgage, your home may increase in value.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="4" y="14" width="3" height="6" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="10.5" y="10" width="3" height="10" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="17" y="6" width="3" height="14" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M4 8.5l3.5-3 3.5 2 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 3.5h3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="owners-features__title">Your payments work with the market</p>
+          <p class="owners-features__desc">You're not just saving. You're building ownership in real estate.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 12a8 8 0 0 1 13.5-5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M20 12a8 8 0 0 1-13.5 5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M17 3v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 21v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="owners-features__title">Switch to a mortgage or buy it outright</p>
+          <p class="owners-features__desc">But most importantly — you've already lived the life you always wanted.</p>
+        </div>
+        <div class="owners-features__item">
+          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 14v5M9.5 16.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <p class="owners-features__title">A home changes everything</p>
+          <p class="owners-features__desc">It changes your address. It changes your future. It changes your life.</p>
+        </div>
+      </section>
+
+      <!-- OWNERS CTA -->
+      <section class="owners-cta">
+        <p class="owners-cta__text">Start living your future today.</p>
+        <a class="btn btn--gradient" href="calculator.html">
+          Check Your Eligibility
+          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+        </a>
+      </section>
     </main>
 
     <footer class="footer">
@@ -935,28 +1243,28 @@
           <div class="footer__column">
             <p class="footer__column-title">For Owners</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="/#">How it Works</a></li>
+              <li><a class="footer__column-link" href="#">How it Works</a></li>
               <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
-              <li><a class="footer__column-link" href="/#">Guarantees</a></li>
+              <li><a class="footer__column-link" href="#">Guarantees</a></li>
               <li><a class="footer__column-link" href="faq-owners.html">FAQ</a></li>
             </ul>
           </div>
           <div class="footer__column">
             <p class="footer__column-title">For Investors</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="/#">How Investing Works</a></li>
-              <li><a class="footer__column-link" href="/#">Why Invest</a></li>
-              <li><a class="footer__column-link" href="/#">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="#">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="#">Why Invest</a></li>
+              <li><a class="footer__column-link" href="#">Become an Investor</a></li>
               <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
             </ul>
           </div>
           <div class="footer__column">
             <p class="footer__column-title">Company</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="/#">About Us</a></li>
-              <li><a class="footer__column-link" href="/#">Our Team</a></li>
-              <li><a class="footer__column-link" href="/#">Partners</a></li>
-              <li><a class="footer__column-link" href="/#">News &amp; Insights</a></li>
+              <li><a class="footer__column-link" href="#">About Us</a></li>
+              <li><a class="footer__column-link" href="#">Our Team</a></li>
+              <li><a class="footer__column-link" href="#">Partners</a></li>
+              <li><a class="footer__column-link" href="#">News &amp; Insights</a></li>
               <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
             </ul>
           </div>
@@ -965,7 +1273,7 @@
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
               <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a class="footer__column-link" href="/#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
               <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
             </ul>
           </div>
@@ -1055,6 +1363,95 @@
   })();
 
   (function () {
+    var track = document.getElementById('planTrack');
+    var bar = document.getElementById('planProgressBar');
+    var progressTrack = bar && bar.parentElement;
+    if (!track || !bar || !progressTrack) return;
+
+    function update() {
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      var ratio = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      var trackWidth = progressTrack.clientWidth;
+      var barWidth = Math.max(24, (track.clientWidth / track.scrollWidth) * trackWidth);
+      var maxTranslate = trackWidth - barWidth;
+      bar.style.width = barWidth + 'px';
+      bar.style.transform = 'translateX(' + (ratio * maxTranslate) + 'px)';
+    }
+
+    track.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  (function () {
+    var labels = document.querySelector('.table-mobile__labels');
+    var scroller = document.getElementById('planTrack');
+    if (!labels || !scroller) return;
+
+    var dragging = false;
+    var startX = 0;
+    var startY = 0;
+    var lastY = 0;
+    var startScroll = 0;
+    var mode = null; // 'h' (drives the table) or 'v' (drives the page)
+
+    function start(x, y) {
+      dragging = true;
+      mode = null;
+      startX = x;
+      startY = y;
+      lastY = y;
+      startScroll = scroller.scrollLeft;
+    }
+
+    function move(x, y, evt) {
+      if (!dragging) return;
+      var dx = x - startX;
+      var dy = y - startY;
+
+      if (!mode) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        mode = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+
+      if (mode === 'h') {
+        scroller.scrollLeft = startScroll - dx;
+        if (evt && evt.cancelable) evt.preventDefault();
+      } else {
+        window.scrollBy(0, lastY - y);
+      }
+      lastY = y;
+    }
+
+    function stop() { dragging = false; mode = null; }
+
+    labels.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      start(t.clientX, t.clientY);
+    }, { passive: true });
+
+    labels.addEventListener('touchmove', function (e) {
+      var t = e.touches[0];
+      move(t.clientX, t.clientY, e);
+    }, { passive: false });
+
+    labels.addEventListener('touchend', stop);
+    labels.addEventListener('touchcancel', stop);
+
+    labels.addEventListener('mousedown', function (e) {
+      start(e.clientX, e.clientY);
+      function onMove(ev) { move(ev.clientX, ev.clientY, ev); }
+      function onUp() {
+        stop();
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onUp);
+      }
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+    });
+  })();
+
+  (function () {
     var STORAGE_KEY = 'ia_cookie_consent';
     var banner = document.getElementById('cookieBanner');
     var acceptBtn = document.getElementById('cookieAccept');
@@ -1086,6 +1483,98 @@
       hideBanner();
     });
   })();
+
+  (function () {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+
+    var nameInput = document.getElementById('contactName');
+    var emailInput = document.getElementById('contactEmail');
+    var phoneInput = document.getElementById('contactPhone');
+    var messageInput = document.getElementById('contactMessage');
+    var submitBtn = form.querySelector('.contact__submit');
+    var emailError = document.getElementById('contactEmailError');
+    var phoneError = document.getElementById('contactPhoneError');
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var PHONE_RE = /^\+?[\d\s\-()]{7,20}$/;
+
+    function isEmailValid() { return EMAIL_RE.test(emailInput.value.trim()); }
+    function isPhoneValid() { return PHONE_RE.test(phoneInput.value.trim()); }
+
+    function refreshValidity() {
+      var nameOk = nameInput.value.trim().length > 0;
+      var messageOk = messageInput.value.trim().length > 0;
+      submitBtn.disabled = !(nameOk && isEmailValid() && isPhoneValid() && messageOk);
+    }
+
+    emailInput.addEventListener('blur', function () {
+      var invalid = emailInput.value.trim() !== '' && !isEmailValid();
+      emailError.textContent = invalid ? 'Enter a valid email address.' : '';
+      emailInput.classList.toggle('is-invalid', invalid);
+    });
+    phoneInput.addEventListener('blur', function () {
+      var invalid = phoneInput.value.trim() !== '' && !isPhoneValid();
+      phoneError.textContent = invalid ? 'Enter a valid phone number.' : '';
+      phoneInput.classList.toggle('is-invalid', invalid);
+    });
+    [emailInput, phoneInput].forEach(function (input) {
+      input.addEventListener('input', function () {
+        input.classList.remove('is-invalid');
+      });
+    });
+    [nameInput, emailInput, phoneInput, messageInput].forEach(function (input) {
+      input.addEventListener('input', refreshValidity);
+    });
+    refreshValidity();
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (submitBtn.disabled) return;
+      form.classList.add('is-submitted');
+    });
+
+    (function () {
+      var wrap = document.getElementById('topicSelect');
+      var trigger = document.getElementById('topicTrigger');
+      var panel = document.getElementById('topicPanel');
+      var valueLabel = document.getElementById('topicValue');
+      var hiddenInput = document.getElementById('topicInput');
+      var options = panel.querySelectorAll('.topic-select__option');
+
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!wrap.classList.contains('is-open'));
+      });
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          valueLabel.textContent = opt.querySelector('span').textContent;
+          hiddenInput.value = opt.getAttribute('data-topic');
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
+  })();
 </script>
+
 </body>
 </html>
