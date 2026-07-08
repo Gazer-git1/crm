@@ -579,12 +579,35 @@
   .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
 
   /* ============ WHATSAPP QUICK CONTACT ============ */
-  .wa-fab { position: fixed; left: 32px; bottom: 32px; z-index: 190; box-shadow: 0 10px 28px rgba(211, 167, 105, 0.35); }
-  .wa-fab:hover { box-shadow: 0 14px 34px rgba(211, 167, 105, 0.5); }
+  .wa-fab {
+    position: fixed;
+    left: 32px;
+    bottom: 32px;
+    z-index: 190;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-bronze);
+    color: var(--color-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .wa-fab:hover {
+    border-color: var(--color-bronze-light);
+    background: rgba(211, 167, 105, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+  }
+  .wa-fab svg { width: 26px; height: 26px; }
 
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
-    .wa-fab { left: 16px; bottom: 16px; padding: 12px 18px; font-size: 14px; }
+    .wa-fab { left: 16px; bottom: 16px; width: 48px; height: 48px; }
+    .wa-fab svg { width: 22px; height: 22px; }
 
     .page { width: 100%; }
 
@@ -958,14 +981,14 @@
       </div>
     </div>
 
-    <a class="btn btn--gradient wa-fab" href="https://wa.me/971500000000" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
-      <svg class="btn__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M4 5.5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H9l-4 3v-3H6a2 2 0 0 1-2-2v-9Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <a class="wa-fab" href="https://wa.me/971500000000" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3.5" y="4" width="17" height="12" rx="3" stroke="currentColor" stroke-width="1.6"/>
+        <path d="M8 16l-1 4 4.5-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
         <circle cx="8.5" cy="10" r="1" fill="currentColor"/>
         <circle cx="12" cy="10" r="1" fill="currentColor"/>
         <circle cx="15.5" cy="10" r="1" fill="currentColor"/>
       </svg>
-      WhatsApp
     </a>
   </div>
 
