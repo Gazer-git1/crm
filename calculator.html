@@ -170,7 +170,7 @@
     width: 100%;
   }
   .calc-hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .calc-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .calc-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
   .calc-hero__overlay {
     position: absolute;
     inset: 0;
@@ -373,8 +373,8 @@
   .breakdown-card__head { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid var(--color-border); }
   .breakdown-card__head svg { width: 18px; height: 18px; color: var(--color-gold); flex-shrink: 0; }
   .breakdown-card__head-label { font-size: 13px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-gold); }
-  .breakdown-card__body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; flex: 1 0 0; }
-  .breakdown-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 14px; }
+  .breakdown-card__body { padding: 20px 24px; display: flex; flex-direction: column; gap: 0; flex: 1 0 0; }
+  .breakdown-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 14px; padding: 10px 0; border-bottom: 1px solid var(--color-border); }
   .breakdown-row__label { color: var(--color-text-secondary); }
   .breakdown-row__label-sub { display: block; font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
   .breakdown-row__value { color: var(--color-white); font-weight: 600; text-align: right; white-space: nowrap; }
@@ -569,8 +569,8 @@
     .summary { padding: 0 20px 0; gap: 28px; }
     .summary__title { font-size: 30px; }
     .summary__block { flex-direction: column; align-items: flex-start; }
-    .summary__stats { flex-wrap: wrap; gap: 24px; padding: 28px 16px; }
-    .summary__stat { flex: 1 1 40%; }
+    .summary__stats { flex-wrap: wrap; justify-content: center; gap: 24px 12px; padding: 28px 16px; }
+    .summary__stat { flex: 0 1 28%; }
     .summary__stat-value { font-size: 24px; }
 
     /* final cta */
@@ -1406,7 +1406,11 @@
 
     el('calculateBtn').addEventListener('click', function () {
       compute();
-      el('calculateBtn').closest('.calc-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.innerWidth <= 768) {
+        el('calculateBtn').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        el('calculateBtn').closest('.calc-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
 
     compute();
