@@ -938,7 +938,7 @@
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Mortgage<br>Required</span>
-                <span class="breakdown-row__value" id="mtMortgageRequired">$683,500</span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">$683,500<br><span class="breakdown-row__label-sub" id="mtMortgageRequiredPct" style="text-align:right;">(72% of original price)</span></span>
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">vs. Final<br>Property Value</span>
@@ -1301,7 +1301,7 @@
       /* --- breakdown: at mortgage transition --- */
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
       el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
-      el('mtMortgageRequired').textContent = fmtMoney(mortgageRequired);
+      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePctOfOriginal) + ' of original price)</span>';
       el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
       el('mtMortgage10').textContent = fmtMoney(mortgage10) + ' /mo';
       el('mtMortgage15').textContent = fmtMoney(mortgage15) + ' /mo';
