@@ -652,20 +652,8 @@
   .contact__title-line--gold { color: var(--color-gold); }
   .contact__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
 
-  .contact__channels { display: flex; flex-direction: column; gap: 12px; }
-  .contact__channel { position: relative; display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 8px; transition: transform 0.25s ease; }
-  .contact__channel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
+  .contact__channels { display: flex; flex-direction: column; gap: 20px; }
+  .contact__channel { display: flex; align-items: center; gap: 16px; transition: transform 0.25s ease; }
   .contact__channel:hover { transform: translateX(4px); }
   .contact__channel-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
   .contact__channel-icon svg { width: 22px; height: 22px; }
@@ -710,9 +698,64 @@
   }
   .contact__input::placeholder { color: var(--color-text-muted); }
   .contact__input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .contact__input.is-invalid { border-color: #e2635f; }
   .contact__textarea { height: auto; padding: 14px 16px; resize: vertical; min-height: 140px; font-family: var(--font-sans); }
+  .contact__field-error { min-height: 14px; font-size: 12px; color: #e2635f; }
   .contact__submit { align-self: flex-start; }
+  .contact__submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  .contact__submit:disabled:hover { transform: none; box-shadow: none; }
+  .contact__submit:disabled::after { display: none; }
   .contact__form-note { font-size: 13px; color: var(--color-text-muted); }
+
+  .topic-select { position: relative; width: 100%; }
+  .topic-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .topic-select__trigger:hover, .topic-select.is-open .topic-select__trigger { border-color: var(--color-gold-dark); background: var(--color-bg-secondary); }
+  .topic-select__value { flex: 1 0 0; text-align: left; }
+  .topic-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
+  .topic-select.is-open .topic-select__chevron { transform: rotate(180deg); }
+  .topic-select__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .topic-select.is-open .topic-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .topic-select__option {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
+    font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .topic-select__option:last-child { border-bottom: none; }
+  .topic-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
+  .topic-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+  .topic-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
+  .topic-select__option.is-selected .topic-select__option-check { opacity: 1; }
 
   .contact__success { display: none; flex-direction: column; align-items: flex-start; gap: 16px; }
   .contact__success-icon { width: 56px; height: 56px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
@@ -1059,27 +1102,45 @@
               <div class="contact__field">
                 <label class="contact__label" for="contactEmail">Email</label>
                 <input class="contact__input" type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+                <span class="contact__field-error" id="contactEmailError"></span>
               </div>
             </div>
             <div class="contact__form-row">
               <div class="contact__field">
                 <label class="contact__label" for="contactPhone">Phone Number</label>
-                <input class="contact__input" type="tel" id="contactPhone" name="phone" placeholder="+971 50 000 0000">
+                <input class="contact__input" type="tel" id="contactPhone" name="phone" placeholder="+971 50 000 0000" required>
+                <span class="contact__field-error" id="contactPhoneError"></span>
               </div>
               <div class="contact__field">
-                <label class="contact__label" for="contactTopic">I'm Interested In</label>
-                <select class="contact__input" id="contactTopic" name="topic">
-                  <option value="leasing">Leasing a Home</option>
-                  <option value="investing">Investing</option>
-                  <option value="other">Something Else</option>
-                </select>
+                <label class="contact__label" for="topicTrigger">I'm Interested In</label>
+                <div class="topic-select" id="topicSelect">
+                  <button type="button" class="topic-select__trigger" id="topicTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="topic-select__value" id="topicValue">Leasing a Home</span>
+                    <svg class="topic-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                  <div class="topic-select__panel" id="topicPanel" role="listbox">
+                    <button type="button" class="topic-select__option is-selected" data-topic="leasing" role="option" aria-selected="true">
+                      <span>Leasing a Home</span>
+                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="topic-select__option" data-topic="investing" role="option" aria-selected="false">
+                      <span>Investing</span>
+                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="topic-select__option" data-topic="other" role="option" aria-selected="false">
+                      <span>Something Else</span>
+                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                  </div>
+                </div>
+                <input type="hidden" name="topic" id="topicInput" value="leasing">
               </div>
             </div>
             <div class="contact__field">
               <label class="contact__label" for="contactMessage">Message</label>
               <textarea class="contact__input contact__textarea" id="contactMessage" name="message" rows="6" placeholder="Tell us a bit about what you're looking for..."></textarea>
             </div>
-            <button class="btn btn--gradient contact__submit" type="submit">
+            <button class="btn btn--gradient contact__submit" type="submit" disabled>
               Send Message
               <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
             </button>
@@ -1348,10 +1409,92 @@
   (function () {
     var form = document.getElementById('contactForm');
     if (!form) return;
+
+    var nameInput = document.getElementById('contactName');
+    var emailInput = document.getElementById('contactEmail');
+    var phoneInput = document.getElementById('contactPhone');
+    var messageInput = document.getElementById('contactMessage');
+    var submitBtn = form.querySelector('.contact__submit');
+    var emailError = document.getElementById('contactEmailError');
+    var phoneError = document.getElementById('contactPhoneError');
+
+    var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var PHONE_RE = /^\+?[\d\s\-()]{7,20}$/;
+
+    function isEmailValid() { return EMAIL_RE.test(emailInput.value.trim()); }
+    function isPhoneValid() { return PHONE_RE.test(phoneInput.value.trim()); }
+
+    function refreshValidity() {
+      var nameOk = nameInput.value.trim().length > 0;
+      var messageOk = messageInput.value.trim().length > 0;
+      submitBtn.disabled = !(nameOk && isEmailValid() && isPhoneValid() && messageOk);
+    }
+
+    emailInput.addEventListener('blur', function () {
+      var invalid = emailInput.value.trim() !== '' && !isEmailValid();
+      emailError.textContent = invalid ? 'Enter a valid email address.' : '';
+      emailInput.classList.toggle('is-invalid', invalid);
+    });
+    phoneInput.addEventListener('blur', function () {
+      var invalid = phoneInput.value.trim() !== '' && !isPhoneValid();
+      phoneError.textContent = invalid ? 'Enter a valid phone number.' : '';
+      phoneInput.classList.toggle('is-invalid', invalid);
+    });
+    [emailInput, phoneInput].forEach(function (input) {
+      input.addEventListener('input', function () {
+        input.classList.remove('is-invalid');
+      });
+    });
+    [nameInput, emailInput, phoneInput, messageInput].forEach(function (input) {
+      input.addEventListener('input', refreshValidity);
+    });
+    refreshValidity();
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      if (submitBtn.disabled) return;
       form.classList.add('is-submitted');
     });
+
+    (function () {
+      var wrap = document.getElementById('topicSelect');
+      var trigger = document.getElementById('topicTrigger');
+      var panel = document.getElementById('topicPanel');
+      var valueLabel = document.getElementById('topicValue');
+      var hiddenInput = document.getElementById('topicInput');
+      var options = panel.querySelectorAll('.topic-select__option');
+
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!wrap.classList.contains('is-open'));
+      });
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          valueLabel.textContent = opt.querySelector('span').textContent;
+          hiddenInput.value = opt.getAttribute('data-topic');
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
   })();
 </script>
 
