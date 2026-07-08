@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Frequently Asked Questions — Investors' Angels</title>
+<title>Owner FAQ — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Answers to common questions about our Lease-to-Own program — down payments, ownership during the lease, DLD registration, qualifying, payments, and becoming a full owner.">
+<meta name="description" content="Answers to common questions for Investors' Angels owners — Lease-to-Own homes, payments, and building equity toward full ownership.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq.html">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq-owners.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="Frequently Asked Questions — Investors' Angels">
-<meta property="og:description" content="Answers to common questions about our Lease-to-Own program — down payments, ownership during the lease, DLD registration, qualifying, payments, and becoming a full owner.">
+<meta property="og:title" content="Owner FAQ — Investors' Angels">
+<meta property="og:description" content="Answers to common questions for Investors' Angels owners — Lease-to-Own homes, payments, and building equity toward full ownership.">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
-<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq.html">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq-owners.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Frequently Asked Questions — Investors' Angels">
-<meta name="twitter:description" content="Answers to common questions about our Lease-to-Own program — down payments, ownership during the lease, DLD registration, qualifying, payments, and becoming a full owner.">
+<meta name="twitter:title" content="Owner FAQ — Investors' Angels">
+<meta name="twitter:description" content="Answers to common questions for Investors' Angels owners — Lease-to-Own homes, payments, and building equity toward full ownership.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -629,6 +629,11 @@
   .faq__help-btn { width: 100%; justify-content: space-between; }
 
   .faq__list { flex: 1 0 0; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .faq__list--empty { align-items: center; justify-content: center; min-height: 400px; text-align: center; }
+  .faq__empty { display: flex; flex-direction: column; gap: 12px; max-width: 420px; }
+  .faq__empty-title { font-size: 20px; color: var(--color-white); font-weight: 400; margin: 0; }
+  .faq__empty-desc { font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; margin: 0; }
+  .faq__empty-link { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
   .faq__item { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); overflow: hidden; }
   .faq__question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 24px 28px; background: none; border: none; text-align: left; font-family: var(--font-sans); font-size: 17px; color: var(--color-text-secondary); }
   .faq__question:hover { color: var(--color-white); }
@@ -881,7 +886,7 @@
             <li class="header__nav-item"><a class="header__nav-link" href="#">GUARANTEES</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="#">HOW IT WORKS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="#">ABOUT</a></li>
-            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="faq.html">FAQ</a></li>
+            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="faq-owners.html">FAQ</a></li>
           </ul>
 
           <div class="header__nav-footer">
@@ -907,14 +912,14 @@
       <section class="faq">
         <div class="faq__content">
           <div class="faq__content-top">
-            <span class="faq__eyebrow">FAQ</span>
+            <span class="faq__eyebrow">OWNER FAQ</span>
             <h1 class="faq__title">Frequently Asked<br><span class="faq__title-line--gold">Questions</span></h1>
-            <p class="faq__desc">Everything you need to know<br>about Lease-to-Own.</p>
+            <p class="faq__desc">Everything you need to know<br>as an Investors' Angels owner.</p>
           </div>
 
           <div class="faq__switcher" role="tablist" aria-label="Choose FAQ topic">
-            <a class="faq__switcher-link faq__switcher-link--active" href="faq.html" aria-current="page">General</a>
-            <a class="faq__switcher-link" href="faq-owners.html">For Owners</a>
+            <a class="faq__switcher-link" href="faq.html">General</a>
+            <a class="faq__switcher-link faq__switcher-link--active" href="faq-owners.html" aria-current="page">For Owners</a>
             <a class="faq__switcher-link" href="faq-investors.html">For Investors</a>
           </div>
 
@@ -934,165 +939,10 @@
           </div>
         </div>
 
-        <div class="faq__list">
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What is Lease-to-Own?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Lease-to-Own lets you move into the home you want today and live in it as if it's already yours — with no down payment. Part of every payment you make gradually builds your ownership until you're ready for a mortgage or to buy the home outright.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How is it different from renting or a mortgage?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>With renting, you pay to live somewhere but never build ownership. With a mortgage, you need a large down payment and have to pass a strict bank check before you can move in. With Lease-to-Own, you move into the exact home you want to own right away, without a down payment, and go through a comparatively simple approval process — while your payments gradually build the equity you'll need to move to a mortgage or buy the home outright.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Do I need a down payment?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>No down payment is required to get started. Part of every monthly payment is credited toward the future purchase price, gradually building the down payment you'll eventually need.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Who owns the property during the lease, and can it be sold to someone else?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>One of our investors purchases the exact property you choose and holds it during your lease term. As long as you meet the terms of your agreement and pay on time, you keep the right to buy that same property on the terms agreed upfront — the investor cannot sell it to someone else or cancel the agreement unilaterally.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Is the agreement registered?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Every Lease-to-Own agreement is officially registered with the Dubai Land Department (DLD) in line with UAE law, protecting your right to the property for the full term of the agreement.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How do my monthly payments work?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Each payment is split into two parts: one covers your rent for living in the home, and the other is credited toward its future purchase price — so every month you're building equity in the exact property you live in.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How do I qualify?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Getting started is simpler than qualifying for a traditional mortgage, since there's no large down payment or strict bank approval required upfront. Choose the home you want, and our team will guide you through the rest.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can the home's value change while I'm in the program?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes — while you live in the home and build your equity, its market value can rise. Moving in and locking in the property now can work out better than waiting years to save for a down payment at a higher future price.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How do I become the full owner?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Once your accumulated equity reaches the required level, you can transition to a mortgage or buy the home outright. By then you'll already have both the down payment you've built up and a proven history of on-time payments, which significantly improves your chances of mortgage approval.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What if my circumstances change during the lease?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>We understand that circumstances change. As long as you keep meeting the terms of your agreement, your right to purchase the property stays protected — if you expect a change to your payments, reach out to our team as early as possible to talk through your options.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I renovate or personalize the home while I'm leasing it?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Since you're living in the home you're working toward owning, you're free to choose the finishes, furniture, and interior you want from day one — it's your home, not temporary housing.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How much home can I afford?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Use our calculator to see your options and estimated monthly payments based on your income. It only takes a couple of minutes to get a clear picture of what home you could lease-to-own.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Who is Investors' Angels?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Investors' Angels is a Lease-to-Own home platform. We connect people who want to own a home with investors who help them get there sooner — closing the gap between being able to afford monthly payments and being able to afford a large down payment.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I become an investor with Investors' Angels?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. We work with investors who fund the properties our clients choose, offering an impact investment with strong returns and a clear, predictable exit horizon.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How is this different from a traditional buy-to-let rental investment?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>With traditional rentals, tenants come and go, and every change brings vacancy, extra costs, and lost income. In our model, the client lives in the home from day one with the intention of owning it, so they're motivated to take care of it — and both sides work toward the same outcome.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What are the exit options for investors?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Investors know their possible outcomes in advance: the client can transition to a mortgage, buy the property outright, or continue in the program — each scenario has clearly defined terms from the start.</p>
-            </div>
+        <div class="faq__list faq__list--empty">
+          <div class="faq__empty">
+            <p class="faq__empty-title">Owner-specific questions are coming soon.</p>
+            <p class="faq__empty-desc">In the meantime, check the <a class="faq__empty-link" href="faq.html">general FAQ</a> or <a class="faq__empty-link" href="calculator.html">try the calculator</a>.</p>
           </div>
         </div>
       </section>
