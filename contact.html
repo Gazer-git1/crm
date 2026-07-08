@@ -3,23 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Investor FAQ — Investors' Angels</title>
+<title>Contact Us — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Answers to common questions about investing in Asset-Backed Credit Linked Notes (CLNs) and our Lease-to-Own program for investors.">
+<meta name="description" content="Get in touch with Investors' Angels — call, WhatsApp, email, or send us a message about Lease-to-Own homes or investing.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq-investors.html">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/contact.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="Investor FAQ — Investors' Angels">
-<meta property="og:description" content="Answers to common questions about investing in Asset-Backed Credit Linked Notes (CLNs) and our Lease-to-Own program for investors.">
+<meta property="og:title" content="Contact Us — Investors' Angels">
+<meta property="og:description" content="Get in touch with Investors' Angels — call, WhatsApp, email, or send us a message about Lease-to-Own homes or investing.">
 <meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
-<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/faq-investors.html">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/contact.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Investor FAQ — Investors' Angels">
-<meta name="twitter:description" content="Answers to common questions about investing in Asset-Backed Credit Linked Notes (CLNs) and our Lease-to-Own program for investors.">
+<meta name="twitter:title" content="Contact Us — Investors' Angels">
+<meta name="twitter:description" content="Get in touch with Investors' Angels — call, WhatsApp, email, or send us a message about Lease-to-Own homes or investing.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -642,6 +642,87 @@
   .faq__answer p { padding: 0 28px 24px; margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; }
   .faq__item.is-open .faq__answer { max-height: 400px; }
 
+  /* ============ CONTACT PAGE ============ */
+  .contact { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
+  .contact__content { width: 430px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; }
+  .contact__content-top { display: flex; flex-direction: column; gap: 24px; }
+  .contact__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .contact__title { font-family: var(--font-serif); font-size: 50px; line-height: 1.1; margin: 0; font-weight: 400; }
+  .contact__title-line--gold { color: var(--color-gold); }
+  .contact__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
+
+  .contact__channels { display: flex; flex-direction: column; gap: 12px; }
+  .contact__channel { position: relative; display: flex; align-items: center; gap: 16px; padding: 20px; border-radius: 8px; transition: transform 0.25s ease; }
+  .contact__channel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .contact__channel:hover { transform: translateX(4px); }
+  .contact__channel-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .contact__channel-icon svg { width: 22px; height: 22px; }
+  .contact__channel-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .contact__channel-label { font-size: 13px; color: var(--color-text-muted); }
+  .contact__channel-value { font-size: 16px; color: var(--color-white); font-weight: 500; }
+
+  .contact__social { display: flex; flex-direction: column; gap: 12px; }
+  .contact__social-label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-muted); }
+  .contact__social-links { display: flex; gap: 12px; }
+  .contact__social-link { width: 40px; height: 40px; border: 1px solid var(--color-border); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: border-color 0.25s ease, background-color 0.25s ease; }
+  .contact__social-link:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); }
+  .contact__social-link img { width: 18px; height: 18px; }
+
+  .contact__form-wrap { position: relative; flex: 1 0 0; min-width: 0; border-radius: 8px; padding: 48px; display: flex; flex-direction: column; gap: 28px; }
+  .contact__form-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .contact__fields { display: flex; flex-direction: column; gap: 28px; }
+  .contact__form-title { font-family: var(--font-serif); font-size: 28px; font-weight: 400; margin: 0; }
+  .contact__form-row { display: flex; gap: 20px; }
+  .contact__field { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+  .contact__label { font-size: 14px; color: var(--color-text-secondary); }
+  .contact__input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .contact__input::placeholder { color: var(--color-text-muted); }
+  .contact__input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .contact__textarea { height: auto; padding: 14px 16px; resize: vertical; min-height: 140px; font-family: var(--font-sans); }
+  .contact__submit { align-self: flex-start; }
+  .contact__form-note { font-size: 13px; color: var(--color-text-muted); }
+
+  .contact__success { display: none; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .contact__success-icon { width: 56px; height: 56px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .contact__success-icon svg { width: 24px; height: 24px; }
+  .contact__success-title { font-family: var(--font-serif); font-size: 26px; font-weight: 400; margin: 0; }
+  .contact__success-desc { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); }
+  .contact-form.is-submitted .contact__fields { display: none; }
+  .contact-form.is-submitted .contact__success { display: flex; }
+
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
     .page { width: 100%; }
@@ -861,6 +942,14 @@
     .faq__desc { font-size: 16px; }
     .faq__question { padding: 18px 20px; font-size: 15px; }
     .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
+
+    /* contact page */
+    .contact { flex-direction: column; align-items: stretch; padding: 64px 20px; gap: 40px; }
+    .contact__content { width: 100%; }
+    .contact__title { font-size: 32px; }
+    .contact__desc { font-size: 16px; }
+    .contact__form-wrap { padding: 28px 20px; }
+    .contact__form-row { flex-direction: column; gap: 20px; }
   }
 </style>
 </head>
@@ -881,7 +970,7 @@
             <li class="header__nav-item"><a class="header__nav-link" href="#">GUARANTEES</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="#">HOW IT WORKS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="#">ABOUT</a></li>
-            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="faq-investors.html">FAQ</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="faq.html">FAQ</a></li>
           </ul>
 
           <div class="header__nav-footer">
@@ -904,337 +993,108 @@
       </div>
     </header>
     <main>
-      <section class="faq">
-        <div class="faq__content">
-          <div class="faq__content-top">
-            <span class="faq__eyebrow">INVESTOR FAQ</span>
-            <h1 class="faq__title">Frequently Asked<br><span class="faq__title-line--gold">Questions</span></h1>
-            <p class="faq__desc">Everything you need to know<br>about investing in CLNs.</p>
+      <section class="contact">
+        <div class="contact__content">
+          <div class="contact__content-top">
+            <span class="contact__eyebrow">CONTACT</span>
+            <h1 class="contact__title">Get in <span class="contact__title-line--gold">Touch</span></h1>
+            <p class="contact__desc">Questions about Lease-to-Own or investing with us? Reach out — our team typically replies within one business day.</p>
           </div>
 
-          <div class="faq__switcher" role="tablist" aria-label="Choose FAQ topic">
-            <a class="faq__switcher-link" href="faq.html">General</a>
-            <a class="faq__switcher-link" href="faq-owners.html">For Owners</a>
-            <a class="faq__switcher-link faq__switcher-link--active" href="faq-investors.html" aria-current="page">For Investors</a>
-          </div>
-
-          <div class="faq__help">
-            <span class="faq__help-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M9.5 9.5a2.5 2.5 0 1 1 3.4 2.32c-.72.3-1.4.9-1.4 1.68v.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <circle cx="12" cy="16.7" r="0.9" fill="currentColor"/>
-              </svg>
-            </span>
-            <p class="faq__help-title">Still have questions?<br>Our team is here to help.</p>
-            <a class="btn btn--gradient faq__help-btn" href="contact.html">
-              Contact Us
-              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          <div class="contact__channels">
+            <a class="contact__channel" href="tel:+97140000000">
+              <span class="contact__channel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1.1L6.6 10.8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="contact__channel-text">
+                <span class="contact__channel-label">Call Us</span>
+                <span class="contact__channel-value">+971 4 000 0000</span>
+              </span>
+            </a>
+            <a class="contact__channel" href="https://wa.me/971500000000" target="_blank" rel="noopener noreferrer">
+              <span class="contact__channel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3.5c-4.7 0-8.5 3.4-8.5 7.6 0 2.2 1 4.2 2.7 5.6-.1 1-.4 2.3-1.1 3.4 1.5-.2 2.9-.8 3.9-1.5 1 .3 2 .5 3 .5 4.7 0 8.5-3.4 8.5-7.6S16.7 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                  <path d="M9 10.2s.3 1.4 1.5 2.5c1.2 1.2 2.6 1.5 2.6 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span class="contact__channel-text">
+                <span class="contact__channel-label">WhatsApp</span>
+                <span class="contact__channel-value">+971 50 000 0000</span>
+              </span>
+            </a>
+            <a class="contact__channel" href="mailto:hello@i-angels.com">
+              <span class="contact__channel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="3" y="5.5" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                  <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="contact__channel-text">
+                <span class="contact__channel-label">Email</span>
+                <span class="contact__channel-value">hello@i-angels.com</span>
+              </span>
             </a>
           </div>
-        </div>
 
-        <div class="faq__list">
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What am I actually investing in?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>You invest in an Asset-Backed Credit Linked Note (CLN). Each CLN finances one specific residential property acquired by Investors' Angels for one specific Lease-to-Own customer.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What does my investment finance?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Your investment finances the acquisition of one specific residential property selected by a customer participating in the Lease-to-Own program.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Who owns the property?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The property is legally owned by the Investors' Angels operating company until the customer successfully completes the Lease-to-Own program and purchases the property.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Does every CLN finance a different property?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Every CLN is linked to one identified residential property and one registered Lease-to-Own agreement. You always know exactly which property your investment finances.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I choose which property to invest in?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Every available CLN is listed individually. You decide which property, customer profile and investment opportunity best match your investment objectives.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I see the property before investing?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Every investment includes a Property Passport containing: purchase price; current market value; photographs; location; Lease-to-Own status; investment performance.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I review the customer before investing?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Every Property Passport includes an anonymised Customer Profile. You can review the customer's financial profile, payment capacity and investment risk indicators before making your investment decision.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What is the target return?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Our standard investment model targets approximately 12% annual Investor IRR. Each investment opportunity displays its own projected IRR before you invest.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How are returns generated?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Investor returns are generated from two sources. The first is the customer's monthly Lease-to-Own payments throughout the program. The second is the planned investment exit, typically when the customer purchases the property using a bank mortgage or another approved financing solution. This creates predictable long-term cash flows together with a clearly defined exit strategy.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How long does one investment last?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Most Lease-to-Own programs last between 5 and 8 years. The expected investment term is displayed for every CLN.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How does the investment end?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Most investments conclude when the customer purchases the property using a bank mortgage or another approved financing solution. The proceeds are then used to redeem the related CLN and complete the investment.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can the customer purchase the property earlier?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Customers may complete the purchase before the scheduled maturity date in accordance with the Lease-to-Own Agreement. In such cases, the related CLN is redeemed earlier in accordance with its terms.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Why doesn't the customer simply get a mortgage today?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Because the customer does not yet have the required down payment. Our Lease-to-Own program allows the customer to move into the property today while gradually building the Purchase Option Balance required to qualify for a future mortgage. For investors, this creates predictable long-term cash flows backed by a real residential asset.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What is the Purchase Option Balance?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The Purchase Option Balance (POB) is the contractual amount accumulated by the customer toward the future purchase of the property. It is not a bank deposit and does not represent legal ownership of the property during the Lease-to-Own program.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What is the Customer Commitment Ratio?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Customer Commitment Ratio (CCR) measures how much Purchase Option Balance the customer has accumulated compared to the original purchase price. As the CCR increases, the customer's financial commitment also increases, generally reducing the likelihood of voluntary default.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Why doesn't the customer simply walk away?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Every month the customer increases their Purchase Option Balance and moves closer to owning the property. The longer the customer stays in the program, the more they have to lose by defaulting. At the same time, any increase in the property's market value belongs to the customer once the Lease-to-Own agreement is successfully completed. As both the Purchase Option Balance and the property's value grow over time, the customer's financial incentive to complete the program becomes progressively stronger.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What happens if the customer stops paying?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The predefined Investment Policy is activated. Depending on the circumstances, Investors' Angels may: introduce a new qualified Lease-to-Own customer; sell the property. The objective is always to maximise investor value.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What happens to the Purchase Option Balance if the customer defaults?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The Purchase Option Balance is earned only upon the successful completion of the Lease-to-Own agreement. If the customer defaults or breaches the agreement, the Purchase Option Balance remains with the Company in accordance with the Lease-to-Own Agreement. This mechanism provides an additional layer of protection for investors.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Who decides what happens after default?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The Investment Policy is defined before the investment is offered. Investors know in advance how every default scenario will be managed.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What happens if property prices increase?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The Lease-to-Own agreement fixes the future purchase price at the original property price agreed when the property is acquired. If the property increases in value during the Lease-to-Own term, that appreciation belongs to the customer - provided the customer successfully completes the agreement. This creates an additional incentive for the customer to fulfil the program while also strengthening investor protection. If the customer defaults, the Lease-to-Own agreement may be terminated, the property returns fully to the Company's control, and Investors' Angels may either introduce a new Lease-to-Own customer or sell the property in accordance with the predefined Investment Policy.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What happens if property prices decline?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>The customer's future purchase price remains fixed at the original purchase price agreed at the beginning of the Lease-to-Own program. If market values decline, the Company still owns the underlying property, and the investment continues to benefit from multiple protection layers, including the property itself, the Purchase Option Balance, the Customer Commitment Ratio, the customer's payment history and the predefined Investment Policy. Real estate markets may rise or fall, but investor protection is designed to rely on substantially more than future market appreciation alone.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How is my investment protected?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Every investment benefits from multiple independent protection mechanisms: ownership of the underlying residential property; Purchase Option Balance; Customer Commitment Ratio; property market appreciation; predefined Investment Policy; replacement of the customer where appropriate.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I sell my CLN before maturity?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Credit Linked Notes (CLNs) may generally be transferred or sold to another eligible investor, subject to the terms of the relevant issuance and applicable securities regulations. A secondary market for structured notes already exists through banks and licensed investment brokers. The availability, pricing and timing of any sale depend on market conditions and investor demand.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can I invest through my bank or broker?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Our objective is to make CLNs available through licensed banks and investment brokers, subject to applicable regulations.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>How do I monitor my investment?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Your Investor Dashboard provides real-time access to: Property Passport; Customer Profile; Payment History; Purchase Option Balance; Customer Commitment Ratio; Current Property Value; Projected Exit; Investment Performance.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>What documents do I receive before investing?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Before investing you receive: Investment Summary; Property Passport; Customer Profile; CLN Information; Offering Documents; Risk Disclosure.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Can international investors invest?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Yes. Subject to applicable securities regulations and investor eligibility requirements.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Who manages the property?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Investors' Angels manages the complete investment lifecycle, including: property acquisition; customer onboarding; Lease-to-Own administration; property management; customer servicing; mortgage transition; investment reporting.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Why shouldn't I simply buy a rental property myself?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Traditional residential rental properties typically generate 5–8% annual net rental yields, while requiring ongoing property management, tenant turnover, maintenance and an uncertain exit strategy. Our standard Lease-to-Own investment model targets approximately 12% annual Investor IRR while offering several additional advantages. Unlike a traditional tenant, a Lease-to-Own customer is working towards owning the property. Every monthly payment increases the customer's Purchase Option Balance and Customer Commitment Ratio, strengthening their financial commitment to complete the program. As the program progresses, the customer's incentive to walk away generally becomes stronger, not weaker. Your investment is made through an Asset-Backed Credit Linked Note (CLN) rather than direct property ownership. This means your investment may be transferred through the secondary market without requiring the underlying property to be sold or disrupting the customer's Lease-to-Own agreement, subject to market conditions and applicable regulations. Finally, your investment delivers more than financial returns. It helps responsible families become homeowners years earlier than would otherwise be possible.</p>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button" aria-expanded="false">
-              <span>Why doesn't the Company simply increase the purchase price if property values rise?</span>
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <p>Because certainty is one of the fundamental principles of the Lease-to-Own model. The purchase price is fixed on the day the property is acquired. Customers know exactly what they will pay if they successfully complete the program. This certainty allows customers to plan their future with confidence while aligning their interests with those of investors.</p>
+          <div class="contact__social">
+            <p class="contact__social-label">Follow Us</p>
+            <div class="contact__social-links">
+              <a class="contact__social-link" href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+              <a class="contact__social-link" href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+              <a class="contact__social-link" href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
             </div>
           </div>
         </div>
+
+        <form class="contact__form-wrap contact-form" id="contactForm">
+          <div class="contact__fields">
+            <h2 class="contact__form-title">Send Us a Message</h2>
+            <div class="contact__form-row">
+              <div class="contact__field">
+                <label class="contact__label" for="contactName">Full Name</label>
+                <input class="contact__input" type="text" id="contactName" name="name" placeholder="John Smith" required>
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="contactEmail">Email</label>
+                <input class="contact__input" type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
+              </div>
+            </div>
+            <div class="contact__form-row">
+              <div class="contact__field">
+                <label class="contact__label" for="contactPhone">Phone Number</label>
+                <input class="contact__input" type="tel" id="contactPhone" name="phone" placeholder="+971 50 000 0000">
+              </div>
+              <div class="contact__field">
+                <label class="contact__label" for="contactTopic">I'm Interested In</label>
+                <select class="contact__input" id="contactTopic" name="topic">
+                  <option value="leasing">Leasing a Home</option>
+                  <option value="investing">Investing</option>
+                  <option value="other">Something Else</option>
+                </select>
+              </div>
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="contactMessage">Message</label>
+              <textarea class="contact__input contact__textarea" id="contactMessage" name="message" rows="6" placeholder="Tell us a bit about what you're looking for..."></textarea>
+            </div>
+            <button class="btn btn--gradient contact__submit" type="submit">
+              Send Message
+              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+            </button>
+            <p class="contact__form-note">We'll never share your details with anyone else.</p>
+          </div>
+
+          <div class="contact__success">
+            <span class="contact__success-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 12 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <h2 class="contact__success-title">Message received</h2>
+            <p class="contact__success-desc">Thanks for reaching out — our team typically replies within one business day.</p>
+          </div>
+        </form>
       </section>
     </main>
 
@@ -1365,20 +1225,133 @@
   })();
 
   (function () {
-    var items = Array.prototype.slice.call(document.querySelectorAll('.faq__item'));
-    items.forEach(function (item) {
-      var btn = item.querySelector('.faq__question');
-      btn.addEventListener('click', function () {
-        var isOpen = item.classList.contains('is-open');
-        items.forEach(function (i) {
-          i.classList.remove('is-open');
-          i.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.classList.add('is-open');
-          btn.setAttribute('aria-expanded', 'true');
-        }
+    var track = document.getElementById('planTrack');
+    var bar = document.getElementById('planProgressBar');
+    var progressTrack = bar && bar.parentElement;
+    if (!track || !bar || !progressTrack) return;
+
+    function update() {
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      var ratio = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      var trackWidth = progressTrack.clientWidth;
+      var barWidth = Math.max(24, (track.clientWidth / track.scrollWidth) * trackWidth);
+      var maxTranslate = trackWidth - barWidth;
+      bar.style.width = barWidth + 'px';
+      bar.style.transform = 'translateX(' + (ratio * maxTranslate) + 'px)';
+    }
+
+    track.addEventListener('scroll', update);
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  (function () {
+    var labels = document.querySelector('.table-mobile__labels');
+    var scroller = document.getElementById('planTrack');
+    if (!labels || !scroller) return;
+
+    var dragging = false;
+    var startX = 0;
+    var startY = 0;
+    var lastY = 0;
+    var startScroll = 0;
+    var mode = null; // 'h' (drives the table) or 'v' (drives the page)
+
+    function start(x, y) {
+      dragging = true;
+      mode = null;
+      startX = x;
+      startY = y;
+      lastY = y;
+      startScroll = scroller.scrollLeft;
+    }
+
+    function move(x, y, evt) {
+      if (!dragging) return;
+      var dx = x - startX;
+      var dy = y - startY;
+
+      if (!mode) {
+        if (Math.abs(dx) < 6 && Math.abs(dy) < 6) return;
+        mode = Math.abs(dx) > Math.abs(dy) ? 'h' : 'v';
+      }
+
+      if (mode === 'h') {
+        scroller.scrollLeft = startScroll - dx;
+        if (evt && evt.cancelable) evt.preventDefault();
+      } else {
+        window.scrollBy(0, lastY - y);
+      }
+      lastY = y;
+    }
+
+    function stop() { dragging = false; mode = null; }
+
+    labels.addEventListener('touchstart', function (e) {
+      var t = e.touches[0];
+      start(t.clientX, t.clientY);
+    }, { passive: true });
+
+    labels.addEventListener('touchmove', function (e) {
+      var t = e.touches[0];
+      move(t.clientX, t.clientY, e);
+    }, { passive: false });
+
+    labels.addEventListener('touchend', stop);
+    labels.addEventListener('touchcancel', stop);
+
+    labels.addEventListener('mousedown', function (e) {
+      start(e.clientX, e.clientY);
+      function onMove(ev) { move(ev.clientX, ev.clientY, ev); }
+      function onUp() {
+        stop();
+        window.removeEventListener('mousemove', onMove);
+        window.removeEventListener('mouseup', onUp);
+      }
+      window.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onUp);
+    });
+  })();
+
+  (function () {
+    var STORAGE_KEY = 'ia_cookie_consent';
+    var banner = document.getElementById('cookieBanner');
+    var acceptBtn = document.getElementById('cookieAccept');
+    var declineBtn = document.getElementById('cookieDecline');
+    if (!banner) return;
+
+    function getConsent() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+    function setConsent(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+    function hideBanner() {
+      banner.classList.remove('is-visible');
+    }
+
+    if (!getConsent()) {
+      window.requestAnimationFrame(function () {
+        banner.classList.add('is-visible');
       });
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', function () {
+      setConsent('accepted');
+      hideBanner();
+    });
+    if (declineBtn) declineBtn.addEventListener('click', function () {
+      setConsent('declined');
+      hideBanner();
+    });
+  })();
+
+  (function () {
+    var form = document.getElementById('contactForm');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      form.classList.add('is-submitted');
     });
   })();
 </script>
