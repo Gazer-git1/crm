@@ -272,8 +272,13 @@
     background: rgba(255, 255, 255, 0.12);
     outline: none;
     cursor: pointer;
+    --fill: 0%;
   }
-  .calc-slider input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; }
+  .calc-slider input[type="range"]::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #F2C94C 0%, #F2C94C var(--fill), rgba(255, 255, 255, 0.12) var(--fill), rgba(255, 255, 255, 0.12) 100%);
+  }
   .calc-slider input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 20px; height: 20px; border-radius: 50%;
@@ -287,7 +292,11 @@
     width: 20px; height: 20px; border-radius: 50%; background: var(--color-gold); border: none;
     box-shadow: 0 0 0 4px rgba(250, 208, 107, 0.18); cursor: pointer;
   }
-  .calc-slider input[type="range"]::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.12); }
+  .calc-slider input[type="range"]::-moz-range-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #F2C94C 0%, #F2C94C var(--fill), rgba(255, 255, 255, 0.12) var(--fill), rgba(255, 255, 255, 0.12) 100%);
+  }
   .calc-slider__range { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--color-text-muted); }
 
   .calc-segment { display: flex; gap: 10px; }
@@ -1409,13 +1418,24 @@
     var homePriceSlider = el('homePriceSlider');
     var targetEquitySlider = el('targetEquitySlider');
 
+    function updateSliderFill(slider) {
+      var min = parseFloat(slider.min);
+      var max = parseFloat(slider.max);
+      var pct = ((parseFloat(slider.value) - min) / (max - min)) * 100;
+      slider.style.setProperty('--fill', pct + '%');
+    }
+
+    [homePriceSlider, targetEquitySlider].forEach(updateSliderFill);
+
     homePriceSlider.addEventListener('input', function () {
       state.homePrice = parseInt(this.value, 10);
+      updateSliderFill(this);
       compute();
     });
 
     targetEquitySlider.addEventListener('input', function () {
       state.targetEquity = parseInt(this.value, 10);
+      updateSliderFill(this);
       compute();
     });
 
