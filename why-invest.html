@@ -241,7 +241,16 @@
   .hero__cta-row { display: flex; align-items: center; gap: 16px; }
 
   /* ============ INVEST FEATURES PANEL ============ */
-  .invest-features { padding: var(--space-y) var(--space-x); width: 100%; }
+  .invest-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .invest-features::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
   .invest-features__panel {
     position: relative;
     display: grid;
@@ -257,7 +266,7 @@
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
