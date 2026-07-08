@@ -640,7 +640,10 @@
   .faq__item.is-open .faq__question { color: var(--color-gold); }
   .faq__item.is-open .faq__icon { transform: rotate(45deg); }
   .faq__answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  .faq__answer p { padding: 0 28px 24px; margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; }
+  .faq__answer p, .faq__answer ul { padding: 0 28px 8px; margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-white); font-weight: 300; }
+  .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 24px; }
+  .faq__answer ul { padding-left: 50px; display: flex; flex-direction: column; gap: 6px; }
+  .faq__answer li { list-style: disc; }
   .faq__item.is-open .faq__answer { max-height: 400px; }
 
   /* ============ WHATSAPP QUICK CONTACT ============ */
@@ -900,7 +903,9 @@
     .faq__title { font-size: 32px; }
     .faq__desc { font-size: 16px; }
     .faq__question { padding: 18px 20px; font-size: 15px; }
-    .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
+    .faq__answer p, .faq__answer ul { padding: 0 20px 8px; font-size: 15px; }
+    .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 18px; }
+    .faq__answer ul { padding-left: 38px; }
   }
 </style>
 </head>

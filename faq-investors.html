@@ -640,7 +640,10 @@
   .faq__item.is-open .faq__question { color: var(--color-gold); }
   .faq__item.is-open .faq__icon { transform: rotate(45deg); }
   .faq__answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-  .faq__answer p { padding: 0 28px 24px; margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text-muted); font-weight: 300; }
+  .faq__answer p, .faq__answer ul { padding: 0 28px 8px; margin: 0; font-size: 16px; line-height: 1.6; color: var(--color-white); font-weight: 300; }
+  .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 24px; }
+  .faq__answer ul { padding-left: 50px; display: flex; flex-direction: column; gap: 6px; }
+  .faq__answer li { list-style: disc; }
   .faq__item.is-open .faq__answer { max-height: 400px; }
 
   /* ============ WHATSAPP QUICK CONTACT ============ */
@@ -900,7 +903,9 @@
     .faq__title { font-size: 32px; }
     .faq__desc { font-size: 16px; }
     .faq__question { padding: 18px 20px; font-size: 15px; }
-    .faq__answer p { padding: 0 20px 18px; font-size: 14px; }
+    .faq__answer p, .faq__answer ul { padding: 0 20px 8px; font-size: 15px; }
+    .faq__answer p:last-child, .faq__answer ul:last-child { padding-bottom: 18px; }
+    .faq__answer ul { padding-left: 38px; }
   }
 </style>
 </head>
@@ -1031,7 +1036,15 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Yes. Every investment includes a Property Passport containing: purchase price; current market value; photographs; location; Lease-to-Own status; investment performance.</p>
+              <p>Yes. Every investment includes a Property Passport containing:</p>
+              <ul>
+                <li>Purchase price</li>
+                <li>Current market value</li>
+                <li>Photographs</li>
+                <li>Location</li>
+                <li>Lease-to-Own status</li>
+                <li>Investment performance</li>
+              </ul>
             </div>
           </div>
 
@@ -1141,7 +1154,12 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>The predefined Investment Policy is activated. Depending on the circumstances, Investors' Angels may: introduce a new qualified Lease-to-Own customer; sell the property. The objective is always to maximise investor value.</p>
+              <p>The predefined Investment Policy is activated. Depending on the circumstances, Investors' Angels may:</p>
+              <ul>
+                <li>Introduce a new qualified Lease-to-Own customer</li>
+                <li>Sell the property</li>
+              </ul>
+              <p>The objective is always to maximise investor value.</p>
             </div>
           </div>
 
@@ -1191,7 +1209,15 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Every investment benefits from multiple independent protection mechanisms: ownership of the underlying residential property; Purchase Option Balance; Customer Commitment Ratio; property market appreciation; predefined Investment Policy; replacement of the customer where appropriate.</p>
+              <p>Every investment benefits from multiple independent protection mechanisms:</p>
+              <ul>
+                <li>Ownership of the underlying residential property</li>
+                <li>Purchase Option Balance</li>
+                <li>Customer Commitment Ratio</li>
+                <li>Property market appreciation</li>
+                <li>Predefined Investment Policy</li>
+                <li>Replacement of the customer where appropriate</li>
+              </ul>
             </div>
           </div>
 
@@ -1221,7 +1247,17 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Your Investor Dashboard provides real-time access to: Property Passport; Customer Profile; Payment History; Purchase Option Balance; Customer Commitment Ratio; Current Property Value; Projected Exit; Investment Performance.</p>
+              <p>Your Investor Dashboard provides real-time access to:</p>
+              <ul>
+                <li>Property Passport</li>
+                <li>Customer Profile</li>
+                <li>Payment History</li>
+                <li>Purchase Option Balance</li>
+                <li>Customer Commitment Ratio</li>
+                <li>Current Property Value</li>
+                <li>Projected Exit</li>
+                <li>Investment Performance</li>
+              </ul>
             </div>
           </div>
 
@@ -1231,7 +1267,15 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Before investing you receive: Investment Summary; Property Passport; Customer Profile; CLN Information; Offering Documents; Risk Disclosure.</p>
+              <p>Before investing you receive:</p>
+              <ul>
+                <li>Investment Summary</li>
+                <li>Property Passport</li>
+                <li>Customer Profile</li>
+                <li>CLN Information</li>
+                <li>Offering Documents</li>
+                <li>Risk Disclosure</li>
+              </ul>
             </div>
           </div>
 
@@ -1251,7 +1295,16 @@
               <span class="faq__icon" aria-hidden="true"></span>
             </button>
             <div class="faq__answer">
-              <p>Investors' Angels manages the complete investment lifecycle, including: property acquisition; customer onboarding; Lease-to-Own administration; property management; customer servicing; mortgage transition; investment reporting.</p>
+              <p>Investors' Angels manages the complete investment lifecycle, including:</p>
+              <ul>
+                <li>Property acquisition</li>
+                <li>Customer onboarding</li>
+                <li>Lease-to-Own administration</li>
+                <li>Property management</li>
+                <li>Customer servicing</li>
+                <li>Mortgage transition</li>
+                <li>Investment reporting</li>
+              </ul>
             </div>
           </div>
 
