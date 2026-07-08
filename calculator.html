@@ -1438,6 +1438,67 @@
     });
 
     compute();
+
+    /* Pull Appreciation Rate / Rent Yield / Mortgage Rate from the shared Google Sheet
+       ("КОНСТАНТЫ И НАСТРОЙКИ СИСТЕМЫ" tab) so they can be tuned there without a code change.
+       Falls back to the defaults above if the sheet is unreachable or unshared. */
+    (function () {
+      var SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1YBLdvZnFzD5F4XtJgB0GmLg5YGRVm6ttrIzvri13vkU/export?format=csv&gid=1400308901';
+      var LABEL_MAP = {
+        'Appreciation Rate': 'APPRECIATION_RATE',
+        'Rent Yield': 'RENT_YIELD',
+        'Mortgage Rate': 'MORTGAGE_RATE'
+      };
+
+      function parseCsvRow(line) {
+        var cells = [];
+        var cur = '';
+        var inQuotes = false;
+        for (var i = 0; i < line.length; i++) {
+          var ch = line[i];
+          if (inQuotes) {
+            if (ch === '"') {
+              if (line[i + 1] === '"') { cur += '"'; i++; }
+              else { inQuotes = false; }
+            } else {
+              cur += ch;
+            }
+          } else if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ',') {
+            cells.push(cur);
+            cur = '';
+          } else {
+            cur += ch;
+          }
+        }
+        cells.push(cur);
+        return cells;
+      }
+
+      function parseNumber(raw) {
+        return parseFloat(String(raw || '').trim().replace(',', '.'));
+      }
+
+      fetch(SHEET_CSV_URL)
+        .then(function (res) { return res.ok ? res.text() : Promise.reject(res.status); })
+        .then(function (csv) {
+          var rows = csv.replace(/\r\n/g, '\n').split('\n').map(parseCsvRow);
+          var changed = false;
+          rows.forEach(function (cells) {
+            var key = LABEL_MAP[(cells[0] || '').trim()];
+            if (!key) return;
+            var value = parseNumber(cells[1]);
+            if (isNaN(value)) return;
+            if (key === 'APPRECIATION_RATE') APPRECIATION_RATE = value;
+            if (key === 'RENT_YIELD') RENT_YIELD = value;
+            if (key === 'MORTGAGE_RATE') MORTGAGE_RATE = value;
+            changed = true;
+          });
+          if (changed) compute();
+        })
+        .catch(function () { /* offline or sheet unavailable - keep the built-in defaults */ });
+    })();
   })();
 </script>
 </body>
