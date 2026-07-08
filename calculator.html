@@ -366,7 +366,17 @@
   .transition-box__caption { font-size: 12px; color: var(--color-text-muted); }
 
   /* ============ DETAILED BREAKDOWN ============ */
-  .breakdown { padding: var(--space-y) var(--space-x); width: 100%; background: var(--color-bg); }
+  .breakdown { position: relative; padding: var(--space-y) var(--space-x); width: 100%; background: #161817; }
+  .breakdown::before, .breakdown::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .breakdown::before { top: 0; }
+  .breakdown::after { bottom: 0; }
   .breakdown__title { font-family: var(--font-serif); font-size: 48px; margin: 0 0 48px; font-weight: 400; }
   .breakdown__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
   .breakdown-card { border: 1px solid var(--color-border); border-radius: 4px; display: flex; flex-direction: column; min-width: 0; }
