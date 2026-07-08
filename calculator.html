@@ -547,7 +547,7 @@
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
     /* calc hero */
-    .calc-hero { height: auto; padding: 90px 20px 40px; }
+    .calc-hero { height: auto; padding: 90px 20px 48px; }
     .calc-hero__content { width: 100%; gap: 16px; }
     .calc-hero__title { font-size: 34px; }
     .calc-hero__desc { font-size: 16px; width: 100%; }
@@ -555,7 +555,7 @@
     .currency-select { width: 100%; }
 
     /* calc main */
-    .calc-main { flex-direction: column; padding: 40px 20px; gap: 32px; }
+    .calc-main { flex-direction: column; padding: 48px 20px; gap: 32px; }
     .calc-form { width: 100%; position: static; gap: 32px; }
     .calc-results { width: 100%; gap: 16px; }
 
@@ -572,22 +572,36 @@
 
     .mortgage-row, .transition-row { grid-template-columns: 1fr; }
 
-    .breakdown { padding: 56px 20px; }
+    .breakdown { padding: 48px 20px; }
     .breakdown__title { font-size: 30px; margin-bottom: 28px; }
     .breakdown__grid { grid-template-columns: 1fr; gap: 16px; }
 
-    .summary { padding: 0 20px 0; gap: 28px; }
+    .summary { padding: 48px 20px 0; gap: 28px; }
     .summary__title { font-size: 30px; }
     .summary__block { flex-direction: column; align-items: flex-start; }
-    .summary__stats { flex-wrap: wrap; justify-content: center; gap: 24px 12px; padding: 28px 16px; }
-    .summary__stat { flex: 0 1 28%; }
-    .summary__stat-value { font-size: 24px; }
+    .summary__stats { flex-wrap: wrap; justify-content: space-evenly; gap: 28px 16px; padding: 28px 16px; }
+    .summary__stat { flex: 0 1 26%; }
+    .summary__stat-value { font-size: 20px; }
 
     /* final cta */
-    .final-cta { flex-direction: column; align-items: center; justify-content: center; height: auto; padding: 56px 20px; gap: 28px; text-align: center; }
-    .final-cta__content { align-items: center; }
-    .final-cta__title { font-size: 30px; }
-    .final-cta__cta { width: 100%; max-width: 320px; }
+    .final-cta {
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      isolation: auto;
+      height: auto;
+      padding: 0;
+      gap: 0;
+      text-align: left;
+      background: var(--color-bg);
+    }
+    .final-cta__bg-wrap { position: static; height: 320px; width: 100%; }
+    .final-cta__bg { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+    .final-cta__content { align-items: flex-start; padding: 32px 20px 24px; }
+    .final-cta__title { font-size: 28px; text-align: left; }
+    .final-cta__desc, .final-cta__note { text-align: left; }
+    .final-cta__cta { width: auto; max-width: none; margin: 8px 20px 32px; }
+    .final-cta__note img { width: 22px; height: 22px; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
