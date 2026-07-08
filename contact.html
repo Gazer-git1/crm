@@ -525,6 +525,8 @@
   .footer__logo { display: flex; align-items: center; height: 100px; width: 223px; }
   .footer__logo-mark { height: 100px; width: 223px; }
   .footer__social { display: flex; gap: 16px; }
+  .footer__social-link { display: inline-flex; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .footer__social-link:hover { transform: translateY(-3px) scale(1.08); opacity: 0.85; }
   .footer__social-link img { width: 40px; height: 40px; }
   .footer__columns { display: flex; gap: 80px; white-space: nowrap; }
   .footer__column { display: flex; flex-direction: column; gap: 20px; width: 140px; }
@@ -675,6 +677,7 @@
 
   .contact__channels { display: flex; flex-direction: column; gap: 20px; }
   .contact__channel { display: flex; align-items: center; gap: 16px; transition: transform 0.25s ease; }
+  .contact__channel[hidden] { display: none; }
   .contact__channel:hover { transform: translateX(4px); }
   .contact__channel-icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
   .contact__channel-icon svg { width: 22px; height: 22px; }
