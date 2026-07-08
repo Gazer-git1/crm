@@ -260,6 +260,7 @@
   /* ============ OWNERS FEATURES GRID ============ */
   .owners-features { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; padding: 0 var(--space-x); }
   .owners-features__item {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -268,11 +269,58 @@
     padding: 56px 32px;
     border-right: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
   }
+  .owners-features__item.is-visible { opacity: 1; transform: translateY(0); }
   .owners-features__item:nth-child(4n) { border-right: none; }
   .owners-features__item:nth-child(n+5) { border-bottom: none; }
-  .owners-features__icon { width: 48px; height: 48px; color: var(--color-gold); }
-  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-gold); font-weight: 400; }
+  .owners-features__item::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(250, 208, 107, 0.1), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.45s ease;
+    pointer-events: none;
+  }
+  .owners-features__item::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 40px;
+    height: 2px;
+    background: var(--color-gold);
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
+    opacity: 0.7;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .owners-features__item:hover { background-color: rgba(250, 208, 107, 0.025); }
+  .owners-features__item:hover::before { opacity: 1; }
+  .owners-features__item:hover::after { transform: translateX(-50%) scaleX(1); }
+  .owners-features__icon-wrap {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    background: radial-gradient(circle, rgba(250, 208, 107, 0.06), transparent 72%);
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+  }
+  .owners-features__item:hover .owners-features__icon-wrap {
+    border-color: var(--color-bronze-light);
+    box-shadow: 0 0 26px 2px rgba(250, 208, 107, 0.28);
+    transform: translateY(-4px);
+  }
+  .owners-features__icon { width: 32px; height: 32px; color: var(--color-gold); transition: transform 0.4s ease; }
+  .owners-features__item:hover .owners-features__icon { transform: scale(1.1); }
+  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-gold); font-weight: 400; transition: color 0.3s ease; }
   .owners-features__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-secondary); font-weight: 300; }
 
   /* ============ OWNERS CTA ============ */
@@ -985,6 +1033,8 @@
     .owners-features { grid-template-columns: 1fr; padding: 0; }
     .owners-features__item { padding: 36px 20px; border-right: none !important; }
     .owners-features__item:not(:last-child) { border-bottom: 1px solid var(--color-border) !important; }
+    .owners-features__icon-wrap { width: 64px; height: 64px; }
+    .owners-features__icon { width: 28px; height: 28px; }
 
     /* owners cta */
     .owners-cta { flex-direction: column; align-items: stretch; text-align: center; margin: 48px 20px 64px; padding: 32px 24px; gap: 20px; }
@@ -1149,80 +1199,96 @@
       <!-- OWNERS FEATURES GRID -->
       <section class="owners-features">
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10 20v-5h4v5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10 20v-5h4v5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Live in your home today</p>
           <p class="owners-features__desc">In the home you choose. Create your space, your comfort, your life.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="12" cy="9.8" r="2.6" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M6.5 18c1-2.6 3-4.2 5.5-4.2s4.5 1.6 5.5 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="9.8" r="2.6" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M6.5 18c1-2.6 3-4.2 5.5-4.2s4.5 1.6 5.5 4.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Live as if it's already yours</p>
           <p class="owners-features__desc">Don't wait years to start living the life you want.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="12" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="5.8" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
-            <circle cx="18.2" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M8 19c.5-2.8 2-4.3 4-4.3s3.5 1.5 4 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M3 19c.4-2 1.5-3.2 3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M21 19c-.4-2-1.5-3.2-3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="5.8" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="18.2" cy="9.2" r="2" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 19c.5-2.8 2-4.3 4-4.3s3.5 1.5 4 4.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M3 19c.4-2 1.5-3.2 3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M21 19c-.4-2-1.5-3.2-3-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Build equity every month</p>
           <p class="owners-features__desc">While others pay rent and start over, you build your ownership.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M9 12l2 2 4-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M9 12l2 2 4-4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Create, customize, make it yours</p>
           <p class="owners-features__desc">Design, renovate, decorate. This is your home, not temporary housing.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M9 15.5l2-2 1.5 1.5L16 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.5 11.5H16v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 15.5l2-2 1.5 1.5L16 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 11.5H16v2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Benefit from property value growth</p>
           <p class="owners-features__desc">While you live and prepare for a mortgage, your home may increase in value.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="4" y="14" width="3" height="6" stroke="currentColor" stroke-width="1.5"/>
-            <rect x="10.5" y="10" width="3" height="10" stroke="currentColor" stroke-width="1.5"/>
-            <rect x="17" y="6" width="3" height="14" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M4 8.5l3.5-3 3.5 2 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13 3.5h3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="4" y="14" width="3" height="6" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="10.5" y="10" width="3" height="10" stroke="currentColor" stroke-width="1.5"/>
+              <rect x="17" y="6" width="3" height="14" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M4 8.5l3.5-3 3.5 2 4.5-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13 3.5h3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Your payments work with the market</p>
           <p class="owners-features__desc">You're not just saving. You're building ownership in real estate.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 12a8 8 0 0 1 13.5-5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M20 12a8 8 0 0 1-13.5 5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            <path d="M17 3v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M7 21v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 12a8 8 0 0 1 13.5-5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M20 12a8 8 0 0 1-13.5 5.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M17 3v4h-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 21v-4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">Switch to a mortgage or buy it outright</p>
           <p class="owners-features__desc">But most importantly — you've already lived the life you always wanted.</p>
         </div>
         <div class="owners-features__item">
-          <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 14v5M9.5 16.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
+          <div class="owners-features__icon-wrap">
+            <svg class="owners-features__icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 14v5M9.5 16.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
           <p class="owners-features__title">A home changes everything</p>
           <p class="owners-features__desc">It changes your address. It changes your future. It changes your life.</p>
         </div>
@@ -1346,6 +1412,31 @@
     window.addEventListener('load', scheduleFit);
     fitPage();
     scheduleFit();
+  })();
+
+  (function () {
+    var items = document.querySelectorAll('.owners-features__item');
+    if (!items.length) return;
+
+    items.forEach(function (item, i) {
+      item.style.transitionDelay = (i * 70) + 'ms';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (item) { item.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    items.forEach(function (item) { observer.observe(item); });
   })();
 
   (function () {
