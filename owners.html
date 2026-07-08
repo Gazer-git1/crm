@@ -207,9 +207,9 @@
     isolation: isolate;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     height: 900px;
-    padding: 0 var(--space-x) var(--space-y);
+    padding: 0 var(--space-x);
     width: 100%;
   }
   .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
@@ -258,7 +258,7 @@
   .hero__avatars-text { font-size: 16px; color: var(--color-text-secondary); width: 240px; }
 
   /* ============ OWNERS FEATURES GRID ============ */
-  .owners-features { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; }
+  .owners-features { display: grid; grid-template-columns: repeat(4, 1fr); width: 100%; padding: 0 var(--space-x); }
   .owners-features__item {
     display: flex;
     flex-direction: column;
@@ -277,14 +277,26 @@
 
   /* ============ OWNERS CTA ============ */
   .owners-cta {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    margin: 64px var(--space-x) 0;
+    margin: 64px var(--space-x) var(--space-y);
     padding: 40px 48px;
-    border: 1px solid var(--color-bronze);
     border-radius: 8px;
+  }
+  .owners-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
   }
   .owners-cta__text { font-family: var(--font-serif); font-size: 28px; color: var(--color-gold); font-weight: 400; margin: 0; }
 
@@ -970,12 +982,12 @@
     .hero__avatars-text { width: auto; max-width: 220px; }
 
     /* owners features grid */
-    .owners-features { grid-template-columns: 1fr; }
+    .owners-features { grid-template-columns: 1fr; padding: 0; }
     .owners-features__item { padding: 36px 20px; border-right: none !important; }
     .owners-features__item:not(:last-child) { border-bottom: 1px solid var(--color-border) !important; }
 
     /* owners cta */
-    .owners-cta { flex-direction: column; align-items: stretch; text-align: center; margin: 48px 20px 0; padding: 32px 24px; gap: 20px; }
+    .owners-cta { flex-direction: column; align-items: stretch; text-align: center; margin: 48px 20px 64px; padding: 32px 24px; gap: 20px; }
     .owners-cta__text { font-size: 22px; }
 
     /* features */
