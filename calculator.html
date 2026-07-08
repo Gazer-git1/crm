@@ -934,11 +934,10 @@
             <div class="breakdown-card__body">
               <div class="breakdown-row"><span class="breakdown-row__label">Application Fee</span><span class="breakdown-row__value">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Down Payment</span><span class="breakdown-row__value">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value" id="brokerFeeValue">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Legal Registration (DLD)</span><span class="breakdown-row__value" id="dldFeeValue">$1,500</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="securityDepositValue">$2,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Home Inspection</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Home Inspection</span><span class="breakdown-row__value" id="homeInspectionValue">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Furniture &amp; Appliances</span><span class="breakdown-row__value">Optional</span></div>
             </div>
             <div class="breakdown-card__foot">
@@ -1240,6 +1239,8 @@
     var MIN_EQUITY_PCT = 20;
     var DLD_FEE = 1500;
     var SECURITY_DEPOSIT = 2000;
+    var BROKER_FEE_PCT = 0.021;
+    var HOME_INSPECTION_FEE = 3000;
 
     var CURRENCY_SYMBOLS = { USD: '$', AED: 'AED ', EUR: '€' };
     var EXCHANGE_RATES = { USD: 1, AED: 3.6725, EUR: 0.92 };
@@ -1298,7 +1299,10 @@
       var totalBenefitPct = (totalBenefit / homePrice) * 100;
 
       var mortgagePctOfOriginal = (mortgageRequired / homePrice) * 100;
-      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT;
+      var isSecondary = state.propertyType === 'secondary';
+      var brokerFee = isSecondary ? homePrice * BROKER_FEE_PCT : 0;
+      var homeInspectionFee = isSecondary ? HOME_INSPECTION_FEE : 0;
+      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT + brokerFee + homeInspectionFee;
 
       var leaseMonths = leaseTerm * 12;
 
@@ -1346,6 +1350,8 @@
       /* --- breakdown: before move-in --- */
       el('dldFeeValue').textContent = fmtMoney(DLD_FEE);
       el('securityDepositValue').textContent = fmtMoney(SECURITY_DEPOSIT);
+      el('brokerFeeValue').textContent = fmtMoney(brokerFee);
+      el('homeInspectionValue').textContent = fmtMoney(homeInspectionFee);
       el('totalBeforeMoveIn').textContent = fmtMoney(beforeMoveInTotal);
 
       /* --- breakdown: during lease --- */
@@ -1444,6 +1450,7 @@
         document.querySelectorAll('.calc-toggle__btn').forEach(function (b) { b.classList.remove('is-active'); });
         btn.classList.add('is-active');
         state.propertyType = btn.getAttribute('data-property-type');
+        compute();
       });
     });
 
@@ -1516,7 +1523,9 @@
       var LABEL_MAP = {
         'Appreciation Rate': 'APPRECIATION_RATE',
         'Rent Yield': 'RENT_YIELD',
-        'Mortgage Rate': 'MORTGAGE_RATE'
+        'Mortgage Rate': 'MORTGAGE_RATE',
+        'Broker Fee': 'BROKER_FEE_PCT',
+        'Home Inspection': 'HOME_INSPECTION_FEE'
       };
 
       function parseCsvRow(line) {
@@ -1549,21 +1558,32 @@
         return parseFloat(String(raw || '').trim().replace(',', '.'));
       }
 
+      /* The sheet also has an illustrative "DETAILED BREAKDOWN" example table further down
+         that reuses some of the same labels (e.g. "Broker Fee") for one-off dollar amounts
+         instead of the rate/fee constants — stop reading once we hit it so those don't
+         clobber the real constants above. */
+      var STOP_MARKERS = ['--- DETAILED BREAKDOWN', '--- SUMMARY'];
+
       fetch(SHEET_CSV_URL)
         .then(function (res) { return res.ok ? res.text() : Promise.reject(res.status); })
         .then(function (csv) {
           var rows = csv.replace(/\r\n/g, '\n').split('\n').map(parseCsvRow);
           var changed = false;
-          rows.forEach(function (cells) {
-            var key = LABEL_MAP[(cells[0] || '').trim()];
-            if (!key) return;
+          for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i];
+            var label = (cells[0] || '').trim();
+            if (STOP_MARKERS.some(function (m) { return label.indexOf(m) === 0; })) break;
+            var key = LABEL_MAP[label];
+            if (!key) continue;
             var value = parseNumber(cells[1]);
-            if (isNaN(value)) return;
+            if (isNaN(value)) continue;
             if (key === 'APPRECIATION_RATE') APPRECIATION_RATE = value;
             if (key === 'RENT_YIELD') RENT_YIELD = value;
             if (key === 'MORTGAGE_RATE') MORTGAGE_RATE = value;
+            if (key === 'BROKER_FEE_PCT') BROKER_FEE_PCT = value;
+            if (key === 'HOME_INSPECTION_FEE') HOME_INSPECTION_FEE = value;
             changed = true;
-          });
+          }
           if (changed) compute();
         })
         .catch(function () { /* offline or sheet unavailable - keep the built-in defaults */ });
