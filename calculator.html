@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affordability Calculator — Investors' Angels</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Investors' Angels">
+<meta property="og:title" content="Affordability Calculator — Investors' Angels">
+<meta property="og:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Affordability Calculator — Investors' Angels">
+<meta name="twitter:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    /* colors */
+    --color-bg: #0a0f13;
+    --color-bg-alt: #0a1013;
+    --color-bg-secondary: #161817;
+    --color-bg-footer: #0d0a08;
+    --color-white: #ffffff;
+    --color-text-secondary: #b9bdc4;
+    --color-text-muted: #73777e;
+    --color-text-footer-muted: #636366;
+    --color-gold: #fad06b;
+    --color-gold-dark: #c9a44c;
+    --color-gold-brand: #bfa360;
+    --color-bronze: #9b7140;
+    --color-bronze-light: #d3a769;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-highlight-grad: linear-gradient(138.02deg, #5d492f 28.65%, #292117 88.873%);
+    --color-btn-grad: linear-gradient(90deg, #9b7140 0%, #d3a769 48.292%, #9b7140 100%);
+    --divider-grad: linear-gradient(90deg, rgba(155, 113, 64, 0) 0%, rgba(211, 167, 105, 0.9) 50%, rgba(155, 113, 64, 0) 100%);
+
+    /* typography */
+    --font-serif: 'Jacques Francois', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    /* fixed desktop canvas */
+    --canvas-width: 1920px;
+    --space-x: 300px;
+    --space-y: 120px;
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--color-bg-footer); }
+  body {
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: none; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0; }
+  button { font: inherit; cursor: pointer; }
+  input { font: inherit; color: inherit; }
+
+  .page { width: var(--canvas-width); margin: 0 auto; position: relative; }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn__icon { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.25s ease; }
+  .btn:hover .btn__icon { transform: translateX(4px); }
+  .btn--gradient { background: var(--color-btn-grad); color: #0d0a08; }
+  .btn--gradient:hover { box-shadow: 0 10px 28px rgba(211, 167, 105, 0.4); }
+  .btn--gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+  .btn--gradient:hover::after { left: 130%; }
+  .btn--outline { background: transparent; color: var(--color-gold); border: 1px solid var(--color-bronze); font-size: 16px; }
+  .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
+  .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
+  .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
+  .btn--full { width: 100%; }
+
+  /* ============ HEADER ============ */
+  .header { position: absolute; top: 0; left: 0; width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; padding-inline: 250px; z-index: 100; }
+  .header__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; z-index: -1; }
+  .header__inner { display: flex; flex: 1 0 0; height: 75px; align-items: center; justify-content: space-between; padding-block: 20px; }
+  .header__logo { display: flex; align-items: center; height: 100px; width: 223px; margin-top: 14px; }
+  .header__logo-mark { height: 100px; width: 223px; }
+  .header__nav { position: relative; }
+  .header__nav-list { display: flex; align-items: center; gap: 16px; height: 100%; }
+  .header__nav-item { height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10px; position: relative; z-index: 1; }
+  .header__nav-link { display: flex; align-items: center; height: 24px; padding: 0 8px; font-size: 15px; color: var(--color-text-secondary); font-weight: 400; line-height: 1.26; transition: color 0.25s ease; }
+  .header__nav-item--active .header__nav-link { color: var(--color-gold); font-weight: 700; }
+  .header__nav-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 79% 62% at 50% 0%, rgba(191, 163, 96, 0.4) 0%, rgba(143, 122, 72, 0.3) 25%, rgba(96, 82, 48, 0.2) 50%, rgba(48, 41, 24, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .header__nav-item:hover::after, .header__nav-item--active::after { opacity: 1; }
+  .header__cta { width: 200px; flex-shrink: 0; }
+  .header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .header__burger { display: none; width: 32px; height: 32px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: none; border: none; padding: 0; flex-shrink: 0; }
+  .header__burger span { display: block; width: 20px; height: 2px; background: var(--color-white); transition: transform 0.3s ease, opacity 0.3s ease; }
+  .header__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .header__nav-footer { display: none; }
+
+  /* ============ CALCULATOR HERO ============ */
+  .calc-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 560px;
+    padding: 0 var(--space-x) var(--space-y);
+    width: 100%;
+    overflow: hidden;
+    background: radial-gradient(ellipse 60% 90% at 82% 30%, rgba(191, 163, 96, 0.16) 0%, rgba(0, 0, 0, 0) 70%), var(--color-bg);
+  }
+  .calc-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgb(0, 0, 0) 32%, rgba(0, 0, 0, 0) 68%);
+  }
+  .calc-hero__decor { position: absolute; right: 0; top: 0; height: 100%; width: 55%; z-index: -1; opacity: 0.9; }
+  .calc-hero__content { display: flex; flex-direction: column; gap: 20px; align-items: flex-start; width: 700px; }
+  .calc-hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .calc-hero__title { font-family: var(--font-serif); font-size: 64px; line-height: 1.05; margin: 0; font-weight: 400; }
+  .calc-hero__title-line--gold { color: var(--color-gold); display: block; }
+  .calc-hero__desc { font-size: 20px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 300; }
+  .calc-hero__currency { position: absolute; right: var(--space-x); bottom: var(--space-y); display: flex; flex-direction: column; gap: 8px; }
+  .calc-hero__currency-label { font-size: 14px; color: var(--color-text-secondary); }
+  .calc-hero__currency-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 220px;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .calc-hero__currency-select svg:first-child { width: 18px; height: 18px; color: var(--color-gold-dark); flex-shrink: 0; }
+  .calc-hero__currency-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    color: var(--color-white);
+    font-size: 16px;
+    flex: 1 0 0;
+    outline: none;
+  }
+  .calc-hero__currency-select select option { background: var(--color-bg-secondary); color: var(--color-white); }
+  .calc-hero__currency-select svg:last-child { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; pointer-events: none; }
+
+  /* ============ CALCULATOR MAIN ============ */
+  .calc-main { display: flex; align-items: flex-start; gap: 48px; padding: var(--space-y) var(--space-x); width: 100%; background: var(--color-bg); }
+  .calc-form { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; position: sticky; top: 120px; }
+  .calc-form__group { display: flex; flex-direction: column; gap: 16px; }
+  .calc-form__label { display: flex; align-items: center; gap: 12px; font-family: var(--font-serif); font-size: 20px; color: var(--color-white); }
+  .calc-form__label-note { font-size: 14px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-sans); }
+  .calc-form__number {
+    width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--color-bronze);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--color-gold); flex-shrink: 0;
+  }
+  .calc-form__subtitle { font-size: 14px; color: var(--color-text-secondary); text-transform: none; }
+
+  .calc-toggle { display: flex; gap: 12px; }
+  .calc-toggle__btn {
+    flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 16px 8px; border: 1px solid var(--color-border); border-radius: 4px;
+    background: transparent; color: var(--color-text-secondary); font-size: 14px; text-align: center;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  }
+  .calc-toggle__btn svg { width: 20px; height: 20px; }
+  .calc-toggle__btn.is-active { border-color: var(--color-gold-dark); color: var(--color-white); background: rgba(250, 208, 107, 0.06); }
+  .calc-toggle__btn.is-active svg { color: var(--color-gold); }
+
+  .calc-value { font-size: 32px; font-weight: 700; color: var(--color-white); }
+
+  .calc-slider { position: relative; padding-top: 4px; }
+  .calc-slider input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.12);
+    outline: none;
+    cursor: pointer;
+  }
+  .calc-slider input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; }
+  .calc-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--color-gold);
+    box-shadow: 0 0 0 4px rgba(250, 208, 107, 0.18);
+    margin-top: -8px;
+    cursor: pointer;
+    border: none;
+  }
+  .calc-slider input[type="range"]::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%; background: var(--color-gold); border: none;
+    box-shadow: 0 0 0 4px rgba(250, 208, 107, 0.18); cursor: pointer;
+  }
+  .calc-slider input[type="range"]::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.12); }
+  .calc-slider__range { display: flex; justify-content: space-between; margin-top: 10px; font-size: 13px; color: var(--color-text-muted); }
+
+  .calc-segment { display: flex; gap: 10px; }
+  .calc-segment__btn {
+    flex: 1 0 0; padding: 12px 4px; border-radius: 4px; border: 1px solid var(--color-border);
+    background: transparent; color: var(--color-text-secondary); font-size: 14px; text-align: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, font-weight 0.2s ease;
+  }
+  .calc-segment__btn.is-active { border-color: var(--color-gold-dark); background: var(--color-bg-footer); color: var(--color-white); font-weight: 700; }
+
+  .calc-form__divider { height: 1px; background: var(--color-border); width: 100%; }
+
+  /* ============ RESULTS: STAT GRID ============ */
+  .calc-results { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .calc-card {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+  }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
+  .stat-cell { padding: 28px 24px; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell__label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-secondary); }
+  .stat-cell__value { font-family: var(--font-serif); font-size: 30px; color: var(--color-white); line-height: 1.1; }
+  .stat-cell__delta { font-size: 15px; font-weight: 600; color: var(--color-gold); }
+  .stat-cell__caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.3; }
+
+  /* ============ CHART CARD ============ */
+  .chart-card { display: grid; grid-template-columns: 1fr 260px; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
+  .chart-card__main { padding: 32px; display: flex; flex-direction: column; gap: 24px; border-right: 1px solid var(--color-border); min-width: 0; }
+  .chart-card__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
+  .chart-card__endpoints { display: flex; align-items: flex-start; justify-content: space-between; }
+  .chart-card__point-label { font-size: 14px; color: var(--color-text-muted); margin-bottom: 8px; }
+  .chart-card__point-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-white); }
+  .chart-card__point--end { text-align: right; }
+  .chart-card__svg { width: 100%; height: auto; display: block; }
+  .chart-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .chart-card__side-delta { font-family: var(--font-serif); font-size: 28px; color: var(--color-gold); }
+  .chart-card__side-pct { font-size: 18px; font-weight: 600; color: var(--color-gold); }
+  .chart-card__side-caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
+
+  /* ============ MORTGAGE NOTICE CARD ============ */
+  .notice-card { display: grid; grid-template-columns: 1fr 260px; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
+  .notice-card__main { padding: 32px; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+  .notice-card__head { display: flex; align-items: flex-start; gap: 16px; }
+  .notice-card__icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-bronze); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gold); }
+  .notice-card__icon svg { width: 18px; height: 18px; }
+  .notice-card__title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); margin: 0 0 4px; }
+  .notice-card__desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.4; }
+  .notice-card__breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .notice-card__box { border: 1px solid var(--color-border); border-radius: 4px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .notice-card__box-label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
+  .notice-card__box-value { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
+  .notice-card__foot { font-size: 13px; color: var(--color-text-muted); }
+  .notice-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 16px; }
+  .notice-card__side-title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
+  .notice-card__side-box { border: 1px solid var(--color-gold-dark); border-radius: 4px; padding: 14px 20px; width: 100%; }
+  .notice-card__side-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-gold); }
+  .notice-card__side-caption { font-size: 13px; color: var(--color-text-muted); }
+
+  /* ============ MORTGAGE PAYMENT ROW ============ */
+  .mortgage-section { display: flex; flex-direction: column; gap: 16px; }
+  .mortgage-section__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
+  .mortgage-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .mortgage-box { background: var(--color-bg-footer); border: 1px solid var(--color-border); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+  .mortgage-box__years { font-size: 13px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
+  .mortgage-box__amount { font-family: var(--font-serif); font-size: 24px; color: var(--color-white); }
+  .mortgage-box__amount span { font-size: 14px; color: var(--color-text-muted); font-family: var(--font-sans); }
+
+  /* ============ TRANSITION ROW ============ */
+  .transition-section { display: flex; flex-direction: column; gap: 16px; }
+  .transition-section__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
+  .transition-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .transition-box { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
+  .transition-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
+  .transition-box__value { font-family: var(--font-serif); font-size: 22px; color: var(--color-gold); }
+  .transition-box__caption { font-size: 12px; color: var(--color-text-muted); }
+
+  /* ============ DETAILED BREAKDOWN ============ */
+  .breakdown { padding: var(--space-y) var(--space-x); width: 100%; background: var(--color-bg); }
+  .breakdown__title { font-family: var(--font-serif); font-size: 48px; margin: 0 0 48px; font-weight: 400; }
+  .breakdown__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
+  .breakdown-card { border: 1px solid var(--color-border); border-radius: 4px; display: flex; flex-direction: column; min-width: 0; }
+  .breakdown-card__head { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid var(--color-border); }
+  .breakdown-card__head svg { width: 18px; height: 18px; color: var(--color-gold); flex-shrink: 0; }
+  .breakdown-card__head-label { font-size: 13px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-gold); }
+  .breakdown-card__body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; flex: 1 0 0; }
+  .breakdown-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; font-size: 14px; }
+  .breakdown-row__label { color: var(--color-text-secondary); }
+  .breakdown-row__label-sub { display: block; font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+  .breakdown-row__value { color: var(--color-white); font-weight: 600; text-align: right; white-space: nowrap; }
+  .breakdown-row--divider { border-top: 1px solid var(--color-border); padding-top: 16px; margin-top: -4px; }
+  .breakdown-row--highlight .breakdown-row__label,
+  .breakdown-row--highlight .breakdown-row__value { color: var(--color-gold); }
+  .breakdown-card__mini-title { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-gold); margin: 4px 0 4px; }
+  .breakdown-card__mini-box { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 4px; font-size: 14px; }
+  .breakdown-card__mini-box + .breakdown-card__mini-box { margin-top: 8px; }
+  .breakdown-card__note { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
+  .breakdown-card__note svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; color: var(--color-text-muted); }
+  .breakdown-card__foot { padding: 20px 24px; border-top: 1px solid var(--color-border); text-align: center; display: flex; flex-direction: column; gap: 6px; }
+  .breakdown-card__foot-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
+  .breakdown-card__foot-value { font-family: var(--font-serif); font-size: 26px; color: var(--color-white); }
+  .breakdown-card__foot-caption { font-size: 12px; color: var(--color-text-muted); }
+
+  /* ============ SUMMARY ============ */
+  .summary { padding: 0 var(--space-x) var(--space-y); width: 100%; background: var(--color-bg); display: flex; flex-direction: column; gap: 40px; }
+  .summary__title { font-family: var(--font-serif); font-size: 48px; margin: 0; font-weight: 400; }
+  .summary__block { display: flex; align-items: flex-start; gap: 20px; }
+  .summary__icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gold); }
+  .summary__icon svg { width: 22px; height: 22px; }
+  .summary__text { font-size: 18px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; max-width: 900px; }
+  .summary__stats { position: relative; display: flex; border: 1px solid var(--color-border); border-radius: 8px; padding: 40px 20px; }
+  .summary__stat { flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; min-width: 0; }
+  .summary__stat-value { font-family: var(--font-serif); font-size: 34px; color: var(--color-gold); }
+  .summary__stat-label { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-text-secondary); line-height: 1.3; }
+
+  /* ============ FINAL CTA (reused pattern) ============ */
+  .final-cta { position: relative; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
+  .final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .final-cta__bg { position: absolute; top: -25%; left: 0; width: 100%; height: 150%; object-fit: cover; }
+  .final-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.55); z-index: -1; }
+  .final-cta__content { display: flex; flex-direction: column; gap: 16px; }
+  .final-cta__title { font-family: var(--font-serif); font-size: 44px; line-height: 1.1; margin: 0; }
+  .final-cta__desc { font-size: 20px; color: var(--color-text-secondary); }
+  .final-cta__note { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--color-white); opacity: 0.85; }
+  .final-cta__note svg { width: 16px; height: 16px; color: var(--color-gold); flex-shrink: 0; }
+  .final-cta__cta { width: 320px; flex-shrink: 0; }
+
+  /* ============ FOOTER ============ */
+  .footer { position: relative; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
+  .footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .footer__top { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+  .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer__logo { display: flex; align-items: center; height: 100px; width: 223px; }
+  .footer__logo-mark { height: 100px; width: 223px; }
+  .footer__social { display: flex; gap: 16px; }
+  .footer__social-link img { width: 40px; height: 40px; }
+  .footer__columns { display: flex; gap: 80px; white-space: nowrap; }
+  .footer__column { display: flex; flex-direction: column; gap: 20px; width: 140px; }
+  .footer__column-title { font-size: 15px; font-weight: 700; color: var(--color-gold-brand); text-transform: uppercase; line-height: 1.26; }
+  .footer__column-list { display: flex; flex-direction: column; gap: 14px; }
+  .footer__column-link { font-size: 13px; color: var(--color-text-secondary); }
+  .footer__bottom { display: flex; align-items: center; justify-content: center; padding-top: 24px; }
+  .footer__bottom-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .footer__lock { width: 13.33px; height: 13.33px; }
+  .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
+
+  /* ============ COOKIE BANNER ============ */
+  .cookie-banner {
+    position: fixed; right: 32px; bottom: 32px; z-index: 200; width: 420px; max-width: calc(100% - 64px);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+    background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: 8px;
+    padding: 28px 32px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    transform: translateY(calc(100% + 32px)); opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease; pointer-events: none;
+  }
+  .cookie-banner::before { content: ""; position: absolute; left: 24px; right: 24px; top: 0; height: 1px; background: var(--divider-grad); }
+  .cookie-banner.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .cookie-banner__text { width: 100%; }
+  .cookie-banner__title { font-family: var(--font-serif); font-size: 20px; color: var(--color-white); margin: 0 0 8px; }
+  .cookie-banner__desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; }
+  .cookie-banner__desc a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
+  .cookie-banner__desc a:hover { color: #ffe1a3; }
+  .cookie-banner__actions { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .cookie-banner__actions .btn { padding: 12px 20px; font-size: 14px; flex: 1 0 0; }
+  .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+    .page { width: 100%; }
+    html.no-scroll, body.no-scroll { overflow: hidden; height: 100%; }
+
+    /* header */
+    .header { height: 72px; padding-inline: 20px; }
+    .header.header--menu-open { background: transparent; }
+    .header.header--menu-open .header__bg { opacity: 0; }
+    .header__bg { transition: opacity 0.2s ease; }
+    .header__logo { height: 40px; width: 89px; }
+    .header__logo-mark { height: 40px; width: 89px; }
+    .header__nav {
+      position: fixed; top: 0; left: 0; width: 100%; height: 0; overflow: hidden;
+      background: var(--color-bg-footer); transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 99;
+    }
+    .header__nav::before {
+      content: ""; position: absolute; top: 0; left: 50%; width: 520px; max-width: none; height: 340px;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at top, rgba(191, 163, 96, 0.18) 0%, rgba(191, 163, 96, 0.07) 40%, rgba(0, 0, 0, 0) 75%);
+      pointer-events: none;
+    }
+    .header__nav.is-open { height: 100vh; overflow-y: auto; }
+    .header__nav-list { flex-direction: column; align-items: stretch; height: auto; gap: 0; padding: 88px 28px 0; position: relative; }
+    .header__nav-item {
+      height: auto; width: 100%; padding: 0; justify-content: flex-start; border-bottom: 1px solid var(--color-border);
+      opacity: 0; transform: translateY(10px); transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .header__nav-item:last-child { border-bottom: none; }
+    .header__nav.is-open .header__nav-item { opacity: 1; transform: translateY(0); }
+    .header__nav-item:nth-child(1) { transition-delay: 0.06s; }
+    .header__nav-item:nth-child(2) { transition-delay: 0.11s; }
+    .header__nav-item:nth-child(3) { transition-delay: 0.16s; }
+    .header__nav-item:nth-child(4) { transition-delay: 0.21s; }
+    .header__nav-item:nth-child(5) { transition-delay: 0.26s; }
+    .header__nav-item:nth-child(6) { transition-delay: 0.31s; }
+    .header__nav-item:nth-child(7) { transition-delay: 0.36s; }
+    .header__nav-item--active { position: relative; }
+    .header__nav-item--active::before {
+      content: ""; position: absolute; left: -16px; top: 50%; transform: translateY(-50%);
+      width: 3px; height: 22px; border-radius: 2px; background: var(--color-btn-grad);
+    }
+    .header__nav-item::after { display: none; }
+    .header__nav-link {
+      width: 100%; height: auto; padding: 19px 2px; font-size: 19px; font-family: var(--font-serif);
+      letter-spacing: 0.03em; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .header__nav-link::after {
+      content: ""; width: 15px; height: 15px; flex-shrink: 0;
+      background: url('assets/icons/icon-arrow-outline.svg') center / contain no-repeat;
+      opacity: 0.45; transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .header__nav-item--active .header__nav-link::after { opacity: 1; }
+    .header__nav-link:active::after { transform: translateX(3px); opacity: 1; }
+
+    .header__nav-footer { display: flex; flex-direction: column; align-items: center; gap: 22px; padding: 36px 28px 40px; position: relative; }
+    .header__nav-footer::before { content: ""; position: absolute; left: 28px; right: 28px; top: 0; height: 1px; background: var(--divider-grad); }
+    .header__nav-footer-logo { width: 184px; height: auto; }
+    .header__nav-footer-social { display: flex; align-items: center; gap: 28px; }
+    .header__nav-footer-social img { width: 52px; height: 52px; opacity: 0.8; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .header__nav-footer-social a:active img { opacity: 1; transform: translateY(-2px); }
+    .header__nav-footer-copyright { font-size: 12px; color: var(--color-text-footer-muted); text-align: center; }
+
+    .header__cta { width: auto; padding: 10px 18px; font-size: 13px; }
+    .header__burger { display: flex; }
+    .header__logo, .header__actions { position: relative; z-index: 150; }
+
+    /* calc hero */
+    .calc-hero { height: auto; padding: 90px 20px 40px; }
+    .calc-hero__decor { display: none; }
+    .calc-hero__content { width: 100%; gap: 16px; }
+    .calc-hero__title { font-size: 34px; }
+    .calc-hero__desc { font-size: 15px; }
+    .calc-hero__currency { position: static; margin-top: 20px; }
+    .calc-hero__currency-select { width: 100%; }
+
+    /* calc main */
+    .calc-main { flex-direction: column; padding: 40px 20px; gap: 32px; }
+    .calc-form { width: 100%; position: static; gap: 32px; }
+    .calc-results { width: 100%; gap: 16px; }
+
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .stat-cell { border-bottom: 1px solid var(--color-border); padding: 20px; }
+    .stat-cell:nth-child(2n) { border-right: none; }
+    .stat-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-cell__value { font-size: 22px; }
+
+    .chart-card, .notice-card { grid-template-columns: 1fr; }
+    .chart-card__main, .notice-card__main { border-right: none; border-bottom: 1px solid var(--color-border); padding: 24px 20px; }
+    .chart-card__side, .notice-card__side { padding: 24px 20px; }
+    .notice-card__breakdown { grid-template-columns: 1fr; }
+
+    .mortgage-row, .transition-row { grid-template-columns: 1fr; }
+
+    .breakdown { padding: 56px 20px; }
+    .breakdown__title { font-size: 30px; margin-bottom: 28px; }
+    .breakdown__grid { grid-template-columns: 1fr; gap: 16px; }
+
+    .summary { padding: 0 20px 56px; gap: 28px; }
+    .summary__title { font-size: 30px; }
+    .summary__block { flex-direction: column; align-items: flex-start; }
+    .summary__stats { flex-wrap: wrap; gap: 24px; padding: 28px 16px; }
+    .summary__stat { flex: 1 1 40%; }
+    .summary__stat-value { font-size: 24px; }
+
+    /* final cta */
+    .final-cta { flex-direction: column; align-items: center; justify-content: center; height: auto; padding: 56px 20px; gap: 28px; text-align: center; }
+    .final-cta__content { align-items: center; }
+    .final-cta__title { font-size: 30px; }
+    .final-cta__cta { width: 100%; max-width: 320px; }
+
+    /* footer */
+    .footer { padding: 64px 20px 32px; gap: 48px; }
+    .footer__top { flex-direction: column; align-items: center; gap: 40px; }
+    .footer__brand { order: 2; }
+    .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
+    .footer__column { width: calc(50% - 12px); }
+
+    /* cookie banner */
+    .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__bg" src="assets/icons/header-bg.png" alt="">
+      <div class="header__inner">
+        <a href="investors-angels.html" class="header__logo" aria-label="Investors' Angels home">
+          <img class="header__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+        </a>
+
+        <nav class="header__nav" id="primaryNav">
+          <ul class="header__nav-list" id="navList">
+            <li class="header__nav-item"><a class="header__nav-link" href="investors-angels.html">HOME</a></li>
+            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="calculator.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">WHY INVEST</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">GUARANTEES</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="#">ABOUT</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="faq.html">FAQ</a></li>
+          </ul>
+
+          <div class="header__nav-footer">
+            <img class="header__nav-footer-logo" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+            <div class="header__nav-footer-social">
+              <a href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+              <a href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+              <a href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+            </div>
+            <p class="header__nav-footer-copyright">© 2026 Investors' Angels DMCC</p>
+          </div>
+        </nav>
+
+        <div class="header__actions">
+          <button class="btn btn--outline header__cta" type="button">Get Started</button>
+          <button class="header__burger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- CALCULATOR HERO -->
+      <section class="calc-hero">
+        <div class="calc-hero__overlay" aria-hidden="true"></div>
+        <svg class="calc-hero__decor" viewBox="0 0 900 560" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+          <g stroke="#d3a769" stroke-opacity="0.35" stroke-width="1">
+            <line x1="900" y1="60" x2="700" y2="200"/>
+            <line x1="700" y1="200" x2="780" y2="360"/>
+            <line x1="700" y1="200" x2="560" y2="260"/>
+            <line x1="780" y1="360" x2="600" y2="440"/>
+            <line x1="560" y1="260" x2="600" y2="440"/>
+            <line x1="900" y1="60" x2="820" y2="20"/>
+          </g>
+          <line x1="880" y1="120" x2="580" y2="470" stroke="#fad06b" stroke-width="2" stroke-opacity="0.85"/>
+          <g fill="#d3a769">
+            <circle cx="900" cy="60" r="3"/>
+            <circle cx="700" cy="200" r="3"/>
+            <circle cx="780" cy="360" r="3"/>
+            <circle cx="560" cy="260" r="3"/>
+            <circle cx="600" cy="440" r="4"/>
+            <circle cx="820" cy="20" r="2.5"/>
+          </g>
+        </svg>
+        <div class="calc-hero__content">
+          <p class="calc-hero__eyebrow">Calculator</p>
+          <h1 class="calc-hero__title">
+            How much home
+            <span class="calc-hero__title-line--gold">can you afford?</span>
+          </h1>
+          <p class="calc-hero__desc">See your monthly payment, future equity and your path to homeownership.</p>
+        </div>
+        <div class="calc-hero__currency">
+          <span class="calc-hero__currency-label">Currency</span>
+          <label class="calc-hero__currency-select">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+            <select id="currencySelect">
+              <option value="USD" selected>USD</option>
+              <option value="AED">AED</option>
+              <option value="EUR">EUR</option>
+            </select>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </label>
+        </div>
+      </section>
+
+      <!-- CALCULATOR MAIN -->
+      <section class="calc-main">
+        <!-- LEFT: FORM -->
+        <div class="calc-form">
+          <div class="calc-form__group">
+            <div class="calc-form__label"><span class="calc-form__number">1</span> Choose your home</div>
+            <div>
+              <div class="calc-form__label-note" style="margin-bottom:10px;">Property Type</div>
+              <div class="calc-toggle">
+                <button class="calc-toggle__btn is-active" type="button" data-property-type="new">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-7h6v7"/><path d="M9 12h.01M15 12h.01M9 8h.01M15 8h.01"/></svg>
+                  New Home
+                </button>
+                <button class="calc-toggle__btn" type="button" data-property-type="secondary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
+                  Secondary Market
+                </button>
+              </div>
+            </div>
+            <div>
+              <div class="calc-form__label-note" style="margin-bottom:6px;">Home Price</div>
+              <div class="calc-value" id="homePriceValue">$750,000</div>
+              <div class="calc-slider">
+                <input type="range" id="homePriceSlider" min="200000" max="1000000" step="10000" value="750000">
+                <div class="calc-slider__range"><span>$200,000</span><span>$1,000,000</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="calc-form__divider"></div>
+
+          <div class="calc-form__group">
+            <div class="calc-form__label"><span class="calc-form__number">2</span> Lease term <span class="calc-form__label-note">(until mortgage)</span></div>
+            <div class="calc-segment" id="leaseTermSegment">
+              <button class="calc-segment__btn" type="button" data-lease-term="5">5 years</button>
+              <button class="calc-segment__btn is-active" type="button" data-lease-term="6">6 years</button>
+              <button class="calc-segment__btn" type="button" data-lease-term="7">7 years</button>
+              <button class="calc-segment__btn" type="button" data-lease-term="8">8 years</button>
+            </div>
+          </div>
+
+          <div class="calc-form__divider"></div>
+
+          <div class="calc-form__group">
+            <div class="calc-form__label"><span class="calc-form__number">3</span> Target Equity <span class="calc-form__label-note">(of property value)</span></div>
+            <div class="calc-value" id="targetEquityValue">35%</div>
+            <div class="calc-slider">
+              <input type="range" id="targetEquitySlider" min="20" max="40" step="1" value="35">
+              <div class="calc-slider__range"><span id="equityMinLabel">20%</span><span id="equityMaxLabel">40%</span></div>
+            </div>
+          </div>
+
+          <button class="btn btn--gradient btn--full" type="button" id="calculateBtn">Calculate Payment</button>
+        </div>
+
+        <!-- RIGHT: RESULTS -->
+        <div class="calc-results">
+          <div class="stat-grid">
+            <div class="stat-cell">
+              <span class="stat-cell__label">Monthly Payment</span>
+              <span class="stat-cell__value" id="statMonthlyPayment">$8,450</span>
+              <span class="stat-cell__caption">Includes lease payment + equity contribution</span>
+            </div>
+            <div class="stat-cell">
+              <span class="stat-cell__label">Estimated Property Value After <span id="leaseTermLabel1">6</span> Years</span>
+              <span class="stat-cell__value" id="statFutureValue">$946,000</span>
+              <span class="stat-cell__delta" id="statFutureValueDelta">+$196,000 (25%)</span>
+              <span class="stat-cell__caption">Estimated growth</span>
+            </div>
+            <div class="stat-cell">
+              <span class="stat-cell__label">Your Target Equity</span>
+              <span class="stat-cell__value" id="statTargetEquityPct">35%</span>
+              <span class="stat-cell__delta" id="statTargetEquityAmount">$262,500</span>
+              <span class="stat-cell__caption">Of the property value</span>
+            </div>
+            <div class="stat-cell">
+              <span class="stat-cell__label">Mortgage Required After <span id="leaseTermLabel2">6</span> Years</span>
+              <span class="stat-cell__value" id="statMortgageRequired">$683,500</span>
+              <span class="stat-cell__caption">Estimated amount needed</span>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__main">
+              <span class="chart-card__title">Property Value Over Time</span>
+              <div class="chart-card__endpoints">
+                <div class="chart-card__point">
+                  <div class="chart-card__point-label">At Start (Today)</div>
+                  <div class="chart-card__point-value" id="chartStartValue">$750,000</div>
+                </div>
+                <div class="chart-card__point chart-card__point--end">
+                  <div class="chart-card__point-label">At End of Program (<span id="leaseTermLabel3">6</span> Years)</div>
+                  <div class="chart-card__point-value" id="chartEndValue">$946,000</div>
+                </div>
+              </div>
+              <svg class="chart-card__svg" id="chartSvg" viewBox="0 0 640 160" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="chart-card__side">
+              <div class="chart-card__side-delta" id="sideDelta">+$196,000</div>
+              <div class="chart-card__side-pct" id="sidePct">+26%</div>
+              <div class="chart-card__side-caption">Estimated increase in property value</div>
+            </div>
+          </div>
+
+          <div class="notice-card">
+            <div class="notice-card__main">
+              <div class="notice-card__head">
+                <div class="notice-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+                </div>
+                <div>
+                  <p class="notice-card__title">You still need a mortgage.</p>
+                  <p class="notice-card__desc" id="noticeDesc">Even with 20% equity + 26% property appreciation…</p>
+                </div>
+              </div>
+              <div class="notice-card__breakdown">
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">Built Equity (Min 20%)</span>
+                  <span class="notice-card__box-value" id="builtEquityMin">$150,000</span>
+                </div>
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">Property Increase (Est.)</span>
+                  <span class="notice-card__box-value" id="propertyIncreaseEst">$196,000</span>
+                </div>
+              </div>
+              <p class="notice-card__foot">A mortgage is needed to cover the remaining amount.</p>
+            </div>
+            <div class="notice-card__side">
+              <span class="notice-card__side-title">Total Benefit</span>
+              <div class="notice-card__side-box">
+                <span class="notice-card__side-value" id="totalBenefitValue">$346,000</span>
+              </div>
+              <span class="notice-card__side-caption" id="totalBenefitCaption">(46% of original price)</span>
+            </div>
+          </div>
+
+          <div class="mortgage-section">
+            <span class="mortgage-section__title">Estimated Mortgage Payment After <span id="leaseTermLabel4">6</span> Years</span>
+            <div class="mortgage-row">
+              <div class="mortgage-box">
+                <span class="mortgage-box__years">10 Years</span>
+                <span class="mortgage-box__amount" id="mortgage10">$8,680<span>/mo</span></span>
+              </div>
+              <div class="mortgage-box">
+                <span class="mortgage-box__years">15 Years</span>
+                <span class="mortgage-box__amount" id="mortgage15">$6,430<span>/mo</span></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="transition-section">
+            <span class="transition-section__title">What Happens at Transition</span>
+            <div class="transition-row">
+              <div class="transition-box">
+                <span class="transition-box__label">Property Value Increase</span>
+                <span class="transition-box__value" id="transIncreaseValue">+$196,000</span>
+                <span class="transition-box__caption" id="transIncreaseCaption">(+26%)</span>
+              </div>
+              <div class="transition-box">
+                <span class="transition-box__label">Mortgage Needed</span>
+                <span class="transition-box__value" id="transMortgageValue">$683,500</span>
+                <span class="transition-box__caption" id="transMortgageCaption">(91% of original price)</span>
+              </div>
+              <div class="transition-box">
+                <span class="transition-box__label">vs. Final Property Value</span>
+                <span class="transition-box__value" id="transLtvValue">72%</span>
+                <span class="transition-box__caption">Loan-to-Value (LTV)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETAILED BREAKDOWN -->
+      <section class="breakdown">
+        <h2 class="breakdown__title">Detailed Breakdown</h2>
+        <div class="breakdown__grid">
+          <!-- BEFORE MOVE-IN -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span class="breakdown-card__head-label">Before Move-In</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Application Fee</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Down Payment</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Legal Registration (DLD)</span><span class="breakdown-row__value" id="dldFeeValue">$1,500</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="securityDepositValue">$2,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Home Inspection</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Furniture &amp; Appliances</span><span class="breakdown-row__value">Optional</span></div>
+            </div>
+            <div class="breakdown-card__foot">
+              <span class="breakdown-card__foot-label">Total Before Move-In</span>
+              <span class="breakdown-card__foot-value" id="totalBeforeMoveIn">$3,500</span>
+            </div>
+          </div>
+
+          <!-- DURING LEASE -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span class="breakdown-card__head-label">During Lease (Monthly)</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Lease Payment</span><span class="breakdown-row__value" id="bdLeasePayment">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Equity Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
+              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Maintenance</span><span class="breakdown-row__value">Included</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value">Included</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">DLD Registration</span><span class="breakdown-row__value">Included</span></div>
+            </div>
+            <div class="breakdown-card__foot">
+              <span class="breakdown-card__foot-label">Your Equity at Transition</span>
+              <span class="breakdown-card__foot-value" id="equityAtTransition">$201,600</span>
+              <span class="breakdown-card__foot-caption" id="equityAtTransitionCaption">(26.88% of original price)</span>
+            </div>
+          </div>
+
+          <!-- AT MORTGAGE TRANSITION -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-7h6v7"/></svg>
+              <span class="breakdown-card__head-label">At Mortgage Transition</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Equity<br>You've Built</span>
+                <span class="breakdown-row__value" id="mtEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" id="mtEquityBuiltPct" style="text-align:right;">(26.88%)</span></span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Property<br>Value Increase</span>
+                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000<br><span class="breakdown-row__label-sub" id="mtPropertyIncreasePct" style="text-align:right;">(+26%)</span></span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Mortgage<br>Required</span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">72 months</span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">vs. Final<br>Property Value</span>
+                <span class="breakdown-row__value" id="mtLtv">72%<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span></span>
+              </div>
+              <div>
+                <p class="breakdown-card__mini-title">Estimated Mortgage Payment</p>
+                <div class="breakdown-card__mini-box"><span>10 Years</span><span id="mtMortgage10">$8,680 /mo</span></div>
+                <div class="breakdown-card__mini-box"><span>15 Years</span><span id="mtMortgage15">$6,430 /mo</span></div>
+              </div>
+              <div class="breakdown-card__note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+                <span>Mortgage is based on the original property price, not the future value.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESULTS AFTER N YEARS -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v1a4 4 0 0 0 4 4M17 6h3v1a4 4 0 0 1-4 4"/></svg>
+              <span class="breakdown-card__head-label" id="resultsHeadLabel">Results After 6 Years</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Final Property Value</span><span class="breakdown-row__value" id="resFinalValue">$946,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Increase in Value</span><span class="breakdown-row__value" id="resIncreaseValue">+$196,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Growth Percentage</span><span class="breakdown-row__value" id="resGrowthPct">+26%</span></div>
+              <div class="breakdown-card__note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+                <span>Your equity + property growth reduce the amount you need to get a mortgage.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SUMMARY -->
+      <section class="summary">
+        <h2 class="summary__title">Summary</h2>
+        <div class="summary__block">
+          <div class="summary__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
+          </div>
+          <p class="summary__text" id="summaryText">
+            You move into your future home today with $0 down payment. Build 35% equity over 6 years while the property grows in value. Then refinance with a mortgage and become the owner.
+          </p>
+        </div>
+        <div class="summary__stats">
+          <div class="summary__stat"><span class="summary__stat-value">$0</span><span class="summary__stat-label">Down<br>Payment</span></div>
+          <div class="summary__stat"><span class="summary__stat-value" id="sumMonthly">$8,450</span><span class="summary__stat-label">Monthly<br>Payment</span></div>
+          <div class="summary__stat"><span class="summary__stat-value" id="sumYears">6</span><span class="summary__stat-label">Years to<br>Ownership</span></div>
+          <div class="summary__stat"><span class="summary__stat-value" id="sumGrowth">$196,000</span><span class="summary__stat-label">Estimated<br>Value Growth</span></div>
+          <div class="summary__stat"><span class="summary__stat-value" id="sumEquity">$201,600</span><span class="summary__stat-label">Equity You<br>Will Build</span></div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="final-cta__bg-wrap">
+          <img class="final-cta__bg" src="assets/future-bg.jpg" alt="Living room interior overlooking a city skyline at night">
+        </div>
+        <div class="final-cta__overlay" aria-hidden="true"></div>
+        <div class="final-cta__content">
+          <h2 class="final-cta__title">Ready to see if you qualify?</h2>
+          <p class="final-cta__desc">Take the first step toward owning your dream home.</p>
+          <div class="final-cta__note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+            <span>Your agreement is registered with the Dubai Land Department (DLD) for your protection.</span>
+          </div>
+        </div>
+        <button class="btn btn--gradient final-cta__cta" type="button">
+          Get Pre-Approved
+          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+        </button>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="investors-angels.html" class="footer__logo" aria-label="Investors' Angels home">
+            <img class="footer__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+          </a>
+          <div class="footer__social">
+            <a class="footer__social-link" href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+          </div>
+        </div>
+
+        <div class="footer__columns">
+          <div class="footer__column">
+            <p class="footer__column-title">For Owners</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="#">How it Works</a></li>
+              <li><a class="footer__column-link" href="#">Owners</a></li>
+              <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
+              <li><a class="footer__column-link" href="#">Guarantees</a></li>
+              <li><a class="footer__column-link" href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">For Investors</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="#">Investors</a></li>
+              <li><a class="footer__column-link" href="#">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="#">Why Invest</a></li>
+              <li><a class="footer__column-link" href="#">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Company</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="#">About Us</a></li>
+              <li><a class="footer__column-link" href="#">Our Team</a></li>
+              <li><a class="footer__column-link" href="#">Partners</a></li>
+              <li><a class="footer__column-link" href="#">News &amp; Insights</a></li>
+              <li><a class="footer__column-link" href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Legal</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+              <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <img class="footer__lock" src="assets/icons/icon-lock.svg" alt="">
+          <p class="footer__copyright">© 2026 Investors' Angels DMCC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+      <div class="cookie-banner__text">
+        <p class="cookie-banner__title">We value your privacy</p>
+        <p class="cookie-banner__desc">We use cookies to enhance your browsing experience and analyze our traffic. Read our <a href="cookie-policy.html">Cookie Policy</a> to learn more.</p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="btn btn--text" type="button" id="cookieDecline">Decline</button>
+        <button class="btn btn--gradient" type="button" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  (function () {
+    var MOBILE_BREAKPOINT = 768;
+    var page = document.querySelector('.page');
+
+    function fitPage() {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        page.style.zoom = 1;
+        return;
+      }
+      var scale = Math.min(1, window.innerWidth / 1920);
+      page.style.zoom = scale;
+    }
+
+    function scheduleFit() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(fitPage);
+      });
+    }
+
+    window.addEventListener('resize', fitPage);
+    window.addEventListener('load', scheduleFit);
+    fitPage();
+    scheduleFit();
+  })();
+
+  (function () {
+    var burger = document.querySelector('.header__burger');
+    var nav = document.getElementById('primaryNav');
+    var header = document.querySelector('.header');
+    if (!burger || !nav) return;
+
+    function setMenu(open) {
+      burger.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+      if (header) header.classList.toggle('header--menu-open', open);
+      document.documentElement.classList.toggle('no-scroll', open);
+      document.body.classList.toggle('no-scroll', open);
+    }
+
+    burger.addEventListener('click', function () {
+      var isOpen = burger.getAttribute('aria-expanded') === 'true';
+      setMenu(!isOpen);
+    });
+
+    nav.querySelectorAll('.header__nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenu(false);
+      });
+    });
+  })();
+
+  (function () {
+    var STORAGE_KEY = 'ia_cookie_consent';
+    var banner = document.getElementById('cookieBanner');
+    var acceptBtn = document.getElementById('cookieAccept');
+    var declineBtn = document.getElementById('cookieDecline');
+    if (!banner) return;
+
+    function getConsent() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+    function setConsent(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+    function hideBanner() {
+      banner.classList.remove('is-visible');
+    }
+
+    if (!getConsent()) {
+      window.requestAnimationFrame(function () {
+        banner.classList.add('is-visible');
+      });
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', function () {
+      setConsent('accepted');
+      hideBanner();
+    });
+    if (declineBtn) declineBtn.addEventListener('click', function () {
+      setConsent('declined');
+      hideBanner();
+    });
+  })();
+
+  /* ============ CALCULATOR LOGIC ============ */
+  (function () {
+    var APPRECIATION_RATE = 0.0394;
+    var RENT_YIELD = 0.0904;
+    var MORTGAGE_RATE = 0.089;
+    var MIN_EQUITY_PCT = 20;
+    var DLD_FEE = 1500;
+    var SECURITY_DEPOSIT = 2000;
+
+    var CURRENCY_SYMBOLS = { USD: '$', AED: 'AED ', EUR: '€' };
+    var EXCHANGE_RATES = { USD: 1, AED: 3.6725, EUR: 0.92 };
+
+    var state = {
+      homePrice: 750000,
+      leaseTerm: 6,
+      targetEquity: 35,
+      propertyType: 'new',
+      currency: 'USD'
+    };
+
+    function currencySymbol() { return CURRENCY_SYMBOLS[state.currency] || '$'; }
+
+    function fmtMoney(n) {
+      var converted = n * (EXCHANGE_RATES[state.currency] || 1);
+      var rounded = Math.round(converted);
+      return currencySymbol() + rounded.toLocaleString('en-US');
+    }
+    function fmtPct(n, decimals) {
+      decimals = decimals || 0;
+      return n.toFixed(decimals) + '%';
+    }
+
+    function mortgagePayment(principal, years) {
+      var n = years * 12;
+      var r = MORTGAGE_RATE / 12;
+      var factor = Math.pow(1 + r, n);
+      return principal * (r * factor) / (factor - 1);
+    }
+
+    function el(id) { return document.getElementById(id); }
+
+    function compute() {
+      var homePrice = state.homePrice;
+      var leaseTerm = state.leaseTerm;
+      var targetEquity = state.targetEquity;
+
+      var futurePropertyValue = homePrice * Math.pow(1 + APPRECIATION_RATE, leaseTerm);
+      var propertyValueIncrease = futurePropertyValue - homePrice;
+      var growthPct = (propertyValueIncrease / homePrice) * 100;
+
+      var targetEquityAmount = homePrice * (targetEquity / 100);
+      var mortgageRequired = futurePropertyValue - targetEquityAmount;
+      var ltv = (mortgageRequired / futurePropertyValue) * 100;
+
+      var leasePayment = (homePrice * RENT_YIELD) / 12;
+      var equityContribution = targetEquityAmount / (leaseTerm * 12);
+      var totalMonthlyPayment = leasePayment + equityContribution;
+
+      var mortgage10 = mortgagePayment(mortgageRequired, 10);
+      var mortgage15 = mortgagePayment(mortgageRequired, 15);
+
+      var minEquityAmount = homePrice * (MIN_EQUITY_PCT / 100);
+      var totalBenefit = minEquityAmount + propertyValueIncrease;
+      var totalBenefitPct = (totalBenefit / homePrice) * 100;
+
+      var mortgagePctOfOriginal = (mortgageRequired / homePrice) * 100;
+      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT;
+
+      var leaseMonths = leaseTerm * 12;
+
+      /* --- text labels --- */
+      document.querySelectorAll('[id^="leaseTermLabel"]').forEach(function (n) { n.textContent = leaseTerm; });
+      el('resultsHeadLabel').textContent = 'Results After ' + leaseTerm + ' Years';
+
+      /* --- form --- */
+      el('homePriceValue').textContent = fmtMoney(homePrice);
+      el('targetEquityValue').textContent = targetEquity + '%';
+
+      /* --- stat grid --- */
+      el('statMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
+      el('statFutureValue').textContent = fmtMoney(futurePropertyValue);
+      el('statFutureValueDelta').textContent = '+' + fmtMoney(propertyValueIncrease) + ' (' + fmtPct(growthPct) + ')';
+      el('statTargetEquityPct').textContent = targetEquity + '%';
+      el('statTargetEquityAmount').textContent = fmtMoney(targetEquityAmount);
+      el('statMortgageRequired').textContent = fmtMoney(mortgageRequired);
+
+      /* --- chart --- */
+      el('chartStartValue').textContent = fmtMoney(homePrice);
+      el('chartEndValue').textContent = fmtMoney(futurePropertyValue);
+      el('sideDelta').textContent = '+' + fmtMoney(propertyValueIncrease);
+      el('sidePct').textContent = '+' + fmtPct(growthPct);
+      drawChart(homePrice, futurePropertyValue, leaseTerm);
+
+      /* --- notice card --- */
+      el('noticeDesc').textContent = 'Even with ' + MIN_EQUITY_PCT + '% equity + ' + fmtPct(growthPct) + ' property appreciation…';
+      el('builtEquityMin').textContent = fmtMoney(minEquityAmount);
+      el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
+      el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
+      el('totalBenefitCaption').textContent = '(' + fmtPct(totalBenefitPct) + ' of original price)';
+
+      /* --- mortgage payment boxes --- */
+      el('mortgage10').innerHTML = fmtMoney(mortgage10) + '<span>/mo</span>';
+      el('mortgage15').innerHTML = fmtMoney(mortgage15) + '<span>/mo</span>';
+
+      /* --- transition row --- */
+      el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
+      el('transIncreaseCaption').textContent = '(+' + fmtPct(growthPct) + ')';
+      el('transMortgageValue').textContent = fmtMoney(mortgageRequired);
+      el('transMortgageCaption').textContent = '(' + fmtPct(mortgagePctOfOriginal) + ' of original price)';
+      el('transLtvValue').textContent = fmtPct(ltv);
+
+      /* --- breakdown: before move-in --- */
+      el('dldFeeValue').textContent = fmtMoney(DLD_FEE);
+      el('securityDepositValue').textContent = fmtMoney(SECURITY_DEPOSIT);
+      el('totalBeforeMoveIn').textContent = fmtMoney(beforeMoveInTotal);
+
+      /* --- breakdown: during lease --- */
+      el('bdLeasePayment').textContent = fmtMoney(leasePayment);
+      el('bdEquityContribution').textContent = fmtMoney(equityContribution);
+      el('bdTotalMonthly').textContent = fmtMoney(totalMonthlyPayment);
+      el('bdLeaseDuration').textContent = leaseMonths + ' months';
+      el('equityAtTransition').textContent = fmtMoney(targetEquityAmount);
+      el('equityAtTransitionCaption').textContent = '(' + fmtPct(targetEquity, 2) + ' of original price)';
+
+      /* --- breakdown: at mortgage transition --- */
+      el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
+      el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
+      el('mtMortgageRequired').textContent = leaseMonths + ' months';
+      el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
+      el('mtMortgage10').textContent = fmtMoney(mortgage10) + ' /mo';
+      el('mtMortgage15').textContent = fmtMoney(mortgage15) + ' /mo';
+
+      /* --- breakdown: results after N years --- */
+      el('resFinalValue').textContent = fmtMoney(futurePropertyValue);
+      el('resIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
+      el('resGrowthPct').textContent = '+' + fmtPct(growthPct);
+
+      /* --- summary --- */
+      el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% equity over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
+      el('sumMonthly').textContent = fmtMoney(totalMonthlyPayment);
+      el('sumYears').textContent = leaseTerm;
+      el('sumGrowth').textContent = fmtMoney(propertyValueIncrease);
+      el('sumEquity').textContent = fmtMoney(targetEquityAmount);
+    }
+
+    function drawChart(startValue, endValue, years) {
+      var svg = el('chartSvg');
+      var W = 640, H = 160, PAD = 10;
+      var points = [];
+      for (var t = 0; t <= years; t++) {
+        var v = startValue * Math.pow(1 + APPRECIATION_RATE, t);
+        points.push(v);
+      }
+      var min = Math.min.apply(null, points);
+      var max = Math.max.apply(null, points);
+      var range = max - min || 1;
+
+      var coords = points.map(function (v, i) {
+        var x = PAD + (i / years) * (W - PAD * 2);
+        var y = H - PAD - ((v - min) / range) * (H - PAD * 2);
+        return [x, y];
+      });
+
+      var linePath = coords.map(function (c, i) { return (i === 0 ? 'M' : 'L') + c[0].toFixed(1) + ' ' + c[1].toFixed(1); }).join(' ');
+      var areaPath = linePath + ' L ' + coords[coords.length - 1][0].toFixed(1) + ' ' + H + ' L ' + coords[0][0].toFixed(1) + ' ' + H + ' Z';
+
+      var dots = coords.map(function (c, i) {
+        var isEnd = i === coords.length - 1 || i === 0;
+        if (!isEnd) return '';
+        return '<circle cx="' + c[0].toFixed(1) + '" cy="' + c[1].toFixed(1) + '" r="5" fill="#fad06b"/>';
+      }).join('');
+
+      svg.innerHTML =
+        '<defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">' +
+        '<stop offset="0%" stop-color="#fad06b" stop-opacity="0.35"/>' +
+        '<stop offset="100%" stop-color="#fad06b" stop-opacity="0"/>' +
+        '</linearGradient></defs>' +
+        '<path d="' + areaPath + '" fill="url(#chartFill)"/>' +
+        '<path d="' + linePath + '" fill="none" stroke="#fad06b" stroke-width="2.5"/>' +
+        dots;
+    }
+
+    /* --- input wiring --- */
+    var homePriceSlider = el('homePriceSlider');
+    var targetEquitySlider = el('targetEquitySlider');
+
+    homePriceSlider.addEventListener('input', function () {
+      state.homePrice = parseInt(this.value, 10);
+      compute();
+    });
+
+    targetEquitySlider.addEventListener('input', function () {
+      state.targetEquity = parseInt(this.value, 10);
+      compute();
+    });
+
+    document.querySelectorAll('.calc-toggle__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.calc-toggle__btn').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        state.propertyType = btn.getAttribute('data-property-type');
+      });
+    });
+
+    document.querySelectorAll('#leaseTermSegment .calc-segment__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('#leaseTermSegment .calc-segment__btn').forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        state.leaseTerm = parseInt(btn.getAttribute('data-lease-term'), 10);
+        compute();
+      });
+    });
+
+    el('currencySelect').addEventListener('change', function () {
+      state.currency = this.value;
+      compute();
+    });
+
+    el('calculateBtn').addEventListener('click', function () {
+      compute();
+      el('calculateBtn').closest('.calc-form').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    compute();
+  })();
+</script>
+</body>
+</html>
