@@ -67,6 +67,7 @@
     -webkit-font-smoothing: antialiased;
   }
   img { display: block; max-width: none; }
+  img:not([src$=".svg"]) { color: var(--color-text-muted); font-size: 13px; text-align: center; }
   ul { list-style: none; margin: 0; padding: 0; }
   a { color: inherit; text-decoration: none; }
   p { margin: 0; }
@@ -676,7 +677,7 @@
       <!-- CALCULATOR HERO -->
       <section class="calc-hero">
         <div class="calc-hero__bg-wrap">
-          <img class="calc-hero__bg" src="assets/calc-hero-bg.png" alt="Gold geometric marble pattern background">
+          <img class="calc-hero__bg" src="assets/calc-hero-bg.png" alt="Gold marble pattern">
         </div>
         <div class="calc-hero__overlay" aria-hidden="true"></div>
         <div class="calc-hero__content">
@@ -1010,7 +1011,7 @@
       <!-- FINAL CTA -->
       <section class="final-cta">
         <div class="final-cta__bg-wrap">
-          <img class="final-cta__bg" src="assets/calc-cta-bg.png" alt="Living room interior overlooking a city skyline at night">
+          <img class="final-cta__bg" src="assets/calc-cta-bg.png" alt="Living room skyline view">
         </div>
         <div class="final-cta__content">
           <h2 class="final-cta__title">Ready to see if you qualify?</h2>

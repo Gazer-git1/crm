@@ -67,6 +67,7 @@
     -webkit-font-smoothing: antialiased;
   }
   img { display: block; max-width: none; }
+  img:not([src$=".svg"]) { color: var(--color-text-muted); font-size: 13px; text-align: center; }
   ul { list-style: none; margin: 0; padding: 0; }
   a { color: inherit; text-decoration: none; }
   p { margin: 0; }
@@ -570,7 +571,7 @@
         <div class="hero__bg-wrap">
           <picture>
             <source media="(max-width: 768px)" srcset="assets/about1-mob.png">
-            <img class="hero__bg" src="assets/about1.png" alt="Investors' Angels office lounge with the brand's golden wings emblem on the wall">
+            <img class="hero__bg" src="assets/about1.png" alt="Investors' Angels office">
           </picture>
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
