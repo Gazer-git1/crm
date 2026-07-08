@@ -581,8 +581,44 @@
   .cookie-banner__actions .btn { padding: 12px 20px; font-size: 14px; flex: 1 0 0; }
   .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
 
+  /* ============ WHATSAPP QUICK CONTACT ============ */
+  .wa-fab {
+    position: fixed;
+    left: 32px;
+    bottom: 32px;
+    z-index: 190;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-btn-grad);
+    color: #0d0a08;
+    box-shadow: 0 10px 28px rgba(211, 167, 105, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .wa-fab:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(211, 167, 105, 0.5); }
+  .wa-fab svg { position: relative; z-index: 1; width: 28px; height: 28px; }
+  .wa-fab__ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 1px solid rgba(211, 167, 105, 0.5);
+    animation: wa-fab-pulse 2.4s ease-out infinite;
+    pointer-events: none;
+  }
+  @keyframes wa-fab-pulse {
+    0% { transform: scale(0.85); opacity: 0.8; }
+    70% { transform: scale(1.3); opacity: 0; }
+    100% { transform: scale(1.3); opacity: 0; }
+  }
+
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
+    .wa-fab { left: 16px; bottom: 16px; width: 52px; height: 52px; }
+    .wa-fab svg { width: 24px; height: 24px; }
+
     .page { width: 100%; }
 
     html.no-scroll, body.no-scroll { overflow: hidden; height: 100%; }
@@ -1229,6 +1265,14 @@
         <button class="btn btn--gradient" type="button" id="cookieAccept">Accept All</button>
       </div>
     </div>
+
+    <a class="wa-fab" href="https://wa.me/971500000000" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+      <span class="wa-fab__ring" aria-hidden="true"></span>
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M12 3.5c-4.7 0-8.5 3.4-8.5 7.6 0 2.2 1 4.2 2.7 5.6-.1 1-.4 2.3-1.1 3.4 1.5-.2 2.9-.8 3.9-1.5 1 .3 2 .5 3 .5 4.7 0 8.5-3.4 8.5-7.6S16.7 3.5 12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M9 10.2s.3 1.4 1.5 2.5c1.2 1.2 2.6 1.5 2.6 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </a>
   </div>
 
 <script>
