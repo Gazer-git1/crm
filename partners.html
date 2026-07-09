@@ -309,7 +309,7 @@
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .partners-grid__item.is-visible { opacity: 1; transform: translateY(0); }
-  .partners-grid__logo { height: 58px; width: auto; max-width: 320px; object-fit: contain; }
+  .partners-grid__logo { width: 320px; height: auto; max-height: 112px; object-fit: contain; }
   .partners-grid__category { font-family: var(--font-serif); font-size: 20px; margin: 0; font-weight: 400; color: var(--color-white); }
   .partners-grid__desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 260px; }
 
@@ -320,7 +320,7 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    padding: 72px var(--space-x) 120px;
+    padding: 96px var(--space-x);
     background: var(--color-bg);
   }
   .partners-stats__item { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
@@ -568,11 +568,11 @@
     .partners-grid__title { font-size: 32px; margin-bottom: 32px; }
     .partners-grid__panel { grid-template-columns: 1fr; row-gap: 40px; padding: 40px 20px; border-radius: 16px; }
     .partners-grid__panel::before { border-radius: 16px; }
-    .partners-grid__logo { height: 46px; max-width: 260px; }
+    .partners-grid__logo { width: 300px; max-width: 100%; max-height: 100px; }
     .partners-grid__category { font-size: 18px; }
 
     /* partners stats band */
-    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 40px 20px 48px; }
+    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 44px 20px; }
     .partners-stats__item { flex: 1 1 40%; min-width: 0; }
     .partners-stats__value { font-size: 30px; }
     .partners-stats__label { font-size: 11px; }
@@ -652,7 +652,7 @@
               <span class="hero__title-line">Stronger together.</span>
               <span class="hero__title-line hero__title-line--gold">Building the future of homeownership.</span>
             </h1>
-            <p class="hero__subtitle">Investors' Angels works with organizations that help people become homeowners.</p>
+            <p class="hero__subtitle">Investors' Angels works with organizations<br>that help people become homeowners.</p>
           </div>
           <div class="hero__cta-row">
             <a class="btn btn--gradient" href="contact.html">
