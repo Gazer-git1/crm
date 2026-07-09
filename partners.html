@@ -555,9 +555,19 @@
     /* hero */
     .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
     .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg-wrap::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: -60px;
+      background: linear-gradient(180deg, rgba(10, 15, 19, 0) 55%, rgba(10, 15, 19, 0.4) 70%, rgba(10, 15, 19, 0.75) 82%, var(--color-bg) 92%, var(--color-bg) 100%);
+      pointer-events: none;
+    }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 390px 20px 0; gap: 24px; align-items: center; }
+    .hero__content { width: 100%; padding: 420px 20px 0; gap: 24px; align-items: center; }
     .hero__heading-block { align-items: center; text-align: center; }
     .hero__title { font-size: 34px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
@@ -580,7 +590,7 @@
     /* partners cta band */
     .partners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
     .partners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .partners-cta__bg { object-position: calc(85% + 160px) center; }
+    .partners-cta__bg { object-position: center center; }
     .partners-cta__title { font-size: 28px; }
     .partners-cta .btn { width: 100%; }
 
@@ -753,7 +763,10 @@
       <!-- PARTNERS CTA BAND -->
       <section class="partners-cta">
         <div class="partners-cta__bg-wrap">
-          <img class="partners-cta__bg" src="assets/partners2.png" alt="Handshake between two business partners">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/partnr2-mob.png">
+            <img class="partners-cta__bg" src="assets/partners2.png" alt="Handshake between two business partners">
+          </picture>
         </div>
         <div class="partners-cta__overlay" aria-hidden="true"></div>
         <h2 class="partners-cta__title">
