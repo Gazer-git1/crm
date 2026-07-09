@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Owners — Investors' Angels</title>
+<title>News &amp; Insights — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/owners.html">
+<meta name="description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/news-insights.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="For Owners — Investors' Angels">
-<meta property="og:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
-<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/owner1.png">
-<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/owners.html">
+<meta property="og:title" content="News & Insights — Investors' Angels">
+<meta property="og:description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/news-insights.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="For Owners — Investors' Angels">
-<meta name="twitter:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/owner1.png">
+<meta name="twitter:title" content="News & Insights — Investors' Angels">
+<meta name="twitter:description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -135,6 +135,7 @@
   .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
   .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
   .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
+  .btn--text--lg { font-size: 20px; }
 
   /* ============ HEADER ============ */
   .header {
@@ -215,124 +216,33 @@
   .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .header__nav-footer { display: none; }
 
-  /* ============ HERO ============ */
-  .hero {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 800px;
-    padding: 0 var(--space-x);
-    width: 100%;
-  }
-  .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
-  .hero__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background:
-      linear-gradient(90deg, rgb(0, 0, 0) 40.02%, rgba(0, 0, 0, 0) 63.02%),
-      linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 18%);
-  }
-  .hero__content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    align-items: flex-start;
-    width: 844px;
-  }
-  .hero__heading-block { display: flex; flex-direction: column; gap: 24px; width: 100%; }
-  .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
-  .hero__title {
-    font-family: var(--font-serif);
-    font-size: 80px;
-    line-height: 1;
-    margin: 0;
-    font-weight: 400;
-  }
-  .hero__title-line { display: block; }
-  .hero__title-line--gold { color: var(--color-gold); }
-  .hero__subtitle {
-    font-size: 26px;
-    line-height: 1.3;
-    color: var(--color-text-secondary);
-    width: 100%;
-    font-weight: 400;
-  }
-  .hero__cta-row { display: flex; align-items: center; gap: 16px; }
-
-  /* ============ OWNERS FEATURES PANEL ============ */
-  .owners-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .owners-features::before, .owners-features::after {
+  /* ============ CALCULATOR BANNER ============ */
+  .calc-banner { position: relative; display: flex; align-items: center; height: 200px; padding: 80px var(--space-x); width: 100%; }
+  .calc-banner::before {
     content: "";
     position: absolute;
     left: 0;
     right: 0;
+    top: 0;
     height: 1px;
     background: var(--divider-grad);
   }
-  .owners-features::before { top: 0; }
-  .owners-features::after { bottom: 0; }
-  .owners-features__panel {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 56px 32px;
-    border-radius: 24px;
-    padding: 64px 56px;
-    width: 100%;
-  }
-  .owners-features__panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  .owners-features__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .owners-features__item.is-visible { opacity: 1; transform: translateY(0); }
-  .owners-features__icon { width: 40px; height: 40px; transition: transform 0.4s ease, filter 0.4s ease; }
-  .owners-features__item:hover .owners-features__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
-  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-white); font-weight: 400; max-width: 220px; }
-  .owners-features__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 240px; }
-
-  /* ============ OWNERS CTA BAND ============ */
-  .owners-cta {
-    position: relative;
-    isolation: isolate;
+  .calc-banner__box {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 260px;
-    padding: 0 var(--space-x);
-    width: 100%;
+    flex: 1 0 0;
+    padding: 40px;
   }
-  .owners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .owners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .owners-cta__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
-  }
-  .owners-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
-  .owners-cta__title-line--gold { color: var(--color-gold); display: block; }
+  .calc-banner__info { display: flex; gap: 32px; align-items: center; flex: 1 0 0; min-width: 0; }
+  .calc-banner__icon { width: 60px; height: 60px; border: 1px solid var(--color-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .calc-banner__icon img { width: 30px; height: 30px; }
+  .calc-banner__text { display: flex; flex-direction: column; gap: 10px; white-space: nowrap; }
+  .calc-banner__title { font-family: var(--font-serif); font-size: 32px; line-height: 1; color: var(--color-white); }
+  .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -364,51 +274,108 @@
   .footer__lock { width: 13.33px; height: 13.33px; }
   .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
 
-  /* ============ COOKIE BANNER ============ */
-  .cookie-banner {
-    position: fixed;
-    right: 32px;
-    bottom: 32px;
-    z-index: 200;
-    width: 420px;
-    max-width: calc(100% - 64px);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 28px 32px;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-    transform: translateY(calc(100% + 32px));
-    opacity: 0;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
-    pointer-events: none;
-  }
-  .cookie-banner::before {
+  /* ============ INSIGHTS HERO ============ */
+  .insights-hero { position: relative; padding: 240px var(--space-x) 0; width: 100%; overflow: hidden; }
+  .insights-hero::before {
     content: "";
     position: absolute;
-    left: 24px;
-    right: 24px;
-    top: 0;
-    height: 1px;
-    background: var(--divider-grad);
+    top: -260px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 560px;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(191, 163, 96, 0.16) 0%, rgba(143, 122, 72, 0.08) 42%, rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
   }
-  .cookie-banner.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .cookie-banner__text { width: 100%; }
-  .cookie-banner__title { font-family: var(--font-serif); font-size: 20px; color: var(--color-white); margin: 0 0 8px; }
-  .cookie-banner__desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; }
-  .cookie-banner__desc a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
-  .cookie-banner__desc a:hover { color: #ffe1a3; }
-  .cookie-banner__actions { display: flex; align-items: center; gap: 12px; width: 100%; }
-  .cookie-banner__actions .btn { padding: 12px 20px; font-size: 14px; flex: 1 0 0; }
-  .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
+  .insights-hero__container { position: relative; max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding-bottom: 72px; }
+  .insights-hero__kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold-brand); }
+  .insights-hero__kicker-line { width: 28px; height: 1px; background: var(--color-bronze-light); opacity: 0.6; }
+  .insights-hero__title { font-family: var(--font-serif); font-size: 66px; line-height: 1.12; margin: 0; font-weight: 400; }
+  .insights-hero__title-line--gold { color: var(--color-gold); display: block; }
+  .insights-hero__desc { font-size: 20px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 620px; }
+  .insights-hero__rule { width: 84px; height: 1px; background: var(--divider-grad); margin-top: 4px; }
 
+  /* ============ INSIGHTS BODY ============ */
+  .insights { padding: 0 var(--space-x) var(--space-y); width: 100%; }
+
+  /* ---- featured ---- */
+  .insights-featured-wrap { max-width: 1320px; margin: 0 auto 96px; }
+  .insights-featured {
+    position: relative;
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    padding: 64px;
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .insights-featured::before {
+    content: "";
+    position: absolute;
+    top: -220px;
+    right: -160px;
+    width: 560px;
+    height: 440px;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(250, 208, 107, 0.1) 0%, rgba(143, 122, 72, 0.05) 45%, rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
+  }
+  .insights-featured:hover { border-color: var(--color-bronze-light); transform: translateY(-2px); }
+  .insights-featured__badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border: 1px solid var(--color-bronze);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    background: rgba(211, 167, 105, 0.08);
+    margin-bottom: 28px;
+  }
+  .insights-featured__meta { position: relative; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--color-text-muted); margin-bottom: 18px; }
+  .insights-featured__meta-cat { color: var(--color-gold-brand); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .insights-featured__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
+  .insights-featured__title { position: relative; font-family: var(--font-serif); font-size: 46px; line-height: 1.15; color: var(--color-white); margin: 0 0 20px; max-width: 900px; }
+  .insights-featured__excerpt { position: relative; font-size: 19px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 760px; margin: 0 0 32px; }
+  .insights-featured__cta { position: relative; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); }
+  .insights-featured__cta img { width: 14px; height: 14px; transition: transform 0.25s ease; }
+  .insights-featured:hover .insights-featured__cta img { transform: translateX(4px); }
+
+  /* ---- section label ---- */
+  .insights-section-label { max-width: 1320px; margin: 0 auto 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold-brand); display: flex; align-items: center; gap: 16px; }
+  .insights-section-label::after { content: ""; flex: 1 0 0; height: 1px; background: var(--color-border); }
+
+  /* ---- grid ---- */
+  .insights-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .insights-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    padding: 40px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .insights-card:hover { border-color: var(--color-bronze-light); transform: translateY(-3px); }
+  .insights-card__meta { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--color-text-muted); margin-bottom: 16px; }
+  .insights-card__cat { color: var(--color-gold-brand); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .insights-card__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
+  .insights-card__title { font-family: var(--font-serif); font-size: 26px; line-height: 1.28; color: var(--color-white); margin: 0 0 14px; flex: 1 0 auto; }
+  .insights-card__excerpt { font-size: 16px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 24px; }
+  .insights-card__foot { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--color-border); }
+  .insights-card__date { font-size: 13px; color: var(--color-text-muted); }
+  .insights-card__arrow { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--color-border); transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease; }
+  .insights-card__arrow img { width: 13px; height: 13px; }
+  .insights-card:hover .insights-card__arrow { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.1); transform: translateX(3px); }
 
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
-
     .page { width: 100%; }
 
     html.no-scroll, body.no-scroll { overflow: hidden; height: 100%; }
@@ -528,30 +495,12 @@
     .header__burger { display: flex; }
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
-    /* hero */
-    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
-    .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
-    .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
-    .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; align-items: center; }
-    .hero__heading-block { align-items: center; text-align: center; }
-    .hero__title { font-size: 36px; }
-    .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
-    .hero__cta-row .btn { width: 100%; }
-
-    /* owners features panel */
-    .owners-features { padding: 48px 20px; }
-    .owners-features__panel { grid-template-columns: 1fr 1fr; gap: 40px 20px; padding: 40px 20px; border-radius: 16px; }
-    .owners-features__panel::before { border-radius: 16px; }
-    .owners-features__title { max-width: none; }
-    .owners-features__desc { max-width: none; }
-
-    /* owners cta band */
-    .owners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
-    .owners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .owners-cta__title { font-size: 30px; }
-    .owners-cta .btn { width: 100%; }
+    /* calculator banner */
+    .calc-banner { height: auto; padding: 48px 20px; }
+    .calc-banner__box { flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 28px 20px; }
+    .calc-banner__info { flex-direction: column; align-items: center; text-align: center; }
+    .calc-banner__text { align-items: center; white-space: normal; }
+    .calc-banner__title { font-size: 26px; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -560,8 +509,28 @@
     .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
     .footer__column { width: calc(50% - 12px); }
 
-    /* cookie banner */
-    .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+    /* insights hero */
+    .insights-hero { padding: 132px 20px 0; }
+    .insights-hero::before { width: 640px; height: 380px; top: -180px; }
+    .insights-hero__container { gap: 18px; padding-bottom: 44px; }
+    .insights-hero__kicker { font-size: 12px; gap: 8px; }
+    .insights-hero__kicker-line { width: 18px; }
+    .insights-hero__title { font-size: 34px; }
+    .insights-hero__desc { font-size: 16px; }
+
+    /* insights body */
+    .insights { padding: 0 20px 64px; }
+    .insights-featured-wrap { margin: 0 0 56px; }
+    .insights-featured { padding: 32px 24px; }
+    .insights-featured__title { font-size: 28px; }
+    .insights-featured__excerpt { font-size: 16px; }
+    .insights-featured__badge { margin-bottom: 20px; font-size: 10px; padding: 6px 14px; }
+
+    .insights-section-label { margin: 0 0 20px; }
+
+    .insights-grid { grid-template-columns: 1fr; gap: 20px; }
+    .insights-card { padding: 28px 24px; }
+    .insights-card__title { font-size: 22px; }
   }
 </style>
 </head>
@@ -577,7 +546,7 @@
         <nav class="header__nav" id="primaryNav">
           <ul class="header__nav-list" id="navList">
             <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
-            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
@@ -604,94 +573,177 @@
         </div>
       </div>
     </header>
+
     <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero__bg-wrap">
-          <picture>
-            <source media="(max-width: 768px)" srcset="assets/owner1-mob.png">
-            <img class="hero__bg" src="assets/owner1.png" alt="Family Dubai skyline">
-          </picture>
-        </div>
-        <div class="hero__overlay" aria-hidden="true"></div>
-        <div class="hero__content">
-          <div class="hero__heading-block">
-            <span class="hero__eyebrow">Owners</span>
-            <h1 class="hero__title">
-              <span class="hero__title-line">Live in Your Home,</span>
-              <span class="hero__title-line hero__title-line--gold">Build Your Future.</span>
-            </h1>
-            <p class="hero__subtitle">More than a home, it's your tomorrow.</p>
+      <header class="insights-hero">
+        <div class="insights-hero__container">
+          <div class="insights-hero__kicker">
+            <span class="insights-hero__kicker-line"></span>
+            Insights
+            <span class="insights-hero__kicker-line"></span>
           </div>
-          <div class="hero__cta-row">
-            <a class="btn btn--gradient" href="calculator.html">
-              Book Your Eligibility
-              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-            </a>
-          </div>
+          <h1 class="insights-hero__title">
+            <span>News &amp;</span>
+            <span class="insights-hero__title-line--gold">Insights</span>
+          </h1>
+          <p class="insights-hero__desc">Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own.</p>
+          <div class="insights-hero__rule"></div>
         </div>
-      </section>
+      </header>
 
-      <!-- OWNERS FEATURES PANEL -->
-      <section class="owners-features">
-        <div class="owners-features__panel">
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner1.svg" alt="">
-            <p class="owners-features__title">Live in your home today</p>
-            <p class="owners-features__desc">In the home you choose. Create your space, your comfort, your life.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner2.svg" alt="">
-            <p class="owners-features__title">Live as if it's already yours</p>
-            <p class="owners-features__desc">Don't wait years to start living the life you want.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner3.svg" alt="">
-            <p class="owners-features__title">Build equity every month</p>
-            <p class="owners-features__desc">While others pay rent and start over, you build your ownership.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner4.svg" alt="">
-            <p class="owners-features__title">Create, customize, make it yours</p>
-            <p class="owners-features__desc">Design, renovate, decorate. This is your home, not temporary housing.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner5.svg" alt="">
-            <p class="owners-features__title">Benefit from property value growth</p>
-            <p class="owners-features__desc">While you live and prepare for a mortgage, your home may increase in value.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner6.svg" alt="">
-            <p class="owners-features__title">Your payments work with the market</p>
-            <p class="owners-features__desc">You're not just saving. You're building ownership in real estate.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner7.svg" alt="">
-            <p class="owners-features__title">Switch to a mortgage or buy it outright</p>
-            <p class="owners-features__desc">But most importantly — you've already lived the life you always wanted.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner8.svg" alt="">
-            <p class="owners-features__title">A home changes everything</p>
-            <p class="owners-features__desc">It changes your address. It changes your future. It changes your life.</p>
-          </div>
-        </div>
-      </section>
+      <div class="insights">
 
-      <!-- OWNERS CTA BAND -->
-      <section class="owners-cta">
-        <div class="owners-cta__bg-wrap">
-          <img class="owners-cta__bg" src="assets/owner2.png" alt="Living room skyline view">
+        <div class="insights-featured-wrap">
+          <a class="insights-featured" href="why-homeownership-needs-a-new-financial-model.html">
+            <span class="insights-featured__badge">★ Featured Article</span>
+            <div class="insights-featured__meta">
+              <span class="insights-featured__meta-cat">Investment Insights</span>
+              <span class="insights-featured__meta-dot"></span>
+              <span>May 15, 2026</span>
+              <span class="insights-featured__meta-dot"></span>
+              <span>6 min read</span>
+            </div>
+            <h2 class="insights-featured__title">Why Homeownership Needs a New Financial Model</h2>
+            <p class="insights-featured__excerpt">For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model&mdash;and how Lease-to-Own bridges the gap.</p>
+            <span class="insights-featured__cta">Read the Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+          </a>
         </div>
-        <div class="owners-cta__overlay" aria-hidden="true"></div>
-        <h2 class="owners-cta__title">
-          <span class="owners-cta__title-line">Start living</span>
-          <span class="owners-cta__title-line owners-cta__title-line--gold">your future today.</span>
-        </h2>
-        <a class="btn btn--gradient" href="calculator.html">
-          Book Your Eligibility
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+
+        <p class="insights-section-label">More Articles</p>
+
+        <div class="insights-grid">
+
+          <a class="insights-card" href="lease-to-own-a-smarter-path-to-homeownership.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Lease-to-Own</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>May 10, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Lease-to-Own: A Smarter Path to Homeownership</h3>
+            <p class="insights-card__excerpt">Renting builds no ownership. Buying asks you to wait years. Lease-to-Own is a third path that lets you live in your future home while you prepare to own it.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">6 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="unlocking-real-estate-investment-through-clns.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Investment Insights</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>May 6, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Unlocking Real Estate Investment Through Asset-Backed CLNs</h3>
+            <p class="insights-card__excerpt">Every Asset-Backed Credit Linked Note finances one property and one Lease-to-Own customer. Here's how the structure works, and why it creates a new category of investing.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">7 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="why-dubai-remains-a-global-real-estate-destination.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Housing Market</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>May 3, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Why Dubai Remains a Global Real Estate Destination</h3>
+            <p class="insights-card__excerpt">Population growth, an open ownership market and continuous infrastructure investment keep Dubai among the world's most resilient residential property markets.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">6 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="understanding-asset-backed-credit-linked-notes.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Investment Insights</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>April 28, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Understanding Asset-Backed Credit Linked Notes</h3>
+            <p class="insights-card__excerpt">A plain-language guide to how Asset-Backed CLNs work&mdash;one property, one customer, one investment lifecycle, with protection built in at every stage.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">7 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="how-lease-to-own-creates-value-for-everyone.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Lease-to-Own</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>April 22, 2026</span>
+            </div>
+            <h3 class="insights-card__title">How Lease-to-Own Creates Value for Everyone</h3>
+            <p class="insights-card__excerpt">Homeowners, investors, banks and brokers each follow a different path through Lease-to-Own&mdash;but every path leads to the same destination.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">7 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="the-future-of-mortgage-lending.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Banking</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>April 18, 2026</span>
+            </div>
+            <h3 class="insights-card__title">The Future of Mortgage Lending</h3>
+            <p class="insights-card__excerpt">Mortgage lending shouldn't begin with an application&mdash;it should begin with preparation. How documented payment behaviour is changing what banks look for.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">6 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="dubai-residential-market-continues-strong-growth.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Housing Market</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>April 12, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Dubai Residential Market Continues Strong Growth</h3>
+            <p class="insights-card__excerpt">Population growth and a shift from speculation to genuine homeownership demand keep reshaping Dubai's residential market.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">6 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+          <a class="insights-card" href="investors-angels-announces-first-banking-partnership.html">
+            <div class="insights-card__meta">
+              <span class="insights-card__cat">Company News</span>
+              <span class="insights-card__meta-dot"></span>
+              <span>April 5, 2026</span>
+            </div>
+            <h3 class="insights-card__title">Investors' Angels Announces First Banking Partnership</h3>
+            <p class="insights-card__excerpt">Investors' Angels launches its first Mortgage Partnership Program with a UAE banking institution, giving customers a documented path toward mortgage eligibility.</p>
+            <div class="insights-card__foot">
+              <span class="insights-card__date">4 min read</span>
+              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+
+      <section class="calc-banner">
+        <div class="calc-banner__box">
+          <div class="calc-banner__info">
+            <div class="calc-banner__icon">
+              <img src="assets/icons/icon-calculator.svg" alt="">
+            </div>
+            <div class="calc-banner__text">
+              <p class="calc-banner__title">See what Lease-to-Own could look like for you</p>
+              <p class="calc-banner__desc">Use our calculator to see your options and monthly payments.</p>
+            </div>
+          </div>
+          <a class="btn btn--gradient" href="calculator.html">
+            Try Calculator
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
       </section>
     </main>
 
@@ -721,9 +773,9 @@
           <div class="footer__column">
             <p class="footer__column-title">For Investors</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="#">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="/#">How Investing Works</a></li>
               <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
-              <li><a class="footer__column-link" href="contact.html">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="/#">Become an Investor</a></li>
               <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
             </ul>
           </div>
@@ -731,8 +783,8 @@
             <p class="footer__column-title">Company</p>
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="about.html">About Us</a></li>
-              <li><a class="footer__column-link" href="#">Our Team</a></li>
-              <li><a class="footer__column-link" href="#">Partners</a></li>
+              <li><a class="footer__column-link" href="/#">Our Team</a></li>
+              <li><a class="footer__column-link" href="/#">Partners</a></li>
               <li><a class="footer__column-link" href="news-insights.html">News &amp; Insights</a></li>
               <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
             </ul>
@@ -742,7 +794,7 @@
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
               <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="/#">Risk Disclosure</a></li>
               <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
             </ul>
           </div>
@@ -756,17 +808,6 @@
         </div>
       </div>
     </footer>
-
-    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-      <div class="cookie-banner__text">
-        <p class="cookie-banner__title">We value your privacy</p>
-        <p class="cookie-banner__desc">We use cookies to enhance your browsing experience and analyze our traffic. Read our <a href="cookie-policy.html">Cookie Policy</a> to learn more.</p>
-      </div>
-      <div class="cookie-banner__actions">
-        <button class="btn btn--text" type="button" id="cookieDecline">Decline</button>
-        <button class="btn btn--gradient" type="button" id="cookieAccept">Accept All</button>
-      </div>
-    </div>
 
   </div>
 
@@ -797,31 +838,6 @@
   })();
 
   (function () {
-    var items = document.querySelectorAll('.owners-features__item');
-    if (!items.length) return;
-
-    items.forEach(function (item, i) {
-      item.style.transitionDelay = (i * 70) + 'ms';
-    });
-
-    if (!('IntersectionObserver' in window)) {
-      items.forEach(function (item) { item.classList.add('is-visible'); });
-      return;
-    }
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
-
-    items.forEach(function (item) { observer.observe(item); });
-  })();
-
-  (function () {
     var burger = document.querySelector('.header__burger');
     var nav = document.getElementById('primaryNav');
     var header = document.querySelector('.header');
@@ -846,40 +862,6 @@
       });
     });
   })();
-
-  (function () {
-    var STORAGE_KEY = 'ia_cookie_consent';
-    var banner = document.getElementById('cookieBanner');
-    var acceptBtn = document.getElementById('cookieAccept');
-    var declineBtn = document.getElementById('cookieDecline');
-    if (!banner) return;
-
-    function getConsent() {
-      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
-    }
-    function setConsent(value) {
-      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
-    }
-    function hideBanner() {
-      banner.classList.remove('is-visible');
-    }
-
-    if (!getConsent()) {
-      window.requestAnimationFrame(function () {
-        banner.classList.add('is-visible');
-      });
-    }
-
-    if (acceptBtn) acceptBtn.addEventListener('click', function () {
-      setConsent('accepted');
-      hideBanner();
-    });
-    if (declineBtn) declineBtn.addEventListener('click', function () {
-      setConsent('declined');
-      hideBanner();
-    });
-  })();
 </script>
-
 </body>
 </html>

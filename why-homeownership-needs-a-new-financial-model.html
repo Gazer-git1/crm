@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Homeownership Needs a New Financial Model — Investors' Angels</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model — and how Lease-to-Own bridges the gap.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://raw.githubusercontent.com/Gazer-git1/crm/main/why-homeownership-needs-a-new-financial-model.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Investors' Angels">
+<meta property="og:title" content="Why Homeownership Needs a New Financial Model">
+<meta property="og:description" content="For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model — and how Lease-to-Own bridges the gap.">
+<meta property="og:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<meta property="og:url" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/why-homeownership-needs-a-new-financial-model.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Homeownership Needs a New Financial Model">
+<meta name="twitter:description" content="For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model — and how Lease-to-Own bridges the gap.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Gazer-git1/crm/main/assets/hero-bg.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    /* colors */
+    --color-bg: #0a0f13;
+    --color-bg-alt: #0a1013;
+    --color-bg-secondary: #161817;
+    --color-bg-footer: #0d0a08;
+    --color-white: #ffffff;
+    --color-text-secondary: #b9bdc4;
+    --color-text-muted: #73777e;
+    --color-text-footer-muted: #636366;
+    --color-gold: #fad06b;
+    --color-gold-dark: #c9a44c;
+    --color-gold-brand: #bfa360;
+    --color-bronze: #9b7140;
+    --color-bronze-light: #d3a769;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-highlight-grad: linear-gradient(138.02deg, #5d492f 28.65%, #292117 88.873%);
+    --color-btn-grad: linear-gradient(90deg, #9b7140 0%, #d3a769 48.292%, #9b7140 100%);
+    --divider-grad: linear-gradient(90deg, rgba(155, 113, 64, 0) 0%, rgba(211, 167, 105, 0.9) 50%, rgba(155, 113, 64, 0) 100%);
+
+    /* typography */
+    --font-serif: 'Jacques Francois', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    /* fixed desktop canvas */
+    --canvas-width: 1920px;
+    --space-x: 300px;
+    --space-y: 120px;
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--color-bg-footer); overflow-x: clip; }
+  html { scrollbar-gutter: stable; }
+  body {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: none; }
+  img:not([src$=".svg"]) { color: var(--color-text-muted); font-size: 13px; text-align: center; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0; }
+  button { font: inherit; cursor: pointer; }
+
+  /* Fixed 1920px desktop canvas; zoomed as a whole (real layout resize, not just visual) to fit narrower windows */
+  .page {
+    width: var(--canvas-width);
+    margin: 0 auto;
+    position: relative;
+    isolation: isolate;
+  }
+  .page::before, .page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4000px;
+    background: var(--color-bg-footer);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .page::before { right: 100%; }
+  .page::after { left: 100%; }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn__icon { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.25s ease; }
+  .btn:hover .btn__icon { transform: translateX(4px); }
+  .btn--gradient { background: var(--color-btn-grad); color: #0d0a08; }
+  .btn--gradient:hover { box-shadow: 0 10px 28px rgba(211, 167, 105, 0.4); }
+  .btn--gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+  .btn--gradient:hover::after { left: 130%; }
+  .btn--outline { background: transparent; color: var(--color-gold); border: 1px solid var(--color-bronze); font-size: 16px; }
+  .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
+  .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
+  .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
+  .btn--text--lg { font-size: 20px; }
+
+  /* ============ HEADER ============ */
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 250px;
+    z-index: 100;
+  }
+  .header__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .header__inner {
+    display: flex;
+    flex: 1 0 0;
+    height: 75px;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+  }
+  .header__logo { display: flex; align-items: center; height: 100px; width: 223px; margin-top: 14px; }
+  .header__logo-mark { height: 100px; width: 223px; }
+  .header__nav { position: relative; }
+  .header__nav-list { display: flex; align-items: center; gap: 16px; height: 100%; }
+  .header__nav-item { height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10px; position: relative; z-index: 1; }
+  .header__nav-link {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    line-height: 1.26;
+    transition: color 0.25s ease;
+  }
+  .header__nav-item--active .header__nav-link { color: var(--color-gold); font-weight: 700; }
+  .header__nav-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 79% 62% at 50% 0%, rgba(191, 163, 96, 0.4) 0%, rgba(143, 122, 72, 0.3) 25%, rgba(96, 82, 48, 0.2) 50%, rgba(48, 41, 24, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .header__nav-item:hover::after, .header__nav-item--active::after { opacity: 1; }
+  .header__cta { width: 200px; flex-shrink: 0; }
+  .header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .header__burger {
+    display: none;
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .header__burger span { display: block; width: 20px; height: 2px; background: var(--color-gold); transition: transform 0.3s ease, opacity 0.3s ease; }
+  .header__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .header__nav-footer { display: none; }
+
+  /* ============ CALCULATOR BANNER ============ */
+  .calc-banner { position: relative; display: flex; align-items: center; height: 200px; padding: 80px var(--space-x); width: 100%; }
+  .calc-banner::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .calc-banner__box {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 0 0;
+    padding: 40px;
+  }
+  .calc-banner__info { display: flex; gap: 32px; align-items: center; flex: 1 0 0; min-width: 0; }
+  .calc-banner__icon { width: 60px; height: 60px; border: 1px solid var(--color-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .calc-banner__icon img { width: 30px; height: 30px; }
+  .calc-banner__text { display: flex; flex-direction: column; gap: 10px; white-space: nowrap; }
+  .calc-banner__title { font-family: var(--font-serif); font-size: 32px; line-height: 1; color: var(--color-white); }
+  .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
+
+  /* ============ FOOTER ============ */
+  .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
+  .footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .footer__top { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+  .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer__logo { display: flex; align-items: center; height: 100px; width: 223px; }
+  .footer__logo-mark { height: 100px; width: 223px; }
+  .footer__social { display: flex; gap: 16px; }
+  .footer__social-link { display: inline-flex; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .footer__social-link:hover { transform: translateY(-3px) scale(1.08); opacity: 0.85; }
+  .footer__social-link img { width: 40px; height: 40px; }
+  .footer__columns { display: flex; gap: 80px; white-space: nowrap; }
+  .footer__column { display: flex; flex-direction: column; gap: 20px; width: 140px; }
+  .footer__column-title { font-size: 15px; font-weight: 700; color: var(--color-gold-brand); text-transform: uppercase; line-height: 1.26; }
+  .footer__column-list { display: flex; flex-direction: column; gap: 14px; }
+  .footer__column-link { font-size: 13px; color: var(--color-text-secondary); display: inline-block; transform-origin: left center; transition: color 0.25s ease, transform 0.25s ease; }
+  .footer__column-link:hover { color: var(--color-white); transform: scale(1.06); }
+  .footer__bottom { display: flex; align-items: center; justify-content: center; padding-top: 24px; }
+  .footer__bottom-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .footer__lock { width: 13.33px; height: 13.33px; }
+  .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
+
+  /* ============ READING PROGRESS ============ */
+  .reading-progress { position: fixed; top: 0; left: 0; width: 100%; height: 3px; z-index: 300; pointer-events: none; background: rgba(255, 255, 255, 0.04); }
+  .reading-progress__bar { height: 100%; width: 0%; background: var(--color-btn-grad); }
+
+  /* ============ ARTICLE HERO ============ */
+  .article-hero { position: relative; padding: 240px var(--space-x) 0; width: 100%; overflow: hidden; }
+  .article-hero::before {
+    content: "";
+    position: absolute;
+    top: -260px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 560px;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(191, 163, 96, 0.16) 0%, rgba(143, 122, 72, 0.08) 42%, rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
+  }
+  .article-hero__container { position: relative; max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding-bottom: 72px; }
+  .article-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 18px;
+    border: 1px solid var(--color-bronze);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    background: rgba(211, 167, 105, 0.08);
+  }
+  .article-hero__back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--color-text-muted); transition: color 0.2s ease, transform 0.2s ease; margin-bottom: -8px; }
+  .article-hero__back:hover { color: var(--color-gold); transform: translateX(-2px); }
+  .article-hero__kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold-brand); }
+  .article-hero__kicker-line { width: 28px; height: 1px; background: var(--color-bronze-light); opacity: 0.6; }
+  .article-hero__title { font-family: var(--font-serif); font-size: 66px; line-height: 1.12; margin: 0; font-weight: 400; }
+  .article-hero__title-line--gold { color: var(--color-gold); display: block; }
+  .article-hero__meta { display: flex; align-items: center; gap: 14px; font-size: 15px; color: var(--color-text-muted); }
+  .article-hero__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
+  .article-hero__rule { width: 84px; height: 1px; background: var(--divider-grad); margin-top: 12px; }
+
+  /* ============ ARTICLE BODY ============ */
+  .article { padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .article__container { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; }
+
+  .article__lede { font-size: 22px; line-height: 1.65; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 20px; }
+  .article__lede--intro { color: var(--color-white); font-weight: 400; }
+  .article__dropcap::first-letter {
+    font-family: var(--font-serif);
+    font-size: 78px;
+    line-height: 0.72;
+    font-weight: 400;
+    color: var(--color-gold);
+    float: left;
+    padding: 8px 14px 0 0;
+  }
+
+  .article__sequence { display: flex; flex-direction: column; gap: 0; margin: 8px 0 40px 4px; }
+  .article__sequence-item {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .article__sequence-item:first-child { border-top: 1px solid var(--color-border); }
+  .article__sequence-num { font-family: var(--font-serif); font-size: 15px; color: var(--color-gold-dark); width: 20px; flex-shrink: 0; }
+  .article__sequence-text { font-family: var(--font-serif); font-style: italic; font-size: 26px; line-height: 1.3; color: var(--color-white); }
+  .article__sequence-tag { margin-left: auto; font-family: var(--font-sans); font-style: normal; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); white-space: nowrap; flex-shrink: 0; }
+
+  /* ---- table of contents ---- */
+  .article__toc-wrap { max-width: 900px; margin: 8px auto 76px; }
+  .article__toc { border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); padding: 40px 48px; }
+  .article__toc-title { font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold-brand); font-weight: 700; margin: 0 0 24px; }
+  .article__toc-grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 16px; }
+  .article__toc-item { display: flex; align-items: baseline; gap: 14px; font-size: 15px; }
+  .article__toc-item a { display: flex; align-items: baseline; gap: 14px; color: var(--color-text-secondary); transition: color 0.2s ease, transform 0.2s ease; }
+  .article__toc-item a:hover { color: var(--color-white); transform: translateX(3px); }
+  .article__toc-num { font-family: var(--font-serif); color: var(--color-gold-dark); font-size: 15px; flex-shrink: 0; width: 22px; }
+
+  /* ---- chapter / part dividers ---- */
+  .article__part { position: relative; background: var(--color-bg-secondary); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); overflow: hidden; margin: 96px 0; }
+  .article__part-inner { position: relative; max-width: 1320px; margin: 0 auto; padding: 52px var(--space-x); display: flex; align-items: center; gap: 36px; }
+  .article__part-num { font-family: var(--font-serif); font-size: 130px; line-height: 1; color: rgba(250, 208, 107, 0.07); flex-shrink: 0; user-select: none; }
+  .article__part-text { display: flex; flex-direction: column; gap: 10px; }
+  .article__part-label { font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-gold-brand); font-weight: 700; }
+  .article__part-title { font-family: var(--font-serif); font-size: 34px; color: var(--color-white); line-height: 1.18; margin: 0; }
+
+  /* ---- numbered sections ---- */
+  .article__section { display: grid; grid-template-columns: 52px 1fr; column-gap: 32px; margin-top: 56px; scroll-margin-top: 40px; }
+  .article__section:first-child { margin-top: 0; }
+  .article__section-num {
+    width: 48px;
+    height: 48px;
+    border-radius: 100px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-gold-dark);
+    flex-shrink: 0;
+  }
+  .article__section-body { min-width: 0; }
+  .article__section h2 { font-family: var(--font-serif); font-size: 33px; font-weight: 400; line-height: 1.22; color: var(--color-gold); margin: 5px 0 22px; }
+  .article__section p { font-size: 19px; line-height: 1.75; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 18px; }
+  .article__section p:last-child { margin-bottom: 0; }
+  .article__section p:first-of-type { font-size: 21px; color: var(--color-white); font-weight: 400; }
+  .article__section strong { color: var(--color-gold-dark); font-weight: 700; }
+  .article__section ul { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 20px; padding-left: 26px; }
+  .article__section li { list-style: none; position: relative; font-size: 19px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); }
+  .article__section li::before { content: ""; position: absolute; left: -21px; top: 7px; width: 7px; height: 7px; border: 1.5px solid var(--color-gold); transform: rotate(45deg); }
+
+  /* ---- pull quotes ---- */
+  .article__pull-inline { margin: 52px 0 56px 84px; padding-left: 32px; border-left: 3px solid var(--color-gold); }
+  .article__pull-inline p { font-family: var(--font-serif); font-size: 28px; line-height: 1.45; font-weight: 400; color: var(--color-white); margin: 0; }
+
+  .article__pull { position: relative; margin: 76px 0 8px; padding: 52px 24px; text-align: center; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  .article__pull p { font-family: var(--font-serif); font-size: 34px; line-height: 1.4; font-weight: 400; color: var(--color-white); margin: 0; }
+  .article__pull p + p { margin-top: 8px; }
+  .article__pull p.article__pull-gold { color: var(--color-gold); }
+
+  .article__byline { margin-top: 56px; display: flex; align-items: center; gap: 16px; }
+  .article__byline-mark { width: 32px; height: 1px; background: var(--color-bronze-light); flex-shrink: 0; }
+  .article__byline-text { font-size: 14px; color: var(--color-text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+    .page { width: 100%; }
+
+    html.no-scroll, body.no-scroll { overflow: hidden; height: 100%; }
+
+    /* header */
+    .header { height: 72px; padding-inline: 20px; }
+    .header.header--menu-open { background: transparent; }
+    .header.header--menu-open .header__bg { opacity: 0; }
+    .header__bg { transition: opacity 0.2s ease; }
+    .header__logo { height: 40px; width: 89px; }
+    .header__logo-mark { height: 40px; width: 89px; }
+    .header__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      background: var(--color-bg-footer);
+      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 99;
+    }
+    .header__nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 520px;
+      max-width: none;
+      height: 340px;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at top, rgba(191, 163, 96, 0.18) 0%, rgba(191, 163, 96, 0.07) 40%, rgba(0, 0, 0, 0) 75%);
+      pointer-events: none;
+    }
+    .header__nav.is-open { height: 100vh; overflow-y: auto; }
+    .header__nav-list { flex-direction: column; align-items: stretch; height: auto; gap: 0; padding: 88px 28px 0; position: relative; }
+    .header__nav-item {
+      height: auto;
+      width: 100%;
+      padding: 0;
+      justify-content: flex-start;
+      border-bottom: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .header__nav-item:last-child { border-bottom: none; }
+    .header__nav.is-open .header__nav-item { opacity: 1; transform: translateY(0); }
+    .header__nav-item:nth-child(1) { transition-delay: 0.06s; }
+    .header__nav-item:nth-child(2) { transition-delay: 0.11s; }
+    .header__nav-item:nth-child(3) { transition-delay: 0.16s; }
+    .header__nav-item:nth-child(4) { transition-delay: 0.21s; }
+    .header__nav-item:nth-child(5) { transition-delay: 0.26s; }
+    .header__nav-item:nth-child(6) { transition-delay: 0.31s; }
+    .header__nav-item:nth-child(7) { transition-delay: 0.36s; }
+    .header__nav-item--active { position: relative; }
+    .header__nav-item--active::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 22px;
+      border-radius: 2px;
+      background: var(--color-btn-grad);
+    }
+    .header__nav-item::after { display: none; }
+    .header__nav-link {
+      width: 100%;
+      height: auto;
+      padding: 19px 2px;
+      font-size: 19px;
+      font-family: var(--font-serif);
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .header__nav-link::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      background: url('assets/icons/icon-arrow-outline.svg') center / contain no-repeat;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .header__nav-item--active .header__nav-link::after { opacity: 1; }
+    .header__nav-link:active::after { transform: translateX(3px); opacity: 1; }
+
+    .header__nav-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding: 36px 28px 40px;
+      position: relative;
+    }
+    .header__nav-footer::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      top: 0;
+      height: 1px;
+      background: var(--divider-grad);
+    }
+    .header__nav-footer-logo { width: 184px; height: auto; }
+    .header__nav-footer-social { display: flex; align-items: center; gap: 28px; }
+    .header__nav-footer-social img { width: 52px; height: 52px; opacity: 0.8; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .header__nav-footer-social a:active img { opacity: 1; transform: translateY(-2px); }
+    .header__nav-footer-copyright { font-size: 12px; color: var(--color-text-footer-muted); text-align: center; }
+
+    .header__cta { width: auto; padding: 10px 18px; font-size: 13px; }
+    .header__burger { display: flex; }
+    .header__logo, .header__actions { position: relative; z-index: 150; }
+
+    /* calculator banner */
+    .calc-banner { height: auto; padding: 48px 20px; }
+    .calc-banner__box { flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 28px 20px; }
+    .calc-banner__info { flex-direction: column; align-items: center; text-align: center; }
+    .calc-banner__text { align-items: center; white-space: normal; }
+    .calc-banner__title { font-size: 26px; }
+
+    /* footer */
+    .footer { padding: 64px 20px 32px; gap: 48px; }
+    .footer__top { flex-direction: column; align-items: center; gap: 40px; }
+    .footer__brand { order: 2; }
+    .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
+    .footer__column { width: calc(50% - 12px); }
+
+    /* article hero */
+    .article-hero { padding: 132px 20px 0; }
+    .article-hero::before { width: 640px; height: 380px; top: -180px; }
+    .article-hero__container { gap: 20px; padding-bottom: 44px; }
+    .article-hero__badge { font-size: 10px; padding: 6px 14px; }
+    .article-hero__kicker { font-size: 12px; gap: 8px; }
+    .article-hero__kicker-line { width: 18px; }
+    .article-hero__title { font-size: 34px; }
+    .article-hero__meta { font-size: 13px; flex-wrap: wrap; justify-content: center; row-gap: 6px; }
+
+    /* article body */
+    .article { padding: 0 20px 64px; }
+    .article__lede { font-size: 18px; }
+    .article__dropcap::first-letter { font-size: 52px; line-height: 0.7; padding: 4px 8px 0 0; }
+    .article__sequence { margin: 6px 0 30px 0; }
+    .article__sequence-item { gap: 12px; padding: 11px 0; }
+    .article__sequence-num { font-size: 13px; width: 16px; }
+    .article__sequence-text { font-size: 19px; }
+    .article__sequence-tag { display: none; }
+
+    .article__toc-wrap { margin: 4px 0 48px; }
+    .article__toc { padding: 26px 22px; }
+    .article__toc-grid { grid-template-columns: 1fr; row-gap: 13px; }
+
+    .article__part { margin: 56px 0; }
+    .article__part-inner { padding: 34px 20px; gap: 18px; }
+    .article__part-num { font-size: 64px; }
+    .article__part-title { font-size: 24px; }
+    .article__part-label { font-size: 11px; }
+
+    .article__section { grid-template-columns: 1fr; column-gap: 0; margin-top: 40px; }
+    .article__section-num { margin-bottom: 14px; }
+    .article__section h2 { font-size: 25px; margin: 0 0 16px; }
+    .article__section p { font-size: 17px; }
+    .article__section p:first-of-type { font-size: 18px; }
+    .article__section li { font-size: 17px; }
+
+    .article__pull-inline { margin: 36px 0 40px 0; padding-left: 18px; }
+    .article__pull-inline p { font-size: 21px; }
+
+    .article__pull { margin: 52px 0 4px; padding: 34px 4px; }
+    .article__pull p { font-size: 24px; }
+    .article__byline { margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+  <div class="reading-progress"><div class="reading-progress__bar" id="readingProgressBar"></div></div>
+
+  <div class="page">
+    <header class="header">
+      <img class="header__bg" src="assets/icons/header-bg.png" alt="">
+      <div class="header__inner">
+        <a href="/" class="header__logo" aria-label="Investors' Angels home">
+          <img class="header__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+        </a>
+
+        <nav class="header__nav" id="primaryNav">
+          <ul class="header__nav-list" id="navList">
+            <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="about.html">ABOUT</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="faq-investors.html">FAQ</a></li>
+          </ul>
+
+          <div class="header__nav-footer">
+            <img class="header__nav-footer-logo" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+            <div class="header__nav-footer-social">
+              <a href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+              <a href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+              <a href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+            </div>
+            <p class="header__nav-footer-copyright">© 2026 Investors' Angels DMCC</p>
+          </div>
+        </nav>
+
+        <div class="header__actions">
+          <a class="btn btn--outline header__cta" href="calculator.html">Get Started</a>
+          <button class="header__burger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <header class="article-hero">
+        <div class="article-hero__container">
+          <a class="article-hero__back" href="news-insights.html">&larr; All Articles</a>
+          <span class="article-hero__badge">★ Featured Article</span>
+          <div class="article-hero__kicker">
+            <span class="article-hero__kicker-line"></span>
+            Investment Insights
+            <span class="article-hero__kicker-line"></span>
+          </div>
+          <h1 class="article-hero__title">
+            <span>Why Homeownership Needs</span>
+            <span class="article-hero__title-line--gold">a New Financial Model</span>
+          </h1>
+          <div class="article-hero__meta">
+            <span>May 15, 2026</span>
+            <span class="article-hero__meta-dot"></span>
+            <span>6 min read</span>
+            <span class="article-hero__meta-dot"></span>
+            <span>Investors' Angels Editorial</span>
+          </div>
+          <div class="article-hero__rule"></div>
+        </div>
+      </header>
+
+      <article class="article">
+        <div class="article__container">
+
+          <p class="article__lede article__lede--intro article__dropcap">For generations, buying a home followed a predictable path.</p>
+
+          <div class="article__sequence">
+            <div class="article__sequence-item"><span class="article__sequence-num">01</span><span class="article__sequence-text">Save for a down payment.</span><span class="article__sequence-tag">Years of waiting</span></div>
+            <div class="article__sequence-item"><span class="article__sequence-num">02</span><span class="article__sequence-text">Apply for a mortgage.</span><span class="article__sequence-tag">The gatekeeper</span></div>
+            <div class="article__sequence-item"><span class="article__sequence-num">03</span><span class="article__sequence-text">Purchase a property.</span><span class="article__sequence-tag">The reward</span></div>
+            <div class="article__sequence-item"><span class="article__sequence-num">04</span><span class="article__sequence-text">Move in.</span><span class="article__sequence-tag">Finally</span></div>
+          </div>
+
+          <p class="article__lede">For millions of families around the world, that path no longer works.</p>
+          <p class="article__lede">Not because they cannot afford a home.</p>
+          <p class="article__lede">But because the financial system asks them to solve the hardest problem first.</p>
+        </div>
+
+        <div class="article__toc-wrap">
+          <nav class="article__toc" aria-label="Article contents">
+            <p class="article__toc-title">In This Article</p>
+            <div class="article__toc-grid">
+              <span class="article__toc-item"><a href="#s01"><span class="article__toc-num">01</span>People don't lack the ability to pay</a></span>
+              <span class="article__toc-item"><a href="#s07"><span class="article__toc-num">07</span>Homeownership becomes a journey</a></span>
+              <span class="article__toc-item"><a href="#s02"><span class="article__toc-num">02</span>Renting solves today's problem</a></span>
+              <span class="article__toc-item"><a href="#s08"><span class="article__toc-num">08</span>A stronger customer for banks</a></span>
+              <span class="article__toc-item"><a href="#s03"><span class="article__toc-num">03</span>Traditional mortgages solve ownership</a></span>
+              <span class="article__toc-item"><a href="#s09"><span class="article__toc-num">09</span>A new type of investment</a></span>
+              <span class="article__toc-item"><a href="#s04"><span class="article__toc-num">04</span>The missing bridge</a></span>
+              <span class="article__toc-item"><a href="#s10"><span class="article__toc-num">10</span>A better outcome for everyone</a></span>
+              <span class="article__toc-item"><a href="#s05"><span class="article__toc-num">05</span>Lease-to-Own changes the sequence</a></span>
+              <span class="article__toc-item"><a href="#s11"><span class="article__toc-num">11</span>Building the bridge to homeownership</a></span>
+              <span class="article__toc-item"><a href="#s06"><span class="article__toc-num">06</span>Everyone's interests become aligned</a></span>
+            </div>
+          </nav>
+        </div>
+
+        <div class="article__part">
+          <div class="article__part-inner">
+            <span class="article__part-num">I</span>
+            <div class="article__part-text">
+              <span class="article__part-label">Part One</span>
+              <h2 class="article__part-title">The Old Path No Longer Fits</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="article__container">
+          <section class="article__section" id="s01">
+            <div class="article__section-num">01</div>
+            <div class="article__section-body">
+              <h2>People don't lack the ability to pay.</h2>
+              <p>They lack the ability to wait.</p>
+              <p>Across many countries, monthly housing costs have become comparable to monthly mortgage payments.</p>
+              <p>A family may comfortably pay USD 4,000 or USD 5,000 every month for housing.</p>
+              <p>Yet that same family may need years to accumulate a mortgage down payment of USD 150,000 or more.</p>
+              <p>During those years, life continues.</p>
+              <p>Children grow up.</p>
+              <p>Careers change.</p>
+              <p>Property prices continue to rise.</p>
+              <p>The dream of homeownership moves further away.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s02">
+            <div class="article__section-num">02</div>
+            <div class="article__section-body">
+              <h2>Renting solves today's problem.</h2>
+              <p>But not tomorrow's.</p>
+              <p>Traditional renting provides flexibility.</p>
+              <p>It provides a place to live.</p>
+              <p>But every monthly payment disappears forever.</p>
+              <p>Years of responsible payments rarely move a family any closer to owning a home.</p>
+              <p>When the lease ends, the journey often starts again.</p>
+              <p>A new property.</p>
+              <p>A new landlord.</p>
+              <p>Another security deposit.</p>
+              <p>Another beginning.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s03">
+            <div class="article__section-num">03</div>
+            <div class="article__section-body">
+              <h2>Traditional mortgages solve ownership.</h2>
+              <p>But not accessibility.</p>
+              <p>Banks are designed to lend responsibly.</p>
+              <p>They require sufficient income.</p>
+              <p>Stable employment.</p>
+              <p>Good credit history.</p>
+              <p>And a meaningful down payment.</p>
+              <p>These requirements protect both the borrower and the lender.</p>
+              <p>But they also exclude millions of financially responsible people who simply have not yet accumulated enough capital.</p>
+            </div>
+          </section>
+
+          <div class="article__pull-inline">
+            <p>The result is a growing gap between people who can afford a home and people who can qualify to buy one.</p>
+          </div>
+        </div>
+
+        <div class="article__part">
+          <div class="article__part-inner">
+            <span class="article__part-num">II</span>
+            <div class="article__part-text">
+              <span class="article__part-label">Part Two</span>
+              <h2 class="article__part-title">The Missing Bridge</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="article__container">
+          <section class="article__section" id="s04">
+            <div class="article__section-num">04</div>
+            <div class="article__section-body">
+              <h2>The missing bridge</h2>
+              <p>The problem is not monthly affordability.</p>
+              <p>The problem is timing.</p>
+              <p>Families need a way to begin living in their future home before they have accumulated a traditional mortgage down payment.</p>
+              <p>They need time for their income, payment history and savings to work together.</p>
+              <p>Until now, that bridge has largely been missing.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s05">
+            <div class="article__section-num">05</div>
+            <div class="article__section-body">
+              <h2>Lease-to-Own changes the sequence.</h2>
+              <p>Instead of asking families to save first and live later, Lease-to-Own allows them to live first while preparing for ownership.</p>
+              <p>The customer chooses the home they want to own.</p>
+              <p>Investors' Angels purchases the property.</p>
+              <p>The customer moves in immediately under a registered Lease-to-Own Agreement.</p>
+              <p>Every monthly payment has two purposes.</p>
+              <p>One provides the right to live in the property.</p>
+              <p>The other gradually builds the customer's <strong>Purchase Option Balance</strong>&mdash;the contractual amount accumulated toward purchasing the home in the future.</p>
+              <p>Over time, the customer not only establishes a documented payment history but also prepares for a future mortgage while already living in the property they intend to own.</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="article__part">
+          <div class="article__part-inner">
+            <span class="article__part-num">III</span>
+            <div class="article__part-text">
+              <span class="article__part-label">Part Three</span>
+              <h2 class="article__part-title">Why the Model Works</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="article__container">
+          <section class="article__section" id="s06">
+            <div class="article__section-num">06</div>
+            <div class="article__section-body">
+              <h2>Everyone's interests become aligned.</h2>
+              <p>Traditional housing often places different participants on opposite sides of the transaction.</p>
+              <p>The tenant wants lower rent.</p>
+              <p>The landlord wants higher returns.</p>
+              <p>The bank manages lending risk.</p>
+              <p>The investor focuses on yield.</p>
+              <p>Lease-to-Own creates a different relationship.</p>
+              <p>The customer wants to complete the journey to ownership.</p>
+              <p>The investor wants the customer to succeed.</p>
+              <p>The bank wants a well-prepared future borrower.</p>
+              <p>Investors' Angels coordinates the entire process.</p>
+            </div>
+          </section>
+
+          <div class="article__pull-inline">
+            <p>Success is measured by one outcome: a family becoming homeowners.</p>
+          </div>
+
+          <section class="article__section" id="s07">
+            <div class="article__section-num">07</div>
+            <div class="article__section-body">
+              <h2>Homeownership becomes a journey, not a single transaction.</h2>
+              <p>Buying a home is rarely one financial decision.</p>
+              <p>It is a process.</p>
+              <p>People build careers.</p>
+              <p>Grow families.</p>
+              <p>Increase their income.</p>
+              <p>Develop financial discipline.</p>
+              <p>Lease-to-Own recognizes that reality.</p>
+              <p>Rather than waiting until every condition has already been met, it allows customers to move forward while continuing to strengthen their financial position.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s08">
+            <div class="article__section-num">08</div>
+            <div class="article__section-body">
+              <h2>A stronger customer for the banking system.</h2>
+              <p>By the time the customer applies for a mortgage, the situation has fundamentally changed.</p>
+              <p>The customer has:</p>
+              <ul>
+                <li>accumulated a meaningful Purchase Option Balance;</li>
+                <li>demonstrated years of consistent monthly payments;</li>
+                <li>lived in the property they intend to purchase;</li>
+                <li>built a documented financial track record.</li>
+              </ul>
+              <p>Banks are no longer evaluating a first-time applicant.</p>
+              <p>They are evaluating someone who has already demonstrated the ability to sustain long-term housing payments.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s09">
+            <div class="article__section-num">09</div>
+            <div class="article__section-body">
+              <h2>A new type of investment.</h2>
+              <p>The same structure also creates a new category of residential real estate investment.</p>
+              <p>Instead of purchasing and managing rental properties directly, investors participate through Asset-Backed Credit Linked Notes (CLNs), each linked to a specific residential property and a specific Lease-to-Own Agreement.</p>
+              <p>The investor finances more than a property.</p>
+              <p>They finance a family's journey to homeownership.</p>
+            </div>
+          </section>
+        </div>
+
+        <div class="article__part">
+          <div class="article__part-inner">
+            <span class="article__part-num">IV</span>
+            <div class="article__part-text">
+              <span class="article__part-label">Part Four</span>
+              <h2 class="article__part-title">The Bigger Picture</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="article__container">
+          <section class="article__section" id="s10">
+            <div class="article__section-num">10</div>
+            <div class="article__section-body">
+              <h2>A better outcome for everyone.</h2>
+              <p>Families move into their future homes years earlier.</p>
+              <p>Investors receive long-term, asset-backed investments.</p>
+              <p>Banks gain better-prepared mortgage customers.</p>
+              <p>Real estate brokers build long-term client relationships.</p>
+              <p>Instead of competing with one another, every participant benefits from the successful completion of the same journey.</p>
+            </div>
+          </section>
+
+          <section class="article__section" id="s11">
+            <div class="article__section-num">11</div>
+            <div class="article__section-body">
+              <h2>Building the bridge to homeownership.</h2>
+              <p>The future of homeownership is unlikely to be defined by a single financial product.</p>
+              <p>It will be defined by better cooperation between homeowners, investors, banks and the real estate industry.</p>
+              <p>At Investors' Angels, we believe that people should begin living in their future home when they are ready to build their future&mdash;not years later when they finally accumulate a traditional mortgage down payment.</p>
+            </div>
+          </section>
+
+          <div class="article__pull">
+            <p>Because a home should not be the reward for having waited long enough.</p>
+            <p class="article__pull-gold">It should be the foundation on which the future is built.</p>
+          </div>
+
+          <div class="article__byline">
+            <span class="article__byline-mark"></span>
+            <span class="article__byline-text">Investors' Angels &middot; Investment Insights</span>
+          </div>
+
+        </div>
+      </article>
+
+      <section class="calc-banner">
+        <div class="calc-banner__box">
+          <div class="calc-banner__info">
+            <div class="calc-banner__icon">
+              <img src="assets/icons/icon-calculator.svg" alt="">
+            </div>
+            <div class="calc-banner__text">
+              <p class="calc-banner__title">See what Lease-to-Own could look like for you</p>
+              <p class="calc-banner__desc">Use our calculator to see your options and monthly payments.</p>
+            </div>
+          </div>
+          <a class="btn btn--gradient" href="calculator.html">
+            Try Calculator
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/" class="footer__logo" aria-label="Investors' Angels home">
+            <img class="footer__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+          </a>
+          <div class="footer__social">
+            <a class="footer__social-link" href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+          </div>
+        </div>
+
+        <div class="footer__columns">
+          <div class="footer__column">
+            <p class="footer__column-title">For Owners</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="how-it-works.html">How it Works</a></li>
+              <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
+              <li><a class="footer__column-link" href="guarantees.html">Guarantees</a></li>
+              <li><a class="footer__column-link" href="faq-owners.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">For Investors</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="/#">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
+              <li><a class="footer__column-link" href="/#">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Company</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="about.html">About Us</a></li>
+              <li><a class="footer__column-link" href="/#">Our Team</a></li>
+              <li><a class="footer__column-link" href="/#">Partners</a></li>
+              <li><a class="footer__column-link" href="news-insights.html">News &amp; Insights</a></li>
+              <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Legal</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+              <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a class="footer__column-link" href="/#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <img class="footer__lock" src="assets/icons/icon-lock.svg" alt="">
+          <p class="footer__copyright">© 2026 Investors' Angels DMCC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+<script>
+  (function () {
+    var MOBILE_BREAKPOINT = 768;
+    var page = document.querySelector('.page');
+
+    function fitPage() {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        page.style.zoom = 1;
+        return;
+      }
+      var scale = Math.min(1, window.innerWidth / 1920);
+      page.style.zoom = scale;
+    }
+
+    function scheduleFit() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(fitPage);
+      });
+    }
+
+    window.addEventListener('resize', fitPage);
+    window.addEventListener('load', scheduleFit);
+    fitPage();
+    scheduleFit();
+  })();
+
+  (function () {
+    var burger = document.querySelector('.header__burger');
+    var nav = document.getElementById('primaryNav');
+    var header = document.querySelector('.header');
+    if (!burger || !nav) return;
+
+    function setMenu(open) {
+      burger.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+      if (header) header.classList.toggle('header--menu-open', open);
+      document.documentElement.classList.toggle('no-scroll', open);
+      document.body.classList.toggle('no-scroll', open);
+    }
+
+    burger.addEventListener('click', function () {
+      var isOpen = burger.getAttribute('aria-expanded') === 'true';
+      setMenu(!isOpen);
+    });
+
+    nav.querySelectorAll('.header__nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenu(false);
+      });
+    });
+  })();
+
+  (function () {
+    var bar = document.getElementById('readingProgressBar');
+    var article = document.querySelector('.article');
+    if (!bar || !article) return;
+
+    function update() {
+      var rect = article.getBoundingClientRect();
+      var total = article.offsetHeight - window.innerHeight;
+      var scrolled = Math.min(Math.max(-rect.top, 0), Math.max(total, 0));
+      var pct = total > 0 ? (scrolled / total) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+</script>
+</body>
+</html>
