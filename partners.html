@@ -309,7 +309,7 @@
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .partners-grid__item.is-visible { opacity: 1; transform: translateY(0); }
-  .partners-grid__logo { width: 260px; height: 88px; object-fit: contain; }
+  .partners-grid__logo { height: 58px; width: auto; max-width: 320px; object-fit: contain; }
   .partners-grid__category { font-family: var(--font-serif); font-size: 20px; margin: 0; font-weight: 400; color: var(--color-white); }
   .partners-grid__desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 260px; }
 
@@ -320,7 +320,7 @@
     align-items: flex-start;
     justify-content: space-between;
     width: 100%;
-    padding: 0 var(--space-x) 120px;
+    padding: 72px var(--space-x) 120px;
     background: var(--color-bg);
   }
   .partners-stats__item { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
@@ -553,7 +553,7 @@
 
     /* hero */
     .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
-    .hero__bg-wrap { position: absolute; inset: auto; top: -60px; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
     .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; align-items: center; }
@@ -568,11 +568,11 @@
     .partners-grid__title { font-size: 32px; margin-bottom: 32px; }
     .partners-grid__panel { grid-template-columns: 1fr; row-gap: 40px; padding: 40px 20px; border-radius: 16px; }
     .partners-grid__panel::before { border-radius: 16px; }
-    .partners-grid__logo { width: 220px; height: 76px; }
+    .partners-grid__logo { height: 46px; max-width: 260px; }
     .partners-grid__category { font-size: 18px; }
 
     /* partners stats band */
-    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 0 20px 48px; }
+    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 40px 20px 48px; }
     .partners-stats__item { flex: 1 1 40%; min-width: 0; }
     .partners-stats__value { font-size: 30px; }
     .partners-stats__label { font-size: 11px; }
@@ -580,6 +580,7 @@
     /* partners cta band */
     .partners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
     .partners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
+    .partners-cta__bg { object-position: calc(85% + 160px) center; }
     .partners-cta__title { font-size: 28px; }
     .partners-cta .btn { width: 100%; }
 
