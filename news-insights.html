@@ -226,17 +226,28 @@
     z-index: -1;
     background:
       linear-gradient(90deg, rgb(10, 15, 19) 32%, rgba(10, 15, 19, 0) 62%),
-      linear-gradient(180deg, rgba(10, 15, 19, 0.1) 0%, rgba(10, 15, 19, 0.9) 100%);
+      linear-gradient(180deg, rgba(10, 15, 19, 0) 0%, rgba(10, 15, 19, 0) 90%, rgb(10, 15, 19) 100%);
   }
   .news-hero__content { display: flex; flex-direction: column; gap: 24px; max-width: 660px; }
   .news-hero__title { font-family: var(--font-serif); font-size: 62px; line-height: 1.1; margin: 0; font-weight: 400; color: var(--color-gold); }
   .news-hero__desc { font-size: 20px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 560px; }
 
   /* ============ FILTER BAR ============ */
-  .news-filters { padding: 0 var(--space-x) 64px; width: 100%; }
+  .news-filters { position: relative; padding: 0 var(--space-x) 64px; width: 100%; }
+  .news-filters::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
   .news-filters__inner {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 8px;
     border: 1px solid var(--color-border);
     border-radius: 6px;
@@ -342,10 +353,7 @@
   .news-sidebar__title::after { content: ""; flex: 1 0 0; height: 1px; background: var(--color-border); }
   .news-sidebar__list { display: flex; flex-direction: column; gap: 20px; }
   .news-sidebar__item + .news-sidebar__item { padding-top: 20px; border-top: 1px solid var(--color-border); }
-  .news-sidebar__link { display: flex; gap: 16px; align-items: flex-start; }
-  .news-sidebar__thumb { width: 64px; height: 64px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
-  .news-sidebar__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
-  .news-sidebar__link:hover .news-sidebar__thumb img { transform: scale(1.08); }
+  .news-sidebar__link { display: block; }
   .news-sidebar__body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
   .news-sidebar__date { font-size: 12px; color: var(--color-text-muted); }
   .news-sidebar__item-title {
@@ -560,14 +568,11 @@
 
     /* news hero */
     .news-hero { padding: 72px 0 40px; overflow: hidden; }
-    .news-hero__bg-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; z-index: 0; }
-    .news-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
-    .news-hero__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 15, 19, 0) 45%, rgba(10, 15, 19, 0.85) 85%, rgb(10, 15, 19) 100%);
-    }
-    .news-hero__content { max-width: none; padding: 32px 20px 0; align-items: center; text-align: center; }
+    .news-hero__bg-wrap { position: relative; width: 100%; height: auto; overflow: visible; }
+    .news-hero__content { position: relative; z-index: 1; }
+    .news-hero__bg { position: static; width: 100%; height: auto; object-fit: unset; display: block; }
+    .news-hero__overlay { display: none; }
+    .news-hero__content { max-width: none; margin-top: -150px; padding: 0 20px; align-items: center; text-align: center; }
     .news-hero__title { font-size: 34px; }
     .news-hero__desc { font-size: 16px; }
 
@@ -698,7 +703,10 @@
     <main>
       <header class="news-hero">
         <div class="news-hero__bg-wrap">
-          <img class="news-hero__bg" src="assets/news1.png" alt="Dubai skyline at sunset">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/news1-mob.png">
+            <img class="news-hero__bg" src="assets/news1.png" alt="Dubai skyline at sunset">
+          </picture>
         </div>
         <div class="news-hero__overlay" aria-hidden="true"></div>
         <div class="news-hero__content">
@@ -833,84 +841,6 @@
                   </div>
                 </a>
 
-                <a class="insights-card" href="why-dubai-remains-a-global-real-estate-destination.html" data-category="housing-market">
-                  <div class="insights-card__media"><img src="assets/news1.png" alt="Dubai skyline at sunset"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">May 3, 2026</span>
-                    <h3 class="insights-card__title">Why Dubai Remains a Global Real Estate Destination</h3>
-                    <p class="insights-card__excerpt">Population growth, an open ownership market and continuous infrastructure investment keep Dubai among the world's most resilient residential property markets.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Housing Market</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="insights-card" href="understanding-asset-backed-credit-linked-notes.html" data-category="investment-insights">
-                  <div class="insights-card__media"><img src="assets/news2.png" alt="Modern living room interior"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">April 28, 2026</span>
-                    <h3 class="insights-card__title">Understanding Asset-Backed Credit Linked Notes</h3>
-                    <p class="insights-card__excerpt">A plain-language guide to how Asset-Backed CLNs work&mdash;one property, one customer, one investment lifecycle, with protection built in at every stage.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Investment Insights</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="insights-card" href="how-lease-to-own-creates-value-for-everyone.html" data-category="lease-to-own homeownership">
-                  <div class="insights-card__media"><img src="assets/news3.png" alt="Family in their new living room"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">April 22, 2026</span>
-                    <h3 class="insights-card__title">How Lease-to-Own Creates Value for Everyone</h3>
-                    <p class="insights-card__excerpt">Homeowners, investors, banks and brokers each follow a different path through Lease-to-Own&mdash;but every path leads to the same destination.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Lease-to-Own</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="insights-card" href="the-future-of-mortgage-lending.html" data-category="banking">
-                  <div class="insights-card__media"><img src="assets/news4.png" alt="Modern villas at dusk"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">April 18, 2026</span>
-                    <h3 class="insights-card__title">The Future of Mortgage Lending</h3>
-                    <p class="insights-card__excerpt">Mortgage lending shouldn't begin with an application&mdash;it should begin with preparation. How documented payment behaviour is changing what banks look for.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Banking</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="insights-card" href="dubai-residential-market-continues-strong-growth.html" data-category="housing-market">
-                  <div class="insights-card__media"><img src="assets/news1.png" alt="Dubai skyline at sunset"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">April 12, 2026</span>
-                    <h3 class="insights-card__title">Dubai Residential Market Continues Strong Growth</h3>
-                    <p class="insights-card__excerpt">Population growth and a shift from speculation to genuine homeownership demand keep reshaping Dubai's residential market.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Housing Market</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
-                <a class="insights-card" href="investors-angels-announces-first-banking-partnership.html" data-category="company-news">
-                  <div class="insights-card__media"><img src="assets/news2.png" alt="Modern living room interior"></div>
-                  <div class="insights-card__body">
-                    <span class="insights-card__date">April 5, 2026</span>
-                    <h3 class="insights-card__title">Investors' Angels Announces First Banking Partnership</h3>
-                    <p class="insights-card__excerpt">Investors' Angels launches its first Mortgage Partnership Program with a UAE banking institution, giving customers a documented path toward mortgage eligibility.</p>
-                    <div class="insights-card__foot">
-                      <span class="insights-card__cat">Company News</span>
-                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-                    </div>
-                  </div>
-                </a>
-
               </div>
 
               <p class="news-no-results" id="newsNoResults">No articles found in this category yet.</p>
@@ -922,7 +852,6 @@
             <ul class="news-sidebar__list">
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="why-homeownership-needs-a-new-financial-model.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news2.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">May 15, 2026</span>
                     <h3 class="news-sidebar__item-title">Why Homeownership Needs a New Financial Model</h3>
@@ -932,7 +861,6 @@
               </li>
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="lease-to-own-a-smarter-path-to-homeownership.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news3.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">May 10, 2026</span>
                     <h3 class="news-sidebar__item-title">Lease-to-Own: A Smarter Path to Homeownership</h3>
@@ -942,7 +870,6 @@
               </li>
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="unlocking-real-estate-investment-through-clns.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news4.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">May 6, 2026</span>
                     <h3 class="news-sidebar__item-title">Unlocking Real Estate Investment Through Asset-Backed CLNs</h3>
@@ -952,7 +879,6 @@
               </li>
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="why-dubai-remains-a-global-real-estate-destination.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news1.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">May 3, 2026</span>
                     <h3 class="news-sidebar__item-title">Why Dubai Remains a Global Real Estate Destination</h3>
@@ -962,7 +888,6 @@
               </li>
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="understanding-asset-backed-credit-linked-notes.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news2.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 28, 2026</span>
                     <h3 class="news-sidebar__item-title">Understanding Asset-Backed Credit Linked Notes</h3>
@@ -972,11 +897,37 @@
               </li>
               <li class="news-sidebar__item">
                 <a class="news-sidebar__link" href="how-lease-to-own-creates-value-for-everyone.html">
-                  <div class="news-sidebar__thumb"><img src="assets/news3.png" alt=""></div>
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 22, 2026</span>
                     <h3 class="news-sidebar__item-title">How Lease-to-Own Creates Value for Everyone</h3>
                     <span class="news-sidebar__cat">Lease-to-Own</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="the-future-of-mortgage-lending.html">
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">April 18, 2026</span>
+                    <h3 class="news-sidebar__item-title">The Future of Mortgage Lending</h3>
+                    <span class="news-sidebar__cat">Banking</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="dubai-residential-market-continues-strong-growth.html">
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">April 12, 2026</span>
+                    <h3 class="news-sidebar__item-title">Dubai Residential Market Continues Strong Growth</h3>
+                    <span class="news-sidebar__cat">Housing Market</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="investors-angels-announces-first-banking-partnership.html">
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">April 5, 2026</span>
+                    <h3 class="news-sidebar__item-title">Investors' Angels Announces First Banking Partnership</h3>
+                    <span class="news-sidebar__cat">Company News</span>
                   </div>
                 </a>
               </li>
