@@ -330,8 +330,7 @@
   .iw-realtime__heading { font-family: var(--font-serif); font-size: 30px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
   .iw-options { display: flex; flex-direction: column; gap: 16px; flex: 1 0 0; }
   .iw-option { display: flex; align-items: flex-start; gap: 20px; border: 1px solid var(--color-border); border-radius: 12px; padding: 26px 28px; background: var(--color-bg-secondary); }
-  .iw-option__icon-wrap { width: 56px; height: 56px; border-radius: 10px; border: 1px solid rgba(250, 208, 107, 0.35); background: rgba(250, 208, 107, 0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .iw-option__icon { width: 30px; height: 30px; }
+  .iw-option__icon { width: 56px; height: 56px; flex-shrink: 0; }
   .iw-option__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px; }
   .iw-option__title { font-family: var(--font-serif); font-size: 19px; color: var(--color-white); margin: 0 0 8px; font-weight: 400; }
   .iw-option__desc { font-size: 14px; line-height: 1.55; color: var(--color-text-secondary); }
@@ -963,9 +962,7 @@
             <h2 class="iw-realtime__heading">Every investor receives access to real-time information.</h2>
             <div class="iw-options">
               <div class="iw-option reveal">
-                <div class="iw-option__icon-wrap">
-                  <img class="iw-option__icon" src="assets/icons/works27.svg" alt="">
-                </div>
+                <img class="iw-option__icon" src="assets/icons/works27.svg" alt="">
                 <div>
                   <span class="iw-option__eyebrow">Option A</span>
                   <p class="iw-option__title">Transfer the property to a new qualified Lease-to-Own customer.</p>
@@ -973,9 +970,7 @@
                 </div>
               </div>
               <div class="iw-option reveal">
-                <div class="iw-option__icon-wrap">
-                  <img class="iw-option__icon" src="assets/icons/works31.svg" alt="">
-                </div>
+                <img class="iw-option__icon" src="assets/icons/works31.svg" alt="">
                 <div>
                   <span class="iw-option__eyebrow">Option B</span>
                   <p class="iw-option__title">Sell the property.</p>
@@ -983,9 +978,7 @@
                 </div>
               </div>
               <div class="iw-option reveal">
-                <div class="iw-option__icon-wrap">
-                  <img class="iw-option__icon" src="assets/icons/works32.svg" alt="">
-                </div>
+                <img class="iw-option__icon" src="assets/icons/works32.svg" alt="">
                 <div>
                   <span class="iw-option__eyebrow">Option C</span>
                   <p class="iw-option__title">Continue under revised strategy.</p>
