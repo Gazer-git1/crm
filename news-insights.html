@@ -233,7 +233,7 @@
   .news-hero__desc { font-size: 20px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 560px; }
 
   /* ============ FILTER BAR ============ */
-  .news-filters { position: relative; padding: 0 var(--space-x) 64px; width: 100%; }
+  .news-filters { position: relative; padding: 0 var(--space-x) 40px; width: 100%; }
   .news-filters::before {
     content: "";
     position: absolute;
@@ -244,6 +244,7 @@
     background: var(--divider-grad);
   }
   .news-filters__inner {
+    transform: translateY(-50%);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -815,7 +816,7 @@
 
               <div class="insights-grid">
 
-                <a class="insights-card" href="lease-to-own-a-smarter-path-to-homeownership.html" data-category="lease-to-own">
+                <a class="insights-card" href="lease-to-own-a-smarter-path-to-homeownership.html" data-category="lease-to-own homeownership">
                   <div class="insights-card__media"><img src="assets/news3.png" alt="Family moving into their new home"></div>
                   <div class="insights-card__body">
                     <span class="insights-card__date">May 10, 2026</span>
@@ -850,7 +851,7 @@
           <aside class="news-sidebar">
             <p class="news-sidebar__title">Latest News</p>
             <ul class="news-sidebar__list">
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="housing-market">
                 <a class="news-sidebar__link" href="why-dubai-remains-a-global-real-estate-destination.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">May 3, 2026</span>
@@ -859,7 +860,7 @@
                   </div>
                 </a>
               </li>
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="investment-insights">
                 <a class="news-sidebar__link" href="understanding-asset-backed-credit-linked-notes.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 28, 2026</span>
@@ -868,7 +869,7 @@
                   </div>
                 </a>
               </li>
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="lease-to-own homeownership">
                 <a class="news-sidebar__link" href="how-lease-to-own-creates-value-for-everyone.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 22, 2026</span>
@@ -877,7 +878,7 @@
                   </div>
                 </a>
               </li>
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="banking">
                 <a class="news-sidebar__link" href="the-future-of-mortgage-lending.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 18, 2026</span>
@@ -886,7 +887,7 @@
                   </div>
                 </a>
               </li>
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="housing-market">
                 <a class="news-sidebar__link" href="dubai-residential-market-continues-strong-growth.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 12, 2026</span>
@@ -895,7 +896,7 @@
                   </div>
                 </a>
               </li>
-              <li class="news-sidebar__item">
+              <li class="news-sidebar__item" data-category="company-news">
                 <a class="news-sidebar__link" href="investors-angels-announces-first-banking-partnership.html">
                   <div class="news-sidebar__body">
                     <span class="news-sidebar__date">April 5, 2026</span>
@@ -1087,6 +1088,7 @@
     var selectOptions = selectPanel ? selectPanel.querySelectorAll('.news-filter-select__option') : [];
     var featuredWrap = document.querySelector('.insights-featured-wrap');
     var cards = document.querySelectorAll('.insights-card');
+    var sidebarItems = document.querySelectorAll('.news-sidebar__item');
     var noResults = document.getElementById('newsNoResults');
 
     function itemMatches(el, value) {
@@ -1113,6 +1115,11 @@
       cards.forEach(function (card) {
         var show = itemMatches(card, value);
         card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+      sidebarItems.forEach(function (item) {
+        var show = itemMatches(item, value);
+        item.style.display = show ? '' : 'none';
         if (show) visibleCount++;
       });
       if (noResults) noResults.style.display = visibleCount ? 'none' : 'block';
