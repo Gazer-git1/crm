@@ -306,7 +306,8 @@
   .iw-row__value--gold { color: var(--color-gold); }
   .iw-row__status { display: inline-flex; align-items: center; gap: 7px; color: var(--color-status-active); font-weight: 600; }
   .iw-row__status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-status-active); flex-shrink: 0; }
-  .iw-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; border-top: 1px solid rgba(250, 208, 107, 0.4); margin-top: auto; }
+  .iw-card__foot { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; margin-top: auto; }
+  .iw-card__foot::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
   .iw-card__foot-label { display: flex; align-items: center; gap: 10px; font-size: 19px; color: var(--color-text-muted); flex: 1 0 0; min-width: 0; }
   .iw-card__foot-label img { width: 24px; height: 24px; flex-shrink: 0; }
   .iw-card__foot-value { font-family: var(--font-sans); font-weight: 700; font-size: 22px; color: var(--color-gold); }
@@ -316,15 +317,14 @@
   .iw-protect { display: flex; flex-direction: column; }
   .iw-protect__item { position: relative; display: flex; gap: 20px; padding-bottom: 28px; }
   .iw-protect__item:last-child { padding-bottom: 0; }
-  .iw-protect__item:not(:last-child)::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 1px; background: var(--color-border); }
-  .iw-protect__icon-wrap { width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(250, 208, 107, 0.35); background: rgba(250, 208, 107, 0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
-  .iw-protect__icon { width: 20px; height: 20px; }
+  .iw-protect__item:not(:last-child)::before { content: ""; position: absolute; left: 24px; top: 52px; bottom: 0; width: 1px; background: var(--color-border); }
+  .iw-protect__icon { width: 48px; height: 48px; flex-shrink: 0; position: relative; z-index: 1; }
   .iw-protect__title { font-family: var(--font-serif); font-size: 19px; color: var(--color-white); margin: 0 0 6px; font-weight: 400; }
   .iw-protect__desc { font-size: 19px; line-height: 1.55; color: var(--color-text-secondary); }
 
   /* ============ REAL-TIME ACCESS (options + access panel) ============ */
   .iw-realtime { position: relative; padding: 0 var(--space-x); width: 100%; }
-  .iw-realtime::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
+  .iw-realtime::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); z-index: 2; }
   .iw-realtime__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
   .iw-realtime__col { display: flex; flex-direction: column; gap: 28px; height: 100%; }
   .iw-realtime__col--options { padding: 80px 0; }
@@ -908,45 +908,35 @@
             </div>
             <div class="iw-protect">
               <div class="iw-protect__item">
-                <div class="iw-protect__icon-wrap">
-                  <img class="iw-protect__icon" src="assets/icons/works26.svg" alt="">
-                </div>
+                <img class="iw-protect__icon" src="assets/icons/works26.svg" alt="">
                 <div>
                   <p class="iw-protect__title">Underlying Property</p>
                   <p class="iw-protect__desc">Every CLN is secured by ownership of one specific residential property.</p>
                 </div>
               </div>
               <div class="iw-protect__item">
-                <div class="iw-protect__icon-wrap">
-                  <img class="iw-protect__icon" src="assets/icons/works6.svg" alt="">
-                </div>
+                <img class="iw-protect__icon" src="assets/icons/works6.svg" alt="">
                 <div>
                   <p class="iw-protect__title">Purchase Option Balance</p>
                   <p class="iw-protect__desc">Every monthly payment increases the customer's Purchase Option Balance. This represents the customer's growing financial commitment to completing the program.</p>
                 </div>
               </div>
               <div class="iw-protect__item">
-                <div class="iw-protect__icon-wrap">
-                  <img class="iw-protect__icon" src="assets/icons/works10.svg" alt="">
-                </div>
+                <img class="iw-protect__icon" src="assets/icons/works10.svg" alt="">
                 <div>
                   <p class="iw-protect__title">Customer Commitment Ratio</p>
                   <p class="iw-protect__desc">As the Purchase Option Balance increases, the Customer Commitment Ratio also increases. The more the customer has invested, the lower the probability of voluntary default.</p>
                 </div>
               </div>
               <div class="iw-protect__item">
-                <div class="iw-protect__icon-wrap">
-                  <img class="iw-protect__icon" src="assets/icons/works13.svg" alt="">
-                </div>
+                <img class="iw-protect__icon" src="assets/icons/works13.svg" alt="">
                 <div>
                   <p class="iw-protect__title">Market Appreciation</p>
                   <p class="iw-protect__desc">The property itself may increase in value during the Lease-to-Own program, creating an additional layer of protection.</p>
                 </div>
               </div>
               <div class="iw-protect__item">
-                <div class="iw-protect__icon-wrap">
-                  <img class="iw-protect__icon" src="assets/icons/works16.svg" alt="">
-                </div>
+                <img class="iw-protect__icon" src="assets/icons/works16.svg" alt="">
                 <div>
                   <p class="iw-protect__title">Predefined Exit Strategies</p>
                   <p class="iw-protect__desc">Every CLN includes a predefined investment policy before issuance. No decisions are made under pressure. Every scenario is agreed in advance.</p>
