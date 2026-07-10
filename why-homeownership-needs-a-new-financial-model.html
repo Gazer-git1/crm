@@ -280,7 +280,7 @@
 
   /* ============ ARTICLE HERO ============ */
   .article-hero { position: relative; isolation: isolate; padding: 224px var(--space-x) 96px; width: 100%; overflow: hidden; }
-  .article-hero__seam { position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--color-gold); z-index: 1; }
+  .article-hero__seam { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: var(--divider-grad); z-index: 1; }
   .article-hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
   .article-hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; transform: scale(1.15); transform-origin: right center; }
   .article-hero__overlay {
@@ -524,19 +524,30 @@
     /* article hero */
     .article-hero { padding: 0 0 40px; overflow: hidden; }
     .article-hero__bg-wrap { position: relative; width: 100%; height: auto; overflow: visible; }
+    .article-hero__bg-wrap::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 220px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
     .article-hero__bg-wrap::after {
       content: "";
       position: absolute;
       left: 0;
       right: 0;
       bottom: -1px;
-      height: 180px;
+      height: 220px;
       background: linear-gradient(180deg, rgba(10, 15, 19, 0) 0%, rgb(10, 15, 19) 100%);
       pointer-events: none;
     }
     .article-hero__bg { position: static; width: 100%; height: auto; object-fit: unset; display: block; }
     .article-hero__overlay { display: none; }
-    .article-hero__content { position: relative; z-index: 1; max-width: none; margin-top: -12px; padding: 0 20px; align-items: center; text-align: center; }
+    .article-hero__content { position: relative; z-index: 1; max-width: none; margin-top: 0; padding: 32px 20px 0; align-items: center; text-align: center; }
     .article-hero__kicker { font-size: 12px; }
     .article-hero__title { font-size: 32px; }
     .article-hero__title span { display: inline; }
