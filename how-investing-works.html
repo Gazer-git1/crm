@@ -292,10 +292,10 @@
   .iw-cards__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
   .iw-card { position: relative; display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--color-border); border-radius: 16px; background: rgba(255, 255, 255, 0.02); padding: 40px; min-width: 0; }
   .iw-card--tint { background: #0C1614; }
-  .iw-card__eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .iw-card__eyebrow { font-family: var(--font-sans); font-size: 20px; font-weight: 600; line-height: 1; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-gold); }
   .iw-card__head { display: flex; flex-direction: column; gap: 10px; }
-  .iw-card__title { font-family: var(--font-serif); font-size: 26px; line-height: 1.32; color: var(--color-white); font-weight: 400; }
-  .iw-card__media { width: calc(100% + 80px); margin: -8px -40px 0; border-radius: 0; overflow: hidden; }
+  .iw-card__title { font-family: var(--font-serif); font-size: 40px; line-height: 1; letter-spacing: 0; color: var(--color-white); font-weight: 400; }
+  .iw-card__media { border-radius: 12px; overflow: hidden; }
   .iw-card__media img { width: 100%; height: 220px; object-fit: cover; display: block; }
   .iw-card__rows { display: flex; flex-direction: column; }
   .iw-row { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--color-border); font-size: 19px; }
@@ -588,8 +588,8 @@
     .iw-cards::before { left: 20px; right: 20px; }
     .iw-cards__grid { grid-template-columns: 1fr; gap: 24px; }
     .iw-card { padding: 28px 20px; gap: 20px; }
-    .iw-card__title { font-size: 22px; }
-    .iw-card__media { width: calc(100% + 40px); margin: -8px -20px 0; }
+    .iw-card__eyebrow { font-size: 16px; }
+    .iw-card__title { font-size: 28px; }
     .iw-card__media img { height: 180px; }
     .iw-card__foot-value { font-size: 19px; }
 
@@ -721,7 +721,7 @@
               <h3 class="iw-card__title">CLN #20260626</h3>
             </div>
             <div class="iw-card__media">
-              <img src="assets/news4.png" alt="Apartment financed by the CLN">
+              <img src="assets/works2.png" alt="Apartment financed by the CLN">
             </div>
             <div class="iw-card__rows">
               <div class="iw-row">
