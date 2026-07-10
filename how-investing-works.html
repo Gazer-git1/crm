@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Owners — Investors' Angels</title>
+<title>How Investing Works — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
+<meta name="description" content="Invest in homeownership, not just real estate. See how every Credit Linked Note works, track a live investor dashboard, and understand the protections behind every deal.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://i-angels.com/owners">
+<link rel="canonical" href="https://i-angels.com/how-investing-works">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="For Owners — Investors' Angels">
-<meta property="og:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
-<meta property="og:image" content="https://i-angels.com/assets/owner1.png">
-<meta property="og:url" content="https://i-angels.com/owners">
+<meta property="og:title" content="How Investing Works — Investors' Angels">
+<meta property="og:description" content="Invest in homeownership, not just real estate. See how every Credit Linked Note works, track a live investor dashboard, and understand the protections behind every deal.">
+<meta property="og:image" content="https://i-angels.com/assets/works1.png">
+<meta property="og:url" content="https://i-angels.com/how-investing-works">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="For Owners — Investors' Angels">
-<meta name="twitter:description" content="Live in your home today, build equity every month, and become the owner faster — no down payment, no waiting years to start living the life you want.">
-<meta name="twitter:image" content="https://i-angels.com/assets/owner1.png">
+<meta name="twitter:title" content="How Investing Works — Investors' Angels">
+<meta name="twitter:description" content="Invest in homeownership, not just real estate. See how every Credit Linked Note works, track a live investor dashboard, and understand the protections behind every deal.">
+<meta name="twitter:image" content="https://i-angels.com/assets/works1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -42,6 +42,7 @@
     --color-bronze: #9b7140;
     --color-bronze-light: #d3a769;
     --color-border: rgba(255, 255, 255, 0.1);
+    --color-status-active: #6fcf97;
     --color-highlight-grad: linear-gradient(138.02deg, #5d492f 28.65%, #292117 88.873%);
     --color-btn-grad: linear-gradient(90deg, #9b7140 0%, #d3a769 48.292%, #9b7140 100%);
     --divider-grad: linear-gradient(90deg, rgba(155, 113, 64, 0) 0%, rgba(211, 167, 105, 0.9) 50%, rgba(155, 113, 64, 0) 100%);
@@ -239,7 +240,7 @@
   .hero__content {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 40px;
     align-items: flex-start;
     width: 844px;
   }
@@ -262,77 +263,95 @@
     font-weight: 400;
   }
   .hero__cta-row { display: flex; align-items: center; gap: 16px; }
+  .hero__feature { display: flex; align-items: center; gap: 14px; padding-top: 4px; }
+  .hero__feature-icon { width: 20px; height: 20px; flex-shrink: 0; }
+  .hero__feature-text { font-size: 17px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 400; }
+  .hero__feature-text strong { color: var(--color-gold); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
-  /* ============ OWNERS FEATURES PANEL ============ */
-  .owners-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .owners-features::before, .owners-features::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .owners-features::before { top: 0; }
-  .owners-features::after { bottom: 0; }
-  .owners-features__panel {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 56px 32px;
-    border-radius: 24px;
-    padding: 64px 56px;
-    width: 100%;
-  }
-  .owners-features__panel::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  .owners-features__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .owners-features__item.is-visible { opacity: 1; transform: translateY(0); }
-  .owners-features__icon { width: 40px; height: 40px; transition: transform 0.4s ease, filter 0.4s ease; }
-  .owners-features__item:hover .owners-features__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
-  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-white); font-weight: 400; max-width: 220px; }
-  .owners-features__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 240px; }
+  /* ============ REVEAL (shared scroll-in animation) ============ */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-  /* ============ OWNERS CTA BAND ============ */
-  .owners-cta {
+  /* ============ INTRO (asset-backed CLN explainer) ============ */
+  .iw-intro { position: relative; padding: var(--space-y) var(--space-x) 96px; width: 100%; }
+  .iw-intro::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
+  .iw-intro__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .iw-intro__item { display: flex; flex-direction: column; gap: 20px; }
+  .iw-intro__icon-wrap { width: 56px; height: 56px; border-radius: 50%; border: 1px solid rgba(250, 208, 107, 0.35); background: rgba(250, 208, 107, 0.06); display: flex; align-items: center; justify-content: center; }
+  .iw-intro__icon { width: 26px; height: 26px; }
+  .iw-intro__title { font-family: var(--font-serif); font-size: 28px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
+  .iw-intro__desc { font-size: 16px; line-height: 1.6; color: var(--color-text-secondary); }
+  .iw-intro__list { display: flex; flex-direction: column; gap: 10px; margin-top: 2px; }
+  .iw-intro__list li { font-size: 16px; line-height: 1.6; color: var(--color-text-secondary); padding-left: 20px; position: relative; }
+  .iw-intro__list li::before { content: ""; position: absolute; left: 0; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--color-gold); }
+
+  /* ============ DASHBOARD CARDS (CLN / Property Passport / Customer Profile / Investment Protection) ============ */
+  .iw-cards { position: relative; padding: 0 var(--space-x) 96px; width: 100%; }
+  .iw-cards__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+  .iw-card { position: relative; display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--color-border); border-radius: 16px; background: rgba(255, 255, 255, 0.02); padding: 40px; min-width: 0; }
+  .iw-card__eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .iw-card__title { font-family: var(--font-serif); font-size: 26px; line-height: 1.32; color: var(--color-white); font-weight: 400; margin-top: -8px; }
+  .iw-card__media { width: calc(100% + 80px); margin: -8px -40px 0; border-radius: 0; overflow: hidden; }
+  .iw-card__media img { width: 100%; height: 220px; object-fit: cover; display: block; }
+  .iw-card__rows { display: flex; flex-direction: column; }
+  .iw-row { display: flex; align-items: center; gap: 12px; padding: 13px 0; border-bottom: 1px solid var(--color-border); font-size: 14px; }
+  .iw-row:last-child { border-bottom: none; }
+  .iw-row__icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.85; }
+  .iw-row__label { color: var(--color-text-secondary); flex: 1 0 0; min-width: 0; }
+  .iw-row__value { color: var(--color-white); font-weight: 600; text-align: right; white-space: nowrap; }
+  .iw-row__value--gold { color: var(--color-gold); }
+  .iw-row__status { display: inline-flex; align-items: center; gap: 7px; color: var(--color-status-active); font-weight: 600; }
+  .iw-row__status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--color-status-active); flex-shrink: 0; }
+  .iw-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 22px; border-top: 1px solid var(--color-border); }
+  .iw-card__foot-label { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--color-text-secondary); flex: 1 0 0; min-width: 0; }
+  .iw-card__foot-label img { width: 18px; height: 18px; flex-shrink: 0; }
+  .iw-card__foot-value { font-family: var(--font-sans); font-weight: 700; font-size: 22px; color: var(--color-gold); }
+
+  /* ============ INVESTMENT PROTECTION (timeline list) ============ */
+  .iw-protect { display: flex; flex-direction: column; }
+  .iw-protect__item { position: relative; display: flex; gap: 20px; padding-bottom: 28px; }
+  .iw-protect__item:last-child { padding-bottom: 0; }
+  .iw-protect__item:not(:last-child)::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 1px; background: var(--color-border); }
+  .iw-protect__icon-wrap { width: 40px; height: 40px; border-radius: 10px; border: 1px solid rgba(250, 208, 107, 0.35); background: rgba(250, 208, 107, 0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; z-index: 1; }
+  .iw-protect__icon { width: 20px; height: 20px; }
+  .iw-protect__title { font-family: var(--font-serif); font-size: 17px; color: var(--color-white); margin: 0 0 6px; font-weight: 400; }
+  .iw-protect__desc { font-size: 14px; line-height: 1.55; color: var(--color-text-secondary); }
+
+  /* ============ REAL-TIME ACCESS (options + access panel) ============ */
+  .iw-realtime { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .iw-realtime__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+  .iw-realtime__col { display: flex; flex-direction: column; gap: 28px; }
+  .iw-realtime__heading { font-family: var(--font-serif); font-size: 30px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
+  .iw-options { display: flex; flex-direction: column; gap: 16px; }
+  .iw-option { display: flex; align-items: flex-start; gap: 20px; border: 1px solid var(--color-border); border-radius: 12px; padding: 26px 28px; }
+  .iw-option__icon-wrap { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(250, 208, 107, 0.35); background: rgba(250, 208, 107, 0.06); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .iw-option__icon { width: 22px; height: 22px; }
+  .iw-option__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); margin-bottom: 6px; }
+  .iw-option__title { font-family: var(--font-serif); font-size: 19px; color: var(--color-white); margin: 0 0 8px; font-weight: 400; }
+  .iw-option__desc { font-size: 14px; line-height: 1.55; color: var(--color-text-secondary); }
+
+  .iw-access { background: var(--color-bg-secondary); border: 1px solid var(--color-border); border-radius: 16px; padding: 44px 40px; display: flex; flex-direction: column; gap: 24px; height: 100%; }
+  .iw-access__title { font-family: var(--font-serif); font-size: 24px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
+  .iw-access__list { display: flex; flex-direction: column; }
+  .iw-access__item { display: flex; align-items: center; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--color-border); font-size: 15px; color: var(--color-text-secondary); }
+  .iw-access__item:last-child { border-bottom: none; }
+  .iw-access__item img { width: 18px; height: 18px; flex-shrink: 0; }
+
+  /* ============ FINAL CTA BAND ============ */
+  .iw-final {
     position: relative;
-    isolation: isolate;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 260px;
-    padding: 0 var(--space-x);
+    gap: 48px;
+    padding: 90px var(--space-x);
     width: 100%;
+    background: var(--color-bg-secondary);
   }
-  .owners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .owners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .owners-cta__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
-  }
-  .owners-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
-  .owners-cta__title-line--gold { color: var(--color-gold); display: block; }
+  .iw-final::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .iw-final__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.32; font-weight: 400; margin: 0; }
+  .iw-final__title-line { display: block; }
+  .iw-final__title-line span { color: var(--color-gold); }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -530,7 +549,7 @@
 
     /* hero */
     .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
-    .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg-wrap { position: absolute; inset: auto; top: -60px; left: 0; width: 100%; height: auto; overflow: visible; }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
     .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; align-items: center; }
@@ -539,19 +558,34 @@
     .hero__subtitle { font-size: 16px; width: 100%; }
     .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
     .hero__cta-row .btn { width: 100%; }
+    .hero__feature { text-align: left; }
+    .hero__feature-text { font-size: 15px; }
 
-    /* owners features panel */
-    .owners-features { padding: 48px 20px; }
-    .owners-features__panel { grid-template-columns: 1fr 1fr; gap: 40px 20px; padding: 40px 20px; border-radius: 16px; }
-    .owners-features__panel::before { border-radius: 16px; }
-    .owners-features__title { max-width: none; }
-    .owners-features__desc { max-width: none; }
+    /* intro */
+    .iw-intro { padding: 48px 20px 56px; }
+    .iw-intro::before { left: 20px; right: 20px; }
+    .iw-intro__grid { grid-template-columns: 1fr; gap: 40px; }
 
-    /* owners cta band */
-    .owners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
-    .owners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .owners-cta__title { font-size: 30px; }
-    .owners-cta .btn { width: 100%; }
+    /* dashboard cards */
+    .iw-cards { padding: 0 20px 56px; }
+    .iw-cards__grid { grid-template-columns: 1fr; gap: 24px; }
+    .iw-card { padding: 28px 20px; gap: 20px; }
+    .iw-card__title { font-size: 22px; }
+    .iw-card__media { width: calc(100% + 40px); margin: -8px -20px 0; }
+    .iw-card__media img { height: 180px; }
+    .iw-card__foot-value { font-size: 19px; }
+
+    /* real-time access */
+    .iw-realtime { padding: 0 20px 64px; }
+    .iw-realtime__grid { grid-template-columns: 1fr; gap: 32px; }
+    .iw-realtime__heading { font-size: 24px; }
+    .iw-option { padding: 20px; }
+    .iw-access { padding: 32px 22px; }
+
+    /* final cta */
+    .iw-final { flex-direction: column; align-items: center; text-align: center; padding: 56px 24px; gap: 28px; }
+    .iw-final__title { font-size: 28px; }
+    .iw-final .btn { width: 100%; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -577,7 +611,7 @@
         <nav class="header__nav" id="primaryNav">
           <ul class="header__nav-list" id="navList">
             <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
-            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
@@ -609,87 +643,362 @@
       <section class="hero">
         <div class="hero__bg-wrap">
           <picture>
-            <source media="(max-width: 768px)" srcset="assets/owner1-mob.png">
-            <img class="hero__bg" src="assets/owner1.png" alt="Family Dubai skyline">
+            <source media="(max-width: 768px)" srcset="assets/works1-mob.png">
+            <img class="hero__bg" src="assets/works1.png" alt="Dubai skyline at sunset from a rooftop terrace">
           </picture>
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
         <div class="hero__content">
           <div class="hero__heading-block">
-            <span class="hero__eyebrow">Owners</span>
+            <span class="hero__eyebrow">How Investing Works</span>
             <h1 class="hero__title">
-              <span class="hero__title-line">Live in Your Home,</span>
-              <span class="hero__title-line hero__title-line--gold">Build Your Future.</span>
+              <span class="hero__title-line">Invest in Homeownership.</span>
+              <span class="hero__title-line hero__title-line--gold">Not just in Real Estate.</span>
             </h1>
-            <p class="hero__subtitle">More than a home, it's your tomorrow.</p>
+            <p class="hero__subtitle">Traditional real estate investing means buying property. We offer something different.</p>
           </div>
-          <div class="hero__cta-row">
-            <a class="btn btn--gradient" href="calculator.html">
-              Book Your Eligibility
-              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-            </a>
+          <div class="hero__feature">
+            <img class="hero__feature-icon" src="assets/icons/icon-diamond-outline.svg" alt="">
+            <p class="hero__feature-text">You invest in a <strong>family's journey</strong> to homeownership.</p>
           </div>
         </div>
       </section>
 
-      <!-- OWNERS FEATURES PANEL -->
-      <section class="owners-features">
-        <div class="owners-features__panel">
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner1.svg" alt="">
-            <p class="owners-features__title">Live in your home today</p>
-            <p class="owners-features__desc">In the home you choose. Create your space, your comfort, your life.</p>
+      <!-- INTRO: WHAT A CLN IS -->
+      <section class="iw-intro">
+        <div class="iw-intro__grid">
+          <div class="iw-intro__item reveal">
+            <div class="iw-intro__icon-wrap">
+              <img class="iw-intro__icon" src="assets/icons/works1.svg" alt="">
+            </div>
+            <h2 class="iw-intro__title">Asset-Backed Credit Linked Notes</h2>
+            <p class="iw-intro__desc">Instead of purchasing property directly, you purchase an Asset-Backed Credit Linked Note (CLN).</p>
           </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner2.svg" alt="">
-            <p class="owners-features__title">Live as if it's already yours</p>
-            <p class="owners-features__desc">Don't wait years to start living the life you want.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner3.svg" alt="">
-            <p class="owners-features__title">Build equity every month</p>
-            <p class="owners-features__desc">While others pay rent and start over, you build your ownership.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner4.svg" alt="">
-            <p class="owners-features__title">Create, customize, make it yours</p>
-            <p class="owners-features__desc">Design, renovate, decorate. This is your home, not temporary housing.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner5.svg" alt="">
-            <p class="owners-features__title">Benefit from property value growth</p>
-            <p class="owners-features__desc">While you live and prepare for a mortgage, your home may increase in value.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner6.svg" alt="">
-            <p class="owners-features__title">Your payments work with the market</p>
-            <p class="owners-features__desc">You're not just saving. You're building ownership in real estate.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner7.svg" alt="">
-            <p class="owners-features__title">Switch to a mortgage or buy it outright</p>
-            <p class="owners-features__desc">But most importantly — you've already lived the life you always wanted.</p>
-          </div>
-          <div class="owners-features__item">
-            <img class="owners-features__icon" src="assets/icons/owner8.svg" alt="">
-            <p class="owners-features__title">A home changes everything</p>
-            <p class="owners-features__desc">It changes your address. It changes your future. It changes your life.</p>
+          <div class="iw-intro__item reveal">
+            <div class="iw-intro__icon-wrap">
+              <img class="iw-intro__icon" src="assets/icons/works2.svg" alt="">
+            </div>
+            <h2 class="iw-intro__title">Every CLN finances one specific home.</h2>
+            <p class="iw-intro__desc">Every CLN is backed by:</p>
+            <ul class="iw-intro__list">
+              <li>One residential property</li>
+              <li>One registered Lease-to-Own agreement</li>
+            </ul>
           </div>
         </div>
       </section>
 
-      <!-- OWNERS CTA BAND -->
-      <section class="owners-cta">
-        <div class="owners-cta__bg-wrap">
-          <img class="owners-cta__bg" src="assets/owner2.png" alt="Living room skyline view">
+      <!-- CLN EXAMPLE + PROPERTY PASSPORT -->
+      <section class="iw-cards">
+        <div class="iw-cards__grid">
+          <div class="iw-card reveal">
+            <div>
+              <span class="iw-card__eyebrow">Example CLN</span>
+              <h3 class="iw-card__title">CLN #20260626</h3>
+            </div>
+            <div class="iw-card__media">
+              <img src="assets/news4.png" alt="Apartment financed by the CLN">
+            </div>
+            <div class="iw-card__rows">
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works3.svg" alt="">
+                <span class="iw-row__label">Underlying Asset</span>
+                <span class="iw-row__value">Apartment, Dubai Hills, 2 Bedrooms</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works4.svg" alt="">
+                <span class="iw-row__label">Purchase Price</span>
+                <span class="iw-row__value">USD 520,000</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works5.svg" alt="">
+                <span class="iw-row__label">Lease Term</span>
+                <span class="iw-row__value">6 Years</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works6.svg" alt="">
+                <span class="iw-row__label">Target Purchase Option Balance</span>
+                <span class="iw-row__value">35%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works7.svg" alt="">
+                <span class="iw-row__label">Target Investor IRR</span>
+                <span class="iw-row__value iw-row__value--gold">16%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works8.svg" alt="">
+                <span class="iw-row__label">Expected Mortgage LTV</span>
+                <span class="iw-row__value">65%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works9.svg" alt="">
+                <span class="iw-row__label">Monthly Payment</span>
+                <span class="iw-row__value">USD 5,840</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works10.svg" alt="">
+                <span class="iw-row__label">Customer Commitment Ratio</span>
+                <span class="iw-row__value">18%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works11.svg" alt="">
+                <span class="iw-row__label">Status</span>
+                <span class="iw-row__value iw-row__status">Active</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="iw-card reveal">
+            <div>
+              <span class="iw-card__eyebrow">Property Passport</span>
+              <h3 class="iw-card__title">Every investor has access to a live dashboard.</h3>
+            </div>
+            <div class="iw-card__rows">
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works4.svg" alt="">
+                <span class="iw-row__label">Purchase Price</span>
+                <span class="iw-row__value">USD 520,000</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works12.svg" alt="">
+                <span class="iw-row__label">Current Market Value</span>
+                <span class="iw-row__value">USD 562,400</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works13.svg" alt="">
+                <span class="iw-row__label">Market Appreciation</span>
+                <span class="iw-row__value iw-row__value--gold">+8.2%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works6.svg" alt="">
+                <span class="iw-row__label">Current Purchase Option Balance</span>
+                <span class="iw-row__value">USD 93,600</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works10.svg" alt="">
+                <span class="iw-row__label">Customer Commitment Ratio</span>
+                <span class="iw-row__value">18%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works14.svg" alt="">
+                <span class="iw-row__label">Payment History</span>
+                <span class="iw-row__value iw-row__value--gold">100% on time</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works11.svg" alt="">
+                <span class="iw-row__label">Lease Status</span>
+                <span class="iw-row__value iw-row__status">Active</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works15.svg" alt="">
+                <span class="iw-row__label">Estimated Mortgage Transition</span>
+                <span class="iw-row__value">Mar 2031</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works16.svg" alt="">
+                <span class="iw-row__label">Projected Exit</span>
+                <span class="iw-row__value">Refinance with Bank</span>
+              </div>
+            </div>
+            <div class="iw-card__foot">
+              <span class="iw-card__foot-label">
+                <img src="assets/icons/works7.svg" alt="">
+                Current Investment Performance
+              </span>
+              <span class="iw-card__foot-value">IRR 16.1%</span>
+            </div>
+          </div>
         </div>
-        <div class="owners-cta__overlay" aria-hidden="true"></div>
-        <h2 class="owners-cta__title">
-          <span class="owners-cta__title-line">Start living</span>
-          <span class="owners-cta__title-line owners-cta__title-line--gold">your future today.</span>
+      </section>
+
+      <!-- CUSTOMER PROFILE + INVESTMENT PROTECTION -->
+      <section class="iw-cards">
+        <div class="iw-cards__grid">
+          <div class="iw-card reveal">
+            <div>
+              <span class="iw-card__eyebrow">Customer Profile</span>
+              <h3 class="iw-card__title">We support customers throughout their entire Lease-to-Own journey.</h3>
+            </div>
+            <div class="iw-card__rows">
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works17.svg" alt="">
+                <span class="iw-row__label">Age</span>
+                <span class="iw-row__value">34</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works18.svg" alt="">
+                <span class="iw-row__label">Nationality</span>
+                <span class="iw-row__value">UAE Resident</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works19.svg" alt="">
+                <span class="iw-row__label">Occupation</span>
+                <span class="iw-row__value">Engineer</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works20.svg" alt="">
+                <span class="iw-row__label">Household Income</span>
+                <span class="iw-row__value">USD 14,000 / month</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works21.svg" alt="">
+                <span class="iw-row__label">Credit Score</span>
+                <span class="iw-row__value">Excellent (780+)</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works22.svg" alt="">
+                <span class="iw-row__label">Years Employed</span>
+                <span class="iw-row__value">7 years</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works23.svg" alt="">
+                <span class="iw-row__label">Payment Stability</span>
+                <span class="iw-row__value">High</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works24.svg" alt="">
+                <span class="iw-row__label">Affordability Ratio</span>
+                <span class="iw-row__value">28%</span>
+              </div>
+              <div class="iw-row">
+                <img class="iw-row__icon" src="assets/icons/works6.svg" alt="">
+                <span class="iw-row__label">Current Purchase Option Balance</span>
+                <span class="iw-row__value">USD 93,600</span>
+              </div>
+            </div>
+            <div class="iw-card__foot">
+              <span class="iw-card__foot-label">
+                <img src="assets/icons/works25.svg" alt="">
+                Mortgage Readiness Score
+              </span>
+              <span class="iw-card__foot-value">A (High)</span>
+            </div>
+          </div>
+
+          <div class="iw-card reveal">
+            <div>
+              <span class="iw-card__eyebrow">Investment Protection</span>
+              <h3 class="iw-card__title">Your investment is protected by multiple layers.</h3>
+            </div>
+            <div class="iw-protect">
+              <div class="iw-protect__item">
+                <div class="iw-protect__icon-wrap">
+                  <img class="iw-protect__icon" src="assets/icons/works26.svg" alt="">
+                </div>
+                <div>
+                  <p class="iw-protect__title">Underlying Property</p>
+                  <p class="iw-protect__desc">Every CLN is secured by ownership of one specific residential property.</p>
+                </div>
+              </div>
+              <div class="iw-protect__item">
+                <div class="iw-protect__icon-wrap">
+                  <img class="iw-protect__icon" src="assets/icons/works6.svg" alt="">
+                </div>
+                <div>
+                  <p class="iw-protect__title">Purchase Option Balance</p>
+                  <p class="iw-protect__desc">Every monthly payment increases the customer's Purchase Option Balance. This represents the customer's growing financial commitment to completing the program.</p>
+                </div>
+              </div>
+              <div class="iw-protect__item">
+                <div class="iw-protect__icon-wrap">
+                  <img class="iw-protect__icon" src="assets/icons/works10.svg" alt="">
+                </div>
+                <div>
+                  <p class="iw-protect__title">Customer Commitment Ratio</p>
+                  <p class="iw-protect__desc">As the Purchase Option Balance increases, the Customer Commitment Ratio also increases. The more the customer has invested, the lower the probability of voluntary default.</p>
+                </div>
+              </div>
+              <div class="iw-protect__item">
+                <div class="iw-protect__icon-wrap">
+                  <img class="iw-protect__icon" src="assets/icons/works13.svg" alt="">
+                </div>
+                <div>
+                  <p class="iw-protect__title">Market Appreciation</p>
+                  <p class="iw-protect__desc">The property itself may increase in value during the Lease-to-Own program, creating an additional layer of protection.</p>
+                </div>
+              </div>
+              <div class="iw-protect__item">
+                <div class="iw-protect__icon-wrap">
+                  <img class="iw-protect__icon" src="assets/icons/works16.svg" alt="">
+                </div>
+                <div>
+                  <p class="iw-protect__title">Predefined Exit Strategies</p>
+                  <p class="iw-protect__desc">Every CLN includes a predefined investment policy before issuance. No decisions are made under pressure. Every scenario is agreed in advance.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REAL-TIME ACCESS -->
+      <section class="iw-realtime">
+        <div class="iw-realtime__grid">
+          <div class="iw-realtime__col">
+            <h2 class="iw-realtime__heading">Every investor receives access to real-time information.</h2>
+            <div class="iw-options">
+              <div class="iw-option reveal">
+                <div class="iw-option__icon-wrap">
+                  <img class="iw-option__icon" src="assets/icons/works27.svg" alt="">
+                </div>
+                <div>
+                  <span class="iw-option__eyebrow">Option A</span>
+                  <p class="iw-option__title">Transfer the property to a new qualified Lease-to-Own customer.</p>
+                  <p class="iw-option__desc">The new customer receives a predefined Purchase Option Balance, allowing the investment program to continue.</p>
+                </div>
+              </div>
+              <div class="iw-option reveal">
+                <div class="iw-option__icon-wrap">
+                  <img class="iw-option__icon" src="assets/icons/works28.svg" alt="">
+                </div>
+                <div>
+                  <span class="iw-option__eyebrow">Option B</span>
+                  <p class="iw-option__title">Sell the property.</p>
+                  <p class="iw-option__desc">The property may be sold using a discount strategy defined by the Investment Policy, while seeking to preserve investor returns.</p>
+                </div>
+              </div>
+              <div class="iw-option reveal">
+                <div class="iw-option__icon-wrap">
+                  <img class="iw-option__icon" src="assets/icons/works29.svg" alt="">
+                </div>
+                <div>
+                  <span class="iw-option__eyebrow">Option C</span>
+                  <p class="iw-option__title">Continue under revised strategy.</p>
+                  <p class="iw-option__desc">Continue operating the property under a revised investment strategy, if this is expected to maximize long-term investor value.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="iw-realtime__col">
+            <div class="iw-access reveal">
+              <h2 class="iw-access__title">Every investor receives access to:</h2>
+              <div class="iw-access__list">
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Property Passport</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Customer Profile</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Purchase Option Balance</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Customer Commitment Ratio</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Live Payment Status</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Current Property Value</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Market Appreciation</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Projected Exit</div>
+                <div class="iw-access__item"><img src="assets/icons/icon-check-gold-2.svg" alt="">Investment Performance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="iw-final">
+        <h2 class="iw-final__title">
+          <span class="iw-final__title-line"><span>One</span> Property.</span>
+          <span class="iw-final__title-line"><span>One</span> CLN.</span>
+          <span class="iw-final__title-line"><span>One</span> Customer.</span>
+          <span class="iw-final__title-line"><span>One</span> transparent investment.</span>
         </h2>
-        <a class="btn btn--gradient" href="calculator.html">
-          Book Your Eligibility
+        <a class="btn btn--gradient" href="contact.html">
+          Get Investment Model
           <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
         </a>
       </section>
@@ -797,11 +1106,11 @@
   })();
 
   (function () {
-    var items = document.querySelectorAll('.owners-features__item');
+    var items = document.querySelectorAll('.reveal');
     if (!items.length) return;
 
     items.forEach(function (item, i) {
-      item.style.transitionDelay = (i * 70) + 'ms';
+      item.style.transitionDelay = ((i % 6) * 70) + 'ms';
     });
 
     if (!('IntersectionObserver' in window)) {
@@ -816,7 +1125,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(function (item) { observer.observe(item); });
   })();
