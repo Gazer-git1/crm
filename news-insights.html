@@ -8,19 +8,19 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
+<meta name="description" content="Expert perspectives, market insights and company updates shaping the future of homeownership and investment, from the team building Lease-to-Own at Investors' Angels.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://i-angels.com/news-insights">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
 <meta property="og:title" content="News & Insights — Investors' Angels">
-<meta property="og:description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
-<meta property="og:image" content="https://i-angels.com/assets/hero-bg.jpg">
+<meta property="og:description" content="Expert perspectives, market insights and company updates shaping the future of homeownership and investment, from the team building Lease-to-Own at Investors' Angels.">
+<meta property="og:image" content="https://i-angels.com/assets/news1.png">
 <meta property="og:url" content="https://i-angels.com/news-insights">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="News & Insights — Investors' Angels">
-<meta name="twitter:description" content="Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own at Investors' Angels.">
-<meta name="twitter:image" content="https://i-angels.com/assets/hero-bg.jpg">
+<meta name="twitter:description" content="Expert perspectives, market insights and company updates shaping the future of homeownership and investment, from the team building Lease-to-Own at Investors' Angels.">
+<meta name="twitter:image" content="https://i-angels.com/assets/news1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -133,9 +133,9 @@
   .btn--gradient:hover::after { left: 130%; }
   .btn--outline { background: transparent; color: var(--color-gold); border: 1px solid var(--color-bronze); font-size: 16px; }
   .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
-  .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
+  .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; align-self: flex-start; }
   .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
-  .btn--text--lg { font-size: 20px; }
+  .btn--sm { padding: 12px 22px; font-size: 13px; }
 
   /* ============ HEADER ============ */
   .header {
@@ -216,33 +216,196 @@
   .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   .header__nav-footer { display: none; }
 
-  /* ============ CALCULATOR BANNER ============ */
-  .calc-banner { position: relative; display: flex; align-items: center; height: 200px; padding: 80px var(--space-x); width: 100%; }
-  .calc-banner::before {
+  /* ============ NEWS HERO ============ */
+  .news-hero { position: relative; isolation: isolate; padding: 224px var(--space-x) 96px; width: 100%; overflow: hidden; }
+  .news-hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .news-hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+  .news-hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(10, 15, 19) 32%, rgba(10, 15, 19, 0) 62%),
+      linear-gradient(180deg, rgba(10, 15, 19, 0.1) 0%, rgba(10, 15, 19, 0.9) 100%);
+  }
+  .news-hero__content { display: flex; flex-direction: column; gap: 24px; max-width: 660px; }
+  .news-hero__title { font-family: var(--font-serif); font-size: 62px; line-height: 1.1; margin: 0; font-weight: 400; color: var(--color-gold); }
+  .news-hero__desc { font-size: 20px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 560px; }
+
+  /* ============ FILTER BAR ============ */
+  .news-filters { padding: 0 var(--space-x) 64px; width: 100%; }
+  .news-filters__inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    padding: 12px;
+  }
+  .news-filters__pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.25s ease;
+  }
+  .news-filters__pill-icon { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.65; transition: opacity 0.25s ease; }
+  .news-filters__pill:hover { color: var(--color-white); }
+  .news-filters__pill:hover .news-filters__pill-icon { opacity: 0.9; }
+  .news-filters__pill.is-active { border-color: var(--color-bronze); color: var(--color-gold); background: rgba(211, 167, 105, 0.08); }
+  .news-filters__pill.is-active .news-filters__pill-icon { opacity: 1; }
+
+  /* mobile filter dropdown (hidden on desktop) */
+  .news-filter-select { display: none; }
+
+  /* ============ NEWS BODY LAYOUT ============ */
+  .news-body { padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .news-layout { display: flex; align-items: flex-start; gap: 48px; width: 100%; }
+  .news-main { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 56px; }
+  .news-sidebar { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 28px; position: sticky; top: 120px; }
+
+  /* ---- featured ---- */
+  .insights-featured-wrap { width: 100%; }
+  .insights-featured {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .insights-featured::before {
     content: "";
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: var(--divider-grad);
+    top: -220px;
+    left: -160px;
+    width: 480px;
+    height: 380px;
+    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(250, 208, 107, 0.08) 0%, rgba(143, 122, 72, 0.04) 45%, rgba(0, 0, 0, 0) 75%);
+    pointer-events: none;
   }
-  .calc-banner__box {
-    background: var(--color-bg-secondary);
+  .insights-featured:hover { border-color: var(--color-bronze-light); transform: translateY(-2px); }
+  .insights-featured__body { position: relative; display: flex; flex-direction: column; justify-content: center; flex: 1 0 0; min-width: 0; padding: 56px; }
+  .insights-featured__badge { font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 18px; }
+  .insights-featured__title { font-family: var(--font-serif); font-size: 34px; line-height: 1.2; color: var(--color-white); margin: 0 0 18px; }
+  .insights-featured__excerpt { font-size: 16px; line-height: 1.65; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 24px; }
+  .insights-featured__meta { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--color-text-muted); margin: 0 0 28px; }
+  .insights-featured__meta-cat { color: var(--color-gold-brand); font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .insights-featured__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
+  .insights-featured__media { width: 420px; flex-shrink: 0; overflow: hidden; }
+  .insights-featured__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ---- section label ---- */
+  .insights-section-label { margin: 0 0 28px; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold-brand); display: flex; align-items: center; gap: 16px; }
+  .insights-section-label::after { content: ""; flex: 1 0 0; height: 1px; background: var(--color-border); }
+
+  /* ---- grid ---- */
+  .insights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .insights-card {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--color-border);
-    border-radius: 4px;
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .insights-card:hover { border-color: var(--color-bronze-light); transform: translateY(-3px); }
+  .insights-card__media { width: 100%; height: 190px; overflow: hidden; }
+  .insights-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+  .insights-card:hover .insights-card__media img { transform: scale(1.05); }
+  .insights-card__body { display: flex; flex-direction: column; padding: 28px; flex: 1 0 auto; }
+  .insights-card__date { font-size: 13px; color: var(--color-text-muted); margin-bottom: 12px; }
+  .insights-card__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.28; color: var(--color-white); margin: 0 0 12px; }
+  .insights-card__excerpt { font-size: 15px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 20px; }
+  .insights-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--color-border); }
+  .insights-card__cat { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold-brand); }
+  .insights-card__cta { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); flex-shrink: 0; }
+  .insights-card__cta img { width: 12px; height: 12px; transition: transform 0.25s ease; }
+  .insights-card:hover .insights-card__cta img { transform: translateX(4px); }
+
+  .news-no-results { display: none; padding: 40px; text-align: center; font-size: 16px; color: var(--color-text-muted); border: 1px dashed var(--color-border); border-radius: 6px; }
+
+  /* ---- sidebar ---- */
+  .news-sidebar__title { margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold-brand); display: flex; align-items: center; gap: 16px; }
+  .news-sidebar__title::after { content: ""; flex: 1 0 0; height: 1px; background: var(--color-border); }
+  .news-sidebar__list { display: flex; flex-direction: column; gap: 20px; }
+  .news-sidebar__item + .news-sidebar__item { padding-top: 20px; border-top: 1px solid var(--color-border); }
+  .news-sidebar__link { display: flex; gap: 16px; align-items: flex-start; }
+  .news-sidebar__thumb { width: 64px; height: 64px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+  .news-sidebar__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+  .news-sidebar__link:hover .news-sidebar__thumb img { transform: scale(1.08); }
+  .news-sidebar__body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .news-sidebar__date { font-size: 12px; color: var(--color-text-muted); }
+  .news-sidebar__item-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-white);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.25s ease;
+  }
+  .news-sidebar__link:hover .news-sidebar__item-title { color: var(--color-gold); }
+  .news-sidebar__cat { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold-brand); }
+
+  /* ============ INSIGHTS WE SHARE ============ */
+  .share { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .share::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .share__title { font-family: var(--font-serif); font-size: 44px; line-height: 1; font-weight: 400; margin: 0 0 56px; }
+  .share__grid { display: grid; grid-template-columns: 1fr 1fr; column-gap: 80px; row-gap: 48px; margin-bottom: 64px; }
+  .share__item { display: flex; gap: 24px; align-items: flex-start; }
+  .share__icon { width: 60px; height: 60px; flex-shrink: 0; }
+  .share__item-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--color-white); margin: 0 0 8px; }
+  .share__item-desc { font-size: 15px; font-weight: 300; line-height: 1.5; color: var(--color-text-muted); margin: 0; }
+
+  .share__newsletter {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex: 1 0 0;
-    padding: 40px;
+    gap: 40px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-bg-secondary);
+    padding: 40px 48px;
   }
-  .calc-banner__info { display: flex; gap: 32px; align-items: center; flex: 1 0 0; min-width: 0; }
-  .calc-banner__icon { width: 60px; height: 60px; border: 1px solid var(--color-border); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .calc-banner__icon img { width: 30px; height: 30px; }
-  .calc-banner__text { display: flex; flex-direction: column; gap: 10px; white-space: nowrap; }
-  .calc-banner__title { font-family: var(--font-serif); font-size: 32px; line-height: 1; color: var(--color-white); }
-  .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
+  .share__newsletter-info { display: flex; gap: 24px; align-items: center; flex: 1 0 0; min-width: 0; }
+  .share__newsletter-text { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .share__newsletter-title { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--color-white); margin: 0; }
+  .share__newsletter-desc { font-size: 15px; font-weight: 300; line-height: 1.5; color: var(--color-text-muted); margin: 0; max-width: 460px; }
+  .share__newsletter-form-wrap { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; flex-shrink: 0; }
+  .share__newsletter-form { display: flex; gap: 12px; }
+  .share__newsletter-input {
+    width: 280px;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .share__newsletter-input::placeholder { color: var(--color-text-muted); }
+  .share__newsletter-input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .share__newsletter-btn { padding: 14px 26px; font-size: 14px; }
+  .share__newsletter-note { font-size: 12px; color: var(--color-text-muted); }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -273,106 +436,6 @@
   .footer__bottom-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .footer__lock { width: 13.33px; height: 13.33px; }
   .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
-
-  /* ============ INSIGHTS HERO ============ */
-  .insights-hero { position: relative; padding: 240px var(--space-x) 0; width: 100%; overflow: hidden; }
-  .insights-hero::before {
-    content: "";
-    position: absolute;
-    top: -260px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 1000px;
-    height: 560px;
-    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(191, 163, 96, 0.16) 0%, rgba(143, 122, 72, 0.08) 42%, rgba(0, 0, 0, 0) 75%);
-    pointer-events: none;
-  }
-  .insights-hero__container { position: relative; max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; padding-bottom: 72px; }
-  .insights-hero__kicker { display: inline-flex; align-items: center; gap: 12px; font-size: 14px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-gold-brand); }
-  .insights-hero__kicker-line { width: 28px; height: 1px; background: var(--color-bronze-light); opacity: 0.6; }
-  .insights-hero__title { font-family: var(--font-serif); font-size: 66px; line-height: 1.12; margin: 0; font-weight: 400; }
-  .insights-hero__title-line--gold { color: var(--color-gold); display: block; }
-  .insights-hero__desc { font-size: 20px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 620px; }
-  .insights-hero__rule { width: 84px; height: 1px; background: var(--divider-grad); margin-top: 4px; }
-
-  /* ============ INSIGHTS BODY ============ */
-  .insights { padding: 0 var(--space-x) var(--space-y); width: 100%; }
-
-  /* ---- featured ---- */
-  .insights-featured-wrap { max-width: 1320px; margin: 0 auto 96px; }
-  .insights-featured {
-    position: relative;
-    display: block;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background: var(--color-bg-secondary);
-    padding: 64px;
-    overflow: hidden;
-    transition: border-color 0.25s ease, transform 0.25s ease;
-  }
-  .insights-featured::before {
-    content: "";
-    position: absolute;
-    top: -220px;
-    right: -160px;
-    width: 560px;
-    height: 440px;
-    background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(250, 208, 107, 0.1) 0%, rgba(143, 122, 72, 0.05) 45%, rgba(0, 0, 0, 0) 75%);
-    pointer-events: none;
-  }
-  .insights-featured:hover { border-color: var(--color-bronze-light); transform: translateY(-2px); }
-  .insights-featured__badge {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 18px;
-    border: 1px solid var(--color-bronze);
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    background: rgba(211, 167, 105, 0.08);
-    margin-bottom: 28px;
-  }
-  .insights-featured__meta { position: relative; display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--color-text-muted); margin-bottom: 18px; }
-  .insights-featured__meta-cat { color: var(--color-gold-brand); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .insights-featured__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
-  .insights-featured__title { position: relative; font-family: var(--font-serif); font-size: 46px; line-height: 1.15; color: var(--color-white); margin: 0 0 20px; max-width: 900px; }
-  .insights-featured__excerpt { position: relative; font-size: 19px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); max-width: 760px; margin: 0 0 32px; }
-  .insights-featured__cta { position: relative; display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-gold); }
-  .insights-featured__cta img { width: 14px; height: 14px; transition: transform 0.25s ease; }
-  .insights-featured:hover .insights-featured__cta img { transform: translateX(4px); }
-
-  /* ---- section label ---- */
-  .insights-section-label { max-width: 1320px; margin: 0 auto 32px; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-gold-brand); display: flex; align-items: center; gap: 16px; }
-  .insights-section-label::after { content: ""; flex: 1 0 0; height: 1px; background: var(--color-border); }
-
-  /* ---- grid ---- */
-  .insights-grid { max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .insights-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
-    background: var(--color-bg-secondary);
-    padding: 40px;
-    transition: border-color 0.25s ease, transform 0.25s ease;
-  }
-  .insights-card:hover { border-color: var(--color-bronze-light); transform: translateY(-3px); }
-  .insights-card__meta { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--color-text-muted); margin-bottom: 16px; }
-  .insights-card__cat { color: var(--color-gold-brand); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-  .insights-card__meta-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--color-text-muted); flex-shrink: 0; }
-  .insights-card__title { font-family: var(--font-serif); font-size: 26px; line-height: 1.28; color: var(--color-white); margin: 0 0 14px; flex: 1 0 auto; }
-  .insights-card__excerpt { font-size: 16px; line-height: 1.6; font-weight: 300; color: var(--color-text-secondary); margin: 0 0 24px; }
-  .insights-card__foot { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 1px solid var(--color-border); }
-  .insights-card__date { font-size: 13px; color: var(--color-text-muted); }
-  .insights-card__arrow { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--color-border); transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease; }
-  .insights-card__arrow img { width: 13px; height: 13px; }
-  .insights-card:hover .insights-card__arrow { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.1); transform: translateX(3px); }
 
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
@@ -495,12 +558,93 @@
     .header__burger { display: flex; }
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
-    /* calculator banner */
-    .calc-banner { height: auto; padding: 48px 20px; }
-    .calc-banner__box { flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 28px 20px; }
-    .calc-banner__info { flex-direction: column; align-items: center; text-align: center; }
-    .calc-banner__text { align-items: center; white-space: normal; }
-    .calc-banner__title { font-size: 26px; }
+    /* news hero */
+    .news-hero { padding: 72px 0 40px; overflow: hidden; }
+    .news-hero__bg-wrap { position: relative; width: 100%; height: 260px; overflow: hidden; z-index: 0; }
+    .news-hero__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+    .news-hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10, 15, 19, 0) 45%, rgba(10, 15, 19, 0.85) 85%, rgb(10, 15, 19) 100%);
+    }
+    .news-hero__content { max-width: none; padding: 32px 20px 0; align-items: center; text-align: center; }
+    .news-hero__title { font-size: 34px; }
+    .news-hero__desc { font-size: 16px; }
+
+    /* filter bar */
+    .news-filters { padding: 0 20px 40px; }
+    .news-filters__inner { display: none; }
+    .news-filter-select { display: block; }
+    .news-filter-select__trigger {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      height: 52px;
+      padding: 0 16px;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      background: var(--color-bg-secondary);
+      color: var(--color-white);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      transition: border-color 0.2s ease;
+    }
+    .news-filter-select__trigger-icon { width: 18px; height: 18px; color: var(--color-gold); flex-shrink: 0; }
+    .news-filter-select.is-open .news-filter-select__trigger { border-color: var(--color-gold-dark); }
+    .news-filter-select__value { flex: 1 0 0; text-align: left; }
+    .news-filter-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
+    .news-filter-select.is-open .news-filter-select__chevron { transform: rotate(180deg); }
+    .news-filter-select__panel {
+      position: relative;
+      margin-top: 8px;
+      background: var(--color-bg-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.3s ease, opacity 0.25s ease;
+    }
+    .news-filter-select.is-open .news-filter-select__panel { max-height: 400px; opacity: 1; }
+    .news-filter-select__option {
+      display: flex; align-items: center; gap: 10px; width: 100%;
+      padding: 13px 16px; background: none; border: none; color: var(--color-text-secondary);
+      font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    }
+    .news-filter-select__option:last-child { border-bottom: none; }
+    .news-filter-select__option-icon { width: 16px; height: 16px; flex-shrink: 0; opacity: 0.7; }
+    .news-filter-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+    .news-filter-select__option.is-selected .news-filter-select__option-icon { opacity: 1; }
+
+    /* news body */
+    .news-body { padding: 0 20px 64px; }
+    .news-layout { flex-direction: column; gap: 56px; }
+    .news-main { gap: 40px; }
+    .news-sidebar { width: 100%; position: static; }
+
+    .insights-featured { flex-direction: column; }
+    .insights-featured__media { width: 100%; height: 220px; order: -1; }
+    .insights-featured__body { padding: 28px 24px; }
+    .insights-featured__title { font-size: 24px; }
+
+    .insights-section-label { margin: 0 0 20px; }
+
+    .insights-grid { grid-template-columns: 1fr; gap: 20px; }
+    .insights-card__body { padding: 24px; }
+    .insights-card__title { font-size: 20px; }
+
+    /* insights we share */
+    .share { padding: 64px 20px; }
+    .share__title { font-size: 30px; margin-bottom: 36px; }
+    .share__grid { grid-template-columns: 1fr; row-gap: 32px; margin-bottom: 40px; }
+    .share__newsletter { flex-direction: column; align-items: flex-start; padding: 28px 24px; gap: 28px; }
+    .share__newsletter-form-wrap { align-items: stretch; width: 100%; }
+    .share__newsletter-form { flex-direction: column; width: 100%; }
+    .share__newsletter-input { width: 100%; }
+    .share__newsletter-btn { width: 100%; }
+    .share__newsletter-note { text-align: center; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -508,29 +652,6 @@
     .footer__brand { order: 2; }
     .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
     .footer__column { width: calc(50% - 12px); }
-
-    /* insights hero */
-    .insights-hero { padding: 132px 20px 0; }
-    .insights-hero::before { width: 640px; height: 380px; top: -180px; }
-    .insights-hero__container { gap: 18px; padding-bottom: 44px; }
-    .insights-hero__kicker { font-size: 12px; gap: 8px; }
-    .insights-hero__kicker-line { width: 18px; }
-    .insights-hero__title { font-size: 34px; }
-    .insights-hero__desc { font-size: 16px; }
-
-    /* insights body */
-    .insights { padding: 0 20px 64px; }
-    .insights-featured-wrap { margin: 0 0 56px; }
-    .insights-featured { padding: 32px 24px; }
-    .insights-featured__title { font-size: 28px; }
-    .insights-featured__excerpt { font-size: 16px; }
-    .insights-featured__badge { margin-bottom: 20px; font-size: 10px; padding: 6px 14px; }
-
-    .insights-section-label { margin: 0 0 20px; }
-
-    .insights-grid { grid-template-columns: 1fr; gap: 20px; }
-    .insights-card { padding: 28px 24px; }
-    .insights-card__title { font-size: 22px; }
   }
 </style>
 </head>
@@ -575,174 +696,344 @@
     </header>
 
     <main>
-      <header class="insights-hero">
-        <div class="insights-hero__container">
-          <div class="insights-hero__kicker">
-            <span class="insights-hero__kicker-line"></span>
-            Insights
-            <span class="insights-hero__kicker-line"></span>
-          </div>
-          <h1 class="insights-hero__title">
-            <span>News &amp;</span>
-            <span class="insights-hero__title-line--gold">Insights</span>
-          </h1>
-          <p class="insights-hero__desc">Perspectives on homeownership, investing and the future of real estate finance, from the team building Lease-to-Own.</p>
-          <div class="insights-hero__rule"></div>
+      <header class="news-hero">
+        <div class="news-hero__bg-wrap">
+          <img class="news-hero__bg" src="assets/news1.png" alt="Dubai skyline at sunset">
+        </div>
+        <div class="news-hero__overlay" aria-hidden="true"></div>
+        <div class="news-hero__content">
+          <h1 class="news-hero__title">News &amp; Insights</h1>
+          <p class="news-hero__desc">Expert perspectives, market insights and company updates shaping the future of homeownership and investment.</p>
         </div>
       </header>
 
-      <div class="insights">
-
-        <div class="insights-featured-wrap">
-          <a class="insights-featured" href="why-homeownership-needs-a-new-financial-model.html">
-            <span class="insights-featured__badge">★ Featured Article</span>
-            <div class="insights-featured__meta">
-              <span class="insights-featured__meta-cat">Investment Insights</span>
-              <span class="insights-featured__meta-dot"></span>
-              <span>May 15, 2026</span>
-              <span class="insights-featured__meta-dot"></span>
-              <span>6 min read</span>
-            </div>
-            <h2 class="insights-featured__title">Why Homeownership Needs a New Financial Model</h2>
-            <p class="insights-featured__excerpt">For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model&mdash;and how Lease-to-Own bridges the gap.</p>
-            <span class="insights-featured__cta">Read the Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
-          </a>
+      <section class="news-filters">
+        <div class="news-filters__inner">
+          <button class="news-filters__pill is-active" type="button" data-filter="all">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9.33333H20M4 14.6667H20M9.33333 4V20M14.6667 4V20M5.77778 4H18.2222C19.2041 4 20 4.79594 20 5.77778V18.2222C20 19.2041 19.2041 20 18.2222 20H5.77778C4.79594 20 4 19.2041 4 18.2222V5.77778C4 4.79594 4.79594 4 5.77778 4Z"/></svg>
+            All Articles
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="company-news">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.66667 13.2632C6.66667 15.4496 7.41523 17.5771 8.8 19.3263C9.0829 19.6837 9.50405 19.9199 9.97081 19.9831C10.4376 20.0462 10.9117 19.9312 11.2889 19.6632C11.6661 19.3951 11.9155 18.9962 11.9821 18.554C12.0488 18.1118 11.9273 17.6626 11.6444 17.3053C10.7213 16.1391 10.2222 14.7208 10.2222 13.2632M8.44444 6.52631V13.2632M11.1111 6.52632C13.8146 6.59229 16.4568 5.7579 18.5778 4.16842C18.7098 4.07459 18.8669 4.01745 19.0313 4.0034C19.1957 3.98936 19.361 4.01896 19.5086 4.0889C19.6563 4.15884 19.7805 4.26635 19.8672 4.39938C19.954 4.53242 20 4.68572 20 4.84211V14.9474C20 15.1038 19.954 15.2571 19.8672 15.3901C19.7805 15.5231 19.6563 15.6306 19.5086 15.7006C19.361 15.7705 19.1957 15.8001 19.0313 15.7861C18.8669 15.772 18.7098 15.7149 18.5778 15.621C16.4568 14.0316 13.8146 13.1972 11.1111 13.2632H5.77778C5.30628 13.2632 4.8541 13.0857 4.5207 12.7699C4.1873 12.454 4 12.0256 4 11.5789V8.21052C4 7.76384 4.1873 7.33546 4.5207 7.01961C4.8541 6.70376 5.30628 6.52632 5.77778 6.52632H11.1111Z"/></svg>
+            Company News
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="investment-insights">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4V18.2222C4 18.6937 4.1873 19.1459 4.5207 19.4793C4.8541 19.8127 5.30628 20 5.77778 20H20M18.2222 9.33333L13.7778 13.7778L10.2222 10.2222L7.55556 12.8889"/></svg>
+            Investment Insights
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="housing-market">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 19.4974V12.8307C14.5 12.6097 14.4122 12.3978 14.2559 12.2415C14.0996 12.0852 13.8877 11.9974 13.6667 11.9974H10.3333C10.1123 11.9974 9.90036 12.0852 9.74408 12.2415C9.5878 12.3978 9.5 12.6097 9.5 12.8307V19.4974M4.5 10.3311C4.49994 10.0887 4.55278 9.84915 4.65482 9.62923C4.75687 9.4093 4.90566 9.21429 5.09083 9.0578L10.9242 4.0578C11.225 3.80355 11.6061 3.66406 12 3.66406C12.3939 3.66406 12.775 3.80355 13.0758 4.0578L18.9092 9.0578C19.0943 9.21429 19.2431 9.4093 19.3452 9.62923C19.4472 9.84915 19.5001 10.0887 19.5 10.3311V17.8311C19.5 18.2732 19.3244 18.6971 19.0118 19.0096C18.6993 19.3222 18.2754 19.4978 17.8333 19.4978H6.16667C5.72464 19.4978 5.30072 19.3222 4.98816 19.0096C4.67559 18.6971 4.5 18.2732 4.5 17.8311V10.3311Z"/></svg>
+            Housing Market
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="lease-to-own">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.0284 8.63158L16.9073 10.5684C17.06 10.7227 17.2653 10.8091 17.4791 10.8091C17.6929 10.8091 17.8983 10.7227 18.051 10.5684L19.7665 8.8C19.9162 8.64259 20 8.43095 20 8.21053C20 7.9901 19.9162 7.77847 19.7665 7.62105L17.8876 5.68421M19.5213 4L11.6789 12.0842M12.9861 15.3684C12.9861 17.9264 10.9745 20 8.49304 20C6.0116 20 4 17.9264 4 15.3684C4 12.8105 6.0116 10.7368 8.49304 10.7368C10.9745 10.7368 12.9861 12.8105 12.9861 15.3684Z"/></svg>
+            Lease-to-Own
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="banking">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7.2 12H7.208M16.8 12H16.808M5.6 7H18.4C19.2837 7 20 7.74619 20 8.66667V15.3333C20 16.2538 19.2837 17 18.4 17H5.6C4.71634 17 4 16.2538 4 15.3333V8.66667C4 7.74619 4.71634 7 5.6 7ZM13.6 12C13.6 12.9205 12.8837 13.6667 12 13.6667C11.1163 13.6667 10.4 12.9205 10.4 12C10.4 11.0795 11.1163 10.3333 12 10.3333C12.8837 10.3333 13.6 11.0795 13.6 12Z"/></svg>
+            Banking
+          </button>
+          <button class="news-filters__pill" type="button" data-filter="homeownership">
+            <svg class="news-filters__pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.2 19V17.4444C15.2 16.6193 14.8629 15.828 14.2627 15.2446C13.6626 14.6611 12.8487 14.3333 12 14.3333H7.2C6.35131 14.3333 5.53737 14.6611 4.93726 15.2446C4.33714 15.828 4 16.6193 4 17.4444V19M15.2 5.0995C15.8862 5.27246 16.4939 5.66204 16.9277 6.20711C17.3616 6.75217 17.597 7.42186 17.597 8.11106C17.597 8.80025 17.3616 9.46994 16.9277 10.015C16.4939 10.5601 15.8862 10.9497 15.2 11.1226M20 18.9999V17.4444C19.9995 16.755 19.7635 16.0854 19.3291 15.5406C18.8947 14.9958 18.2865 14.6067 17.6 14.4344M12.8 8.11111C12.8 9.82933 11.3673 11.2222 9.6 11.2222C7.83269 11.2222 6.4 9.82933 6.4 8.11111C6.4 6.39289 7.83269 5 9.6 5C11.3673 5 12.8 6.39289 12.8 8.11111Z"/></svg>
+            Homeownership
+          </button>
         </div>
 
-        <p class="insights-section-label">More Articles</p>
+        <div class="news-filter-select" id="newsFilterSelect">
+          <button type="button" class="news-filter-select__trigger" id="newsFilterTrigger" aria-haspopup="listbox" aria-expanded="false">
+            <svg class="news-filter-select__trigger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9.33333H20M4 14.6667H20M9.33333 4V20M14.6667 4V20M5.77778 4H18.2222C19.2041 4 20 4.79594 20 5.77778V18.2222C20 19.2041 19.2041 20 18.2222 20H5.77778C4.79594 20 4 19.2041 4 18.2222V5.77778C4 4.79594 4.79594 4 5.77778 4Z"/></svg>
+            <span class="news-filter-select__value" id="newsFilterValue">All Articles</span>
+            <svg class="news-filter-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="news-filter-select__panel" id="newsFilterPanel" role="listbox">
+            <button type="button" class="news-filter-select__option is-selected" data-filter="all" role="option" aria-selected="true">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9.33333H20M4 14.6667H20M9.33333 4V20M14.6667 4V20M5.77778 4H18.2222C19.2041 4 20 4.79594 20 5.77778V18.2222C20 19.2041 19.2041 20 18.2222 20H5.77778C4.79594 20 4 19.2041 4 18.2222V5.77778C4 4.79594 4.79594 4 5.77778 4Z"/></svg>
+              All Articles
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="company-news" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.66667 13.2632C6.66667 15.4496 7.41523 17.5771 8.8 19.3263C9.0829 19.6837 9.50405 19.9199 9.97081 19.9831C10.4376 20.0462 10.9117 19.9312 11.2889 19.6632C11.6661 19.3951 11.9155 18.9962 11.9821 18.554C12.0488 18.1118 11.9273 17.6626 11.6444 17.3053C10.7213 16.1391 10.2222 14.7208 10.2222 13.2632M8.44444 6.52631V13.2632M11.1111 6.52632C13.8146 6.59229 16.4568 5.7579 18.5778 4.16842C18.7098 4.07459 18.8669 4.01745 19.0313 4.0034C19.1957 3.98936 19.361 4.01896 19.5086 4.0889C19.6563 4.15884 19.7805 4.26635 19.8672 4.39938C19.954 4.53242 20 4.68572 20 4.84211V14.9474C20 15.1038 19.954 15.2571 19.8672 15.3901C19.7805 15.5231 19.6563 15.6306 19.5086 15.7006C19.361 15.7705 19.1957 15.8001 19.0313 15.7861C18.8669 15.772 18.7098 15.7149 18.5778 15.621C16.4568 14.0316 13.8146 13.1972 11.1111 13.2632H5.77778C5.30628 13.2632 4.8541 13.0857 4.5207 12.7699C4.1873 12.454 4 12.0256 4 11.5789V8.21052C4 7.76384 4.1873 7.33546 4.5207 7.01961C4.8541 6.70376 5.30628 6.52632 5.77778 6.52632H11.1111Z"/></svg>
+              Company News
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="investment-insights" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4V18.2222C4 18.6937 4.1873 19.1459 4.5207 19.4793C4.8541 19.8127 5.30628 20 5.77778 20H20M18.2222 9.33333L13.7778 13.7778L10.2222 10.2222L7.55556 12.8889"/></svg>
+              Investment Insights
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="housing-market" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.5 19.4974V12.8307C14.5 12.6097 14.4122 12.3978 14.2559 12.2415C14.0996 12.0852 13.8877 11.9974 13.6667 11.9974H10.3333C10.1123 11.9974 9.90036 12.0852 9.74408 12.2415C9.5878 12.3978 9.5 12.6097 9.5 12.8307V19.4974M4.5 10.3311C4.49994 10.0887 4.55278 9.84915 4.65482 9.62923C4.75687 9.4093 4.90566 9.21429 5.09083 9.0578L10.9242 4.0578C11.225 3.80355 11.6061 3.66406 12 3.66406C12.3939 3.66406 12.775 3.80355 13.0758 4.0578L18.9092 9.0578C19.0943 9.21429 19.2431 9.4093 19.3452 9.62923C19.4472 9.84915 19.5001 10.0887 19.5 10.3311V17.8311C19.5 18.2732 19.3244 18.6971 19.0118 19.0096C18.6993 19.3222 18.2754 19.4978 17.8333 19.4978H6.16667C5.72464 19.4978 5.30072 19.3222 4.98816 19.0096C4.67559 18.6971 4.5 18.2732 4.5 17.8311V10.3311Z"/></svg>
+              Housing Market
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="lease-to-own" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.0284 8.63158L16.9073 10.5684C17.06 10.7227 17.2653 10.8091 17.4791 10.8091C17.6929 10.8091 17.8983 10.7227 18.051 10.5684L19.7665 8.8C19.9162 8.64259 20 8.43095 20 8.21053C20 7.9901 19.9162 7.77847 19.7665 7.62105L17.8876 5.68421M19.5213 4L11.6789 12.0842M12.9861 15.3684C12.9861 17.9264 10.9745 20 8.49304 20C6.0116 20 4 17.9264 4 15.3684C4 12.8105 6.0116 10.7368 8.49304 10.7368C10.9745 10.7368 12.9861 12.8105 12.9861 15.3684Z"/></svg>
+              Lease-to-Own
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="banking" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7.2 12H7.208M16.8 12H16.808M5.6 7H18.4C19.2837 7 20 7.74619 20 8.66667V15.3333C20 16.2538 19.2837 17 18.4 17H5.6C4.71634 17 4 16.2538 4 15.3333V8.66667C4 7.74619 4.71634 7 5.6 7ZM13.6 12C13.6 12.9205 12.8837 13.6667 12 13.6667C11.1163 13.6667 10.4 12.9205 10.4 12C10.4 11.0795 11.1163 10.3333 12 10.3333C12.8837 10.3333 13.6 11.0795 13.6 12Z"/></svg>
+              Banking
+            </button>
+            <button type="button" class="news-filter-select__option" data-filter="homeownership" role="option" aria-selected="false">
+              <svg class="news-filter-select__option-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15.2 19V17.4444C15.2 16.6193 14.8629 15.828 14.2627 15.2446C13.6626 14.6611 12.8487 14.3333 12 14.3333H7.2C6.35131 14.3333 5.53737 14.6611 4.93726 15.2446C4.33714 15.828 4 16.6193 4 17.4444V19M15.2 5.0995C15.8862 5.27246 16.4939 5.66204 16.9277 6.20711C17.3616 6.75217 17.597 7.42186 17.597 8.11106C17.597 8.80025 17.3616 9.46994 16.9277 10.015C16.4939 10.5601 15.8862 10.9497 15.2 11.1226M20 18.9999V17.4444C19.9995 16.755 19.7635 16.0854 19.3291 15.5406C18.8947 14.9958 18.2865 14.6067 17.6 14.4344M12.8 8.11111C12.8 9.82933 11.3673 11.2222 9.6 11.2222C7.83269 11.2222 6.4 9.82933 6.4 8.11111C6.4 6.39289 7.83269 5 9.6 5C11.3673 5 12.8 6.39289 12.8 8.11111Z"/></svg>
+              Homeownership
+            </button>
+          </div>
+        </div>
+      </section>
 
-        <div class="insights-grid">
+      <div class="news-body">
+        <div class="news-layout">
 
-          <a class="insights-card" href="lease-to-own-a-smarter-path-to-homeownership.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Lease-to-Own</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>May 10, 2026</span>
-            </div>
-            <h3 class="insights-card__title">Lease-to-Own: A Smarter Path to Homeownership</h3>
-            <p class="insights-card__excerpt">Renting builds no ownership. Buying asks you to wait years. Lease-to-Own is a third path that lets you live in your future home while you prepare to own it.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">6 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+          <div class="news-main">
 
-          <a class="insights-card" href="unlocking-real-estate-investment-through-clns.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Investment Insights</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>May 6, 2026</span>
+            <div class="insights-featured-wrap" data-category="investment-insights homeownership">
+              <a class="insights-featured" href="why-homeownership-needs-a-new-financial-model.html">
+                <div class="insights-featured__body">
+                  <p class="insights-featured__badge">Featured</p>
+                  <h2 class="insights-featured__title">Why Homeownership Needs a New Financial Model</h2>
+                  <p class="insights-featured__excerpt">For millions of families, the financial system asks them to solve the hardest problem first. Here's why homeownership needs a new financial model&mdash;and how Lease-to-Own bridges the gap.</p>
+                  <div class="insights-featured__meta">
+                    <span>May 15, 2026</span>
+                    <span class="insights-featured__meta-dot"></span>
+                    <span class="insights-featured__meta-cat">Investment Insights</span>
+                  </div>
+                  <span class="btn btn--outline btn--sm">Read Article <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt=""></span>
+                </div>
+                <div class="insights-featured__media">
+                  <img src="assets/news2.png" alt="Modern living room overlooking the Dubai skyline">
+                </div>
+              </a>
             </div>
-            <h3 class="insights-card__title">Unlocking Real Estate Investment Through Asset-Backed CLNs</h3>
-            <p class="insights-card__excerpt">Every Asset-Backed Credit Linked Note finances one property and one Lease-to-Own customer. Here's how the structure works, and why it creates a new category of investing.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">7 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
 
-          <a class="insights-card" href="why-dubai-remains-a-global-real-estate-destination.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Housing Market</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>May 3, 2026</span>
-            </div>
-            <h3 class="insights-card__title">Why Dubai Remains a Global Real Estate Destination</h3>
-            <p class="insights-card__excerpt">Population growth, an open ownership market and continuous infrastructure investment keep Dubai among the world's most resilient residential property markets.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">6 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+            <div>
+              <p class="insights-section-label">More Articles</p>
 
-          <a class="insights-card" href="understanding-asset-backed-credit-linked-notes.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Investment Insights</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>April 28, 2026</span>
-            </div>
-            <h3 class="insights-card__title">Understanding Asset-Backed Credit Linked Notes</h3>
-            <p class="insights-card__excerpt">A plain-language guide to how Asset-Backed CLNs work&mdash;one property, one customer, one investment lifecycle, with protection built in at every stage.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">7 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+              <div class="insights-grid">
 
-          <a class="insights-card" href="how-lease-to-own-creates-value-for-everyone.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Lease-to-Own</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>April 22, 2026</span>
-            </div>
-            <h3 class="insights-card__title">How Lease-to-Own Creates Value for Everyone</h3>
-            <p class="insights-card__excerpt">Homeowners, investors, banks and brokers each follow a different path through Lease-to-Own&mdash;but every path leads to the same destination.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">7 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+                <a class="insights-card" href="lease-to-own-a-smarter-path-to-homeownership.html" data-category="lease-to-own">
+                  <div class="insights-card__media"><img src="assets/news3.png" alt="Family moving into their new home"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">May 10, 2026</span>
+                    <h3 class="insights-card__title">Lease-to-Own: A Smarter Path to Homeownership</h3>
+                    <p class="insights-card__excerpt">Renting builds no ownership. Buying asks you to wait years. Lease-to-Own is a third path that lets you live in your future home while you prepare to own it.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Lease-to-Own</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
 
-          <a class="insights-card" href="the-future-of-mortgage-lending.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Banking</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>April 18, 2026</span>
-            </div>
-            <h3 class="insights-card__title">The Future of Mortgage Lending</h3>
-            <p class="insights-card__excerpt">Mortgage lending shouldn't begin with an application&mdash;it should begin with preparation. How documented payment behaviour is changing what banks look for.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">6 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+                <a class="insights-card" href="unlocking-real-estate-investment-through-clns.html" data-category="investment-insights">
+                  <div class="insights-card__media"><img src="assets/news4.png" alt="Modern villas at dusk"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">May 6, 2026</span>
+                    <h3 class="insights-card__title">Unlocking Real Estate Investment Through Asset-Backed CLNs</h3>
+                    <p class="insights-card__excerpt">Every Asset-Backed Credit Linked Note finances one property and one Lease-to-Own customer. Here's how the structure works, and why it creates a new category of investing.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Investment Insights</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
 
-          <a class="insights-card" href="dubai-residential-market-continues-strong-growth.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Housing Market</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>April 12, 2026</span>
-            </div>
-            <h3 class="insights-card__title">Dubai Residential Market Continues Strong Growth</h3>
-            <p class="insights-card__excerpt">Population growth and a shift from speculation to genuine homeownership demand keep reshaping Dubai's residential market.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">6 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+                <a class="insights-card" href="why-dubai-remains-a-global-real-estate-destination.html" data-category="housing-market">
+                  <div class="insights-card__media"><img src="assets/news1.png" alt="Dubai skyline at sunset"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">May 3, 2026</span>
+                    <h3 class="insights-card__title">Why Dubai Remains a Global Real Estate Destination</h3>
+                    <p class="insights-card__excerpt">Population growth, an open ownership market and continuous infrastructure investment keep Dubai among the world's most resilient residential property markets.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Housing Market</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
 
-          <a class="insights-card" href="investors-angels-announces-first-banking-partnership.html">
-            <div class="insights-card__meta">
-              <span class="insights-card__cat">Company News</span>
-              <span class="insights-card__meta-dot"></span>
-              <span>April 5, 2026</span>
+                <a class="insights-card" href="understanding-asset-backed-credit-linked-notes.html" data-category="investment-insights">
+                  <div class="insights-card__media"><img src="assets/news2.png" alt="Modern living room interior"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">April 28, 2026</span>
+                    <h3 class="insights-card__title">Understanding Asset-Backed Credit Linked Notes</h3>
+                    <p class="insights-card__excerpt">A plain-language guide to how Asset-Backed CLNs work&mdash;one property, one customer, one investment lifecycle, with protection built in at every stage.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Investment Insights</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
+
+                <a class="insights-card" href="how-lease-to-own-creates-value-for-everyone.html" data-category="lease-to-own homeownership">
+                  <div class="insights-card__media"><img src="assets/news3.png" alt="Family in their new living room"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">April 22, 2026</span>
+                    <h3 class="insights-card__title">How Lease-to-Own Creates Value for Everyone</h3>
+                    <p class="insights-card__excerpt">Homeowners, investors, banks and brokers each follow a different path through Lease-to-Own&mdash;but every path leads to the same destination.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Lease-to-Own</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
+
+                <a class="insights-card" href="the-future-of-mortgage-lending.html" data-category="banking">
+                  <div class="insights-card__media"><img src="assets/news4.png" alt="Modern villas at dusk"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">April 18, 2026</span>
+                    <h3 class="insights-card__title">The Future of Mortgage Lending</h3>
+                    <p class="insights-card__excerpt">Mortgage lending shouldn't begin with an application&mdash;it should begin with preparation. How documented payment behaviour is changing what banks look for.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Banking</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
+
+                <a class="insights-card" href="dubai-residential-market-continues-strong-growth.html" data-category="housing-market">
+                  <div class="insights-card__media"><img src="assets/news1.png" alt="Dubai skyline at sunset"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">April 12, 2026</span>
+                    <h3 class="insights-card__title">Dubai Residential Market Continues Strong Growth</h3>
+                    <p class="insights-card__excerpt">Population growth and a shift from speculation to genuine homeownership demand keep reshaping Dubai's residential market.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Housing Market</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
+
+                <a class="insights-card" href="investors-angels-announces-first-banking-partnership.html" data-category="company-news">
+                  <div class="insights-card__media"><img src="assets/news2.png" alt="Modern living room interior"></div>
+                  <div class="insights-card__body">
+                    <span class="insights-card__date">April 5, 2026</span>
+                    <h3 class="insights-card__title">Investors' Angels Announces First Banking Partnership</h3>
+                    <p class="insights-card__excerpt">Investors' Angels launches its first Mortgage Partnership Program with a UAE banking institution, giving customers a documented path toward mortgage eligibility.</p>
+                    <div class="insights-card__foot">
+                      <span class="insights-card__cat">Company News</span>
+                      <span class="insights-card__cta">Read Article <img src="assets/icons/icon-arrow.svg" alt=""></span>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+
+              <p class="news-no-results" id="newsNoResults">No articles found in this category yet.</p>
             </div>
-            <h3 class="insights-card__title">Investors' Angels Announces First Banking Partnership</h3>
-            <p class="insights-card__excerpt">Investors' Angels launches its first Mortgage Partnership Program with a UAE banking institution, giving customers a documented path toward mortgage eligibility.</p>
-            <div class="insights-card__foot">
-              <span class="insights-card__date">4 min read</span>
-              <span class="insights-card__arrow"><img src="assets/icons/icon-arrow.svg" alt=""></span>
-            </div>
-          </a>
+          </div>
+
+          <aside class="news-sidebar">
+            <p class="news-sidebar__title">Latest News</p>
+            <ul class="news-sidebar__list">
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="why-homeownership-needs-a-new-financial-model.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news2.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">May 15, 2026</span>
+                    <h3 class="news-sidebar__item-title">Why Homeownership Needs a New Financial Model</h3>
+                    <span class="news-sidebar__cat">Investment Insights</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="lease-to-own-a-smarter-path-to-homeownership.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news3.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">May 10, 2026</span>
+                    <h3 class="news-sidebar__item-title">Lease-to-Own: A Smarter Path to Homeownership</h3>
+                    <span class="news-sidebar__cat">Lease-to-Own</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="unlocking-real-estate-investment-through-clns.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news4.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">May 6, 2026</span>
+                    <h3 class="news-sidebar__item-title">Unlocking Real Estate Investment Through Asset-Backed CLNs</h3>
+                    <span class="news-sidebar__cat">Investment Insights</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="why-dubai-remains-a-global-real-estate-destination.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news1.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">May 3, 2026</span>
+                    <h3 class="news-sidebar__item-title">Why Dubai Remains a Global Real Estate Destination</h3>
+                    <span class="news-sidebar__cat">Housing Market</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="understanding-asset-backed-credit-linked-notes.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news2.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">April 28, 2026</span>
+                    <h3 class="news-sidebar__item-title">Understanding Asset-Backed Credit Linked Notes</h3>
+                    <span class="news-sidebar__cat">Investment Insights</span>
+                  </div>
+                </a>
+              </li>
+              <li class="news-sidebar__item">
+                <a class="news-sidebar__link" href="how-lease-to-own-creates-value-for-everyone.html">
+                  <div class="news-sidebar__thumb"><img src="assets/news3.png" alt=""></div>
+                  <div class="news-sidebar__body">
+                    <span class="news-sidebar__date">April 22, 2026</span>
+                    <h3 class="news-sidebar__item-title">How Lease-to-Own Creates Value for Everyone</h3>
+                    <span class="news-sidebar__cat">Lease-to-Own</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </aside>
 
         </div>
       </div>
 
-      <section class="calc-banner">
-        <div class="calc-banner__box">
-          <div class="calc-banner__info">
-            <div class="calc-banner__icon">
-              <img src="assets/icons/icon-calculator.svg" alt="">
-            </div>
-            <div class="calc-banner__text">
-              <p class="calc-banner__title">See what Lease-to-Own could look like for you</p>
-              <p class="calc-banner__desc">Use our calculator to see your options and monthly payments.</p>
+      <section class="share">
+        <h2 class="share__title">Insights we share</h2>
+        <div class="share__grid">
+          <div class="share__item">
+            <img class="share__icon" src="assets/icons/block_icon.svg" alt="">
+            <div>
+              <p class="share__item-title">Expert Analysis</p>
+              <p class="share__item-desc">In-depth perspectives from specialists across residential real estate, structured finance, banking and technology.</p>
             </div>
           </div>
-          <a class="btn btn--gradient" href="calculator.html">
-            Try Calculator
-            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-          </a>
+          <div class="share__item">
+            <img class="share__icon" src="assets/icons/block_icon-1.svg" alt="">
+            <div>
+              <p class="share__item-title">Market Updates</p>
+              <p class="share__item-desc">Regular analysis of residential property markets, financing trends and investment opportunities.</p>
+            </div>
+          </div>
+          <div class="share__item">
+            <img class="share__icon" src="assets/icons/block_icon-2.svg" alt="">
+            <div>
+              <p class="share__item-title">Thought Leadership</p>
+              <p class="share__item-desc">Ideas shaping the future of Lease-to-Own, homeownership and asset-backed investing.</p>
+            </div>
+          </div>
+          <div class="share__item">
+            <img class="share__icon" src="assets/icons/block_icon-3.svg" alt="">
+            <div>
+              <p class="share__item-title">Company News</p>
+              <p class="share__item-desc">Announcements, partnerships, product launches and important developments across the Investors' Angels platform.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="share__newsletter">
+          <div class="share__newsletter-info">
+            <img class="share__icon" src="assets/icons/block_icon5.svg" alt="">
+            <div class="share__newsletter-text">
+              <p class="share__newsletter-title">Stay informed</p>
+              <p class="share__newsletter-desc">Subscribe to our newsletter and receive the latest company news, investment insights and market updates.</p>
+            </div>
+          </div>
+          <div class="share__newsletter-form-wrap">
+            <form class="share__newsletter-form" id="newsletterForm">
+              <input type="email" class="share__newsletter-input" placeholder="Your email address" required>
+              <button type="submit" class="btn btn--gradient share__newsletter-btn">Subscribe</button>
+            </form>
+            <p class="share__newsletter-note">We respect your privacy. Unsubscribe at any time.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -861,6 +1152,81 @@
         setMenu(false);
       });
     });
+  })();
+
+  (function () {
+    var pills = document.querySelectorAll('.news-filters__pill');
+    var selectWrap = document.getElementById('newsFilterSelect');
+    var selectTrigger = document.getElementById('newsFilterTrigger');
+    var selectPanel = document.getElementById('newsFilterPanel');
+    var selectValue = document.getElementById('newsFilterValue');
+    var selectOptions = selectPanel ? selectPanel.querySelectorAll('.news-filter-select__option') : [];
+    var featuredWrap = document.querySelector('.insights-featured-wrap');
+    var cards = document.querySelectorAll('.insights-card');
+    var noResults = document.getElementById('newsNoResults');
+
+    function itemMatches(el, value) {
+      if (value === 'all') return true;
+      var cats = (el.getAttribute('data-category') || '').split(' ');
+      return cats.indexOf(value) !== -1;
+    }
+
+    function applyFilter(value, label) {
+      pills.forEach(function (p) { p.classList.toggle('is-active', p.getAttribute('data-filter') === value); });
+      selectOptions.forEach(function (o) {
+        var selected = o.getAttribute('data-filter') === value;
+        o.classList.toggle('is-selected', selected);
+        o.setAttribute('aria-selected', String(selected));
+      });
+      if (selectValue) selectValue.textContent = label;
+
+      var visibleCount = 0;
+      if (featuredWrap) {
+        var showFeatured = itemMatches(featuredWrap, value);
+        featuredWrap.style.display = showFeatured ? '' : 'none';
+        if (showFeatured) visibleCount++;
+      }
+      cards.forEach(function (card) {
+        var show = itemMatches(card, value);
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount++;
+      });
+      if (noResults) noResults.style.display = visibleCount ? 'none' : 'block';
+    }
+
+    pills.forEach(function (p) {
+      p.addEventListener('click', function () {
+        var text = p.textContent.trim();
+        applyFilter(p.getAttribute('data-filter'), text);
+      });
+    });
+
+    if (selectWrap && selectTrigger && selectPanel) {
+      function setOpen(open) {
+        selectWrap.classList.toggle('is-open', open);
+        selectTrigger.setAttribute('aria-expanded', String(open));
+      }
+
+      selectTrigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!selectWrap.classList.contains('is-open'));
+      });
+
+      selectOptions.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          var text = opt.textContent.trim();
+          applyFilter(opt.getAttribute('data-filter'), text);
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!selectWrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    }
   })();
 </script>
 </body>
