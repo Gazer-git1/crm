@@ -307,7 +307,7 @@
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.04) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.72) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -347,15 +347,6 @@
 
   /* ============ WHY PANEL (why investors choose us) ============ */
   .why-panel { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
-  .why-panel::after {
-    content: "";
-    position: absolute;
-    left: var(--space-x);
-    right: var(--space-x);
-    bottom: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
   .why-panel__title { font-family: var(--font-serif); font-size: 40px; line-height: 1; margin: 0 0 48px; font-weight: 400; }
   .why-panel__panel {
     position: relative;
@@ -372,7 +363,7 @@
     inset: 0;
     border-radius: 24px;
     padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.04) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.72) 100%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -395,9 +386,21 @@
   .why-panel__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 230px; }
 
   /* ============ INVEST CTA (requirements + form) ============ */
-  .invest-cta { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
-  .invest-cta__requirements { width: 540px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; }
-  .invest-cta__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.1; margin: 0; font-weight: 400; color: var(--color-gold); }
+  .invest-cta { position: relative; padding: 0 var(--space-x); width: 100%; }
+  .invest-cta::before {
+    content: "";
+    position: absolute;
+    left: var(--space-x);
+    right: var(--space-x);
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+    z-index: 2;
+  }
+  .invest-cta__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: stretch; }
+  .invest-cta__col { display: flex; flex-direction: column; height: 100%; }
+  .invest-cta__col--requirements { padding: 100px 0; gap: 40px; }
+  .invest-cta__title { font-family: var(--font-serif); font-size: 36px; line-height: 1.1; margin: 0; font-weight: 400; color: var(--color-gold); }
   .invest-cta__list { display: flex; flex-direction: column; gap: 18px; }
   .invest-cta__list-item { position: relative; padding-left: 26px; font-size: 16px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; }
   .invest-cta__list-item::before {
@@ -411,9 +414,9 @@
     transform: rotate(45deg);
   }
   .invest-cta__globe-box {
-    position: relative;
-    border-radius: 8px;
-    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 28px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -421,44 +424,19 @@
     gap: 14px;
     background: var(--color-bg-secondary);
   }
-  .invest-cta__globe-box::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
   .invest-cta__globe-icon { width: 44px; height: 44px; color: var(--color-gold); }
   .invest-cta__globe-title { font-family: var(--font-serif); font-size: 18px; line-height: 1.4; color: var(--color-white); font-weight: 400; margin: 0; }
   .invest-cta__globe-desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; }
 
   .invest-cta__form-wrap {
-    position: relative;
-    flex: 1 0 0;
-    min-width: 0;
-    border-radius: 8px;
-    padding: 48px;
+    background: #0c1614;
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    padding: 100px 48px;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    background: var(--color-highlight-grad);
-  }
-  .invest-cta__form-wrap::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
+    height: 100%;
   }
   .invest-cta__form-heading { display: flex; flex-direction: column; gap: 12px; }
   .invest-cta__form-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; margin: 0; }
@@ -760,17 +738,18 @@
 
     /* why panel */
     .why-panel { padding: 0 20px 56px; }
-    .why-panel::after { left: 20px; right: 20px; }
     .why-panel__title { font-size: 30px; margin-bottom: 32px; }
     .why-panel__panel { grid-template-columns: 1fr 1fr; gap: 36px 16px; padding: 36px 20px; border-radius: 16px; }
     .why-panel__item-title { max-width: none; }
     .why-panel__desc { max-width: none; }
 
     /* invest cta */
-    .invest-cta { flex-direction: column; align-items: stretch; padding: 64px 20px; gap: 40px; }
-    .invest-cta__requirements { width: 100%; }
+    .invest-cta { padding: 0 20px; }
+    .invest-cta::before { left: 20px; right: 20px; }
+    .invest-cta__grid { grid-template-columns: 1fr; gap: 32px; }
+    .invest-cta__col--requirements { padding: 48px 0 0; }
     .invest-cta__title { font-size: 28px; }
-    .invest-cta__form-wrap { padding: 28px 20px; }
+    .invest-cta__form-wrap { padding: 32px 20px 48px; border: 1px solid var(--color-border); border-radius: 16px; }
     .invest-cta__form-title { font-size: 24px; }
 
     /* testimonial */
@@ -940,71 +919,75 @@
 
       <!-- INVEST CTA : requirements + form -->
       <section class="invest-cta">
-        <div class="invest-cta__requirements">
-          <h2 class="invest-cta__title">Investor Requirements</h2>
-          <ul class="invest-cta__list">
-            <li class="invest-cta__list-item">Investors must be at least 18 years old.</li>
-            <li class="invest-cta__list-item">Investors must be non-U.S. persons.</li>
-            <li class="invest-cta__list-item">Professional or Sophisticated Investor status may be required.</li>
-            <li class="invest-cta__list-item">Minimum investment may apply.</li>
-            <li class="invest-cta__list-item">All investments are subject to Terms and Conditions.</li>
-          </ul>
-          <div class="invest-cta__globe-box">
-            <span class="invest-cta__globe-icon" aria-hidden="true">
-              <img src="assets/icons/team11.svg" alt="" style="width:100%;height:100%;">
-            </span>
-            <p class="invest-cta__globe-title">Investors from around the world are welcome.</p>
-            <p class="invest-cta__globe-desc">Our CLNs are available to eligible investors in multiple jurisdictions.</p>
+        <div class="invest-cta__grid">
+          <div class="invest-cta__col invest-cta__col--requirements">
+            <h2 class="invest-cta__title">Investor Requirements</h2>
+            <ul class="invest-cta__list">
+              <li class="invest-cta__list-item">Investors must be at least 18 years old.</li>
+              <li class="invest-cta__list-item">Investors must be non-U.S. persons.</li>
+              <li class="invest-cta__list-item">Professional or Sophisticated Investor status may be required.</li>
+              <li class="invest-cta__list-item">Minimum investment may apply.</li>
+              <li class="invest-cta__list-item">All investments are subject to Terms and Conditions.</li>
+            </ul>
+            <div class="invest-cta__globe-box">
+              <span class="invest-cta__globe-icon" aria-hidden="true">
+                <img src="assets/icons/team11.svg" alt="" style="width:100%;height:100%;">
+              </span>
+              <p class="invest-cta__globe-title">Investors from around the world are welcome.</p>
+              <p class="invest-cta__globe-desc">Our CLNs are available to eligible investors in multiple jurisdictions.</p>
+            </div>
+          </div>
+
+          <div class="invest-cta__col">
+            <form class="invest-cta__form-wrap">
+              <div class="invest-cta__form-heading">
+                <h2 class="invest-cta__form-title">Ready to invest?</h2>
+                <p class="invest-cta__form-desc">Join Investors' Angels and be part of a new way to invest in real estate and real futures.</p>
+              </div>
+              <div class="invest-cta__fields">
+                <input class="invest-cta__input" type="text" name="full_name" placeholder="Full Name" required>
+                <input class="invest-cta__input" type="email" name="email" placeholder="Email Address" required>
+                <div class="invest-select">
+                  <select name="country" required defaultValue="">
+                    <option value="" disabled selected hidden>Country of Residence</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="QA">Qatar</option>
+                    <option value="KW">Kuwait</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="OM">Oman</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="IE">Ireland</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="ES">Spain</option>
+                    <option value="IT">Italy</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="SG">Singapore</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="IN">India</option>
+                    <option value="OTHER">Other</option>
+                  </select>
+                  <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="invest-select">
+                  <select name="investor_type" required defaultValue="">
+                    <option value="" disabled selected hidden>Investor Type</option>
+                    <option value="individual">Individual Investor</option>
+                    <option value="professional">Professional Investor</option>
+                    <option value="institutional">Institutional Investor</option>
+                    <option value="family_office">Family Office</option>
+                  </select>
+                  <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+              </div>
+              <button class="btn btn--gradient invest-cta__submit" type="submit">Request Investor Access</button>
+            </form>
           </div>
         </div>
-
-        <form class="invest-cta__form-wrap">
-          <div class="invest-cta__form-heading">
-            <h2 class="invest-cta__form-title">Ready to invest?</h2>
-            <p class="invest-cta__form-desc">Join Investors' Angels and be part of a new way to invest in real estate and real futures.</p>
-          </div>
-          <div class="invest-cta__fields">
-            <input class="invest-cta__input" type="text" name="full_name" placeholder="Full Name" required>
-            <input class="invest-cta__input" type="email" name="email" placeholder="Email Address" required>
-            <div class="invest-select">
-              <select name="country" required defaultValue="">
-                <option value="" disabled selected hidden>Country of Residence</option>
-                <option value="AE">United Arab Emirates</option>
-                <option value="SA">Saudi Arabia</option>
-                <option value="QA">Qatar</option>
-                <option value="KW">Kuwait</option>
-                <option value="BH">Bahrain</option>
-                <option value="OM">Oman</option>
-                <option value="GB">United Kingdom</option>
-                <option value="IE">Ireland</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-                <option value="CH">Switzerland</option>
-                <option value="ES">Spain</option>
-                <option value="IT">Italy</option>
-                <option value="NL">Netherlands</option>
-                <option value="CA">Canada</option>
-                <option value="AU">Australia</option>
-                <option value="SG">Singapore</option>
-                <option value="HK">Hong Kong</option>
-                <option value="IN">India</option>
-                <option value="OTHER">Other</option>
-              </select>
-              <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="invest-select">
-              <select name="investor_type" required defaultValue="">
-                <option value="" disabled selected hidden>Investor Type</option>
-                <option value="individual">Individual Investor</option>
-                <option value="professional">Professional Investor</option>
-                <option value="institutional">Institutional Investor</option>
-                <option value="family_office">Family Office</option>
-              </select>
-              <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-          </div>
-          <button class="btn btn--gradient invest-cta__submit" type="submit">Request Investor Access</button>
-        </form>
       </section>
 
       <!-- TESTIMONIAL -->
