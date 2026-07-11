@@ -350,6 +350,7 @@
     letter-spacing: 0.02em;
     color: var(--color-gold-dark);
   }
+  .process__item-head { display: flex; flex-direction: column; align-items: center; }
   .process__icon { width: 40px; height: 40px; margin-bottom: 16px; transition: transform 0.4s ease, filter 0.4s ease; }
   .process__item:hover .process__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
   .process__item-title { font-family: var(--font-serif); font-size: 20px; line-height: 1.3; color: var(--color-white); font-weight: 400; margin: 0 0 10px; }
@@ -746,21 +747,21 @@
     .process__panel {
       display: flex;
       flex-direction: column;
-      gap: 36px;
-      padding: 0;
-      border-radius: 0;
+      gap: 44px;
+      padding: 32px 24px 40px;
+      border-radius: 24px;
     }
-    .process__panel::before { content: none; }
     .process__number {
-      position: static;
-      width: auto;
-      height: auto;
-      margin: 0 0 12px;
-      border-radius: 0;
-      background: none;
-      border: none;
-      font-size: 14px;
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 16px;
+      font-size: 16px;
     }
+    .process__item:first-child .process__number { margin: -58px auto 16px; }
+    .process__item-head { flex-direction: row; gap: 10px; margin-bottom: 8px; }
+    .process__icon { width: 28px; height: 28px; margin-bottom: 0; }
+    .process__item-title { margin: 0; }
+    .process__item-desc { max-width: none; }
 
     /* why panel */
     .why-panel { padding: 0 20px 56px; }
@@ -786,10 +787,7 @@
     .invest-cta__form-title { font-size: 24px; }
 
     /* testimonial */
-    .testimonial { flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 560px; padding: 0 20px 48px; }
-    .testimonial__overlay { background: linear-gradient(180deg, rgba(13, 10, 8, 0.15) 0%, rgba(13, 10, 8, 0.55) 45%, rgba(13, 10, 8, 0.98) 82%); }
-    .testimonial__content { width: 100%; }
-    .testimonial__text { font-size: 24px; }
+    .testimonial { display: none; }
 
     /* help banner */
     .calc-banner { height: auto; padding: 48px 20px; }
@@ -887,32 +885,42 @@
         <div class="process__panel">
           <div class="process__item">
             <span class="process__number">01</span>
-            <img class="process__icon" src="assets/icons/team1.svg" alt="">
-            <p class="process__item-title">Register</p>
+            <div class="process__item-head">
+              <img class="process__icon" src="assets/icons/team1.svg" alt="">
+              <p class="process__item-title">Register</p>
+            </div>
             <p class="process__item-desc">Create your investor account and complete the verification process.</p>
           </div>
           <div class="process__item">
             <span class="process__number">02</span>
-            <img class="process__icon" src="assets/icons/team2.svg" alt="">
-            <p class="process__item-title">Review Opportunities</p>
+            <div class="process__item-head">
+              <img class="process__icon" src="assets/icons/team2.svg" alt="">
+              <p class="process__item-title">Review Opportunities</p>
+            </div>
             <p class="process__item-desc">Explore available CLNs backed by real properties and Lease-to-Own agreements.</p>
           </div>
           <div class="process__item">
             <span class="process__number">03</span>
-            <img class="process__icon" src="assets/icons/team3.svg" alt="">
-            <p class="process__item-title">Perform Due Diligence</p>
+            <div class="process__item-head">
+              <img class="process__icon" src="assets/icons/team3.svg" alt="">
+              <p class="process__item-title">Perform Due Diligence</p>
+            </div>
             <p class="process__item-desc">Access Property Passports, customer profiles, financial data and investment documents.</p>
           </div>
           <div class="process__item">
             <span class="process__number">04</span>
-            <img class="process__icon" src="assets/icons/team4.svg" alt="">
-            <p class="process__item-title">Invest</p>
+            <div class="process__item-head">
+              <img class="process__icon" src="assets/icons/team4.svg" alt="">
+              <p class="process__item-title">Invest</p>
+            </div>
             <p class="process__item-desc">Select the CLN you want to invest in and complete the subscription.</p>
           </div>
           <div class="process__item">
             <span class="process__number">05</span>
-            <img class="process__icon" src="assets/icons/team5.svg" alt="">
-            <p class="process__item-title">Monitor &amp; Earn</p>
+            <div class="process__item-head">
+              <img class="process__icon" src="assets/icons/team5.svg" alt="">
+              <p class="process__item-title">Monitor &amp; Earn</p>
+            </div>
             <p class="process__item-desc">Track your investment in real time and receive regular returns.</p>
           </div>
         </div>
