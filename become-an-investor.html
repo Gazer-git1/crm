@@ -263,14 +263,24 @@
   }
   .hero__note {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
     width: 100%;
     padding-top: 28px;
     border-top: 1px solid var(--color-border);
   }
-  .hero__note-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; color: var(--color-gold); }
-  .hero__note-icon svg { width: 100%; height: 100%; }
+  .hero__note-icon {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-bronze);
+    border-radius: 4px;
+    color: var(--color-gold);
+  }
+  .hero__note-icon svg { width: 26px; height: 26px; }
   .hero__note-text { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; width: 480px; }
 
   /* ============ PROCESS (how to become an investor) ============ */
@@ -723,11 +733,11 @@
     .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 360px 20px 0; gap: 24px; align-items: center; }
+    .hero__content { width: 100%; padding: 430px 20px 0; gap: 24px; align-items: center; }
     .hero__heading-block { align-items: center; text-align: center; }
     .hero__title { font-size: 34px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__note { flex-direction: row; align-items: center; justify-content: center; padding-top: 24px; }
+    .hero__note { flex-direction: row; align-items: center; justify-content: center; padding-top: 0; border-top: none; }
     .hero__note-text { width: auto; max-width: 300px; text-align: left; }
 
     /* process */
