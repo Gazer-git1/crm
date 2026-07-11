@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Become an Investor — Investors' Angels</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="Invest in real assets and create real impact. Access asset-backed, Lease-to-Own investments with Investors' Angels — attractive returns, full transparency, and social impact.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://i-angels.com/become-an-investor">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Investors' Angels">
+<meta property="og:title" content="Become an Investor — Investors' Angels">
+<meta property="og:description" content="Invest in real assets and create real impact. Access asset-backed, Lease-to-Own investments with Investors' Angels — attractive returns, full transparency, and social impact.">
+<meta property="og:image" content="https://i-angels.com/assets/team1.png">
+<meta property="og:url" content="https://i-angels.com/become-an-investor">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Become an Investor — Investors' Angels">
+<meta name="twitter:description" content="Invest in real assets and create real impact. Access asset-backed, Lease-to-Own investments with Investors' Angels — attractive returns, full transparency, and social impact.">
+<meta name="twitter:image" content="https://i-angels.com/assets/team1.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root {
+    /* colors */
+    --color-bg: #0a0f13;
+    --color-bg-alt: #0a1013;
+    --color-bg-secondary: #161817;
+    --color-bg-footer: #0d0a08;
+    --color-white: #ffffff;
+    --color-text-secondary: #b9bdc4;
+    --color-text-muted: #73777e;
+    --color-text-footer-muted: #636366;
+    --color-gold: #fad06b;
+    --color-gold-dark: #c9a44c;
+    --color-gold-brand: #bfa360;
+    --color-bronze: #9b7140;
+    --color-bronze-light: #d3a769;
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-highlight-grad: linear-gradient(138.02deg, #5d492f 28.65%, #292117 88.873%);
+    --color-btn-grad: linear-gradient(90deg, #9b7140 0%, #d3a769 48.292%, #9b7140 100%);
+    --divider-grad: linear-gradient(90deg, rgba(155, 113, 64, 0) 0%, rgba(211, 167, 105, 0.9) 50%, rgba(155, 113, 64, 0) 100%);
+
+    /* typography */
+    --font-serif: 'Jacques Francois', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    /* fixed desktop canvas */
+    --canvas-width: 1920px;
+    --space-x: 300px;
+    --space-y: 120px;
+  }
+
+  /* ============ RESET ============ */
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--color-bg-footer); overflow-x: clip; }
+  html { scrollbar-gutter: stable; }
+  body {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  img { display: block; max-width: none; }
+  img:not([src$=".svg"]) { color: var(--color-text-muted); font-size: 13px; text-align: center; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  p { margin: 0; }
+  button, select { font: inherit; cursor: pointer; }
+
+  /* Fixed 1920px desktop canvas; zoomed as a whole (real layout resize, not just visual) to fit narrower windows */
+  .page {
+    width: var(--canvas-width);
+    margin: 0 auto;
+    position: relative;
+    isolation: isolate;
+  }
+  .page::before, .page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4000px;
+    background: var(--color-bg-footer);
+    z-index: -1;
+    pointer-events: none;
+  }
+  .page::before { right: 100%; }
+  .page::after { left: 100%; }
+
+  /* ============ BUTTONS ============ */
+  .btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  .btn__icon { width: 16px; height: 16px; flex-shrink: 0; transition: transform 0.25s ease; }
+  .btn:hover .btn__icon { transform: translateX(4px); }
+  .btn--gradient { background: var(--color-btn-grad); color: #0d0a08; }
+  .btn--gradient:hover { box-shadow: 0 10px 28px rgba(211, 167, 105, 0.4); }
+  .btn--gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.45) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.65s ease;
+    pointer-events: none;
+  }
+  .btn--gradient:hover::after { left: 130%; }
+  .btn--outline { background: transparent; color: var(--color-gold); border: 1px solid var(--color-bronze); font-size: 16px; }
+  .btn--outline:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
+  .btn--text { background: transparent; color: var(--color-gold); padding: 14px 0; font-size: 16px; align-self: flex-start; }
+  .btn--text:hover { color: #ffe1a3; transform: translateY(0); }
+
+  /* ============ HEADER ============ */
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 250px;
+    z-index: 100;
+  }
+  .header__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .header__inner {
+    display: flex;
+    flex: 1 0 0;
+    height: 75px;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+  }
+  .header__logo { display: flex; align-items: center; height: 100px; width: 223px; margin-top: 14px; }
+  .header__logo-mark { height: 100px; width: 223px; }
+  .header__nav { position: relative; }
+  .header__nav-list { display: flex; align-items: center; gap: 16px; height: 100%; }
+  .header__nav-item { height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 10px; position: relative; z-index: 1; }
+  .header__nav-link {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 8px;
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+    line-height: 1.26;
+    transition: color 0.25s ease;
+  }
+  .header__nav-item--active .header__nav-link { color: var(--color-gold); font-weight: 700; }
+  .header__nav-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 79% 62% at 50% 0%, rgba(191, 163, 96, 0.4) 0%, rgba(143, 122, 72, 0.3) 25%, rgba(96, 82, 48, 0.2) 50%, rgba(48, 41, 24, 0.1) 75%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .header__nav-item:hover::after, .header__nav-item--active::after { opacity: 1; }
+  .header__cta { width: 200px; flex-shrink: 0; }
+  .header__actions { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .header__burger {
+    display: none;
+    width: 32px;
+    height: 32px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .header__burger span { display: block; width: 20px; height: 2px; background: var(--color-gold); transition: transform 0.3s ease, opacity 0.3s ease; }
+  .header__burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .header__burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .header__burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .header__nav-footer { display: none; }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 860px;
+    padding: 0 var(--space-x);
+    width: 100%;
+  }
+  .hero__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .hero__bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(0, 0, 0) 40.02%, rgba(0, 0, 0, 0) 63.02%),
+      linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 18%);
+  }
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: flex-start;
+    width: 780px;
+  }
+  .hero__heading-block { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+  .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .hero__title {
+    font-family: var(--font-serif);
+    font-size: 72px;
+    line-height: 1.05;
+    margin: 0;
+    font-weight: 400;
+  }
+  .hero__title-line { display: block; }
+  .hero__title-line--gold { color: var(--color-gold); }
+  .hero__subtitle {
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    width: 540px;
+    font-weight: 300;
+  }
+  .hero__note {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    padding-top: 28px;
+    border-top: 1px solid var(--color-border);
+  }
+  .hero__note-icon { width: 24px; height: 24px; flex-shrink: 0; margin-top: 2px; color: var(--color-gold); }
+  .hero__note-icon svg { width: 100%; height: 100%; }
+  .hero__note-text { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; width: 480px; }
+
+  /* ============ PROCESS (how to become an investor) ============ */
+  .process {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding: var(--space-y) var(--space-x) 64px;
+    width: 100%;
+  }
+  .process::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .process__title { font-family: var(--font-serif); font-size: 40px; line-height: 1; margin: 0; font-weight: 400; }
+  .process__panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+    border-radius: 24px;
+    padding: 56px 48px;
+    width: 100%;
+  }
+  .process__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .process__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .process__item.is-visible { opacity: 1; transform: translateY(0); }
+  .process__number { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; color: var(--color-gold-dark); }
+  .process__icon { width: 40px; height: 40px; transition: transform 0.4s ease, filter 0.4s ease; }
+  .process__item:hover .process__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
+  .process__item-title { font-family: var(--font-serif); font-size: 20px; line-height: 1.3; color: var(--color-white); font-weight: 400; }
+  .process__item-desc { font-size: 14px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 220px; }
+
+  /* ============ WHY PANEL (why investors choose us) ============ */
+  .why-panel { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .why-panel::after {
+    content: "";
+    position: absolute;
+    left: var(--space-x);
+    right: var(--space-x);
+    bottom: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .why-panel__title { font-family: var(--font-serif); font-size: 40px; line-height: 1; margin: 0 0 48px; font-weight: 400; }
+  .why-panel__panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 24px;
+    border-radius: 24px;
+    padding: 56px 48px;
+    width: 100%;
+  }
+  .why-panel__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .why-panel__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .why-panel__item.is-visible { opacity: 1; transform: translateY(0); }
+  .why-panel__icon { width: 40px; height: 40px; transition: transform 0.4s ease, filter 0.4s ease; }
+  .why-panel__item:hover .why-panel__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
+  .why-panel__item-title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-white); font-weight: 400; max-width: 220px; }
+  .why-panel__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 230px; }
+
+  /* ============ INVEST CTA (requirements + form) ============ */
+  .invest-cta { display: flex; align-items: flex-start; gap: 64px; padding: var(--space-y) var(--space-x); width: 100%; }
+  .invest-cta__requirements { width: 540px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; }
+  .invest-cta__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.1; margin: 0; font-weight: 400; color: var(--color-gold); }
+  .invest-cta__list { display: flex; flex-direction: column; gap: 18px; }
+  .invest-cta__list-item { position: relative; padding-left: 26px; font-size: 16px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; }
+  .invest-cta__list-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border: 1.5px solid var(--color-gold);
+    transform: rotate(45deg);
+  }
+  .invest-cta__globe-box {
+    position: relative;
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    background: var(--color-bg-secondary);
+  }
+  .invest-cta__globe-box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .invest-cta__globe-icon { width: 44px; height: 44px; color: var(--color-gold); }
+  .invest-cta__globe-title { font-family: var(--font-serif); font-size: 18px; line-height: 1.4; color: var(--color-white); font-weight: 400; margin: 0; }
+  .invest-cta__globe-desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; }
+
+  .invest-cta__form-wrap {
+    position: relative;
+    flex: 1 0 0;
+    min-width: 0;
+    border-radius: 8px;
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--color-highlight-grad);
+  }
+  .invest-cta__form-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .invest-cta__form-heading { display: flex; flex-direction: column; gap: 12px; }
+  .invest-cta__form-title { font-family: var(--font-serif); font-size: 30px; font-weight: 400; margin: 0; }
+  .invest-cta__form-desc { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; }
+  .invest-cta__fields { display: flex; flex-direction: column; gap: 20px; }
+  .invest-cta__input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(10, 15, 19, 0.4);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .invest-cta__input::placeholder { color: var(--color-text-muted); }
+  .invest-cta__input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .invest-select { position: relative; width: 100%; }
+  .invest-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 52px;
+    padding: 0 40px 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(10, 15, 19, 0.4);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .invest-select select:invalid { color: var(--color-text-muted); }
+  .invest-select select:focus { outline: none; border-color: var(--color-gold-dark); }
+  .invest-select select option { background: var(--color-bg-secondary); color: var(--color-white); }
+  .invest-select__chevron { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--color-text-muted); pointer-events: none; }
+  .invest-cta__submit { width: 100%; }
+
+  /* ============ TESTIMONIAL ============ */
+  .testimonial { position: relative; isolation: isolate; display: flex; align-items: center; height: 480px; padding: 0 var(--space-x); width: 100%; }
+  .testimonial__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .testimonial__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .testimonial__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(13, 10, 8, 0.94) 0%, rgba(13, 10, 8, 0.55) 45%, rgba(13, 10, 8, 0.1) 75%);
+  }
+  .testimonial__content { display: flex; flex-direction: column; gap: 24px; width: 620px; }
+  .testimonial__quote-icon { width: 40px; height: 35px; color: var(--color-gold); }
+  .testimonial__quote-icon svg { width: 100%; height: 100%; }
+  .testimonial__text { font-family: var(--font-serif); font-style: italic; font-size: 32px; line-height: 1.4; color: var(--color-white); margin: 0; }
+  .testimonial__byline { display: flex; align-items: center; gap: 16px; }
+  .testimonial__byline-mark { width: 32px; height: 1px; background: var(--color-bronze-light); flex-shrink: 0; }
+  .testimonial__byline-text { font-size: 14px; color: var(--color-text-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* ============ HELP BANNER ============ */
+  .calc-banner { position: relative; display: flex; align-items: center; height: 200px; padding: 80px var(--space-x); width: 100%; }
+  .calc-banner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .calc-banner__box {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1 0 0;
+    padding: 40px;
+  }
+  .calc-banner__info { display: flex; gap: 32px; align-items: center; flex: 1 0 0; min-width: 0; }
+  .calc-banner__icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .calc-banner__icon img { width: 60px; height: 60px; }
+  .calc-banner__text { display: flex; flex-direction: column; gap: 10px; white-space: nowrap; }
+  .calc-banner__title { font-family: var(--font-serif); font-size: 32px; line-height: 1; color: var(--color-white); }
+  .calc-banner__desc { font-size: 18px; font-weight: 300; line-height: 1.1; color: var(--color-text-muted); }
+  .calc-banner__cta-icon { width: 18px; height: 15px; }
+
+  /* ============ FOOTER ============ */
+  .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
+  .footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .footer__top { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+  .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+  .footer__logo { display: flex; align-items: center; height: 100px; width: 223px; }
+  .footer__logo-mark { height: 100px; width: 223px; }
+  .footer__social { display: flex; gap: 16px; }
+  .footer__social-link { display: inline-flex; transition: transform 0.25s ease, opacity 0.25s ease; }
+  .footer__social-link:hover { transform: translateY(-3px) scale(1.08); opacity: 0.85; }
+  .footer__social-link img { width: 40px; height: 40px; }
+  .footer__columns { display: flex; gap: 80px; white-space: nowrap; }
+  .footer__column { display: flex; flex-direction: column; gap: 20px; width: 140px; }
+  .footer__column-title { font-size: 15px; font-weight: 700; color: var(--color-gold-brand); text-transform: uppercase; line-height: 1.26; }
+  .footer__column-list { display: flex; flex-direction: column; gap: 14px; }
+  .footer__column-link { font-size: 13px; color: var(--color-text-secondary); display: inline-block; transform-origin: left center; transition: color 0.25s ease, transform 0.25s ease; }
+  .footer__column-link:hover { color: var(--color-white); transform: scale(1.06); }
+  .footer__bottom { display: flex; align-items: center; justify-content: center; padding-top: 24px; }
+  .footer__bottom-inner { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .footer__lock { width: 13.33px; height: 13.33px; }
+  .footer__copyright { font-size: 16px; color: var(--color-text-footer-muted); white-space: nowrap; }
+
+  /* ============ COOKIE BANNER ============ */
+  .cookie-banner {
+    position: fixed;
+    right: 32px;
+    bottom: 32px;
+    z-index: 200;
+    width: 420px;
+    max-width: calc(100% - 64px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 28px 32px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    transform: translateY(calc(100% + 32px));
+    opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .cookie-banner::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    top: 0;
+    height: 1px;
+    background: var(--divider-grad);
+  }
+  .cookie-banner.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .cookie-banner__text { width: 100%; }
+  .cookie-banner__title { font-family: var(--font-serif); font-size: 20px; color: var(--color-white); margin: 0 0 8px; }
+  .cookie-banner__desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; }
+  .cookie-banner__desc a { color: var(--color-gold); text-decoration: underline; text-underline-offset: 2px; }
+  .cookie-banner__desc a:hover { color: #ffe1a3; }
+  .cookie-banner__actions { display: flex; align-items: center; gap: 12px; width: 100%; }
+  .cookie-banner__actions .btn { padding: 12px 20px; font-size: 14px; flex: 1 0 0; }
+  .cookie-banner__actions .btn--text { padding: 12px 8px; flex: 0 0 auto; }
+
+
+  /* ============ MOBILE ============ */
+  @media (max-width: 768px) {
+
+    .page { width: 100%; }
+
+    html.no-scroll, body.no-scroll { overflow: hidden; height: 100%; }
+
+    /* header */
+    .header { height: 72px; padding-inline: 20px; }
+    .header.header--menu-open { background: transparent; }
+    .header.header--menu-open .header__bg { opacity: 0; }
+    .header__bg { transition: opacity 0.2s ease; }
+    .header__logo { height: 40px; width: 89px; }
+    .header__logo-mark { height: 40px; width: 89px; }
+    .header__nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      background: var(--color-bg-footer);
+      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 99;
+    }
+    .header__nav::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 520px;
+      max-width: none;
+      height: 340px;
+      transform: translateX(-50%);
+      background: radial-gradient(ellipse at top, rgba(191, 163, 96, 0.18) 0%, rgba(191, 163, 96, 0.07) 40%, rgba(0, 0, 0, 0) 75%);
+      pointer-events: none;
+    }
+    .header__nav.is-open { height: 100vh; overflow-y: auto; }
+    .header__nav-list { flex-direction: column; align-items: stretch; height: auto; gap: 0; padding: 88px 28px 0; position: relative; }
+    .header__nav-item {
+      height: auto;
+      width: 100%;
+      padding: 0;
+      justify-content: flex-start;
+      border-bottom: 1px solid var(--color-border);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .header__nav-item:last-child { border-bottom: none; }
+    .header__nav.is-open .header__nav-item { opacity: 1; transform: translateY(0); }
+    .header__nav-item:nth-child(1) { transition-delay: 0.06s; }
+    .header__nav-item:nth-child(2) { transition-delay: 0.11s; }
+    .header__nav-item:nth-child(3) { transition-delay: 0.16s; }
+    .header__nav-item:nth-child(4) { transition-delay: 0.21s; }
+    .header__nav-item:nth-child(5) { transition-delay: 0.26s; }
+    .header__nav-item:nth-child(6) { transition-delay: 0.31s; }
+    .header__nav-item:nth-child(7) { transition-delay: 0.36s; }
+    .header__nav-item--active { position: relative; }
+    .header__nav-item--active::before {
+      content: "";
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3px;
+      height: 22px;
+      border-radius: 2px;
+      background: var(--color-btn-grad);
+    }
+    .header__nav-item::after { display: none; }
+    .header__nav-link {
+      width: 100%;
+      height: auto;
+      padding: 19px 2px;
+      font-size: 19px;
+      font-family: var(--font-serif);
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .header__nav-link::after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      background: url('assets/icons/icon-arrow-outline.svg') center / contain no-repeat;
+      opacity: 0.45;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .header__nav-item--active .header__nav-link::after { opacity: 1; }
+    .header__nav-link:active::after { transform: translateX(3px); opacity: 1; }
+
+    .header__nav-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      padding: 36px 28px 40px;
+      position: relative;
+    }
+    .header__nav-footer::before {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      top: 0;
+      height: 1px;
+      background: var(--divider-grad);
+    }
+    .header__nav-footer-logo { width: 184px; height: auto; }
+    .header__nav-footer-social { display: flex; align-items: center; gap: 28px; }
+    .header__nav-footer-social img { width: 52px; height: 52px; opacity: 0.8; transition: opacity 0.25s ease, transform 0.25s ease; }
+    .header__nav-footer-social a:active img { opacity: 1; transform: translateY(-2px); }
+    .header__nav-footer-copyright { font-size: 12px; color: var(--color-text-footer-muted); text-align: center; }
+
+    .header__cta { width: auto; padding: 10px 18px; font-size: 13px; }
+    .header__burger { display: flex; }
+    .header__logo, .header__actions { position: relative; z-index: 150; }
+
+    /* hero */
+    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 48px; gap: 0; }
+    .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
+    .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
+    .hero__overlay { display: none; }
+    .hero__content { width: 100%; padding: 360px 20px 0; gap: 24px; align-items: center; }
+    .hero__heading-block { align-items: center; text-align: center; }
+    .hero__title { font-size: 34px; }
+    .hero__subtitle { font-size: 16px; width: 100%; }
+    .hero__note { flex-direction: row; align-items: center; justify-content: center; padding-top: 24px; }
+    .hero__note-text { width: auto; max-width: 300px; text-align: left; }
+
+    /* process */
+    .process { padding: 48px 20px 56px; gap: 32px; }
+    .process__title { font-size: 30px; }
+    .process__panel { grid-template-columns: 1fr 1fr; gap: 36px 16px; padding: 36px 20px; border-radius: 16px; }
+
+    /* why panel */
+    .why-panel { padding: 0 20px 56px; }
+    .why-panel::after { left: 20px; right: 20px; }
+    .why-panel__title { font-size: 30px; margin-bottom: 32px; }
+    .why-panel__panel { grid-template-columns: 1fr 1fr; gap: 36px 16px; padding: 36px 20px; border-radius: 16px; }
+    .why-panel__item-title { max-width: none; }
+    .why-panel__desc { max-width: none; }
+
+    /* invest cta */
+    .invest-cta { flex-direction: column; align-items: stretch; padding: 64px 20px; gap: 40px; }
+    .invest-cta__requirements { width: 100%; }
+    .invest-cta__title { font-size: 28px; }
+    .invest-cta__form-wrap { padding: 28px 20px; }
+    .invest-cta__form-title { font-size: 24px; }
+
+    /* testimonial */
+    .testimonial { flex-direction: column; align-items: flex-start; justify-content: flex-end; height: 560px; padding: 0 20px 48px; }
+    .testimonial__overlay { background: linear-gradient(180deg, rgba(13, 10, 8, 0.15) 0%, rgba(13, 10, 8, 0.55) 45%, rgba(13, 10, 8, 0.98) 82%); }
+    .testimonial__content { width: 100%; }
+    .testimonial__text { font-size: 24px; }
+
+    /* help banner */
+    .calc-banner { height: auto; padding: 48px 20px; }
+    .calc-banner__box { flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: 28px 20px; }
+    .calc-banner__info { flex-direction: column; align-items: center; text-align: center; }
+    .calc-banner__text { align-items: center; white-space: normal; }
+    .calc-banner__title { font-size: 26px; }
+
+    /* footer */
+    .footer { padding: 64px 20px 32px; gap: 48px; }
+    .footer__top { flex-direction: column; align-items: center; gap: 40px; }
+    .footer__brand { order: 2; }
+    .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
+    .footer__column { width: calc(50% - 12px); }
+
+    /* cookie banner */
+    .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <img class="header__bg" src="assets/icons/header-bg.png" alt="">
+      <div class="header__inner">
+        <a href="/" class="header__logo" aria-label="Investors' Angels home">
+          <img class="header__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+        </a>
+
+        <nav class="header__nav" id="primaryNav">
+          <ul class="header__nav-list" id="navList">
+            <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">OWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="about.html">ABOUT</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="faq-investors.html">FAQ</a></li>
+          </ul>
+
+          <div class="header__nav-footer">
+            <img class="header__nav-footer-logo" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+            <div class="header__nav-footer-social">
+              <a href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+              <a href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+              <a href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+            </div>
+            <p class="header__nav-footer-copyright">© 2026 Investors' Angels DMCC</p>
+          </div>
+        </nav>
+
+        <div class="header__actions">
+          <a class="btn btn--outline header__cta" href="calculator.html">Get Started</a>
+          <button class="header__burger" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero__bg-wrap">
+          <picture>
+            <source media="(max-width: 768px)" srcset="assets/team1-mob.png">
+            <img class="hero__bg" src="assets/team1.png" alt="Dubai skyline view from a residential balcony">
+          </picture>
+        </div>
+        <div class="hero__overlay" aria-hidden="true"></div>
+        <div class="hero__content">
+          <div class="hero__heading-block">
+            <span class="hero__eyebrow">Become an Investor</span>
+            <h1 class="hero__title">
+              <span class="hero__title-line">Invest in Real Assets.</span>
+              <span class="hero__title-line hero__title-line--gold">Create Real Impact.</span>
+            </h1>
+            <p class="hero__subtitle">Investors' Angels gives you access to a new class of asset-backed investments that combine the stability of real estate with the power of the Lease-to-Own model.</p>
+          </div>
+          <div class="hero__note">
+            <span class="hero__note-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 20v-1.5C4 15.5 6.5 13 10 13s6 2.5 6 5.5V20M17 5.5c1.4 0 2.5 1.3 2.5 3s-1.1 3-2.5 3M19 12.5c1.4 0 3 1.3 3 3.5v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="10" cy="7.5" r="3.5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </span>
+            <p class="hero__note-text">You earn attractive, risk-adjusted returns while helping families achieve their dream of homeownership.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESS : how to become an investor -->
+      <section class="process">
+        <h2 class="process__title">How to become an investor</h2>
+        <div class="process__panel">
+          <div class="process__item">
+            <span class="process__number">01</span>
+            <img class="process__icon" src="assets/icons/team1.svg" alt="">
+            <p class="process__item-title">Register</p>
+            <p class="process__item-desc">Create your investor account and complete the verification process.</p>
+          </div>
+          <div class="process__item">
+            <span class="process__number">02</span>
+            <img class="process__icon" src="assets/icons/team2.svg" alt="">
+            <p class="process__item-title">Review Opportunities</p>
+            <p class="process__item-desc">Explore available CLNs backed by real properties and Lease-to-Own agreements.</p>
+          </div>
+          <div class="process__item">
+            <span class="process__number">03</span>
+            <img class="process__icon" src="assets/icons/team3.svg" alt="">
+            <p class="process__item-title">Perform Due Diligence</p>
+            <p class="process__item-desc">Access Property Passports, customer profiles, financial data and investment documents.</p>
+          </div>
+          <div class="process__item">
+            <span class="process__number">04</span>
+            <img class="process__icon" src="assets/icons/team4.svg" alt="">
+            <p class="process__item-title">Invest</p>
+            <p class="process__item-desc">Select the CLN you want to invest in and complete the subscription.</p>
+          </div>
+          <div class="process__item">
+            <span class="process__number">05</span>
+            <img class="process__icon" src="assets/icons/team5.svg" alt="">
+            <p class="process__item-title">Monitor &amp; Earn</p>
+            <p class="process__item-desc">Track your investment in real time and receive regular returns.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY PANEL : why investors choose us -->
+      <section class="why-panel">
+        <h2 class="why-panel__title">Why investors choose us</h2>
+        <div class="why-panel__panel">
+          <div class="why-panel__item">
+            <img class="why-panel__icon" src="assets/icons/team6.svg" alt="">
+            <p class="why-panel__item-title">Asset-Backed</p>
+            <p class="why-panel__desc">Every investment is backed by a real property and Lease-to-Own agreement.</p>
+          </div>
+          <div class="why-panel__item">
+            <img class="why-panel__icon" src="assets/icons/team7.svg" alt="">
+            <p class="why-panel__item-title">Attractive Returns</p>
+            <p class="why-panel__desc">Targeted returns with risk management at the core.</p>
+          </div>
+          <div class="why-panel__item">
+            <img class="why-panel__icon" src="assets/icons/team8.svg" alt="">
+            <p class="why-panel__item-title">Full Transparency</p>
+            <p class="why-panel__desc">Live dashboards, real-time data and complete visibility.</p>
+          </div>
+          <div class="why-panel__item">
+            <img class="why-panel__icon" src="assets/icons/team9.svg" alt="">
+            <p class="why-panel__item-title">Investment Protection</p>
+            <p class="why-panel__desc">Multiple layers of protection and predefined exit strategies.</p>
+          </div>
+          <div class="why-panel__item">
+            <img class="why-panel__icon" src="assets/icons/team10.svg" alt="">
+            <p class="why-panel__item-title">Social Impact</p>
+            <p class="why-panel__desc">You help more families achieve the security of homeownership.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVEST CTA : requirements + form -->
+      <section class="invest-cta">
+        <div class="invest-cta__requirements">
+          <h2 class="invest-cta__title">Investor Requirements</h2>
+          <ul class="invest-cta__list">
+            <li class="invest-cta__list-item">Investors must be at least 18 years old.</li>
+            <li class="invest-cta__list-item">Investors must be non-U.S. persons.</li>
+            <li class="invest-cta__list-item">Professional or Sophisticated Investor status may be required.</li>
+            <li class="invest-cta__list-item">Minimum investment may apply.</li>
+            <li class="invest-cta__list-item">All investments are subject to Terms and Conditions.</li>
+          </ul>
+          <div class="invest-cta__globe-box">
+            <span class="invest-cta__globe-icon" aria-hidden="true">
+              <img src="assets/icons/team11.svg" alt="" style="width:100%;height:100%;">
+            </span>
+            <p class="invest-cta__globe-title">Investors from around the world are welcome.</p>
+            <p class="invest-cta__globe-desc">Our CLNs are available to eligible investors in multiple jurisdictions.</p>
+          </div>
+        </div>
+
+        <form class="invest-cta__form-wrap">
+          <div class="invest-cta__form-heading">
+            <h2 class="invest-cta__form-title">Ready to invest?</h2>
+            <p class="invest-cta__form-desc">Join Investors' Angels and be part of a new way to invest in real estate and real futures.</p>
+          </div>
+          <div class="invest-cta__fields">
+            <input class="invest-cta__input" type="text" name="full_name" placeholder="Full Name" required>
+            <input class="invest-cta__input" type="email" name="email" placeholder="Email Address" required>
+            <div class="invest-select">
+              <select name="country" required defaultValue="">
+                <option value="" disabled selected hidden>Country of Residence</option>
+                <option value="AE">United Arab Emirates</option>
+                <option value="SA">Saudi Arabia</option>
+                <option value="QA">Qatar</option>
+                <option value="KW">Kuwait</option>
+                <option value="BH">Bahrain</option>
+                <option value="OM">Oman</option>
+                <option value="GB">United Kingdom</option>
+                <option value="IE">Ireland</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+                <option value="CH">Switzerland</option>
+                <option value="ES">Spain</option>
+                <option value="IT">Italy</option>
+                <option value="NL">Netherlands</option>
+                <option value="CA">Canada</option>
+                <option value="AU">Australia</option>
+                <option value="SG">Singapore</option>
+                <option value="HK">Hong Kong</option>
+                <option value="IN">India</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+            <div class="invest-select">
+              <select name="investor_type" required defaultValue="">
+                <option value="" disabled selected hidden>Investor Type</option>
+                <option value="individual">Individual Investor</option>
+                <option value="professional">Professional Investor</option>
+                <option value="institutional">Institutional Investor</option>
+                <option value="family_office">Family Office</option>
+              </select>
+              <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
+          </div>
+          <button class="btn btn--gradient invest-cta__submit" type="submit">Request Investor Access</button>
+        </form>
+      </section>
+
+      <!-- TESTIMONIAL -->
+      <section class="testimonial">
+        <div class="testimonial__bg-wrap">
+          <img class="testimonial__bg" src="assets/owner2.png" alt="Investors' Angels living room with a Dubai skyline view">
+        </div>
+        <div class="testimonial__overlay" aria-hidden="true"></div>
+        <div class="testimonial__content">
+          <span class="testimonial__quote-icon" aria-hidden="true">
+            <img src="assets/icons/team12.svg" alt="" style="width:100%;height:100%;">
+          </span>
+          <p class="testimonial__text">We don't just invest in real estate. We invest in people, communities and a better future.</p>
+          <div class="testimonial__byline">
+            <span class="testimonial__byline-mark" aria-hidden="true"></span>
+            <span class="testimonial__byline-text">— Investors' Angels</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- HELP BANNER -->
+      <section class="calc-banner">
+        <div class="calc-banner__box">
+          <div class="calc-banner__info">
+            <div class="calc-banner__icon">
+              <img src="assets/icons/team13.svg" alt="">
+            </div>
+            <div class="calc-banner__text">
+              <p class="calc-banner__title">We are here to help.</p>
+              <p class="calc-banner__desc">Our Investor Relations team is ready to answer your questions and guide you through the process.</p>
+            </div>
+          </div>
+          <a class="btn btn--outline" href="mailto:invest@i-angels.com">
+            <img class="calc-banner__cta-icon" src="assets/icons/team14.svg" alt="">
+            invest@i-angels.com
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a href="/" class="footer__logo" aria-label="Investors' Angels home">
+            <img class="footer__logo-mark" src="assets/logo-mark.svg" alt="Investors' Angels logo mark">
+          </a>
+          <div class="footer__social">
+            <a class="footer__social-link" href="https://www.facebook.com/InvestorsAngels/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook"><img src="assets/icons/icon-facebook.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.instagram.com/investorsangels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram"><img src="assets/icons/icon-instagram.svg" alt=""></a>
+            <a class="footer__social-link" href="https://www.linkedin.com/company/investors-angels" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn"><img src="assets/icons/icon-linkedin.svg" alt=""></a>
+          </div>
+        </div>
+
+        <div class="footer__columns">
+          <div class="footer__column">
+            <p class="footer__column-title">For Owners</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="how-it-works.html">How it Works</a></li>
+              <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
+              <li><a class="footer__column-link" href="guarantees.html">Guarantees</a></li>
+              <li><a class="footer__column-link" href="faq-owners.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">For Investors</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="how-investing-works.html">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
+              <li><a class="footer__column-link" href="contact.html">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Company</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="about.html">About Us</a></li>
+              <li><a class="footer__column-link" href="#">Our Team</a></li>
+              <li><a class="footer__column-link" href="partners.html">Partners</a></li>
+              <li><a class="footer__column-link" href="news-insights.html">News &amp; Insights</a></li>
+              <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Legal</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
+              <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
+              <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__bottom-inner">
+          <img class="footer__lock" src="assets/icons/icon-lock.svg" alt="">
+          <p class="footer__copyright">© 2026 Investors' Angels DMCC. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+      <div class="cookie-banner__text">
+        <p class="cookie-banner__title">We value your privacy</p>
+        <p class="cookie-banner__desc">We use cookies to enhance your browsing experience and analyze our traffic. Read our <a href="cookie-policy.html">Cookie Policy</a> to learn more.</p>
+      </div>
+      <div class="cookie-banner__actions">
+        <button class="btn btn--text" type="button" id="cookieDecline">Decline</button>
+        <button class="btn btn--gradient" type="button" id="cookieAccept">Accept All</button>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  (function () {
+    var MOBILE_BREAKPOINT = 768;
+    var page = document.querySelector('.page');
+
+    function fitPage() {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        page.style.zoom = 1;
+        return;
+      }
+      var scale = Math.min(1, window.innerWidth / 1920);
+      page.style.zoom = scale;
+    }
+
+    function scheduleFit() {
+      requestAnimationFrame(function () {
+        requestAnimationFrame(fitPage);
+      });
+    }
+
+    window.addEventListener('resize', fitPage);
+    window.addEventListener('load', scheduleFit);
+    fitPage();
+    scheduleFit();
+  })();
+
+  (function () {
+    var items = document.querySelectorAll('.process__item, .why-panel__item');
+    if (!items.length) return;
+
+    items.forEach(function (item, i) {
+      item.style.transitionDelay = ((i % 5) * 70) + 'ms';
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (item) { item.classList.add('is-visible'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+
+    items.forEach(function (item) { observer.observe(item); });
+  })();
+
+  (function () {
+    var burger = document.querySelector('.header__burger');
+    var nav = document.getElementById('primaryNav');
+    var header = document.querySelector('.header');
+    if (!burger || !nav) return;
+
+    function setMenu(open) {
+      burger.setAttribute('aria-expanded', String(open));
+      nav.classList.toggle('is-open', open);
+      if (header) header.classList.toggle('header--menu-open', open);
+      document.documentElement.classList.toggle('no-scroll', open);
+      document.body.classList.toggle('no-scroll', open);
+    }
+
+    burger.addEventListener('click', function () {
+      var isOpen = burger.getAttribute('aria-expanded') === 'true';
+      setMenu(!isOpen);
+    });
+
+    nav.querySelectorAll('.header__nav-link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        setMenu(false);
+      });
+    });
+  })();
+
+  (function () {
+    var STORAGE_KEY = 'ia_cookie_consent';
+    var banner = document.getElementById('cookieBanner');
+    var acceptBtn = document.getElementById('cookieAccept');
+    var declineBtn = document.getElementById('cookieDecline');
+    if (!banner) return;
+
+    function getConsent() {
+      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+    }
+    function setConsent(value) {
+      try { localStorage.setItem(STORAGE_KEY, value); } catch (e) {}
+    }
+    function hideBanner() {
+      banner.classList.remove('is-visible');
+    }
+
+    if (!getConsent()) {
+      window.requestAnimationFrame(function () {
+        banner.classList.add('is-visible');
+      });
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', function () {
+      setConsent('accepted');
+      hideBanner();
+    });
+    if (declineBtn) declineBtn.addEventListener('click', function () {
+      setConsent('declined');
+      hideBanner();
+    });
+  })();
+
+  (function () {
+    var form = document.querySelector('.invest-cta__form-wrap');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+    });
+  })();
+</script>
+
+</body>
+</html>
