@@ -731,15 +731,38 @@
     .hero__note-text { width: auto; max-width: 300px; text-align: left; }
 
     /* process */
-    .process { padding: 48px 20px 56px; gap: 40px; }
+    .process { padding: 48px 20px 56px; gap: 36px; }
     .process__title { font-size: 30px; }
-    .process__panel { grid-template-columns: 1fr 1fr; gap: 44px 16px; padding: 26px 20px 32px; border-radius: 16px; }
-    .process__number { width: 48px; height: 48px; margin: -42px 0 14px; font-size: 16px; }
+    .process__panel {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      padding: 0;
+      border-radius: 0;
+    }
+    .process__panel::before { content: none; }
+    .process__number {
+      position: static;
+      width: auto;
+      height: auto;
+      margin: 0 0 12px;
+      border-radius: 0;
+      background: none;
+      border: none;
+      font-size: 14px;
+    }
 
     /* why panel */
     .why-panel { padding: 0 20px 56px; }
     .why-panel__title { font-size: 30px; margin-bottom: 32px; }
-    .why-panel__panel { grid-template-columns: 1fr 1fr; gap: 36px 16px; padding: 36px 20px; border-radius: 16px; }
+    .why-panel__panel {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      padding: 0;
+      border-radius: 0;
+    }
+    .why-panel__panel::before { content: none; }
     .why-panel__item-title { max-width: none; }
     .why-panel__desc { max-width: none; }
 
