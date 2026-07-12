@@ -357,7 +357,7 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .footer__top { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; }
+  .footer__top { display: flex; align-items: flex-start; justify-content: flex-start; gap: 96px; width: 100%; }
   .footer__brand { display: flex; flex-direction: column; align-items: center; gap: 32px; }
   .footer__logo { display: flex; align-items: center; height: 100px; width: 223px; }
   .footer__logo-mark { height: 100px; width: 223px; }
@@ -365,7 +365,7 @@
   .footer__social-link { display: inline-flex; transition: transform 0.25s ease, opacity 0.25s ease; }
   .footer__social-link:hover { transform: translateY(-3px) scale(1.08); opacity: 0.85; }
   .footer__social-link img { width: 40px; height: 40px; }
-  .footer__columns { display: flex; gap: 80px; white-space: nowrap; }
+  .footer__columns { display: grid; grid-template-columns: repeat(3, 140px); gap: 40px 56px; white-space: nowrap; }
   .footer__column { display: flex; flex-direction: column; gap: 20px; width: 140px; }
   .footer__column-title { font-size: 15px; font-weight: 700; color: var(--color-gold-brand); text-transform: uppercase; line-height: 1.26; }
   .footer__column-list { display: flex; flex-direction: column; gap: 14px; }
@@ -570,7 +570,7 @@
     .footer { padding: 64px 20px 32px; gap: 48px; }
     .footer__top { flex-direction: column; align-items: center; gap: 40px; }
     .footer__brand { order: 2; }
-    .footer__columns { order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
+    .footer__columns { display: flex; order: 1; flex-wrap: wrap; justify-content: center; gap: 32px 24px; white-space: normal; }
     .footer__column { width: calc(50% - 12px); }
 
     /* cookie banner */
@@ -589,13 +589,14 @@
 
         <nav class="header__nav" id="primaryNav">
           <ul class="header__nav-list" id="navList">
-            <li class="header__nav-item"><a class="header__nav-link" href="/">HOME</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">HOMEOWNERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">LEASE-TO-OWN</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="calculator.html">CALCULATOR</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
             <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="for-brokers.html">FOR BROKERS</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="for-banks.html">FOR BANKS</a></li>
             <li class="header__nav-item"><a class="header__nav-link" href="about.html">ABOUT</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="faq-investors.html">FAQ</a></li>
           </ul>
 
           <div class="header__nav-footer">
@@ -741,19 +742,11 @@
           <div class="footer__column">
             <p class="footer__column-title">For Homeowners</p>
             <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="how-it-works.html">How it Works</a></li>
+              <li><a class="footer__column-link" href="owners.html">Lease-to-Own</a></li>
+              <li><a class="footer__column-link" href="how-it-works.html">How It Works</a></li>
               <li><a class="footer__column-link" href="calculator.html">Calculator</a></li>
               <li><a class="footer__column-link" href="guarantees.html">Guarantees</a></li>
-              <li><a class="footer__column-link" href="faq-owners.html">FAQ</a></li>
-            </ul>
-          </div>
-          <div class="footer__column">
-            <p class="footer__column-title">For Investors</p>
-            <ul class="footer__column-list">
-              <li><a class="footer__column-link" href="how-investing-works.html">How Investing Works</a></li>
-              <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
-              <li><a class="footer__column-link" href="become-an-investor.html">Become an Investor</a></li>
-              <li><a class="footer__column-link" href="faq-investors.html">FAQ</a></li>
+              <li><a class="footer__column-link" href="faq-owners.html">Homeowners FAQ</a></li>
             </ul>
           </div>
           <div class="footer__column">
@@ -767,12 +760,39 @@
             </ul>
           </div>
           <div class="footer__column">
+            <p class="footer__column-title">For Investors</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="why-invest.html">Why Invest</a></li>
+              <li><a class="footer__column-link" href="how-investing-works.html">How Investing Works</a></li>
+              <li><a class="footer__column-link" href="become-an-investor.html">Become an Investor</a></li>
+              <li><a class="footer__column-link" href="faq-investors.html">Investors FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">For Partners</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="for-brokers.html">For Brokers</a></li>
+              <li><a class="footer__column-link" href="for-banks.html">For Banks</a></li>
+              <li><a class="footer__column-link" href="contact.html">Become a Partner</a></li>
+              <li><a class="footer__column-link" href="faq-partners.html">Partners FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
             <p class="footer__column-title">Legal</p>
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="terms-conditions.html">Terms &amp; Conditions</a></li>
               <li><a class="footer__column-link" href="privacy-policy.html">Privacy Policy</a></li>
               <li><a class="footer__column-link" href="#">Risk Disclosure</a></li>
               <li><a class="footer__column-link" href="cookie-policy.html">Cookies Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <p class="footer__column-title">Login</p>
+            <ul class="footer__column-list">
+              <li><a class="footer__column-link" href="login-homeowners.html">Homeowners Login</a></li>
+              <li><a class="footer__column-link" href="login-investors.html">Investors Login</a></li>
+              <li><a class="footer__column-link" href="login-brokers.html">Brokers Login</a></li>
+              <li><a class="footer__column-link" href="login-banks.html">Banks Login</a></li>
             </ul>
           </div>
         </div>

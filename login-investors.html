@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Partners — Investors' Angels</title>
+<title>Investors Login — Investors' Angels</title>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="Stronger together. Investors' Angels works with a global network of banks, brokers, law firms, and financial institutions to build the future of homeownership.">
+<meta name="description" content="Log in to your Investors' Angels investors account.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://i-angels.com/partners">
+<link rel="canonical" href="https://i-angels.com/login-investors">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
-<meta property="og:title" content="Partners — Investors' Angels">
-<meta property="og:description" content="Stronger together. Investors' Angels works with a global network of banks, brokers, law firms, and financial institutions to build the future of homeownership.">
-<meta property="og:image" content="https://i-angels.com/assets/partners1.png">
-<meta property="og:url" content="https://i-angels.com/partners">
+<meta property="og:title" content="Investors Login — Investors' Angels">
+<meta property="og:description" content="Log in to your Investors' Angels investors account.">
+<meta property="og:image" content="https://i-angels.com/assets/owner1.png">
+<meta property="og:url" content="https://i-angels.com/login-investors">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Partners — Investors' Angels">
-<meta name="twitter:description" content="Stronger together. Investors' Angels works with a global network of banks, brokers, law firms, and financial institutions to build the future of homeownership.">
-<meta name="twitter:image" content="https://i-angels.com/assets/partners1.png">
+<meta name="twitter:title" content="Investors Login — Investors' Angels">
+<meta name="twitter:description" content="Log in to your Investors' Angels investors account.">
+<meta name="twitter:image" content="https://i-angels.com/assets/owner1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -247,8 +247,8 @@
   .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .hero__title {
     font-family: var(--font-serif);
-    font-size: 68px;
-    line-height: 1.08;
+    font-size: 80px;
+    line-height: 1;
     margin: 0;
     font-weight: 400;
   }
@@ -263,9 +263,9 @@
   }
   .hero__cta-row { display: flex; align-items: center; gap: 16px; }
 
-  /* ============ OUR PARTNERS GRID ============ */
-  .partners-grid { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .partners-grid::before, .partners-grid::after {
+  /* ============ OWNERS FEATURES PANEL ============ */
+  .owners-features { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .owners-features::before, .owners-features::after {
     content: "";
     position: absolute;
     left: 0;
@@ -273,20 +273,18 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .partners-grid::before { top: 0; }
-  .partners-grid::after { bottom: 0; }
-  .partners-grid__title { font-family: var(--font-serif); font-size: 48px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
-  .partners-grid__panel {
+  .owners-features::before { top: 0; }
+  .owners-features::after { bottom: 0; }
+  .owners-features__panel {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 40px;
-    row-gap: 64px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 56px 32px;
     border-radius: 24px;
     padding: 64px 56px;
     width: 100%;
   }
-  .partners-grid__panel::before {
+  .owners-features__panel::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -298,46 +296,24 @@
     mask-composite: exclude;
     pointer-events: none;
   }
-  .partners-grid__item {
+  .owners-features__item {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 18px;
+    gap: 20px;
     opacity: 0;
     transform: translateY(28px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .partners-grid__item.is-visible { opacity: 1; transform: translateY(0); }
-  .partners-grid__logo-box { display: flex; align-items: center; justify-content: center; height: 112px; }
-  .partners-grid__logo { width: 300px; height: auto; max-height: 112px; object-fit: contain; }
-  .partners-grid__category { font-family: var(--font-serif); font-size: 20px; margin: 0; font-weight: 400; color: var(--color-white); }
-  .partners-grid__desc { font-size: 18px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 320px; }
+  .owners-features__item.is-visible { opacity: 1; transform: translateY(0); }
+  .owners-features__icon { width: 40px; height: 40px; transition: transform 0.4s ease, filter 0.4s ease; }
+  .owners-features__item:hover .owners-features__icon { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
+  .owners-features__title { font-family: var(--font-serif); font-size: 22px; line-height: 1.3; color: var(--color-white); font-weight: 400; max-width: 220px; }
+  .owners-features__desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 240px; }
 
-  /* ============ PARTNERS STATS BAND ============ */
-  .partners-stats {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    padding: 96px var(--space-x);
-    background: var(--color-bg);
-  }
-  .partners-stats__item { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
-  .partners-stats__value { font-family: var(--font-sans); font-weight: 700; font-size: 42px; line-height: 1; color: var(--color-gold); }
-  .partners-stats__label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  /* ============ PARTNERS CTA BAND ============ */
-  .partners-cta {
+  /* ============ OWNERS CTA BAND ============ */
+  .owners-cta {
     position: relative;
     isolation: isolate;
     display: flex;
@@ -347,26 +323,16 @@
     padding: 0 var(--space-x);
     width: 100%;
   }
-  .partners-cta::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .partners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .partners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% center; }
-  .partners-cta__overlay {
+  .owners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .owners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .owners-cta__overlay {
     position: absolute;
     inset: 0;
     z-index: -1;
     background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
   }
-  .partners-cta__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.25; margin: 0; font-weight: 400; }
-  .partners-cta__title-line { display: block; }
-  .partners-cta__title-line--gold { color: var(--color-gold); }
+  .owners-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
+  .owners-cta__title-line--gold { color: var(--color-gold); display: block; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -563,46 +529,28 @@
     .header__logo, .header__actions { position: relative; z-index: 150; }
 
     /* hero */
-    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; background: #000; margin-bottom: -2px; overflow: hidden; }
+    .hero { flex-direction: column; justify-content: flex-start; height: auto; padding: 0 0 56px; gap: 0; }
     .hero__bg-wrap { position: absolute; inset: auto; top: 0; left: 0; width: 100%; height: auto; overflow: visible; }
-    .hero__bg-wrap::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: -60px;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0.75) 82%, #000 92%, #000 100%);
-      pointer-events: none;
-    }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 440px 20px 0; gap: 24px; align-items: center; }
+    .hero__content { width: 100%; padding: 400px 20px 0; gap: 24px; align-items: center; }
     .hero__heading-block { align-items: center; text-align: center; }
-    .hero__title { font-size: 34px; }
+    .hero__title { font-size: 36px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
     .hero__cta-row { display: none; }
 
-    /* our partners grid */
-    .partners-grid { padding: 48px 20px; background: var(--color-bg); }
-    .partners-grid__title { font-size: 32px; margin-bottom: 32px; }
-    .partners-grid__panel { grid-template-columns: 1fr; row-gap: 40px; padding: 40px 20px; border-radius: 16px; }
-    .partners-grid__panel::before { border-radius: 16px; }
-    .partners-grid__logo { width: 300px; }
+    /* owners features panel */
+    .owners-features { padding: 48px 20px; }
+    .owners-features__panel { grid-template-columns: 1fr 1fr; gap: 40px 20px; padding: 40px 20px; border-radius: 16px; }
+    .owners-features__panel::before { border-radius: 16px; }
+    .owners-features__title { max-width: none; }
+    .owners-features__desc { max-width: none; }
 
-    /* partners stats band */
-    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 44px 20px; }
-    .partners-stats__item { flex: 1 1 40%; min-width: 0; }
-    .partners-stats__value { font-size: 30px; }
-    .partners-stats__label { font-size: 11px; }
-
-    /* partners cta band */
-    .partners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
-    .partners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .partners-cta__bg { object-position: center center; }
-    .partners-cta__title { font-size: 28px; }
-    .partners-cta__title-line:last-child { color: var(--color-gold); }
-    .partners-cta .btn { width: 100%; }
+    /* owners cta band */
+    .owners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
+    .owners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
+    .owners-cta__title { font-size: 30px; }
+    .owners-cta .btn { width: 100%; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -613,6 +561,38 @@
 
     /* cookie banner */
     .cookie-banner { left: 12px; right: 12px; bottom: 12px; width: auto; max-width: none; gap: 16px; padding: 22px; transform: translateY(calc(100% + 12px)); }
+  }
+
+  /* ============ LOGIN ============ */
+  .login { display: flex; align-items: center; justify-content: center; min-height: 760px; padding: 200px var(--space-x) 120px; width: 100%; }
+  .login__card { width: 440px; display: flex; flex-direction: column; align-items: center; gap: 32px; padding: 56px 48px; border: 1px solid var(--color-border); border-radius: 8px; background: var(--color-bg-secondary); text-align: center; }
+  .login__icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--color-bronze); border-radius: 50%; color: var(--color-gold); }
+  .login__icon svg { width: 24px; height: 24px; }
+  .login__heading { display: flex; flex-direction: column; gap: 12px; }
+  .login__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
+  .login__title { font-family: var(--font-serif); font-size: 32px; line-height: 1.1; margin: 0; font-weight: 400; }
+  .login__desc { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; }
+  .login__form { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+  .login__input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(10, 15, 19, 0.4);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+  }
+  .login__input::placeholder { color: var(--color-text-muted); }
+  .login__input:focus { outline: none; border-color: var(--color-gold-dark); }
+  .login__submit { width: 100%; }
+  .login__note { font-size: 13px; color: var(--color-text-muted); }
+  @media (max-width: 768px) {
+    .login { padding: 140px 20px 64px; min-height: 0; }
+    .login__card { width: 100%; padding: 40px 24px; }
+    .login__title { font-size: 26px; }
   }
 </style>
 </head>
@@ -657,138 +637,29 @@
       </div>
     </header>
     <main>
-      <!-- HERO -->
-      <section class="hero">
-        <div class="hero__bg-wrap">
-          <picture>
-            <source media="(max-width: 768px)" srcset="assets/partners1-mob.png">
-            <img class="hero__bg" src="assets/partners1.png" alt="City skyline at night">
-          </picture>
-        </div>
-        <div class="hero__overlay" aria-hidden="true"></div>
-        <div class="hero__content">
-          <div class="hero__heading-block">
-            <span class="hero__eyebrow">Partners</span>
-            <h1 class="hero__title">
-              <span class="hero__title-line">Stronger together.</span>
-              <span class="hero__title-line hero__title-line--gold">Building the future of homeownership.</span>
-            </h1>
-            <p class="hero__subtitle">Investors' Angels works with organizations<br>that help people become homeowners.</p>
+      <section class="login">
+        <div class="login__card">
+          <span class="login__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="5" y="10" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="login__heading">
+            <span class="login__eyebrow">INVESTORS LOGIN</span>
+            <h1 class="login__title">Welcome back</h1>
+            <p class="login__desc">Log in to access your investors dashboard.</p>
           </div>
-          <div class="hero__cta-row">
-            <a class="btn btn--gradient" href="contact.html">
-              Become a Partner
+          <form class="login__form">
+            <input class="login__input" type="email" name="email" placeholder="Email Address" required>
+            <input class="login__input" type="password" name="password" placeholder="Password" required>
+            <button class="btn btn--gradient login__submit" type="submit">
+              Log In
               <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-            </a>
-          </div>
+            </button>
+          </form>
+          <p class="login__note">Need help? <a href="contact.html" style="color: var(--color-gold);">Contact us</a>.</p>
         </div>
-      </section>
-
-      <!-- OUR PARTNERS GRID -->
-      <section class="partners-grid">
-        <h2 class="partners-grid__title">Our Partners</h2>
-        <div class="partners-grid__panel">
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo.svg" alt="Emirates NBD and First Abu Dhabi Bank logos"></div>
-            <h3 class="partners-grid__category">Mortgage Banks</h3>
-            <p class="partners-grid__desc">Helping customers transition from Lease-to-Own to mortgage financing.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners.svg" alt="Sobha Realty and Damac logos"></div>
-            <h3 class="partners-grid__category">Real Estate Brokers</h3>
-            <p class="partners-grid__desc">Supporting customers throughout their homeownership journey.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-1.svg" alt="DLA Piper and Dentons logos"></div>
-            <h3 class="partners-grid__category">Law Firms</h3>
-            <p class="partners-grid__desc">Structuring secure international transactions.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-2.svg" alt="Citi and HSBC logos"></div>
-            <h3 class="partners-grid__category">Trustees</h3>
-            <p class="partners-grid__desc">Protecting investor interests.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-3.svg" alt="J.P. Morgan and Goldman Sachs logos"></div>
-            <h3 class="partners-grid__category">CLN Arrangers</h3>
-            <p class="partners-grid__desc">Issuing Asset-Backed Credit Linked Notes.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-4.svg" alt="BNY Mellon and State Street logos"></div>
-            <h3 class="partners-grid__category">Paying Agents</h3>
-            <p class="partners-grid__desc">Managing investor cash flows.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-5.svg" alt="CBRE and Knight Frank logos"></div>
-            <h3 class="partners-grid__category">Property Valuers</h3>
-            <p class="partners-grid__desc">Independent property valuation.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-6.svg" alt="RICS logo"></div>
-            <h3 class="partners-grid__category">Surveyors</h3>
-            <p class="partners-grid__desc">Technical property inspections.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-7.svg" alt="Emaar and Nakheel logos"></div>
-            <h3 class="partners-grid__category">Property Managers</h3>
-            <p class="partners-grid__desc">Managing residential assets.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-8.svg" alt="AXA and Allianz logos"></div>
-            <h3 class="partners-grid__category">Insurance Companies</h3>
-            <p class="partners-grid__desc">Protecting homes and investments.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-9.svg" alt="Deloitte and PwC logos"></div>
-            <h3 class="partners-grid__category">Auditors</h3>
-            <p class="partners-grid__desc">Independent financial reporting.</p>
-          </div>
-          <div class="partners-grid__item">
-            <div class="partners-grid__logo-box"><img class="partners-grid__logo" src="assets/icons/logo_partners-10.svg" alt="AWS and Microsoft Azure logos"></div>
-            <h3 class="partners-grid__category">Technology Partners</h3>
-            <p class="partners-grid__desc">Secure cloud infrastructure.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PARTNERS STATS BAND -->
-      <section class="partners-stats">
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">50+</p>
-          <p class="partners-stats__label">Trusted<br>Partners</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">12</p>
-          <p class="partners-stats__label">Countries</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Global</p>
-          <p class="partners-stats__label">Financial<br>Network</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">One Mission</p>
-          <p class="partners-stats__label">Helping People<br>Become Homeowners</p>
-        </div>
-      </section>
-
-      <!-- PARTNERS CTA BAND -->
-      <section class="partners-cta">
-        <div class="partners-cta__bg-wrap">
-          <picture>
-            <source media="(max-width: 768px)" srcset="assets/partnr2-mob.png">
-            <img class="partners-cta__bg" src="assets/partners2.png" alt="Handshake between two business partners">
-          </picture>
-        </div>
-        <div class="partners-cta__overlay" aria-hidden="true"></div>
-        <h2 class="partners-cta__title">
-          <span class="partners-cta__title-line">We believe the future</span>
-          <span class="partners-cta__title-line partners-cta__title-line--gold">of homeownership</span>
-          <span class="partners-cta__title-line">will be built together.</span>
-        </h2>
-        <a class="btn btn--gradient" href="contact.html">
-          Become a Partner
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
       </section>
     </main>
 
@@ -913,11 +784,11 @@
   })();
 
   (function () {
-    var items = document.querySelectorAll('.partners-grid__item');
+    var items = document.querySelectorAll('.owners-features__item');
     if (!items.length) return;
 
     items.forEach(function (item, i) {
-      item.style.transitionDelay = (i * 60) + 'ms';
+      item.style.transitionDelay = (i * 70) + 'ms';
     });
 
     if (!('IntersectionObserver' in window)) {
@@ -935,6 +806,11 @@
     }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(function (item) { observer.observe(item); });
+  })();
+
+  (function () {
+    var loginForm = document.querySelector('.login__form');
+    if (loginForm) loginForm.addEventListener('submit', function (e) { e.preventDefault(); });
   })();
 
   (function () {
