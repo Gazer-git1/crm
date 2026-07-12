@@ -7,7 +7,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   if (!userId) return new Response("Unauthorized", { status: 401 });
 
   const user = await env.PORTAL_DB.prepare(
-    "SELECT id, full_name, email, avatar_url FROM users WHERE id = ?",
+    "SELECT id, full_name, email, avatar_url, email_verified FROM users WHERE id = ?",
   )
     .bind(userId)
     .first();

@@ -6,11 +6,18 @@ Client-facing dashboard (Messages + Profile, more sections to follow) built with
 - **Backend**: Cloudflare Pages Functions (`functions/api/**`)
 - **Database**: Cloudflare D1 (`schema/schema.sql`)
 - **File storage**: Cloudflare R2 (documents, attachments)
-- **Auth**: Google OAuth + WhatsApp OTP verification
+- **Auth**: Email/password (working end-to-end, incl. email verification) + Google OAuth and
+  WhatsApp OTP (scaffolded, not wired to live accounts yet)
 
-Currently the UI pages (`/messages`, `/profile`) run on mock data in `src/data/mock.ts` so the
-design can be reviewed without any backend wired up. Swap those for calls to `/api/*` once the
-accounts below are set up.
+Email/password signup, login, logout and email verification are fully functional against local
+D1 (`npm run pages:dev`) — every portal route requires a logged-in **and** email-verified user
+(see `RequireAuth` / `RequireVerifiedEmail` in `src/App.tsx`). The UI pages themselves
+(`/messages`, `/profile`) still run on mock data in `src/data/mock.ts` — swap those for calls to
+`/api/*` once the Cloudflare account below is set up.
+
+Without a `RESEND_API_KEY` configured, verification emails are logged to the Worker console
+instead of sent (see `functions/lib/email.ts`) — useful for local testing, find the code with
+`npm run pages:dev` and watching the terminal after signing up.
 
 ## Local development
 
@@ -59,6 +66,12 @@ npm run db:migrate:local
    - `wrangler pages secret put WHATSAPP_PHONE_NUMBER_ID`
    - `wrangler pages secret put WHATSAPP_ACCESS_TOKEN`
    - Free tier covers a limited number of conversations/month; beyond that it's pay-per-message.
+
+4. **Resend** (free, resend.com) — used to send the email-verification code on signup.
+   - Sign up, grab an API key. For testing you can send from `onboarding@resend.dev` with no
+     domain setup; for production, verify `i-angels.com` (or a subdomain) as a sending domain.
+   - `wrangler pages secret put RESEND_API_KEY`
+   - `wrangler pages secret put EMAIL_FROM` (e.g. `Investors' Angels <portal@i-angels.com>`)
 
 Once secrets are set and the D1 database/tables exist (`npm run db:migrate:remote`), point the
 frontend at the real endpoints instead of `src/data/mock.ts`.

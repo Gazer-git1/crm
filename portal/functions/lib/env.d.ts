@@ -7,4 +7,6 @@ export interface Env {
   GOOGLE_REDIRECT_URI: string;
   WHATSAPP_PHONE_NUMBER_ID: string;
   WHATSAPP_ACCESS_TOKEN: string;
+  RESEND_API_KEY: string;
+  EMAIL_FROM: string;
 }

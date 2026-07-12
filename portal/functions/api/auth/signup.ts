@@ -1,6 +1,7 @@
 import type { Env } from "../../lib/env";
 import { createSession } from "../../lib/session";
 import { hashPassword } from "../../lib/password";
+import { issueEmailVerificationCode } from "../../lib/email-verification";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -42,8 +43,17 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   const cookie = await createSession(env, userId);
 
+  try {
+    await issueEmailVerificationCode(env, userId, normalizedEmail);
+  } catch (err) {
+    // Don't block account creation if the email provider isn't configured yet
+    // (e.g. RESEND_API_KEY missing in local/dev) — the user can request a new
+    // code once it is, via /api/auth/resend-verification.
+    console.error("Failed to send verification email", err);
+  }
+
   return Response.json(
-    { id: userId, fullName: fullName.trim(), email: normalizedEmail },
+    { id: userId, fullName: fullName.trim(), email: normalizedEmail, emailVerified: false },
     { status: 201, headers: { "Set-Cookie": cookie } },
   );
 };

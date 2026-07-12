@@ -12,10 +12,10 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const normalizedEmail = email.trim().toLowerCase();
 
   const user = await env.PORTAL_DB.prepare(
-    "SELECT id, full_name, password_hash FROM users WHERE email = ?",
+    "SELECT id, full_name, password_hash, email_verified FROM users WHERE email = ?",
   )
     .bind(normalizedEmail)
-    .first<{ id: string; full_name: string; password_hash: string | null }>();
+    .first<{ id: string; full_name: string; password_hash: string | null; email_verified: number }>();
 
   // Same generic error whether the email doesn't exist or the password is wrong,
   // and whether the account has no password set (e.g. Google-only) — avoids
@@ -30,7 +30,12 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   const cookie = await createSession(env, user.id);
 
   return Response.json(
-    { id: user.id, fullName: user.full_name, email: normalizedEmail },
+    {
+      id: user.id,
+      fullName: user.full_name,
+      email: normalizedEmail,
+      emailVerified: Boolean(user.email_verified),
+    },
     { headers: { "Set-Cookie": cookie } },
   );
 };
