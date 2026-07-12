@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
   full_name TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   email_verified INTEGER NOT NULL DEFAULT 0,
+  password_hash TEXT,                -- PBKDF2 hash; null for OAuth-only accounts (e.g. Google)
   phone TEXT,
   phone_verified INTEGER NOT NULL DEFAULT 0,
   whatsapp TEXT,

@@ -43,15 +43,19 @@ export async function createSession(env: Env, userId: string) {
   return cookie;
 }
 
-export async function getUserIdFromRequest(request: Request, env: Env) {
+function getSessionToken(request: Request) {
   const cookieHeader = request.headers.get("Cookie") ?? "";
   const match = cookieHeader
     .split(";")
     .map((c) => c.trim())
     .find((c) => c.startsWith(`${SESSION_COOKIE}=`));
-  if (!match) return null;
+  return match?.split("=")[1] ?? null;
+}
 
-  const token = match.split("=")[1];
+export async function getUserIdFromRequest(request: Request, env: Env) {
+  const token = getSessionToken(request);
+  if (!token) return null;
+
   const tokenHash = await hashToken(token, env.SESSION_SECRET);
 
   const row = await env.PORTAL_DB.prepare(
@@ -61,4 +65,21 @@ export async function getUserIdFromRequest(request: Request, env: Env) {
     .first<{ user_id: string }>();
 
   return row?.user_id ?? null;
+}
+
+export async function destroySession(request: Request, env: Env) {
+  const token = getSessionToken(request);
+  if (token) {
+    const tokenHash = await hashToken(token, env.SESSION_SECRET);
+    await env.PORTAL_DB.prepare("DELETE FROM sessions WHERE id = ?").bind(tokenHash).run();
+  }
+
+  return [
+    `${SESSION_COOKIE}=`,
+    "HttpOnly",
+    "Secure",
+    "SameSite=Lax",
+    "Path=/",
+    "Max-Age=0",
+  ].join("; ");
 }

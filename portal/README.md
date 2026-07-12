@@ -40,13 +40,14 @@ npm run db:migrate:local
      set up Cloudflare — otherwise every push fails with a "missing CLOUDFLARE_API_TOKEN" error.
    - `wrangler pages secret put SESSION_SECRET` (any long random string).
    - By default the deployed site lives at `investors-angels-portal.pages.dev`, **not**
-     `i-angels.com/investor-portal`. To serve it under your real domain, add a custom domain /
-     route to the Pages project in the Cloudflare dashboard once it's live (e.g.
-     `portal.i-angels.com`, or a path-based route on `i-angels.com` if your DNS is on Cloudflare).
+     `i-angels.com/investor-portal`. Decision: serve it at **`portal.i-angels.com`** — add a
+     `Custom domain` for that hostname in the Pages project settings, then add the CNAME record
+     it gives you wherever `i-angels.com` DNS is currently managed (no need to move the main
+     site's DNS to Cloudflare — a single CNAME record is enough, and it's free).
 
 2. **Google OAuth** (free) — Google Cloud Console → APIs & Services → Credentials →
    OAuth Client ID (Web application).
-   - Authorized redirect URI: `https://<your-pages-domain>/api/auth/google/callback`.
+   - Authorized redirect URI: `https://portal.i-angels.com/api/auth/google/callback`.
    - `wrangler pages secret put GOOGLE_CLIENT_ID`
    - `wrangler pages secret put GOOGLE_CLIENT_SECRET`
    - `wrangler pages secret put GOOGLE_REDIRECT_URI`

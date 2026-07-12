@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
     "lint": "eslint . --ext ts,tsx",
-    "pages:dev": "wrangler pages dev dist --d1=PORTAL_DB",
+    "pages:dev": "wrangler pages dev dist",
     "pages:deploy": "wrangler pages deploy dist --project-name=investors-angels-portal",
     "db:migrate:local": "wrangler d1 execute PORTAL_DB --local --file=./schema/schema.sql",
     "db:migrate:remote": "wrangler d1 execute PORTAL_DB --remote --file=./schema/schema.sql"
