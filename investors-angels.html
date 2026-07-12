@@ -502,6 +502,16 @@
 
   /* ============ FINAL CTA (section_7) ============ */
   .final-cta { position: relative; isolation: isolate; display: flex; align-items: center; justify-content: space-between; height: 400px; padding: 0 var(--space-x); width: 100%; }
+  .final-cta::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: var(--divider-grad);
+    z-index: 1;
+  }
   .final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
   .final-cta__bg { position: absolute; top: -97.06%; left: 0; width: 100%; height: 270.14%; object-fit: cover; }
   .final-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.6); z-index: -1; }
