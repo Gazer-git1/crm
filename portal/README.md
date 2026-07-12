@@ -35,7 +35,14 @@ npm run db:migrate:local
    - Generate a `CLOUDFLARE_API_TOKEN` (Pages:Edit, D1:Edit, R2:Edit) and add it, plus your
      `CLOUDFLARE_ACCOUNT_ID`, as GitHub repo secrets — the deploy workflow
      (`.github/workflows/deploy-portal.yml`) needs both.
+   - Also add a GitHub repo **variable** (not secret) `CLOUDFLARE_READY` = `true`. The deploy
+     step is gated on this so CI stays green (skips deploy, doesn't fail) until you've actually
+     set up Cloudflare — otherwise every push fails with a "missing CLOUDFLARE_API_TOKEN" error.
    - `wrangler pages secret put SESSION_SECRET` (any long random string).
+   - By default the deployed site lives at `investors-angels-portal.pages.dev`, **not**
+     `i-angels.com/investor-portal`. To serve it under your real domain, add a custom domain /
+     route to the Pages project in the Cloudflare dashboard once it's live (e.g.
+     `portal.i-angels.com`, or a path-based route on `i-angels.com` if your DNS is on Cloudflare).
 
 2. **Google OAuth** (free) — Google Cloud Console → APIs & Services → Credentials →
    OAuth Client ID (Web application).
