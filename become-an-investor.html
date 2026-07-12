@@ -467,25 +467,6 @@
   }
   .invest-cta__input::placeholder { color: var(--color-text-muted); }
   .invest-cta__input:focus { outline: none; border-color: var(--color-gold-dark); }
-  .invest-select { position: relative; width: 100%; }
-  .invest-select select {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    height: 52px;
-    padding: 0 40px 0 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background: rgba(10, 15, 19, 0.4);
-    color: var(--color-white);
-    font-family: var(--font-sans);
-    font-size: 15px;
-    transition: border-color 0.2s ease;
-  }
-  .invest-select select:invalid { color: var(--color-text-muted); }
-  .invest-select select:focus { outline: none; border-color: var(--color-gold-dark); }
-  .invest-select select option { background: var(--color-bg-secondary); color: var(--color-white); }
-  .invest-select__chevron { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--color-text-muted); pointer-events: none; }
   .invest-cta__submit { width: 100%; }
 
   .type-select { position: relative; width: 100%; }
@@ -515,11 +496,12 @@
     top: calc(100% + 8px);
     left: 0;
     right: 0;
+    max-height: 320px;
     background: var(--color-bg-secondary);
     border: 1px solid var(--color-border);
     border-radius: 4px;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    overflow: hidden;
+    overflow-y: auto;
     z-index: 20;
     opacity: 0;
     transform: translateY(-8px);
@@ -1004,32 +986,35 @@
               <div class="invest-cta__fields">
                 <input class="invest-cta__input" type="text" name="full_name" placeholder="Full Name" required>
                 <input class="invest-cta__input" type="email" name="email" placeholder="Email Address" required>
-                <div class="invest-select">
-                  <select name="country" required defaultValue="">
-                    <option value="" disabled selected hidden>Country of Residence</option>
-                    <option value="AE">United Arab Emirates</option>
-                    <option value="SA">Saudi Arabia</option>
-                    <option value="QA">Qatar</option>
-                    <option value="KW">Kuwait</option>
-                    <option value="BH">Bahrain</option>
-                    <option value="OM">Oman</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="IE">Ireland</option>
-                    <option value="FR">France</option>
-                    <option value="DE">Germany</option>
-                    <option value="CH">Switzerland</option>
-                    <option value="ES">Spain</option>
-                    <option value="IT">Italy</option>
-                    <option value="NL">Netherlands</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    <option value="SG">Singapore</option>
-                    <option value="HK">Hong Kong</option>
-                    <option value="IN">India</option>
-                    <option value="OTHER">Other</option>
-                  </select>
-                  <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="type-select" id="countrySelect">
+                  <button type="button" class="type-select__trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="type-select__value" id="countryValue">Country of Residence</span>
+                    <svg class="type-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                  <div class="type-select__panel" id="countryPanel" role="listbox">
+                    <button type="button" class="type-select__option" data-type="AE" role="option" aria-selected="false"><span>United Arab Emirates</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="SA" role="option" aria-selected="false"><span>Saudi Arabia</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="QA" role="option" aria-selected="false"><span>Qatar</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="KW" role="option" aria-selected="false"><span>Kuwait</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="BH" role="option" aria-selected="false"><span>Bahrain</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="OM" role="option" aria-selected="false"><span>Oman</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="GB" role="option" aria-selected="false"><span>United Kingdom</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="IE" role="option" aria-selected="false"><span>Ireland</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="FR" role="option" aria-selected="false"><span>France</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="DE" role="option" aria-selected="false"><span>Germany</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="CH" role="option" aria-selected="false"><span>Switzerland</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="ES" role="option" aria-selected="false"><span>Spain</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="IT" role="option" aria-selected="false"><span>Italy</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="NL" role="option" aria-selected="false"><span>Netherlands</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="CA" role="option" aria-selected="false"><span>Canada</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="AU" role="option" aria-selected="false"><span>Australia</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="SG" role="option" aria-selected="false"><span>Singapore</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="HK" role="option" aria-selected="false"><span>Hong Kong</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="IN" role="option" aria-selected="false"><span>India</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                    <button type="button" class="type-select__option" data-type="OTHER" role="option" aria-selected="false"><span>Other</span><svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  </div>
                 </div>
+                <input type="hidden" name="country" id="countryInput" required>
                 <div class="type-select" id="typeSelect">
                   <button type="button" class="type-select__trigger" id="typeTrigger" aria-haspopup="listbox" aria-expanded="false">
                     <span class="type-select__value" id="typeValue">Investor Type</span>
@@ -1280,45 +1265,50 @@
   })();
 
   (function () {
-    var wrap = document.getElementById('typeSelect');
-    if (!wrap) return;
-    var trigger = document.getElementById('typeTrigger');
-    var panel = document.getElementById('typePanel');
-    var valueLabel = document.getElementById('typeValue');
-    var hiddenInput = document.getElementById('typeInput');
-    var options = panel.querySelectorAll('.type-select__option');
+    function initDropdown(prefix) {
+      var wrap = document.getElementById(prefix + 'Select');
+      if (!wrap) return;
+      var trigger = document.getElementById(prefix + 'Trigger');
+      var panel = document.getElementById(prefix + 'Panel');
+      var valueLabel = document.getElementById(prefix + 'Value');
+      var hiddenInput = document.getElementById(prefix + 'Input');
+      var options = panel.querySelectorAll('.type-select__option');
 
-    function setOpen(open) {
-      wrap.classList.toggle('is-open', open);
-      trigger.setAttribute('aria-expanded', String(open));
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!wrap.classList.contains('is-open'));
+      });
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          valueLabel.textContent = opt.querySelector('span').textContent;
+          trigger.classList.add('has-value');
+          hiddenInput.value = opt.getAttribute('data-type');
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
     }
 
-    trigger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      setOpen(!wrap.classList.contains('is-open'));
-    });
-
-    options.forEach(function (opt) {
-      opt.addEventListener('click', function () {
-        options.forEach(function (o) {
-          o.classList.remove('is-selected');
-          o.setAttribute('aria-selected', 'false');
-        });
-        opt.classList.add('is-selected');
-        opt.setAttribute('aria-selected', 'true');
-        valueLabel.textContent = opt.querySelector('span').textContent;
-        trigger.classList.add('has-value');
-        hiddenInput.value = opt.getAttribute('data-type');
-        setOpen(false);
-      });
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!wrap.contains(e.target)) setOpen(false);
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') setOpen(false);
-    });
+    initDropdown('type');
+    initDropdown('country');
   })();
 </script>
 
