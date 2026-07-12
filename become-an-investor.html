@@ -488,6 +488,57 @@
   .invest-select__chevron { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--color-text-muted); pointer-events: none; }
   .invest-cta__submit { width: 100%; }
 
+  .type-select { position: relative; width: 100%; }
+  .type-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 52px;
+    padding: 0 40px 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: rgba(10, 15, 19, 0.4);
+    color: var(--color-text-muted);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    text-align: left;
+    transition: border-color 0.2s ease;
+  }
+  .type-select__trigger.has-value { color: var(--color-white); }
+  .type-select__trigger:hover, .type-select.is-open .type-select__trigger { border-color: var(--color-gold-dark); }
+  .type-select__value { flex: 1 0 0; text-align: left; }
+  .type-select__chevron { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; color: var(--color-text-muted); pointer-events: none; transition: transform 0.25s ease; }
+  .type-select.is-open .type-select__chevron { transform: translateY(-50%) rotate(180deg); }
+  .type-select__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .type-select.is-open .type-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .type-select__option {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
+    font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .type-select__option:last-child { border-bottom: none; }
+  .type-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
+  .type-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+  .type-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
+  .type-select__option.is-selected .type-select__option-check { opacity: 1; }
+
   /* ============ TESTIMONIAL ============ */
   .testimonial { position: relative; isolation: isolate; display: flex; align-items: center; height: 480px; padding: 0 var(--space-x); width: 100%; }
   .testimonial__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
@@ -979,16 +1030,35 @@
                   </select>
                   <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                 </div>
-                <div class="invest-select">
-                  <select name="investor_type" required defaultValue="">
-                    <option value="" disabled selected hidden>Investor Type</option>
-                    <option value="individual">Individual Investor</option>
-                    <option value="professional">Professional Investor</option>
-                    <option value="institutional">Institutional Investor</option>
-                    <option value="family_office">Family Office</option>
-                  </select>
-                  <svg class="invest-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                <div class="type-select" id="typeSelect">
+                  <button type="button" class="type-select__trigger" id="typeTrigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="type-select__value" id="typeValue">Investor Type</span>
+                    <svg class="type-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                  </button>
+                  <div class="type-select__panel" id="typePanel" role="listbox">
+                    <button type="button" class="type-select__option" data-type="individual" role="option" aria-selected="false">
+                      <span>Individual Investor</span>
+                      <svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="type-select__option" data-type="professional" role="option" aria-selected="false">
+                      <span>Professional Investor</span>
+                      <svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="type-select__option" data-type="institutional" role="option" aria-selected="false">
+                      <span>Institutional Investor</span>
+                      <svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="type-select__option" data-type="family_office" role="option" aria-selected="false">
+                      <span>Family Office</span>
+                      <svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                    <button type="button" class="type-select__option" data-type="partnership" role="option" aria-selected="false">
+                      <span>Partnership</span>
+                      <svg class="type-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                    </button>
+                  </div>
                 </div>
+                <input type="hidden" name="investor_type" id="typeInput" required>
               </div>
               <button class="btn btn--gradient invest-cta__submit" type="submit">Request Investor Access</button>
             </form>
@@ -1206,6 +1276,48 @@
     if (!form) return;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+    });
+  })();
+
+  (function () {
+    var wrap = document.getElementById('typeSelect');
+    if (!wrap) return;
+    var trigger = document.getElementById('typeTrigger');
+    var panel = document.getElementById('typePanel');
+    var valueLabel = document.getElementById('typeValue');
+    var hiddenInput = document.getElementById('typeInput');
+    var options = panel.querySelectorAll('.type-select__option');
+
+    function setOpen(open) {
+      wrap.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', String(open));
+    }
+
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!wrap.classList.contains('is-open'));
+    });
+
+    options.forEach(function (opt) {
+      opt.addEventListener('click', function () {
+        options.forEach(function (o) {
+          o.classList.remove('is-selected');
+          o.setAttribute('aria-selected', 'false');
+        });
+        opt.classList.add('is-selected');
+        opt.setAttribute('aria-selected', 'true');
+        valueLabel.textContent = opt.querySelector('span').textContent;
+        trigger.classList.add('has-value');
+        hiddenInput.value = opt.getAttribute('data-type');
+        setOpen(false);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!wrap.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
     });
   })();
 </script>
