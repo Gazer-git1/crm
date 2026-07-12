@@ -327,6 +327,7 @@
   }
   .invest-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
   .invest-cta__title-line--gold { color: var(--color-gold); display: block; }
+  .invest-cta__actions { display: flex; flex-direction: column; gap: 16px; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -548,9 +549,10 @@
     .invest-features__desc { max-width: none; }
 
     /* invest cta band */
-    .invest-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
+    .invest-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: auto; padding: 190px 24px 48px; gap: 28px; }
     .invest-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
     .invest-cta__title { font-size: 30px; }
+    .invest-cta__actions { width: 100%; }
     .invest-cta .btn { width: 100%; }
 
     /* footer */
@@ -623,16 +625,6 @@
             </h1>
             <p class="hero__subtitle">Impact investment. High returns.<br>Security. Clear exit.</p>
           </div>
-          <div class="hero__cta-row">
-            <a class="btn btn--gradient" href="calculator.html">
-              I Want My Home
-              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-            </a>
-            <a class="btn btn--outline" href="#">
-              Investment Model
-              <img class="btn__icon" src="assets/icons/icon-arrow-outline.svg" alt="">
-            </a>
-          </div>
         </div>
       </section>
 
@@ -692,10 +684,16 @@
           <span class="invest-cta__title-line">A strong return.</span>
           <span class="invest-cta__title-line invest-cta__title-line--gold">A lasting impact.</span>
         </h2>
-        <a class="btn btn--gradient" href="become-an-investor.html">
-          Become an Investor
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+        <div class="invest-cta__actions">
+          <a class="btn btn--gradient" href="become-an-investor.html">
+            Become an Investor
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+          <a class="btn btn--outline" href="how-investing-works.html">
+            How Investing Works
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
       </section>
     </main>
 

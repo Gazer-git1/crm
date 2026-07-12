@@ -345,6 +345,7 @@
   .hiw-cta__overlay { position: absolute; inset: 0; background: rgba(13, 10, 8, 0.55); z-index: -1; }
   .hiw-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
   .hiw-cta__title-line--gold { color: var(--color-gold); display: block; }
+  .hiw-cta__actions { display: flex; flex-direction: column; gap: 16px; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -565,6 +566,7 @@
     /* how it works cta band */
     .hiw-cta { flex-direction: column; align-items: center; justify-content: center; text-align: center; height: auto; padding: 56px 24px; gap: 28px; }
     .hiw-cta__title { font-size: 30px; }
+    .hiw-cta__actions { width: 100%; }
     .hiw-cta .btn { width: 100%; }
 
     /* footer */
@@ -638,12 +640,6 @@
             </h1>
             <p class="hero__subtitle">We make homeownership possible sooner, without the usual barriers.</p>
           </div>
-          <div class="hero__cta-row">
-            <a class="btn btn--gradient" href="calculator.html">
-              Check Your Eligibility
-              <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-            </a>
-          </div>
         </div>
       </section>
 
@@ -709,10 +705,16 @@
           <span class="hiw-cta__title-line">Start living</span>
           <span class="hiw-cta__title-line hiw-cta__title-line--gold">your future today.</span>
         </h2>
-        <a class="btn btn--gradient" href="calculator.html">
-          Book Your Eligibility
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+        <div class="hiw-cta__actions">
+          <a class="btn btn--gradient" href="calculator.html">
+            Get Started
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+          <a class="btn btn--outline" href="guarantees.html">
+            Guarantees
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
       </section>
     </main>
 
