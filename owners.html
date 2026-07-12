@@ -334,6 +334,7 @@
   }
   .owners-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
   .owners-cta__title-line--gold { color: var(--color-gold); display: block; }
+  .owners-cta__actions { display: flex; flex-direction: column; gap: 16px; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -548,9 +549,10 @@
     .owners-features__desc { max-width: none; }
 
     /* owners cta band */
-    .owners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
+    .owners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: auto; padding: 190px 24px 48px; gap: 28px; }
     .owners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
     .owners-cta__title { font-size: 30px; }
+    .owners-cta__actions { width: 100%; }
     .owners-cta .btn { width: 100%; }
 
     /* footer */
@@ -689,10 +691,16 @@
           <span class="owners-cta__title-line">Start living</span>
           <span class="owners-cta__title-line owners-cta__title-line--gold">your future today.</span>
         </h2>
-        <a class="btn btn--gradient" href="calculator.html">
-          Get Started
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+        <div class="owners-cta__actions">
+          <a class="btn btn--gradient" href="calculator.html">
+            Get Started
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+          <a class="btn btn--outline" href="how-it-works.html">
+            How It Works
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
       </section>
     </main>
 

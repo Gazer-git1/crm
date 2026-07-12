@@ -368,6 +368,7 @@
   .iw-final__title { font-family: var(--font-serif); font-size: 38px; line-height: 1.32; font-weight: 400; margin: 0; }
   .iw-final__title-line { display: block; }
   .iw-final__title-line span { color: var(--color-gold); }
+  .iw-final__actions { display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -608,6 +609,7 @@
     .iw-final__bg { object-position: center center; }
     .iw-final__overlay { background: linear-gradient(180deg, rgba(22, 24, 23, 0.35) 0%, rgba(22, 24, 23, 0.55) 55%, rgba(22, 24, 23, 0.85) 100%); }
     .iw-final__title { font-size: 28px; }
+    .iw-final__actions { width: 100%; }
     .iw-final .btn { width: 100%; }
 
     /* footer */
@@ -1016,10 +1018,16 @@
           <span class="iw-final__title-line"><span>One</span> Customer.</span>
           <span class="iw-final__title-line"><span>One</span> transparent investment.</span>
         </h2>
-        <a class="btn btn--gradient" href="contact.html">
-          Get Investment Model
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+        <div class="iw-final__actions">
+          <a class="btn btn--gradient" href="become-an-investor.html">
+            Become an Investor
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+          <a class="btn btn--outline" href="faq-investors.html">
+            Frequently Asked Questions
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
       </section>
     </main>
 
