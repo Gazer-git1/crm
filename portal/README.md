@@ -1,0 +1,66 @@
+# Investors' Angels — Client Portal
+
+Client-facing dashboard (Messages + Profile, more sections to follow) built with:
+
+- **Frontend**: Vite + React + TypeScript + Tailwind CSS
+- **Backend**: Cloudflare Pages Functions (`functions/api/**`)
+- **Database**: Cloudflare D1 (`schema/schema.sql`)
+- **File storage**: Cloudflare R2 (documents, attachments)
+- **Auth**: Google OAuth + WhatsApp OTP verification
+
+Currently the UI pages (`/messages`, `/profile`) run on mock data in `src/data/mock.ts` so the
+design can be reviewed without any backend wired up. Swap those for calls to `/api/*` once the
+accounts below are set up.
+
+## Local development
+
+```bash
+npm install
+npm run dev          # frontend only, mock data, http://localhost:5173
+```
+
+To run the full stack locally (frontend + Pages Functions + local D1):
+
+```bash
+npm run build
+npm run pages:dev     # http://localhost:8788, D1 emulated locally
+npm run db:migrate:local
+```
+
+## One-time setup checklist (requires your accounts — I can't create these for you)
+
+1. **Cloudflare account** (free) → create a Pages project named `investors-angels-portal`.
+   - `wrangler d1 create investors-angels-portal-db` → paste the `database_id` into `wrangler.toml`.
+   - `wrangler r2 bucket create investors-angels-portal-files`.
+   - Generate a `CLOUDFLARE_API_TOKEN` (Pages:Edit, D1:Edit, R2:Edit) and add it, plus your
+     `CLOUDFLARE_ACCOUNT_ID`, as GitHub repo secrets — the deploy workflow
+     (`.github/workflows/deploy-portal.yml`) needs both.
+   - `wrangler pages secret put SESSION_SECRET` (any long random string).
+
+2. **Google OAuth** (free) — Google Cloud Console → APIs & Services → Credentials →
+   OAuth Client ID (Web application).
+   - Authorized redirect URI: `https://<your-pages-domain>/api/auth/google/callback`.
+   - `wrangler pages secret put GOOGLE_CLIENT_ID`
+   - `wrangler pages secret put GOOGLE_CLIENT_SECRET`
+   - `wrangler pages secret put GOOGLE_REDIRECT_URI`
+
+3. **WhatsApp verification** — Meta Business Suite → WhatsApp → API Setup.
+   - Requires a verified Meta Business account and a dedicated WhatsApp Business phone number.
+   - Create and get approval for an authentication message template (referenced as
+     `portal_otp` in `functions/api/auth/whatsapp/start.ts`) — Meta review can take a few days.
+   - `wrangler pages secret put WHATSAPP_PHONE_NUMBER_ID`
+   - `wrangler pages secret put WHATSAPP_ACCESS_TOKEN`
+   - Free tier covers a limited number of conversations/month; beyond that it's pay-per-message.
+
+Once secrets are set and the D1 database/tables exist (`npm run db:migrate:remote`), point the
+frontend at the real endpoints instead of `src/data/mock.ts`.
+
+## Project layout
+
+```
+portal/
+  src/                 React app (pages, components, mock data)
+  functions/api/       Cloudflare Pages Functions (backend API)
+  schema/schema.sql    D1 database schema
+  wrangler.toml        Cloudflare bindings config
+```
