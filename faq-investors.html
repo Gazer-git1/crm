@@ -616,25 +616,6 @@
   .faq__title { font-family: var(--font-serif); font-size: 50px; line-height: 1.1; margin: 0; font-weight: 400; }
   .faq__title-line--gold { color: var(--color-gold); }
   .faq__desc { font-size: 20px; font-weight: 200; line-height: 1.4; color: var(--color-text-secondary); }
-  .faq__switcher { display: flex; gap: 8px; }
-  .faq__switcher-link {
-    flex: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 14px 28px;
-    border: 1px solid var(--color-bronze);
-    border-radius: 2px;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    background: transparent;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
-  }
-  .faq__switcher-link:hover { transform: translateY(-2px); border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); box-shadow: 0 8px 20px rgba(211, 167, 105, 0.18); }
-  .faq__switcher-link--active { color: #0d0a08; border-color: transparent; background: var(--color-btn-grad); box-shadow: 0 4px 14px rgba(20, 15, 8, 0.35); }
   .faq__help { position: relative; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 20px; }
   .faq__help::before {
     content: "";
@@ -945,11 +926,6 @@
             <span class="faq__eyebrow">INVESTOR FAQ</span>
             <h1 class="faq__title">Frequently Asked<br><span class="faq__title-line--gold">Questions</span></h1>
             <p class="faq__desc">Everything you need to know<br>about investing in CLNs.</p>
-          </div>
-
-          <div class="faq__switcher" role="tablist" aria-label="Choose FAQ topic">
-            <a class="faq__switcher-link" href="faq-owners.html">For Homeowners</a>
-            <a class="faq__switcher-link faq__switcher-link--active" href="faq-investors.html" aria-current="page">For Investors</a>
           </div>
 
           <div class="faq__help">
