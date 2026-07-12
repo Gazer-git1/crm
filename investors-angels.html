@@ -766,6 +766,15 @@
     .table { display: none; }
     .table-mobile { display: block; margin-right: -20px; }
     .table-mobile__inner { border-radius: 4px 0 0 4px; }
+    .table-mobile__labels { flex-basis: 88px; }
+    .table-mobile__col { flex-basis: 89px; }
+    .table-mobile__row { padding: 4px 6px; }
+    .table-mobile__labels .table-mobile__row { padding: 4px 10px; }
+    .table-mobile__label-title { font-size: 14px; }
+    .table-mobile__label-desc { font-size: 12px; }
+    .table-mobile__row--head { font-size: 12px; }
+    .table-mobile__row .table__value { font-size: 13px; }
+    .table-mobile__row .table__icon { width: 20px; height: 20px; }
 
     /* how it works */
     .steps { padding: 64px 20px; gap: 32px; }
@@ -1011,6 +1020,14 @@
             </div>
             <div class="table-mobile__scroll" id="planTrack">
               <div class="table-mobile__cols">
+                <div class="table-mobile__col table-mobile__col--highlight">
+                  <div class="table-mobile__row table-mobile__row--head"><span class="table__head-label table__head-label--highlight">Lease</span></div>
+                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold.svg" alt="Yes"></div>
+                  <div class="table-mobile__row"><span class="table__value table__value--highlight">None</span></div>
+                  <div class="table-mobile__row"><span class="table__value table__value--highlight">Simple</span></div>
+                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold-2.svg" alt="Yes"></div>
+                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold-2.svg" alt="None"></div>
+                </div>
                 <div class="table-mobile__col">
                   <div class="table-mobile__row table-mobile__row--head"><span class="table__head-label">Rent</span></div>
                   <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-yes.svg" alt="Yes"></div>
@@ -1026,14 +1043,6 @@
                   <div class="table-mobile__row"><span class="table__value">Strict</span></div>
                   <div class="table-mobile__row"><span class="table__value">Yes</span></div>
                   <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-risk-low.svg" alt="Low"></div>
-                </div>
-                <div class="table-mobile__col table-mobile__col--highlight">
-                  <div class="table-mobile__row table-mobile__row--head"><span class="table__head-label table__head-label--highlight">Lease</span></div>
-                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold.svg" alt="Yes"></div>
-                  <div class="table-mobile__row"><span class="table__value table__value--highlight">None</span></div>
-                  <div class="table-mobile__row"><span class="table__value table__value--highlight">Simple</span></div>
-                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold-2.svg" alt="Yes"></div>
-                  <div class="table-mobile__row"><img class="table__icon" src="assets/icons/icon-check-gold-2.svg" alt="None"></div>
                 </div>
               </div>
             </div>
