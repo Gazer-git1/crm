@@ -328,7 +328,7 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .about-explore__link { min-width: 280px; justify-content: space-between; }
+  .about-explore__link { min-width: 280px; justify-content: center; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -674,13 +674,11 @@
 
       <!-- ABOUT EXPLORE -->
       <section class="about-explore">
+        <a class="btn btn--gradient about-explore__link" href="#">
+          Explore Our Team
+        </a>
         <a class="btn btn--outline about-explore__link" href="partners.html">
           Explore Partners
-          <img class="btn__icon" src="assets/icons/icon-arrow-outline.svg" alt="">
-        </a>
-        <a class="btn btn--outline about-explore__link" href="news-insights.html">
-          Explore News &amp; Insights
-          <img class="btn__icon" src="assets/icons/icon-arrow-outline.svg" alt="">
         </a>
       </section>
     </main>
