@@ -1,0 +1,9 @@
+{
+  "name": "i-angels-functions",
+  "private": true,
+  "type": "commonjs",
+  "dependencies": {
+    "resend": "^4.0.1",
+    "twilio": "^5.3.5"
+  }
+}

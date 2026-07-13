@@ -734,56 +734,6 @@
   .contact__submit:disabled::after { display: none; }
   .contact__form-note { font-size: 13px; color: var(--color-text-muted); }
 
-  .topic-select { position: relative; width: 100%; }
-  .topic-select__trigger {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    height: 52px;
-    padding: 0 16px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background: var(--color-bg-secondary);
-    color: var(--color-white);
-    font-family: var(--font-sans);
-    font-size: 15px;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-  }
-  .topic-select__trigger:hover, .topic-select.is-open .topic-select__trigger { border-color: var(--color-gold-dark); background: var(--color-bg-secondary); }
-  .topic-select__value { flex: 1 0 0; text-align: left; }
-  .topic-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
-  .topic-select.is-open .topic-select__chevron { transform: rotate(180deg); }
-  .topic-select__panel {
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    overflow: hidden;
-    z-index: 20;
-    opacity: 0;
-    transform: translateY(-8px);
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  .topic-select.is-open .topic-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .topic-select__option {
-    display: flex; align-items: center; justify-content: space-between; width: 100%;
-    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
-    font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-  .topic-select__option:last-child { border-bottom: none; }
-  .topic-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
-  .topic-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
-  .topic-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
-  .topic-select__option.is-selected .topic-select__option-check { opacity: 1; }
-
   .contact__success { display: none; flex-direction: column; align-items: flex-start; gap: 16px; }
   .contact__success-icon { width: 56px; height: 56px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
   .contact__success-icon svg { width: 24px; height: 24px; }
@@ -791,6 +741,45 @@
   .contact__success-desc { font-size: 15px; line-height: 1.5; color: var(--color-text-secondary); }
   .contact-form.is-submitted .contact__fields { display: none; }
   .contact-form.is-submitted .contact__success { display: flex; }
+
+  /* ---- Application flow (property + verification) ---- */
+  .calc-form__label { display: flex; align-items: center; gap: 12px; font-family: var(--font-serif); font-size: 20px; color: var(--color-white); }
+  .calc-form__label-note { font-size: 14px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-sans); }
+  .calc-form__number {
+    width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--color-bronze);
+    display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--color-gold); flex-shrink: 0;
+  }
+  .calc-form__divider { height: 1px; background: var(--divider-grad); width: 100%; }
+
+  .app-step { display: flex; flex-direction: column; gap: 20px; }
+  .app-property-row, .app-verify-row, .app-code-row { display: flex; gap: 10px; align-items: flex-start; }
+  .app-code-row[hidden], .app-property-preview[hidden], .app-verified-badge[hidden] { display: none; }
+  .app-property-row .contact__input, .app-verify-row .contact__input { flex: 1 0 0; min-width: 0; }
+  .app-inline-btn {
+    flex-shrink: 0; height: 52px; padding: 0 20px; border-radius: 4px;
+    border: 1px solid var(--color-bronze); background: transparent; color: var(--color-gold);
+    font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.02em; white-space: nowrap; transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+  }
+  .app-inline-btn:hover { border-color: var(--color-bronze-light); background: rgba(211, 167, 105, 0.08); }
+  .app-inline-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .app-code-input { max-width: 140px; flex: none; letter-spacing: 0.3em; text-align: center; }
+  .app-verified-badge { display: inline-flex; align-items: center; gap: 6px; height: 52px; padding: 0 4px; font-size: 13px; font-weight: 600; color: #6fcf97; white-space: nowrap; }
+  .app-verified-badge::before { content: "\2713"; }
+  .app-field-note { font-size: 12px; color: var(--color-text-muted); }
+
+  .app-property-preview { display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); }
+  .app-property-preview__image { width: 64px; height: 64px; border-radius: 4px; object-fit: cover; flex-shrink: 0; background: rgba(255, 255, 255, 0.05); }
+  .app-property-preview__body { flex: 1 0 0; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+  .app-property-preview__title { font-size: 15px; color: var(--color-white); margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .app-property-preview__price { font-size: 14px; color: var(--color-gold); margin: 0; }
+  .app-property-preview__clear { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--color-border); background: transparent; color: var(--color-text-muted); font-size: 18px; line-height: 1; }
+  .app-property-preview__clear:hover { color: var(--color-white); border-color: var(--color-bronze); }
+
+  .app-manual-toggle { font-size: 13px; color: var(--color-text-muted); }
+  .app-manual-toggle summary { cursor: pointer; color: var(--color-gold); list-style: none; }
+  .app-manual-toggle summary::-webkit-details-marker { display: none; }
+  .app-manual-toggle[open] summary { margin-bottom: 16px; }
 
 
   /* ============ MOBILE ============ */
@@ -1021,6 +1010,9 @@
     .contact__desc { font-size: 16px; }
     .contact__form-wrap { padding: 28px 20px; }
     .contact__form-row { flex-direction: column; gap: 20px; }
+    .app-property-row, .app-verify-row, .app-code-row { flex-direction: column; align-items: stretch; }
+    .app-inline-btn { width: 100%; }
+    .app-code-input { max-width: none; }
   }
 </style>
 </head>
@@ -1121,63 +1113,96 @@
           </div>
         </div>
 
-        <form class="contact__form-wrap contact-form" id="contactForm">
+        <form class="contact__form-wrap contact-form" id="applicationForm">
           <div class="contact__fields">
-            <h2 class="contact__form-title">Send Us a Message</h2>
-            <div class="contact__form-row">
+            <h2 class="contact__form-title">Submit an Application</h2>
+
+            <div class="app-step">
+              <div class="calc-form__label"><span class="calc-form__number">1</span> Choose a Property</div>
+
               <div class="contact__field">
-                <label class="contact__label" for="contactName">Full Name</label>
-                <input class="contact__input" type="text" id="contactName" name="name" placeholder="John Smith" required>
+                <label class="contact__label" for="propertyUrl">Listing Link</label>
+                <div class="app-property-row">
+                  <input class="contact__input" type="url" id="propertyUrl" placeholder="Paste a link to the property listing">
+                  <button class="app-inline-btn" type="button" id="parsePropertyBtn">Fetch Details</button>
+                </div>
+                <span class="contact__field-error" id="propertyError"></span>
               </div>
-              <div class="contact__field">
-                <label class="contact__label" for="contactEmail">Email</label>
-                <input class="contact__input" type="email" id="contactEmail" name="email" placeholder="john@example.com" required>
-                <span class="contact__field-error" id="contactEmailError"></span>
+
+              <div class="app-property-preview" id="propertyPreview" hidden>
+                <img class="app-property-preview__image" id="propertyPreviewImage" alt="" hidden>
+                <div class="app-property-preview__body">
+                  <p class="app-property-preview__title" id="propertyPreviewTitle"></p>
+                  <p class="app-property-preview__price" id="propertyPreviewPrice"></p>
+                </div>
+                <button class="app-property-preview__clear" type="button" id="propertyClearBtn" aria-label="Remove property">&times;</button>
               </div>
-            </div>
-            <div class="contact__form-row">
-              <div class="contact__field">
-                <label class="contact__label" for="contactPhone">Phone Number</label>
-                <input class="contact__input" type="tel" id="contactPhone" name="phone" placeholder="+971 50 000 0000" required>
-                <span class="contact__field-error" id="contactPhoneError"></span>
-              </div>
-              <div class="contact__field">
-                <label class="contact__label" for="topicTrigger">I'm Interested In</label>
-                <div class="topic-select" id="topicSelect">
-                  <button type="button" class="topic-select__trigger" id="topicTrigger" aria-haspopup="listbox" aria-expanded="false">
-                    <span class="topic-select__value" id="topicValue">Leasing a Home</span>
-                    <svg class="topic-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-                  </button>
-                  <div class="topic-select__panel" id="topicPanel" role="listbox">
-                    <button type="button" class="topic-select__option is-selected" data-topic="leasing" role="option" aria-selected="true">
-                      <span>Leasing a Home</span>
-                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                    </button>
-                    <button type="button" class="topic-select__option" data-topic="investing" role="option" aria-selected="false">
-                      <span>Investing</span>
-                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                    </button>
-                    <button type="button" class="topic-select__option" data-topic="partnership" role="option" aria-selected="false">
-                      <span>Partnership</span>
-                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                    </button>
-                    <button type="button" class="topic-select__option" data-topic="other" role="option" aria-selected="false">
-                      <span>Something Else</span>
-                      <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                    </button>
+
+              <details class="app-manual-toggle" id="propertyManualToggle">
+                <summary>Enter details manually instead</summary>
+                <div class="contact__form-row">
+                  <div class="contact__field">
+                    <label class="contact__label" for="propertyTitleManual">Property Title</label>
+                    <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
+                  </div>
+                  <div class="contact__field">
+                    <label class="contact__label" for="propertyPriceManual">Price</label>
+                    <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
                   </div>
                 </div>
-                <input type="hidden" name="topic" id="topicInput" value="leasing">
+              </details>
+            </div>
+
+            <div class="calc-form__divider"></div>
+
+            <div class="app-step">
+              <div class="calc-form__label"><span class="calc-form__number">2</span> Your Details</div>
+
+              <div class="contact__field">
+                <label class="contact__label" for="appName">Full Name</label>
+                <input class="contact__input" type="text" id="appName" placeholder="John Smith" required>
+              </div>
+
+              <div class="contact__field">
+                <label class="contact__label" for="appEmail">Email</label>
+                <div class="app-verify-row">
+                  <input class="contact__input" type="email" id="appEmail" placeholder="john@example.com" required>
+                  <button class="app-inline-btn" type="button" id="sendEmailCodeBtn">Send Code</button>
+                  <span class="app-verified-badge" id="emailVerifiedBadge" hidden>Verified</span>
+                </div>
+                <span class="contact__field-error" id="appEmailError"></span>
+                <div class="app-code-row" id="emailCodeRow" hidden>
+                  <input class="contact__input app-code-input" type="text" inputmode="numeric" maxlength="6" id="emailCodeInput" placeholder="6-digit code">
+                  <button class="app-inline-btn" type="button" id="verifyEmailCodeBtn">Verify</button>
+                </div>
+              </div>
+
+              <div class="contact__field">
+                <label class="contact__label" for="appPhone">Phone Number</label>
+                <div class="app-verify-row">
+                  <input class="contact__input" type="tel" id="appPhone" placeholder="+971 50 000 0000" required>
+                  <button class="app-inline-btn" type="button" id="sendSmsCodeBtn">Send Code</button>
+                  <span class="app-verified-badge" id="smsVerifiedBadge" hidden>Verified</span>
+                </div>
+                <span class="contact__field-error" id="appPhoneError"></span>
+                <span class="app-field-note" id="appPhoneNote" hidden></span>
+                <div class="app-code-row" id="smsCodeRow" hidden>
+                  <input class="contact__input app-code-input" type="text" inputmode="numeric" maxlength="6" id="smsCodeInput" placeholder="6-digit code">
+                  <button class="app-inline-btn" type="button" id="verifySmsCodeBtn">Verify</button>
+                </div>
+              </div>
+
+              <div class="contact__field">
+                <label class="contact__label" for="appMessage">Message <span class="calc-form__label-note">(optional)</span></label>
+                <textarea class="contact__input contact__textarea" id="appMessage" rows="4" placeholder="Anything else we should know?"></textarea>
               </div>
             </div>
-            <div class="contact__field">
-              <label class="contact__label" for="contactMessage">Message</label>
-              <textarea class="contact__input contact__textarea" id="contactMessage" name="message" rows="6" placeholder="Tell us a bit about what you're looking for..."></textarea>
-            </div>
-            <button class="btn btn--gradient contact__submit" type="submit" disabled>
-              Send Message
+
+            <button class="btn btn--gradient contact__submit" type="submit" id="applicationSubmitBtn" disabled>
+              Submit Application
               <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
             </button>
+            <span class="contact__field-error" id="applicationSubmitError"></span>
             <p class="contact__form-note">We'll never share your details with anyone else.</p>
           </div>
 
@@ -1185,8 +1210,8 @@
             <span class="contact__success-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 12 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </span>
-            <h2 class="contact__success-title">Message received</h2>
-            <p class="contact__success-desc">Thanks for reaching out — our team typically replies within one business day.</p>
+            <h2 class="contact__success-title">Application submitted</h2>
+            <p class="contact__success-desc">Thanks — our team will review your application and get back to you shortly. Check your email for a confirmation.</p>
           </div>
         </form>
       </section>
@@ -1461,45 +1486,254 @@
   })();
 
   (function () {
-    var form = document.getElementById('contactForm');
+    var form = document.getElementById('applicationForm');
     if (!form) return;
 
-    var nameInput = document.getElementById('contactName');
-    var emailInput = document.getElementById('contactEmail');
-    var phoneInput = document.getElementById('contactPhone');
-    var messageInput = document.getElementById('contactMessage');
-    var submitBtn = form.querySelector('.contact__submit');
-    var emailError = document.getElementById('contactEmailError');
-    var phoneError = document.getElementById('contactPhoneError');
+    var FUNCTIONS_BASE = '/.netlify/functions/';
+
+    var nameInput = document.getElementById('appName');
+    var emailInput = document.getElementById('appEmail');
+    var phoneInput = document.getElementById('appPhone');
+    var messageInput = document.getElementById('appMessage');
+    var submitBtn = document.getElementById('applicationSubmitBtn');
+    var submitError = document.getElementById('applicationSubmitError');
+
+    var propertyUrlInput = document.getElementById('propertyUrl');
+    var parsePropertyBtn = document.getElementById('parsePropertyBtn');
+    var propertyError = document.getElementById('propertyError');
+    var propertyPreview = document.getElementById('propertyPreview');
+    var propertyPreviewImage = document.getElementById('propertyPreviewImage');
+    var propertyPreviewTitle = document.getElementById('propertyPreviewTitle');
+    var propertyPreviewPrice = document.getElementById('propertyPreviewPrice');
+    var propertyClearBtn = document.getElementById('propertyClearBtn');
+    var propertyManualToggle = document.getElementById('propertyManualToggle');
+    var propertyTitleManual = document.getElementById('propertyTitleManual');
+    var propertyPriceManual = document.getElementById('propertyPriceManual');
+
+    var appEmailError = document.getElementById('appEmailError');
+    var sendEmailCodeBtn = document.getElementById('sendEmailCodeBtn');
+    var emailCodeRow = document.getElementById('emailCodeRow');
+    var emailCodeInput = document.getElementById('emailCodeInput');
+    var verifyEmailCodeBtn = document.getElementById('verifyEmailCodeBtn');
+    var emailVerifiedBadge = document.getElementById('emailVerifiedBadge');
+
+    var appPhoneError = document.getElementById('appPhoneError');
+    var appPhoneNote = document.getElementById('appPhoneNote');
+    var sendSmsCodeBtn = document.getElementById('sendSmsCodeBtn');
+    var smsCodeRow = document.getElementById('smsCodeRow');
+    var smsCodeInput = document.getElementById('smsCodeInput');
+    var verifySmsCodeBtn = document.getElementById('verifySmsCodeBtn');
+    var smsVerifiedBadge = document.getElementById('smsVerifiedBadge');
 
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var PHONE_RE = /^\+?[\d\s\-()]{7,20}$/;
 
-    function isEmailValid() { return EMAIL_RE.test(emailInput.value.trim()); }
-    function isPhoneValid() { return PHONE_RE.test(phoneInput.value.trim()); }
+    var parsedProperty = null;
+    var emailToken = null;
+    var emailProof = null;
+    var smsPhoneRequired = true;
+    var phoneProof = null;
+
+    function postJson(name, payload) {
+      return fetch(FUNCTIONS_BASE + name, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) {
+          return { ok: res.ok, status: res.status, data: data };
+        });
+      }).catch(function () {
+        return { ok: false, status: 0, data: { error: 'Network error. Please try again.' } };
+      });
+    }
+
+    function currentProperty() {
+      if (parsedProperty) return parsedProperty;
+      var title = propertyTitleManual.value.trim();
+      var price = propertyPriceManual.value.trim();
+      var url = propertyUrlInput.value.trim();
+      if (!title && !url) return null;
+      return { title: title || null, price: price || null, url: url || null, image: null };
+    }
 
     function refreshValidity() {
       var nameOk = nameInput.value.trim().length > 0;
-      var messageOk = messageInput.value.trim().length > 0;
-      submitBtn.disabled = !(nameOk && isEmailValid() && isPhoneValid() && messageOk);
+      var propertyOk = !!currentProperty();
+      var emailOk = !!emailProof;
+      var phoneOk = !smsPhoneRequired || !!phoneProof;
+      submitBtn.disabled = !(nameOk && propertyOk && emailOk && phoneOk);
     }
 
-    emailInput.addEventListener('blur', function () {
-      var invalid = emailInput.value.trim() !== '' && !isEmailValid();
-      emailError.textContent = invalid ? 'Enter a valid email address.' : '';
-      emailInput.classList.toggle('is-invalid', invalid);
-    });
-    phoneInput.addEventListener('blur', function () {
-      var invalid = phoneInput.value.trim() !== '' && !isPhoneValid();
-      phoneError.textContent = invalid ? 'Enter a valid phone number.' : '';
-      phoneInput.classList.toggle('is-invalid', invalid);
-    });
-    [emailInput, phoneInput].forEach(function (input) {
-      input.addEventListener('input', function () {
-        input.classList.remove('is-invalid');
+    /* ---- Property (parsed via link, or filled in manually) ---- */
+    function showPreview(p) {
+      propertyPreviewTitle.textContent = p.title || 'Property link added';
+      propertyPreviewPrice.textContent = p.price || '';
+      propertyPreviewPrice.hidden = !p.price;
+      if (p.image) {
+        propertyPreviewImage.src = p.image;
+        propertyPreviewImage.hidden = false;
+      } else {
+        propertyPreviewImage.hidden = true;
+      }
+      propertyPreview.hidden = false;
+    }
+
+    parsePropertyBtn.addEventListener('click', function () {
+      var url = propertyUrlInput.value.trim();
+      propertyError.textContent = '';
+      if (!url) {
+        propertyError.textContent = 'Paste a listing link first.';
+        return;
+      }
+      parsePropertyBtn.disabled = true;
+      parsePropertyBtn.textContent = 'Fetching…';
+      postJson('parse-property', { url: url }).then(function (res) {
+        parsePropertyBtn.disabled = false;
+        parsePropertyBtn.textContent = 'Fetch Details';
+        if (res.ok && res.data.parsed) {
+          parsedProperty = {
+            title: res.data.title,
+            price: res.data.price,
+            url: res.data.url,
+            image: res.data.image
+          };
+          showPreview(parsedProperty);
+        } else {
+          propertyError.textContent = (res.data && res.data.error) || 'Could not read this link. Please fill in the details manually.';
+          propertyManualToggle.open = true;
+        }
+        refreshValidity();
       });
     });
-    [nameInput, emailInput, phoneInput, messageInput].forEach(function (input) {
+
+    propertyClearBtn.addEventListener('click', function () {
+      parsedProperty = null;
+      propertyPreview.hidden = true;
+      refreshValidity();
+    });
+
+    [propertyTitleManual, propertyPriceManual, propertyUrlInput].forEach(function (input) {
+      input.addEventListener('input', function () {
+        if (!parsedProperty) refreshValidity();
+      });
+    });
+
+    /* ---- Email verification ---- */
+    function invalidateEmailProof() {
+      emailProof = null;
+      emailVerifiedBadge.hidden = true;
+      emailCodeRow.hidden = true;
+      sendEmailCodeBtn.hidden = false;
+      sendEmailCodeBtn.textContent = 'Send Code';
+      refreshValidity();
+    }
+    emailInput.addEventListener('input', invalidateEmailProof);
+
+    sendEmailCodeBtn.addEventListener('click', function () {
+      var email = emailInput.value.trim();
+      appEmailError.textContent = '';
+      if (!EMAIL_RE.test(email)) {
+        appEmailError.textContent = 'Enter a valid email address.';
+        return;
+      }
+      sendEmailCodeBtn.disabled = true;
+      sendEmailCodeBtn.textContent = 'Sending…';
+      postJson('send-email-code', { email: email }).then(function (res) {
+        sendEmailCodeBtn.disabled = false;
+        if (res.ok) {
+          emailToken = res.data.token;
+          emailCodeRow.hidden = false;
+          sendEmailCodeBtn.textContent = 'Resend Code';
+        } else {
+          sendEmailCodeBtn.textContent = 'Send Code';
+          appEmailError.textContent = (res.data && res.data.error) || 'Could not send the code. Please try again.';
+        }
+      });
+    });
+
+    verifyEmailCodeBtn.addEventListener('click', function () {
+      var email = emailInput.value.trim();
+      var code = emailCodeInput.value.trim();
+      appEmailError.textContent = '';
+      if (!code) { appEmailError.textContent = 'Enter the code we sent you.'; return; }
+      verifyEmailCodeBtn.disabled = true;
+      postJson('verify-email-code', { email: email, code: code, token: emailToken }).then(function (res) {
+        verifyEmailCodeBtn.disabled = false;
+        if (res.ok && res.data.verified) {
+          emailProof = res.data.proof;
+          emailVerifiedBadge.hidden = false;
+          emailCodeRow.hidden = true;
+          sendEmailCodeBtn.hidden = true;
+        } else {
+          appEmailError.textContent = (res.data && res.data.error) || 'Incorrect code. Please try again.';
+        }
+        refreshValidity();
+      });
+    });
+
+    /* ---- Phone verification (degrades gracefully if SMS isn't configured yet) ---- */
+    function invalidatePhoneProof() {
+      phoneProof = null;
+      smsVerifiedBadge.hidden = true;
+      smsCodeRow.hidden = true;
+      if (smsPhoneRequired) {
+        sendSmsCodeBtn.hidden = false;
+        sendSmsCodeBtn.textContent = 'Send Code';
+      }
+      refreshValidity();
+    }
+    phoneInput.addEventListener('input', invalidatePhoneProof);
+
+    sendSmsCodeBtn.addEventListener('click', function () {
+      var phone = phoneInput.value.trim();
+      appPhoneError.textContent = '';
+      if (!PHONE_RE.test(phone)) {
+        appPhoneError.textContent = 'Enter a valid phone number.';
+        return;
+      }
+      sendSmsCodeBtn.disabled = true;
+      sendSmsCodeBtn.textContent = 'Sending…';
+      postJson('send-sms-code', { phone: phone }).then(function (res) {
+        sendSmsCodeBtn.disabled = false;
+        if (res.ok) {
+          smsCodeRow.hidden = false;
+          sendSmsCodeBtn.textContent = 'Resend Code';
+        } else if (res.status === 501) {
+          smsPhoneRequired = false;
+          sendSmsCodeBtn.hidden = true;
+          appPhoneNote.hidden = false;
+          appPhoneNote.textContent = 'Phone verification is being set up — you can continue without it for now.';
+          refreshValidity();
+        } else {
+          sendSmsCodeBtn.textContent = 'Send Code';
+          appPhoneError.textContent = (res.data && res.data.error) || 'Could not send the code. Please try again.';
+        }
+      });
+    });
+
+    verifySmsCodeBtn.addEventListener('click', function () {
+      var phone = phoneInput.value.trim();
+      var code = smsCodeInput.value.trim();
+      appPhoneError.textContent = '';
+      if (!code) { appPhoneError.textContent = 'Enter the code we sent you.'; return; }
+      verifySmsCodeBtn.disabled = true;
+      postJson('verify-sms-code', { phone: phone, code: code }).then(function (res) {
+        verifySmsCodeBtn.disabled = false;
+        if (res.ok && res.data.verified) {
+          phoneProof = res.data.proof;
+          smsVerifiedBadge.hidden = false;
+          smsCodeRow.hidden = true;
+          sendSmsCodeBtn.hidden = true;
+        } else {
+          appPhoneError.textContent = (res.data && res.data.error) || 'Incorrect code. Please try again.';
+        }
+        refreshValidity();
+      });
+    });
+
+    /* ---- Overall validity + submit ---- */
+    [nameInput, messageInput].forEach(function (input) {
       input.addEventListener('input', refreshValidity);
     });
     refreshValidity();
@@ -1507,48 +1741,25 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (submitBtn.disabled) return;
-      form.classList.add('is-submitted');
+      submitError.textContent = '';
+      submitBtn.disabled = true;
+      postJson('submit-application', {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        emailProof: emailProof,
+        phone: phoneInput.value.trim(),
+        phoneProof: phoneProof,
+        property: currentProperty(),
+        message: messageInput.value.trim()
+      }).then(function (res) {
+        if (res.ok && res.data.success) {
+          form.classList.add('is-submitted');
+        } else {
+          submitBtn.disabled = false;
+          submitError.textContent = (res.data && res.data.error) || 'Could not submit your application. Please try again.';
+        }
+      });
     });
-
-    (function () {
-      var wrap = document.getElementById('topicSelect');
-      var trigger = document.getElementById('topicTrigger');
-      var panel = document.getElementById('topicPanel');
-      var valueLabel = document.getElementById('topicValue');
-      var hiddenInput = document.getElementById('topicInput');
-      var options = panel.querySelectorAll('.topic-select__option');
-
-      function setOpen(open) {
-        wrap.classList.toggle('is-open', open);
-        trigger.setAttribute('aria-expanded', String(open));
-      }
-
-      trigger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        setOpen(!wrap.classList.contains('is-open'));
-      });
-
-      options.forEach(function (opt) {
-        opt.addEventListener('click', function () {
-          options.forEach(function (o) {
-            o.classList.remove('is-selected');
-            o.setAttribute('aria-selected', 'false');
-          });
-          opt.classList.add('is-selected');
-          opt.setAttribute('aria-selected', 'true');
-          valueLabel.textContent = opt.querySelector('span').textContent;
-          hiddenInput.value = opt.getAttribute('data-topic');
-          setOpen(false);
-        });
-      });
-
-      document.addEventListener('click', function (e) {
-        if (!wrap.contains(e.target)) setOpen(false);
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') setOpen(false);
-      });
-    })();
   })();
 </script>
 
