@@ -8,7 +8,14 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env }) => {
   if (!userId) return new Response("Unauthorized", { status: 401 });
 
   const [user, documents, financial] = await Promise.all([
-    env.PORTAL_DB.prepare("SELECT * FROM users WHERE id = ?").bind(userId).first(),
+    env.PORTAL_DB.prepare(
+      `SELECT id, full_name, email, email_verified, phone, phone_verified, whatsapp,
+              whatsapp_verified, avatar_url, date_of_birth, nationality, passport_number,
+              language, marital_status, address, created_at, updated_at
+       FROM users WHERE id = ?`,
+    )
+      .bind(userId)
+      .first(),
     env.PORTAL_DB.prepare("SELECT label, value, verified FROM documents WHERE user_id = ?")
       .bind(userId)
       .all(),

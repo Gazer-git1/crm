@@ -1,11 +1,10 @@
+import { useEffect, useState } from "react";
 import {
   Pencil,
   Phone,
   Mail,
   MessageCircle,
   MapPin,
-  FileBadge,
-  IdCard,
   FileText,
   Landmark,
   Lock,
@@ -20,13 +19,7 @@ import { Avatar } from "@/components/ui/Avatar";
 import { Badge } from "@/components/ui/Badge";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
-import {
-  financialInfo,
-  identityDocuments,
-  profile,
-  profileCompletion,
-  profileCompletionPercent,
-} from "@/data/mock";
+import type { ProfileApiResponse } from "@/types";
 
 function SectionEditButton() {
   return (
@@ -36,16 +29,75 @@ function SectionEditButton() {
   );
 }
 
-function Field({ label, value }: { label: string; value: string }) {
+function Field({ label, value }: { label: string; value: string | null }) {
   return (
     <div>
       <p className="text-xs text-slate-400">{label}</p>
-      <p className="text-sm font-medium text-blue-950">{value}</p>
+      <p className={value ? "text-sm font-medium text-blue-950" : "text-sm text-slate-400"}>
+        {value ?? "Not set"}
+      </p>
     </div>
   );
 }
 
 export function ProfilePage() {
+  const [data, setData] = useState<ProfileApiResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/profile", { credentials: "include" })
+      .then(async (res) => {
+        if (!res.ok) throw new Error(await res.text());
+        return (await res.json()) as ProfileApiResponse;
+      })
+      .then((json) => {
+        if (!cancelled) setData(json);
+      })
+      .catch((err) => {
+        if (!cancelled) setError(err instanceof Error ? err.message : "Failed to load profile");
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  if (loading) {
+    return <div className="py-20 text-center text-sm text-slate-400">Loading your profile…</div>;
+  }
+
+  if (error || !data) {
+    return (
+      <div className="py-20 text-center text-sm text-rose-600">
+        {error ?? "Couldn't load your profile."}
+      </div>
+    );
+  }
+
+  const { user, documents, financial } = data;
+
+  const personalComplete = Boolean(user.nationality && user.date_of_birth && user.passport_number);
+  const contactComplete = Boolean(user.email_verified);
+  const documentsComplete = documents.length > 0;
+  const financialComplete = financial !== null;
+  const securityComplete = true; // password is required to have an account at all
+
+  const completionItems = [
+    { label: "Personal Information", done: personalComplete },
+    { label: "Contact Information", done: contactComplete },
+    { label: "Identity Documents", done: documentsComplete },
+    { label: "Financial Information", done: financialComplete },
+    { label: "Security & Login", done: securityComplete },
+    { label: "Notification Preferences", done: false },
+  ];
+  const completionPercent = Math.round(
+    (completionItems.filter((i) => i.done).length / completionItems.length) * 100,
+  );
+
   return (
     <div>
       <div className="mb-6">
@@ -65,18 +117,18 @@ export function ProfilePage() {
             </CardHeader>
             <CardBody className="flex flex-wrap gap-8">
               <div className="relative">
-                <Avatar name={profile.fullName} size="lg" />
+                <Avatar name={user.full_name} size="lg" />
                 <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-blue-600 text-white ring-2 ring-white">
                   <Camera className="h-3 w-3" />
                 </span>
               </div>
               <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-4">
-                <Field label="Full Name" value={profile.fullName} />
-                <Field label="Date of Birth" value={profile.dateOfBirth} />
-                <Field label="Nationality" value={profile.nationality} />
-                <Field label="Passport Number" value={profile.passportNumber} />
-                <Field label="Language" value={profile.language} />
-                <Field label="Marital Status" value={profile.maritalStatus} />
+                <Field label="Full Name" value={user.full_name} />
+                <Field label="Date of Birth" value={user.date_of_birth} />
+                <Field label="Nationality" value={user.nationality} />
+                <Field label="Passport Number" value={user.passport_number} />
+                <Field label="Language" value={user.language} />
+                <Field label="Marital Status" value={user.marital_status} />
               </div>
             </CardBody>
           </Card>
@@ -90,24 +142,37 @@ export function ProfilePage() {
             <CardBody className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Mail className="h-4 w-4 text-slate-400" /> {profile.email}
+                  <Mail className="h-4 w-4 text-slate-400" /> {user.email}
                 </div>
-                {profile.emailVerified && <Badge tone="green">Verified</Badge>}
+                <Badge tone={user.email_verified ? "green" : "slate"}>
+                  {user.email_verified ? "Verified" : "Not verified"}
+                </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Phone className="h-4 w-4 text-slate-400" /> {profile.phone}
+                  <Phone className="h-4 w-4 text-slate-400" />
+                  {user.phone ?? <span className="text-slate-400">Not added</span>}
                 </div>
-                {profile.phoneVerified && <Badge tone="green">Verified</Badge>}
+                {user.phone && (
+                  <Badge tone={user.phone_verified ? "green" : "slate"}>
+                    {user.phone_verified ? "Verified" : "Not verified"}
+                  </Badge>
+                )}
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <MessageCircle className="h-4 w-4 text-slate-400" /> {profile.whatsapp}
+                  <MessageCircle className="h-4 w-4 text-slate-400" />
+                  {user.whatsapp ?? <span className="text-slate-400">Not added</span>}
                 </div>
-                {profile.whatsappVerified && <Badge tone="green">Verified</Badge>}
+                {user.whatsapp && (
+                  <Badge tone={user.whatsapp_verified ? "green" : "slate"}>
+                    {user.whatsapp_verified ? "Verified" : "Not verified"}
+                  </Badge>
+                )}
               </div>
               <div className="flex items-center gap-3 text-sm text-slate-600">
-                <MapPin className="h-4 w-4 text-slate-400" /> {profile.address}
+                <MapPin className="h-4 w-4 text-slate-400" />
+                {user.address ?? <span className="text-slate-400">Not added</span>}
               </div>
             </CardBody>
           </Card>
@@ -119,30 +184,28 @@ export function ProfilePage() {
               <SectionEditButton />
             </CardHeader>
             <CardBody className="space-y-1">
-              {identityDocuments.map((doc) => (
-                <div
-                  key={doc.label}
-                  className="flex items-center justify-between rounded-lg px-2 py-2.5 hover:bg-slate-50"
-                >
-                  <div className="flex items-center gap-3 text-sm text-slate-600">
-                    {doc.label.startsWith("Emirates") ? (
-                      <IdCard className="h-4 w-4 text-slate-400" />
-                    ) : doc.label.startsWith("Proof") ? (
+              {documents.length === 0 ? (
+                <p className="py-2 text-sm text-slate-400">No documents uploaded yet.</p>
+              ) : (
+                documents.map((doc) => (
+                  <div
+                    key={doc.label}
+                    className="flex items-center justify-between rounded-lg px-2 py-2.5 hover:bg-slate-50"
+                  >
+                    <div className="flex items-center gap-3 text-sm text-slate-600">
                       <FileText className="h-4 w-4 text-slate-400" />
-                    ) : (
-                      <FileBadge className="h-4 w-4 text-slate-400" />
-                    )}
-                    <span>{doc.label}</span>
-                    <span className="text-slate-400">{doc.value}</span>
+                      <span>{doc.label}</span>
+                      <span className="text-slate-400">{doc.value}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      {doc.verified ? <Badge tone="green">Verified</Badge> : <Badge tone="slate">Pending</Badge>}
+                      <ChevronRight className="h-4 w-4 text-slate-300" />
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    {doc.verified && <Badge tone="green">Verified</Badge>}
-                    <ChevronRight className="h-4 w-4 text-slate-300" />
-                  </div>
-                </div>
-              ))}
+                ))
+              )}
               <button className="pt-2 text-sm font-medium text-blue-600 hover:underline">
-                View all documents
+                Upload a document
               </button>
             </CardBody>
           </Card>
@@ -154,33 +217,47 @@ export function ProfilePage() {
               <SectionEditButton />
             </CardHeader>
             <CardBody className="space-y-3">
-              <div className="grid grid-cols-2 gap-y-3 text-sm">
-                <span className="text-slate-400">Employment Status</span>
-                <span className="text-right font-medium text-blue-950">
-                  {financialInfo.employmentStatus}
-                </span>
-                <span className="text-slate-400">Occupation</span>
-                <span className="text-right font-medium text-blue-950">
-                  {financialInfo.occupation}
-                </span>
-                <span className="text-slate-400">Monthly Income</span>
-                <span className="text-right font-medium text-blue-950">
-                  {financialInfo.monthlyIncome}
-                </span>
-                <span className="text-slate-400">Source of Income</span>
-                <span className="text-right font-medium text-blue-950">
-                  {financialInfo.sourceOfIncome}
-                </span>
-              </div>
-              <div className="flex items-center justify-between border-t border-slate-100 pt-3">
-                <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Landmark className="h-4 w-4 text-slate-400" />
-                  {financialInfo.bankName} •••• {financialInfo.bankAccountLast4}
-                </div>
-                {financialInfo.bankVerified && <Badge tone="green">Verified</Badge>}
-              </div>
+              {financial === null ? (
+                <p className="py-2 text-sm text-slate-400">
+                  You haven't provided financial information yet.
+                </p>
+              ) : (
+                <>
+                  <div className="grid grid-cols-2 gap-y-3 text-sm">
+                    <span className="text-slate-400">Employment Status</span>
+                    <span className="text-right font-medium text-blue-950">
+                      {financial.employment_status ?? "—"}
+                    </span>
+                    <span className="text-slate-400">Occupation</span>
+                    <span className="text-right font-medium text-blue-950">
+                      {financial.occupation ?? "—"}
+                    </span>
+                    <span className="text-slate-400">Monthly Income</span>
+                    <span className="text-right font-medium text-blue-950">
+                      {financial.monthly_income_range ?? "—"}
+                    </span>
+                    <span className="text-slate-400">Source of Income</span>
+                    <span className="text-right font-medium text-blue-950">
+                      {financial.source_of_income ?? "—"}
+                    </span>
+                  </div>
+                  {financial.bank_name && (
+                    <div className="flex items-center justify-between border-t border-slate-100 pt-3">
+                      <div className="flex items-center gap-3 text-sm text-slate-600">
+                        <Landmark className="h-4 w-4 text-slate-400" />
+                        {financial.bank_name} •••• {financial.bank_account_last4}
+                      </div>
+                      {financial.bank_verified ? (
+                        <Badge tone="green">Verified</Badge>
+                      ) : (
+                        <Badge tone="slate">Pending</Badge>
+                      )}
+                    </div>
+                  )}
+                </>
+              )}
               <button className="text-sm font-medium text-blue-600 hover:underline">
-                View financial details
+                {financial === null ? "Add financial details" : "View financial details"}
               </button>
             </CardBody>
           </Card>
@@ -195,23 +272,17 @@ export function ProfilePage() {
               <div className="flex items-center justify-between">
                 <span className="text-slate-600">Password</span>
                 <span className="flex items-center gap-2 text-slate-400">
-                  ••••••••• <span className="text-xs">Last changed 12 May 2026</span>
+                  •••••••••
                   <ChevronRight className="h-4 w-4 text-slate-300" />
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-600">Two-Factor Authentication</span>
-                <Badge tone="green">Enabled</Badge>
+                <Badge tone="slate">Coming soon</Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-600">Login Email</span>
-                <span className="text-slate-400">{profile.email}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-slate-600">Active Sessions</span>
-                <span className="flex items-center gap-2 text-slate-400">
-                  2 active sessions <ChevronRight className="h-4 w-4 text-slate-300" />
-                </span>
+                <span className="text-slate-400">{user.email}</span>
               </div>
               <button className="text-sm font-medium text-blue-600 hover:underline">
                 Manage security settings
@@ -240,14 +311,7 @@ export function ProfilePage() {
               <p className="text-sm font-semibold text-blue-950">Profile Completion</p>
               <div className="relative mx-auto my-4 flex h-28 w-28 items-center justify-center">
                 <svg viewBox="0 0 36 36" className="h-28 w-28 -rotate-90">
-                  <circle
-                    cx="18"
-                    cy="18"
-                    r="16"
-                    fill="none"
-                    stroke="#e2e8f0"
-                    strokeWidth="3"
-                  />
+                  <circle cx="18" cy="18" r="16" fill="none" stroke="#e2e8f0" strokeWidth="3" />
                   <circle
                     cx="18"
                     cy="18"
@@ -255,21 +319,23 @@ export function ProfilePage() {
                     fill="none"
                     stroke="#10b981"
                     strokeWidth="3"
-                    strokeDasharray={`${profileCompletionPercent} 100`}
+                    strokeDasharray={`${completionPercent} 100`}
                     strokeLinecap="round"
                   />
                 </svg>
                 <span className="absolute text-xl font-bold text-blue-950">
-                  {profileCompletionPercent}%
+                  {completionPercent}%
                 </span>
               </div>
-              <p className="text-sm font-semibold text-blue-950">Almost done!</p>
+              <p className="text-sm font-semibold text-blue-950">
+                {completionPercent === 100 ? "All done!" : "Almost done!"}
+              </p>
               <p className="mt-1 text-xs text-slate-500">
-                Your profile is {profileCompletionPercent}% complete. Keep it updated to ensure a
-                smooth application process.
+                Your profile is {completionPercent}% complete. Keep it updated to ensure a smooth
+                application process.
               </p>
               <div className="mt-4 space-y-2 text-left">
-                {profileCompletion.map((item) => (
+                {completionItems.map((item) => (
                   <div key={item.label} className="flex items-center gap-2 text-sm">
                     <span
                       className={
@@ -324,27 +390,6 @@ export function ProfilePage() {
               <p className="text-xs text-slate-500">Our support team is here to help you.</p>
               <Button variant="outline" className="mt-3 w-full justify-center">
                 <Headphones className="h-4 w-4" /> Contact Support
-              </Button>
-            </CardBody>
-          </Card>
-
-          <Card>
-            <CardBody className="space-y-3">
-              <p className="text-sm font-semibold text-blue-950">Your Homeownership Advisor</p>
-              <div className="flex items-center gap-3">
-                <Avatar name="Sarah Al Mansouri" online />
-                <div>
-                  <p className="text-sm font-medium text-blue-950">Sarah Al Mansouri</p>
-                  <p className="text-xs text-slate-400">Homeownership Advisor</p>
-                </div>
-              </div>
-              <div className="space-y-1 text-sm text-slate-600">
-                <p className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 text-slate-400" /> +971 50 123 4567
-                </p>
-              </div>
-              <Button variant="outline" className="w-full justify-center">
-                Message Sarah
               </Button>
             </CardBody>
           </Card>
