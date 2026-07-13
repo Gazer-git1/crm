@@ -1699,6 +1699,12 @@
         });
       });
 
+      var requestedTopic = new URLSearchParams(window.location.search).get('topic');
+      if (requestedTopic) {
+        var match = panel.querySelector('.topic-select__option[data-topic="' + requestedTopic + '"]');
+        if (match) match.click();
+      }
+
       document.addEventListener('click', function (e) {
         if (!wrap.contains(e.target)) setOpen(false);
       });
