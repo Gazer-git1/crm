@@ -5,6 +5,12 @@ const { verifyToken } = require('./_lib/otp');
 const { json, readBody } = require('./_lib/http');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TOPIC_LABELS = {
+  leasing: 'Leasing a Home',
+  investing: 'Investing',
+  partnership: 'Partnership',
+  other: 'Something Else'
+};
 
 /* Phone verification is only enforced when Twilio is actually configured on
    this deployment — until then the form stays usable with email verification
@@ -13,6 +19,7 @@ exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'Method not allowed' });
 
   const body = readBody(event);
+  const topic = TOPIC_LABELS[body.topic] ? body.topic : 'leasing';
   const name = String(body.name || '').trim();
   const email = String(body.email || '').trim().toLowerCase();
   const phone = String(body.phone || '').trim();
@@ -22,7 +29,7 @@ exports.handler = async (event) => {
   if (!name || !email || !EMAIL_RE.test(email)) {
     return json(400, { error: 'Please provide your name and a valid email.' });
   }
-  if (!property.title && !property.url) {
+  if (topic === 'leasing' && !property.title && !property.url) {
     return json(400, { error: 'Please select a property before submitting.' });
   }
 
@@ -64,9 +71,11 @@ exports.handler = async (event) => {
     property.url ? `Link: ${property.url}` : null
   ].filter(Boolean).join('\n');
 
+  const topicLabel = TOPIC_LABELS[topic];
   const phoneStatus = phoneVerified ? ' (verified)' : smsConfigured ? '' : ' (verification not yet enabled)';
   const notifyText = [
     `New application from ${name}`,
+    `Interested in: ${topicLabel}`,
     `Email: ${email} (verified)`,
     `Phone: ${phone || 'not provided'}${phoneStatus}`,
     '',
@@ -80,7 +89,7 @@ exports.handler = async (event) => {
       await resend.emails.send({
         from: `Investors' Angels Applications <${fromAddress}>`,
         to: notifyList,
-        subject: `New application: ${name}${property.title ? ' — ' + property.title : ''}`,
+        subject: `New ${topicLabel} inquiry: ${name}${property.title ? ' — ' + property.title : ''}`,
         text: notifyText
       });
     }
@@ -89,7 +98,7 @@ exports.handler = async (event) => {
       from: `Investors' Angels <${fromAddress}>`,
       to: email,
       subject: 'We received your application',
-      text: `Hi ${name},\n\nThanks for applying — our team will review your submission and get back to you shortly.\n\n${propertyLines}`
+      text: `Hi ${name},\n\nThanks for reaching out — our team will review your submission and get back to you shortly.\n\n${propertyLines}`
     });
   } catch (err) {
     return json(502, { error: 'Could not send your application. Please try again.' });

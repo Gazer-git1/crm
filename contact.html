@@ -781,6 +781,57 @@
   .app-manual-toggle summary::-webkit-details-marker { display: none; }
   .app-manual-toggle[open] summary { margin-bottom: 16px; }
 
+  .topic-select { position: relative; width: 100%; }
+  .topic-select__trigger {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-bg-secondary);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+  .topic-select__trigger:hover, .topic-select.is-open .topic-select__trigger { border-color: var(--color-gold-dark); background: var(--color-bg-secondary); }
+  .topic-select__value { flex: 1 0 0; text-align: left; }
+  .topic-select__chevron { width: 14px; height: 14px; color: var(--color-text-muted); flex-shrink: 0; transition: transform 0.25s ease; }
+  .topic-select.is-open .topic-select__chevron { transform: rotate(180deg); }
+  .topic-select__panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+    z-index: 20;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .topic-select.is-open .topic-select__panel { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .topic-select__option {
+    display: flex; align-items: center; justify-content: space-between; width: 100%;
+    padding: 12px 16px; background: none; border: none; color: var(--color-text-secondary);
+    font-family: var(--font-sans); font-size: 15px; text-align: left; border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .topic-select__option:last-child { border-bottom: none; }
+  .topic-select__option:hover { background: rgba(250, 208, 107, 0.08); color: var(--color-white); }
+  .topic-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
+  .topic-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
+  .topic-select__option.is-selected .topic-select__option-check { opacity: 1; }
+  #propertyStepWrap[hidden] { display: none; }
+
 
   /* ============ MOBILE ============ */
   @media (max-width: 768px) {
@@ -1117,46 +1168,77 @@
           <div class="contact__fields">
             <h2 class="contact__form-title">Submit an Application</h2>
 
-            <div class="app-step">
-              <div class="calc-form__label"><span class="calc-form__number">1</span> Choose a Property</div>
-
-              <div class="contact__field">
-                <label class="contact__label" for="propertyUrl">Listing Link</label>
-                <div class="app-property-row">
-                  <input class="contact__input" type="url" id="propertyUrl" placeholder="Paste a link to the property listing">
-                  <button class="app-inline-btn" type="button" id="parsePropertyBtn">Fetch Details</button>
+            <div class="contact__field">
+              <label class="contact__label" for="topicTrigger">I'm Interested In</label>
+              <div class="topic-select" id="topicSelect">
+                <button type="button" class="topic-select__trigger" id="topicTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="topic-select__value" id="topicValue">Leasing a Home</span>
+                  <svg class="topic-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="topic-select__panel" id="topicPanel" role="listbox">
+                  <button type="button" class="topic-select__option is-selected" data-topic="leasing" role="option" aria-selected="true">
+                    <span>Leasing a Home</span>
+                    <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                  <button type="button" class="topic-select__option" data-topic="investing" role="option" aria-selected="false">
+                    <span>Investing</span>
+                    <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                  <button type="button" class="topic-select__option" data-topic="partnership" role="option" aria-selected="false">
+                    <span>Partnership</span>
+                    <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                  <button type="button" class="topic-select__option" data-topic="other" role="option" aria-selected="false">
+                    <span>Something Else</span>
+                    <svg class="topic-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
                 </div>
-                <span class="contact__field-error" id="propertyError"></span>
               </div>
-
-              <div class="app-property-preview" id="propertyPreview" hidden>
-                <img class="app-property-preview__image" id="propertyPreviewImage" alt="" hidden>
-                <div class="app-property-preview__body">
-                  <p class="app-property-preview__title" id="propertyPreviewTitle"></p>
-                  <p class="app-property-preview__price" id="propertyPreviewPrice"></p>
-                </div>
-                <button class="app-property-preview__clear" type="button" id="propertyClearBtn" aria-label="Remove property">&times;</button>
-              </div>
-
-              <details class="app-manual-toggle" id="propertyManualToggle">
-                <summary>Enter details manually instead</summary>
-                <div class="contact__form-row">
-                  <div class="contact__field">
-                    <label class="contact__label" for="propertyTitleManual">Property Title</label>
-                    <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
-                  </div>
-                  <div class="contact__field">
-                    <label class="contact__label" for="propertyPriceManual">Price</label>
-                    <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
-                  </div>
-                </div>
-              </details>
+              <input type="hidden" id="topicInput" value="leasing">
             </div>
 
-            <div class="calc-form__divider"></div>
+            <div id="propertyStepWrap">
+              <div class="app-step">
+                <div class="calc-form__label"><span class="calc-form__number">1</span> Choose a Property</div>
+
+                <div class="contact__field">
+                  <label class="contact__label" for="propertyUrl">Listing Link</label>
+                  <div class="app-property-row">
+                    <input class="contact__input" type="url" id="propertyUrl" placeholder="Paste a link to the property listing">
+                    <button class="app-inline-btn" type="button" id="parsePropertyBtn">Fetch Details</button>
+                  </div>
+                  <span class="contact__field-error" id="propertyError"></span>
+                </div>
+
+                <div class="app-property-preview" id="propertyPreview" hidden>
+                  <img class="app-property-preview__image" id="propertyPreviewImage" alt="" hidden>
+                  <div class="app-property-preview__body">
+                    <p class="app-property-preview__title" id="propertyPreviewTitle"></p>
+                    <p class="app-property-preview__price" id="propertyPreviewPrice"></p>
+                  </div>
+                  <button class="app-property-preview__clear" type="button" id="propertyClearBtn" aria-label="Remove property">&times;</button>
+                </div>
+
+                <details class="app-manual-toggle" id="propertyManualToggle">
+                  <summary>Enter details manually instead</summary>
+                  <div class="contact__form-row">
+                    <div class="contact__field">
+                      <label class="contact__label" for="propertyTitleManual">Property Title</label>
+                      <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
+                    </div>
+                    <div class="contact__field">
+                      <label class="contact__label" for="propertyPriceManual">Price</label>
+                      <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
+                    </div>
+                  </div>
+                </details>
+              </div>
+
+              <div class="calc-form__divider"></div>
+            </div>
 
             <div class="app-step">
-              <div class="calc-form__label"><span class="calc-form__number">2</span> Your Details</div>
+              <div class="calc-form__label"><span class="calc-form__number" id="detailsStepNumber">2</span> Your Details</div>
 
               <div class="contact__field">
                 <label class="contact__label" for="appName">Full Name</label>
@@ -1498,6 +1580,10 @@
     var submitBtn = document.getElementById('applicationSubmitBtn');
     var submitError = document.getElementById('applicationSubmitError');
 
+    var topicInput = document.getElementById('topicInput');
+    var propertyStepWrap = document.getElementById('propertyStepWrap');
+    var detailsStepNumber = document.getElementById('detailsStepNumber');
+
     var propertyUrlInput = document.getElementById('propertyUrl');
     var parsePropertyBtn = document.getElementById('parsePropertyBtn');
     var propertyError = document.getElementById('propertyError');
@@ -1559,11 +1645,59 @@
 
     function refreshValidity() {
       var nameOk = nameInput.value.trim().length > 0;
-      var propertyOk = !!currentProperty();
+      var propertyOk = topicInput.value !== 'leasing' || !!currentProperty();
       var emailOk = !!emailProof;
       var phoneOk = !smsPhoneRequired || !!phoneProof;
       submitBtn.disabled = !(nameOk && propertyOk && emailOk && phoneOk);
     }
+
+    /* ---- Topic (property step only applies to lease applications) ---- */
+    (function () {
+      var wrap = document.getElementById('topicSelect');
+      var trigger = document.getElementById('topicTrigger');
+      var panel = document.getElementById('topicPanel');
+      var valueLabel = document.getElementById('topicValue');
+      var options = panel.querySelectorAll('.topic-select__option');
+
+      function setOpen(open) {
+        wrap.classList.toggle('is-open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+      }
+
+      function applyTopic(topic) {
+        topicInput.value = topic;
+        var isLeasing = topic === 'leasing';
+        propertyStepWrap.hidden = !isLeasing;
+        detailsStepNumber.textContent = isLeasing ? '2' : '1';
+        refreshValidity();
+      }
+
+      trigger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        setOpen(!wrap.classList.contains('is-open'));
+      });
+
+      options.forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          options.forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          valueLabel.textContent = opt.querySelector('span').textContent;
+          applyTopic(opt.getAttribute('data-topic'));
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) setOpen(false);
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+    })();
 
     /* ---- Property (parsed via link, or filled in manually) ---- */
     function showPreview(p) {
@@ -1744,6 +1878,7 @@
       submitError.textContent = '';
       submitBtn.disabled = true;
       postJson('submit-application', {
+        topic: topicInput.value,
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
         emailProof: emailProof,
