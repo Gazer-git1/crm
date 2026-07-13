@@ -953,7 +953,7 @@
               <span class="breakdown-card__head-label">Before Move-In</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Application Fee</span><span class="breakdown-row__value">$0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Application Fee</span><span class="breakdown-row__value" id="applicationFeeValue">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Down Payment</span><span class="breakdown-row__value">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value" id="brokerFeeValue">$0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Legal Registration (DLD)</span><span class="breakdown-row__value" id="dldFeeValue">$1,500</span></div>
@@ -1272,6 +1272,7 @@
     var SECURITY_DEPOSIT = 2000;
     var BROKER_FEE_PCT = 0.021;
     var HOME_INSPECTION_FEE = 3000;
+    var APPLICATION_FEE = 0;
 
     var CURRENCY_SYMBOLS = { USD: '$', AED: 'AED ', EUR: '€' };
     var EXCHANGE_RATES = { USD: 1, AED: 3.6725, EUR: 0.92 };
@@ -1281,8 +1282,66 @@
       leaseTerm: 6,
       targetEquity: 35,
       propertyType: 'new',
-      currency: 'USD'
+      currency: 'USD',
+      countryCode: 'AE'
     };
+
+    /* Per-country constants (rates + fees). Defaults here mirror the "КОНСТАНТЫ" block
+       in the shared Google Sheet and are overridden by the "--- COUNTRIES" table fetched
+       below, so the country list and its numbers can be edited entirely from the sheet. */
+    var COUNTRY_DEFAULTS = { appreciationRate: 0.0394, rentYield: 0.16, mortgageRate: 0.05, brokerFeePct: 0.021, homeInspection: 3000, legalRegistration: 1500, securityDeposit: 2000, applicationFee: 0 };
+    var COUNTRIES_FALLBACK = [
+      ['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['BH', 'Bahrain'],
+      ['OM', 'Oman'], ['GB', 'United Kingdom'], ['IE', 'Ireland'], ['FR', 'France'], ['DE', 'Germany'],
+      ['CH', 'Switzerland'], ['ES', 'Spain'], ['IT', 'Italy'], ['NL', 'Netherlands'], ['CA', 'Canada'],
+      ['AU', 'Australia'], ['SG', 'Singapore'], ['HK', 'Hong Kong'], ['IN', 'India'], ['OTHER', 'Other']
+    ].map(function (pair) {
+      var rec = { code: pair[0], name: pair[1] };
+      for (var k in COUNTRY_DEFAULTS) rec[k] = COUNTRY_DEFAULTS[k];
+      return rec;
+    });
+    var currentCountries = COUNTRIES_FALLBACK;
+
+    function applyCountry(rec) {
+      APPRECIATION_RATE = rec.appreciationRate;
+      RENT_YIELD = rec.rentYield;
+      MORTGAGE_RATE = rec.mortgageRate;
+      BROKER_FEE_PCT = rec.brokerFeePct;
+      HOME_INSPECTION_FEE = rec.homeInspection;
+      DLD_FEE = rec.legalRegistration;
+      SECURITY_DEPOSIT = rec.securityDeposit;
+      APPLICATION_FEE = rec.applicationFee;
+      state.countryCode = rec.code;
+      el('countryValue').textContent = rec.name;
+    }
+
+    function renderCountryOptions(list, selectedCode) {
+      var panel = el('countryPanel');
+      panel.innerHTML = list.map(function (rec) {
+        var isSelected = rec.code === selectedCode;
+        return '<button type="button" class="currency-select__option' + (isSelected ? ' is-selected' : '') +
+          '" data-country="' + rec.code + '" role="option" aria-selected="' + (isSelected ? 'true' : 'false') + '">' +
+          '<span>' + rec.name + '</span>' +
+          '<svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>' +
+          '</button>';
+      }).join('');
+      panel.querySelectorAll('.currency-select__option').forEach(function (opt) {
+        opt.addEventListener('click', function () {
+          panel.querySelectorAll('.currency-select__option').forEach(function (o) {
+            o.classList.remove('is-selected');
+            o.setAttribute('aria-selected', 'false');
+          });
+          opt.classList.add('is-selected');
+          opt.setAttribute('aria-selected', 'true');
+          var code = opt.getAttribute('data-country');
+          var rec = currentCountries.filter(function (c) { return c.code === code; })[0];
+          if (rec) applyCountry(rec);
+          el('countrySelect').classList.remove('is-open');
+          el('countryTrigger').setAttribute('aria-expanded', 'false');
+          compute();
+        });
+      });
+    }
 
     function currencySymbol() { return CURRENCY_SYMBOLS[state.currency] || '$'; }
 
@@ -1333,7 +1392,7 @@
       var isSecondary = state.propertyType === 'secondary';
       var brokerFee = isSecondary ? homePrice * BROKER_FEE_PCT : 0;
       var homeInspectionFee = isSecondary ? HOME_INSPECTION_FEE : 0;
-      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT + brokerFee + homeInspectionFee;
+      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT + brokerFee + homeInspectionFee + APPLICATION_FEE;
 
       var leaseMonths = leaseTerm * 12;
 
@@ -1383,6 +1442,7 @@
       el('securityDepositValue').textContent = fmtMoney(SECURITY_DEPOSIT);
       el('brokerFeeValue').textContent = fmtMoney(brokerFee);
       el('homeInspectionValue').textContent = fmtMoney(homeInspectionFee);
+      el('applicationFeeValue').textContent = fmtMoney(APPLICATION_FEE);
       el('totalBeforeMoveIn').textContent = fmtMoney(beforeMoveInTotal);
 
       /* --- breakdown: during lease --- */
@@ -1497,9 +1557,8 @@
     (function () {
       var wrap = el('countrySelect');
       var trigger = el('countryTrigger');
-      var panel = el('countryPanel');
-      var valueLabel = el('countryValue');
-      var options = panel.querySelectorAll('.currency-select__option');
+
+      renderCountryOptions(currentCountries, state.countryCode);
 
       function setOpen(open) {
         wrap.classList.toggle('is-open', open);
@@ -1509,19 +1568,6 @@
       trigger.addEventListener('click', function (e) {
         e.stopPropagation();
         setOpen(!wrap.classList.contains('is-open'));
-      });
-
-      options.forEach(function (opt) {
-        opt.addEventListener('click', function () {
-          options.forEach(function (o) {
-            o.classList.remove('is-selected');
-            o.setAttribute('aria-selected', 'false');
-          });
-          opt.classList.add('is-selected');
-          opt.setAttribute('aria-selected', 'true');
-          valueLabel.textContent = opt.querySelector('span').textContent;
-          setOpen(false);
-        });
       });
 
       document.addEventListener('click', function (e) {
@@ -1653,6 +1699,43 @@
             if (key === 'HOME_INSPECTION_FEE') HOME_INSPECTION_FEE = value;
             changed = true;
           }
+
+          /* Also pull the full per-country table (the "--- COUNTRIES" block further down
+             the same sheet) so the Country dropdown and its rates/fees are driven entirely
+             by that table — add or remove a row there and the site's list follows. */
+          var countryHeaderRow = -1;
+          for (var ci = 0; ci < rows.length; ci++) {
+            if ((rows[ci][0] || '').trim().indexOf('--- COUNTRIES') === 0) { countryHeaderRow = ci + 1; break; }
+          }
+          if (countryHeaderRow !== -1 && rows[countryHeaderRow]) {
+            var col = {};
+            rows[countryHeaderRow].forEach(function (h, idx) { col[(h || '').trim()] = idx; });
+            var parsedCountries = [];
+            for (var ri = countryHeaderRow + 1; ri < rows.length; ri++) {
+              var code = (rows[ri][col['Code']] || '').trim();
+              if (!code) break;
+              parsedCountries.push({
+                code: code,
+                name: (rows[ri][col['Country']] || '').trim(),
+                appreciationRate: parseNumber(rows[ri][col['Appreciation Rate']]),
+                rentYield: parseNumber(rows[ri][col['Rent Yield']]),
+                mortgageRate: parseNumber(rows[ri][col['Mortgage Rate']]),
+                brokerFeePct: parseNumber(rows[ri][col['Broker Fee %']]),
+                homeInspection: parseNumber(rows[ri][col['Home Inspection']]),
+                legalRegistration: parseNumber(rows[ri][col['Legal Registration (DLD)']]),
+                securityDeposit: parseNumber(rows[ri][col['Security Deposit']]),
+                applicationFee: parseNumber(rows[ri][col['Application Fee']])
+              });
+            }
+            if (parsedCountries.length) {
+              currentCountries = parsedCountries;
+              var selected = parsedCountries.filter(function (c) { return c.code === state.countryCode; })[0] || parsedCountries[0];
+              renderCountryOptions(currentCountries, selected.code);
+              applyCountry(selected);
+              changed = true;
+            }
+          }
+
           if (changed) compute();
         })
         .catch(function () { /* offline or sheet unavailable - keep the built-in defaults */ });
