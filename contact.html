@@ -765,8 +765,9 @@
   .app-inline-btn:disabled { opacity: 0.4; cursor: not-allowed; }
   .app-code-input { max-width: 160px; flex: none; padding: 0 12px; letter-spacing: 0.3em; text-align: center; }
   .app-code-input::placeholder { letter-spacing: normal; }
-  .app-verified-badge { display: inline-flex; align-items: center; gap: 6px; height: 52px; padding: 0 4px; font-size: 13px; font-weight: 600; color: #6fcf97; white-space: nowrap; }
-  .app-verified-badge::before { content: "\2713"; }
+  .app-verified-badge { display: inline-flex; align-items: center; gap: 8px; height: 52px; padding: 0 4px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-gold); white-space: nowrap; }
+  .app-verified-badge__icon { width: 24px; height: 24px; border: 1px solid var(--color-bronze); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-gold); flex-shrink: 0; }
+  .app-verified-badge__icon svg { width: 12px; height: 12px; }
   .app-field-note { font-size: 12px; color: var(--color-text-muted); }
 
   .app-property-preview { display: flex; align-items: center; gap: 16px; padding: 16px; border: 1px solid var(--color-border); border-radius: 4px; background: var(--color-bg-secondary); }
@@ -1251,7 +1252,10 @@
                 <div class="app-verify-row">
                   <input class="contact__input" type="email" id="appEmail" placeholder="john@example.com" required>
                   <button class="app-inline-btn" type="button" id="sendEmailCodeBtn">Send Code</button>
-                  <span class="app-verified-badge" id="emailVerifiedBadge" hidden>Verified</span>
+                  <span class="app-verified-badge" id="emailVerifiedBadge" hidden>
+                    <span class="app-verified-badge__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 12 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Verified
+                  </span>
                 </div>
                 <span class="contact__field-error" id="appEmailError"></span>
                 <div class="app-code-row" id="emailCodeRow" hidden>
@@ -1265,7 +1269,10 @@
                 <div class="app-verify-row">
                   <input class="contact__input" type="tel" id="appPhone" placeholder="+971 50 000 0000" required>
                   <button class="app-inline-btn" type="button" id="sendSmsCodeBtn">Send Code</button>
-                  <span class="app-verified-badge" id="smsVerifiedBadge" hidden>Verified</span>
+                  <span class="app-verified-badge" id="smsVerifiedBadge" hidden>
+                    <span class="app-verified-badge__icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m6 12 4 4 8-8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    Verified
+                  </span>
                 </div>
                 <span class="contact__field-error" id="appPhoneError"></span>
                 <span class="app-field-note" id="appPhoneNote" hidden></span>
