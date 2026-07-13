@@ -7,12 +7,15 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "PORTAL_DB"
 database_name = "investors-angels-portal-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "034160f0-6787-4025-ae66-344e1b10ba99"
 
-# Created with: wrangler r2 bucket create investors-angels-portal-files
-[[r2_buckets]]
-binding = "PORTAL_FILES"
-bucket_name = "investors-angels-portal-files"
+# R2 must be enabled once via the Cloudflare dashboard (Storage & Databases -> R2) before
+# a bucket can be created via API/wrangler — not yet done, so this binding is disabled for
+# now to avoid blocking deploys. No function code uses PORTAL_FILES yet. Once R2 is enabled,
+# uncomment this and re-run bucket creation.
+# [[r2_buckets]]
+# binding = "PORTAL_FILES"
+# bucket_name = "investors-angels-portal-files"
 
 # Secrets (set via `wrangler pages secret put <NAME>`, never commit real values):
 #   SESSION_SECRET
