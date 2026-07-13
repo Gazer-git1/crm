@@ -1,4 +1,9 @@
-const PBKDF2_ITERATIONS = 210_000;
+// Cloudflare Workers' free plan caps CPU time at ~10ms/request. 210k iterations (the
+// OWASP-recommended minimum) takes ~28ms and gets the request killed in production —
+// 20k keeps this comfortably under the limit (~2.5-3ms), leaving headroom for the rest
+// of the request. Trade-off accepted: weaker than best-practice, but functional on the
+// free tier. Bump this back up (and move to Workers Paid, 30s CPU limit) if that changes.
+const PBKDF2_ITERATIONS = 20_000;
 const SALT_BYTES = 16;
 const KEY_BYTES = 32;
 
