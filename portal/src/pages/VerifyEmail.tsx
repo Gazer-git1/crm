@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { AuthLayout } from "@/components/layout/AuthLayout";
 import { Input } from "@/components/ui/Input";
@@ -13,6 +13,17 @@ export function VerifyEmailPage() {
   const [notice, setNotice] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [resending, setResending] = useState(false);
+  const sentOnMount = useRef(false);
+
+  // The copy below says "we sent a code" — make that actually true. Signup already
+  // sends one, but landing here from a login (or a page refresh) wouldn't otherwise
+  // trigger a send, leaving the user with no code to enter.
+  useEffect(() => {
+    if (sentOnMount.current || user?.email_verified) return;
+    sentOnMount.current = true;
+    handleResend();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.email_verified]);
 
   if (user?.email_verified) {
     return <Navigate to="/" replace />;
