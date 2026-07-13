@@ -41,7 +41,7 @@ jobs:
         if: github.event_name == 'push' && vars.CLOUDFLARE_READY == 'true'
         run: |
           echo "${{ secrets.RESEND_API_KEY }}" | npx wrangler pages secret put RESEND_API_KEY --project-name=investors-angels-portal
-          echo "Investors' Angels <onboarding@resend.dev>" | npx wrangler pages secret put EMAIL_FROM --project-name=investors-angels-portal
+          echo "Investors' Angels <noreply@i-angels.com>" | npx wrangler pages secret put EMAIL_FROM --project-name=investors-angels-portal
         working-directory: portal
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
