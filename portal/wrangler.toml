@@ -9,9 +9,13 @@ binding = "PORTAL_DB"
 database_name = "investors-angels-portal-db"
 database_id = "034160f0-6787-4025-ae66-344e1b10ba99"
 
-[[r2_buckets]]
-binding = "PORTAL_FILES"
-bucket_name = "investors-angels-portal-files"
+# R2 bucket doesn't exist yet on the Cloudflare account behind CLOUDFLARE_ACCOUNT_ID
+# ("Please enable R2 through the Cloudflare Dashboard" from the API) — an invalid binding
+# here breaks the whole Functions Worker at boot (not just R2-using routes), which took
+# signup/login down in production. Keep this disabled until bucket creation is confirmed.
+# [[r2_buckets]]
+# binding = "PORTAL_FILES"
+# bucket_name = "investors-angels-portal-files"
 
 # Secrets (set via `wrangler pages secret put <NAME>`, never commit real values):
 #   SESSION_SECRET
