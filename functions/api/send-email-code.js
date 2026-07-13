@@ -50,7 +50,7 @@ export async function onRequestPost({ request, env }) {
       html: `<p>Your verification code is <strong>${code}</strong>.</p><p>It expires in 10 minutes.</p>`
     });
   } catch (err) {
-    return json(502, { error: 'Could not send the verification email. Please try again.', debug: String(err && err.message || err) });
+    return json(502, { error: 'Could not send the verification email. Please try again.' });
   }
 
   return json(200, { token, expiresInMs: CODE_TTL_MS });
