@@ -29,6 +29,14 @@ jobs:
       - run: npm run typecheck
       - run: npm run build
 
+      - name: Ensure R2 bucket exists
+        if: github.event_name == 'push' && vars.CLOUDFLARE_READY == 'true'
+        run: npx wrangler r2 bucket create investors-angels-portal-files || true
+        working-directory: portal
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
       - name: Deploy to Cloudflare Pages
         if: github.event_name == 'push' && vars.CLOUDFLARE_READY == 'true'
         uses: cloudflare/wrangler-action@v3
