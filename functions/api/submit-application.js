@@ -1,8 +1,5 @@
-'use strict';
-
-const { Resend } = require('resend');
-const { verifyToken } = require('./_lib/otp');
-const { json, readBody } = require('./_lib/http');
+import { verifyToken } from '../_lib/otp.js';
+import { json, readBody } from '../_lib/http.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const TOPIC_LABELS = {
@@ -12,13 +9,27 @@ const TOPIC_LABELS = {
   other: 'Something Else'
 };
 
+async function sendResendEmail(env, payload) {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => '');
+    throw new Error(`Resend error ${res.status}: ${text}`);
+  }
+  return res.json();
+}
+
 /* Phone verification is only enforced when Twilio is actually configured on
    this deployment — until then the form stays usable with email verification
    alone instead of being permanently blocked on a provider that isn't set up. */
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') return json(405, { error: 'Method not allowed' });
-
-  const body = readBody(event);
+export async function onRequestPost({ request, env }) {
+  const body = await readBody(request);
   const topic = TOPIC_LABELS[body.topic] ? body.topic : 'leasing';
   const name = String(body.name || '').trim();
   const email = String(body.email || '').trim().toLowerCase();
@@ -33,34 +44,29 @@ exports.handler = async (event) => {
     return json(400, { error: 'Please select a property before submitting.' });
   }
 
-  const secret = process.env.OTP_SIGNING_SECRET;
-  const resendKey = process.env.RESEND_API_KEY;
+  const secret = env.OTP_SIGNING_SECRET;
+  const resendKey = env.RESEND_API_KEY;
   if (!secret || !resendKey) {
     return json(500, { error: 'Applications are not accepting submissions right now. Please try again shortly.' });
   }
 
-  const emailProof = verifyToken(body.emailProof, secret);
+  const emailProof = await verifyToken(body.emailProof, secret);
   if (!emailProof || emailProof.purpose !== 'email-verified' || emailProof.email !== email) {
     return json(400, { error: 'Please verify your email before submitting.' });
   }
 
-  const smsConfigured = !!(
-    process.env.TWILIO_ACCOUNT_SID &&
-    process.env.TWILIO_AUTH_TOKEN &&
-    process.env.TWILIO_VERIFY_SERVICE_SID
-  );
+  const smsConfigured = !!(env.TWILIO_ACCOUNT_SID && env.TWILIO_AUTH_TOKEN && env.TWILIO_VERIFY_SERVICE_SID);
   let phoneVerified = false;
   if (smsConfigured) {
-    const phoneProof = verifyToken(body.phoneProof, secret);
+    const phoneProof = await verifyToken(body.phoneProof, secret);
     if (!phoneProof || phoneProof.purpose !== 'phone-verified' || phoneProof.phone !== phone) {
       return json(400, { error: 'Please verify your phone number before submitting.' });
     }
     phoneVerified = true;
   }
 
-  const resend = new Resend(resendKey);
-  const fromAddress = process.env.APPLICATION_FROM_EMAIL || 'onboarding@resend.dev';
-  const notifyList = (process.env.APPLICATION_NOTIFY_EMAILS || '')
+  const fromAddress = env.APPLICATION_FROM_EMAIL || 'onboarding@resend.dev';
+  const notifyList = (env.APPLICATION_NOTIFY_EMAILS || '')
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
@@ -86,7 +92,7 @@ exports.handler = async (event) => {
 
   try {
     if (notifyList.length) {
-      await resend.emails.send({
+      await sendResendEmail(env, {
         from: `Investors' Angels Applications <${fromAddress}>`,
         to: notifyList,
         subject: `New ${topicLabel} inquiry: ${name}${property.title ? ' — ' + property.title : ''}`,
@@ -94,7 +100,7 @@ exports.handler = async (event) => {
       });
     }
 
-    await resend.emails.send({
+    await sendResendEmail(env, {
       from: `Investors' Angels <${fromAddress}>`,
       to: email,
       subject: 'We received your application',
@@ -105,4 +111,4 @@ exports.handler = async (event) => {
   }
 
   return json(200, { success: true });
-};
+}

@@ -1,6 +1,4 @@
-'use strict';
-
-const { json, readBody } = require('./_lib/http');
+import { json, readBody } from '../_lib/http.js';
 
 const FETCH_TIMEOUT_MS = 8000;
 const MAX_BYTES = 2 * 1024 * 1024;
@@ -31,10 +29,8 @@ function extractTitleTag(html) {
    same data most sites already publish for social-share previews. There's no
    per-site scraping logic — sites that block server fetches or don't set OG
    tags just come back as parsed:false, and the UI falls back to manual entry. */
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') return json(405, { error: 'Method not allowed' });
-
-  const { url } = readBody(event);
+export async function onRequestPost({ request }) {
+  const { url } = await readBody(request);
   let parsed;
   try {
     parsed = new URL(String(url || '').trim());
@@ -108,4 +104,4 @@ exports.handler = async (event) => {
       error: 'Could not read this link automatically. Please fill in the details manually.'
     });
   }
-};
+}
