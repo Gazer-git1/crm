@@ -305,7 +305,7 @@
   .bank-intro__media img { width: 100%; height: auto; display: block; }
 
   /* ============ WHAT BANK / CUSTOMER RECEIVES ============ */
-  .bank-receives { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .bank-receives { position: relative; padding: 0 var(--space-x); width: 100%; }
   .bank-receives::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); z-index: 2; }
   .bank-receives__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: start; border-radius: 16px; overflow: hidden; }
   .bank-receives__col { display: flex; flex-direction: column; gap: 32px; padding: 80px 64px; }
@@ -610,7 +610,7 @@
     .bank-intro__media { order: -1; }
 
     /* what bank / customer receives */
-    .bank-receives { padding: 0 20px 48px; }
+    .bank-receives { padding: 0 20px; }
     .bank-receives::before { left: 20px; right: 20px; }
     .bank-receives__grid { grid-template-columns: 1fr; border-radius: 16px; }
     .bank-receives__col { padding: 40px 24px; gap: 24px; }
@@ -851,7 +851,6 @@
       <section class="bank-final-cta">
         <a class="btn btn--outline" href="contact.html">
           Become a Mortgage Partner
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
         </a>
       </section>
     </main>
