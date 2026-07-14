@@ -8,18 +8,18 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta name="description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future Purchase Option, and path to homeownership.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://i-angels.com/calculator">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
 <meta property="og:title" content="Affordability Calculator — Investors' Angels">
-<meta property="og:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta property="og:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future Purchase Option, and path to homeownership.">
 <meta property="og:image" content="https://i-angels.com/assets/hero-bg.jpg">
 <meta property="og:url" content="https://i-angels.com/calculator">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Affordability Calculator — Investors' Angels">
-<meta name="twitter:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future equity, and path to homeownership.">
+<meta name="twitter:description" content="See how much home you can afford with our Lease-to-Own calculator. Estimate your monthly payment, future Purchase Option, and path to homeownership.">
 <meta name="twitter:image" content="https://i-angels.com/assets/hero-bg.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -662,14 +662,13 @@
 
         <nav class="header__nav" id="primaryNav">
           <ul class="header__nav-list" id="navList">
-            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">LEASE-TO-OWN</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">HOW IT WORKS</a></li>
-            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="calculator.html">CALCULATOR</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">WHY INVEST</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="guarantees.html">GUARANTEES</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="for-brokers.html">FOR BROKERS</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="for-banks.html">FOR BANKS</a></li>
-            <li class="header__nav-item"><a class="header__nav-link" href="about.html">ABOUT</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="owners.html">Lease-to-Own</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="how-it-works.html">How it works</a></li>
+            <li class="header__nav-item header__nav-item--active"><a class="header__nav-link" href="calculator.html">Calculator</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="why-invest.html">For Investors</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="for-brokers.html">For Brokers</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="for-banks.html">For Banks</a></li>
+            <li class="header__nav-item"><a class="header__nav-link" href="about.html">About</a></li>
           </ul>
 
           <div class="header__nav-footer">
@@ -707,7 +706,7 @@
             How much home
             <span class="calc-hero__title-line--gold">can you afford?</span>
           </h1>
-          <p class="calc-hero__desc">See your monthly payment, future equity and your path to homeownership.</p>
+          <p class="calc-hero__desc">See your monthly payment, future Purchase Option and your path to homeownership.</p>
         </div>
         <div class="calc-hero__currency">
           <div class="calc-hero__field">
@@ -813,7 +812,7 @@
           <div class="calc-form__divider"></div>
 
           <div class="calc-form__group">
-            <div class="calc-form__label"><span class="calc-form__number">3</span> Target Equity <span class="calc-form__label-note">(of property value)</span></div>
+            <div class="calc-form__label"><span class="calc-form__number">3</span> Target Purchase Option <span class="calc-form__label-note">(of property value)</span></div>
             <div class="calc-value" id="targetEquityValue">35%</div>
             <div class="calc-slider">
               <input type="range" id="targetEquitySlider" min="20" max="40" step="1" value="35">
@@ -830,7 +829,7 @@
             <div class="stat-cell">
               <span class="stat-cell__label">Monthly<br>Payment</span>
               <span class="stat-cell__value" id="statMonthlyPayment">$8,450</span>
-              <span class="stat-cell__caption">Includes lease payment + equity contribution</span>
+              <span class="stat-cell__caption">Includes lease payment + Purchase Option contribution</span>
             </div>
             <div class="stat-cell">
               <span class="stat-cell__label">Estimated Property<br>Value After <span id="leaseTermLabel1">6</span> Years</span>
@@ -839,7 +838,7 @@
               <span class="stat-cell__caption">Estimated growth</span>
             </div>
             <div class="stat-cell">
-              <span class="stat-cell__label">Your Target<br>Equity</span>
+              <span class="stat-cell__label">Your Target<br>Purchase Option</span>
               <span class="stat-cell__value" id="statTargetEquityPct">35%</span>
               <span class="stat-cell__delta" id="statTargetEquityAmount">$262,500</span>
               <span class="stat-cell__caption">Of the property value</span>
@@ -881,12 +880,12 @@
                 </div>
                 <div>
                   <p class="notice-card__title">You still need a mortgage.</p>
-                  <p class="notice-card__desc" id="noticeDesc">Even with 20% equity + 26% property appreciation…</p>
+                  <p class="notice-card__desc" id="noticeDesc">Even with 20% Purchase Option + 26% property appreciation…</p>
                 </div>
               </div>
               <div class="notice-card__breakdown">
                 <div class="notice-card__box">
-                  <span class="notice-card__box-label">Built Equity (Min 20%)</span>
+                  <span class="notice-card__box-label">Built Purchase Option (Min 20%)</span>
                   <span class="notice-card__box-value" id="builtEquityMin">$150,000</span>
                 </div>
                 <div class="notice-card__box">
@@ -975,7 +974,7 @@
             </div>
             <div class="breakdown-card__body">
               <div class="breakdown-row"><span class="breakdown-row__label">Lease Payment</span><span class="breakdown-row__value" id="bdLeasePayment">$5,650</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Equity Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
               <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Maintenance</span><span class="breakdown-row__value">Included</span></div>
@@ -983,7 +982,7 @@
               <div class="breakdown-row"><span class="breakdown-row__label">DLD Registration</span><span class="breakdown-row__value">Included</span></div>
             </div>
             <div class="breakdown-card__foot breakdown-card__foot--positive">
-              <span class="breakdown-card__foot-label">Your Equity at Transition</span>
+              <span class="breakdown-card__foot-label">Your Purchase Option at Transition</span>
               <span class="breakdown-card__foot-value" id="equityAtTransition">$201,600</span>
               <span class="breakdown-card__foot-caption" id="equityAtTransitionCaption">(26.88% of original price)</span>
             </div>
@@ -997,7 +996,7 @@
             </div>
             <div class="breakdown-card__body">
               <div class="breakdown-row">
-                <span class="breakdown-row__label">Equity<br>You've Built</span>
+                <span class="breakdown-row__label">Purchase Option<br>You've Built</span>
                 <span class="breakdown-row__value" id="mtEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" id="mtEquityBuiltPct" style="text-align:right;">(26.88%)</span></span>
               </div>
               <div class="breakdown-row">
@@ -1036,7 +1035,7 @@
               <div class="breakdown-row"><span class="breakdown-row__label">Growth Percentage</span><span class="breakdown-row__value" id="resGrowthPct">+26%</span></div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
-                <span>Your equity + property growth reduce the amount you need to get a mortgage.</span>
+                <span>Your Purchase Option + property growth reduce the amount you need to get a mortgage.</span>
               </div>
             </div>
           </div>
@@ -1051,7 +1050,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2Z"/></svg>
           </div>
           <p class="summary__text" id="summaryText">
-            You move into your future home today with $0 down payment. Build 35% equity over 6 years while the property grows in value. Then refinance with a mortgage and become the owner.
+            You move into your future home today with $0 down payment. Build 35% Purchase Option over 6 years while the property grows in value. Then refinance with a mortgage and become the owner.
           </p>
         </div>
         <div class="summary__stats">
@@ -1059,7 +1058,7 @@
           <div class="summary__stat"><span class="summary__stat-value" id="sumMonthly">$8,450</span><span class="summary__stat-label">Monthly<br>Payment</span></div>
           <div class="summary__stat"><span class="summary__stat-value" id="sumYears">6</span><span class="summary__stat-label">Years to<br>Ownership</span></div>
           <div class="summary__stat"><span class="summary__stat-value" id="sumGrowth">$196,000</span><span class="summary__stat-label">Estimated<br>Value Growth</span></div>
-          <div class="summary__stat"><span class="summary__stat-value" id="sumEquity">$201,600</span><span class="summary__stat-label">Equity You<br>Will Build</span></div>
+          <div class="summary__stat"><span class="summary__stat-value" id="sumEquity">$201,600</span><span class="summary__stat-label">Purchase Option<br>You Will Build</span></div>
         </div>
       </section>
 
@@ -1444,7 +1443,7 @@
       drawChart(homePrice, futurePropertyValue, leaseTerm);
 
       /* --- notice card --- */
-      el('noticeDesc').textContent = 'Even with ' + MIN_EQUITY_PCT + '% equity + ' + fmtPct(growthPct) + ' property appreciation…';
+      el('noticeDesc').textContent = 'Even with ' + MIN_EQUITY_PCT + '% Purchase Option + ' + fmtPct(growthPct) + ' property appreciation…';
       el('builtEquityMin').textContent = fmtMoney(minEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
@@ -1491,7 +1490,7 @@
       el('resGrowthPct').textContent = '+' + fmtPct(growthPct);
 
       /* --- summary --- */
-      el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% equity over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
+      el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
       el('sumMonthly').textContent = fmtMoney(totalMonthlyPayment);
       el('sumYears').textContent = leaseTerm;
       el('sumGrowth').textContent = fmtMoney(propertyValueIncrease);
