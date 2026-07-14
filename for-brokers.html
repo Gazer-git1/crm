@@ -287,8 +287,8 @@
   .broker-value::before { top: 0; }
   .broker-value::after { bottom: 0; }
   .broker-value__title { font-family: var(--font-serif); font-size: 44px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
-  .broker-value__grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 64px; row-gap: 56px; }
-  .broker-value__item { display: flex; gap: 20px; align-items: flex-start; }
+  .broker-value__grid { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 64px; row-gap: 56px; }
+  .broker-value__item { display: flex; gap: 20px; align-items: flex-start; flex: 0 0 calc((100% - 128px) / 3); }
   .broker-value__icon { width: 60px; height: 60px; flex-shrink: 0; }
   .broker-value__icon img { width: 60px; height: 60px; display: block; }
   .broker-value__body { display: flex; flex-direction: column; gap: 10px; }
@@ -298,41 +298,48 @@
   /* ============ THE PARTNER PROGRAM ============ */
   .broker-program { position: relative; background: #0C1614; padding: var(--space-y) var(--space-x); width: 100%; }
   .broker-program__title { font-family: var(--font-serif); font-size: 44px; line-height: 1; margin: 0 0 72px; font-weight: 400; text-align: center; }
-  .broker-program__steps { display: flex; align-items: flex-start; gap: 0; }
-  .broker-program__step { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; text-align: center; gap: 20px; min-width: 0; }
-  .broker-program__card {
+  .broker-program__panel {
     position: relative;
-    width: 88px;
-    height: 88px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 16px;
-    border: 1px solid var(--color-border);
-    background: rgba(255, 255, 255, 0.02);
+    align-items: flex-start;
+    border-radius: 24px;
+    padding: 30px 48px 64px;
+    width: 100%;
   }
-  .broker-program__number {
+  .broker-program__panel::before {
+    content: "";
     position: absolute;
-    top: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 36px;
-    height: 36px;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  .broker-program__step { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+  .broker-program__number {
+    position: relative;
+    z-index: 2;
+    width: 60px;
+    height: 60px;
+    margin: -60px 0 20px;
     border-radius: 100px;
     background: #0C1614;
     border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.02em;
     color: var(--color-gold-dark);
   }
-  .broker-program__icon { width: 40px; height: 40px; display: block; }
-  .broker-program__step-title { font-family: var(--font-serif); font-size: 21px; color: var(--color-white); font-weight: 400; margin: 0; }
-  .broker-program__step-desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 220px; }
-  .broker-program__arrow { width: 24px; height: 24px; flex-shrink: 0; margin-top: 32px; opacity: 0.7; }
+  .broker-program__icon { width: 40px; height: 40px; display: block; margin: 0 0 16px; }
+  .broker-program__step-title { font-family: var(--font-serif); font-size: 21px; color: var(--color-white); font-weight: 400; margin: 0 0 8px; }
+  .broker-program__step-desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 220px; margin: 0; }
+  .broker-program__arrow { width: 24px; height: 24px; flex-shrink: 0; margin-top: 28px; opacity: 0.7; }
 
   /* ============ FINAL CTA ============ */
   .broker-final-cta { position: relative; isolation: isolate; width: 100%; }
@@ -585,12 +592,15 @@
     /* a better way to grow your business */
     .broker-value { padding: 48px 20px; }
     .broker-value__title { font-size: 30px; margin-bottom: 32px; }
-    .broker-value__grid { grid-template-columns: 1fr; row-gap: 36px; }
+    .broker-value__grid { row-gap: 36px; }
+    .broker-value__item { flex: 0 0 100%; }
 
     /* the partner program */
     .broker-program { padding: 48px 20px; }
     .broker-program__title { font-size: 30px; margin-bottom: 56px; }
-    .broker-program__steps { flex-direction: column; gap: 48px; }
+    .broker-program__panel { flex-direction: column; padding: 30px 24px 40px; gap: 48px; }
+    .broker-program__panel::before { display: none; }
+    .broker-program__number { position: static; transform: none; margin: 0 0 16px; }
     .broker-program__step-desc { max-width: none; }
     .broker-program__arrow { display: none; }
 
@@ -735,39 +745,31 @@
       <!-- THE PARTNER PROGRAM -->
       <section class="broker-program">
         <h2 class="broker-program__title">The partner program</h2>
-        <div class="broker-program__steps">
+        <div class="broker-program__panel">
           <div class="broker-program__step reveal">
-            <div class="broker-program__card">
-              <span class="broker-program__number">01</span>
-              <img class="broker-program__icon" src="assets/icons/BROKERS6.svg" alt="">
-            </div>
+            <span class="broker-program__number">01</span>
+            <img class="broker-program__icon" src="assets/icons/BROKERS6.svg" alt="">
             <p class="broker-program__step-title">Find the right customer</p>
             <p class="broker-program__step-desc">Understand not only what your client can afford, but where they want to build their future.</p>
           </div>
           <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
           <div class="broker-program__step reveal">
-            <div class="broker-program__card">
-              <span class="broker-program__number">02</span>
-              <img class="broker-program__icon" src="assets/icons/BROKERS7.svg" alt="">
-            </div>
+            <span class="broker-program__number">02</span>
+            <img class="broker-program__icon" src="assets/icons/BROKERS7.svg" alt="">
             <p class="broker-program__step-title">Find the right property</p>
             <p class="broker-program__step-desc">Recommend homes that people truly want to own, not simply rent. Strong locations. Long-term value.</p>
           </div>
           <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
           <div class="broker-program__step reveal">
-            <div class="broker-program__card">
-              <span class="broker-program__number">03</span>
-              <img class="broker-program__icon" src="assets/icons/BROKERS8.svg" alt="">
-            </div>
+            <span class="broker-program__number">03</span>
+            <img class="broker-program__icon" src="assets/icons/BROKERS8.svg" alt="">
             <p class="broker-program__step-title">Protect the investment</p>
             <p class="broker-program__step-desc">Help the customer stay on track throughout the program. Support communication. Solve problems early.</p>
           </div>
           <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
           <div class="broker-program__step reveal">
-            <div class="broker-program__card">
-              <span class="broker-program__number">04</span>
-              <img class="broker-program__icon" src="assets/icons/BROKERS9.svg" alt="">
-            </div>
+            <span class="broker-program__number">04</span>
+            <img class="broker-program__icon" src="assets/icons/BROKERS9.svg" alt="">
             <p class="broker-program__step-title">Share long-term success</p>
             <p class="broker-program__step-desc">Instead of earning once, you participate in years of successful customer relationships. Your recurring income.</p>
           </div>
