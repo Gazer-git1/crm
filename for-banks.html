@@ -223,7 +223,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 800px;
+    height: 900px;
     padding: 0 var(--space-x);
     width: 100%;
   }
@@ -275,7 +275,7 @@
     display: flex;
     height: 200px;
     gap: 64px;
-    padding: 80px var(--space-x);
+    padding: 100px var(--space-x);
     width: 100%;
   }
   .features::before, .features::after {
@@ -307,7 +307,7 @@
 
   /* ============ WHAT BANK / CUSTOMER RECEIVES ============ */
   .bank-receives { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
-  .bank-receives::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
+  .bank-receives::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); z-index: 2; }
   .bank-receives__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; }
   .bank-receives__col { display: flex; flex-direction: column; gap: 32px; padding: 88px 64px; }
   .bank-receives__col--tint { background: #0C1614; }
@@ -320,14 +320,13 @@
   /* ============ HOMEOWNERSHIP PASSPORT ============ */
   .bank-passport { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
   .bank-passport::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
-  .bank-passport__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
-  .bank-passport__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.15; color: var(--color-gold-dark); margin: 0 0 24px; font-weight: 400; }
-  .bank-passport__text p { font-size: 17px; line-height: 1.65; color: var(--color-text-secondary); font-weight: 300; margin: 0 0 16px; }
+  .bank-passport__grid { display: grid; grid-template-columns: 0.65fr 1fr 0.85fr; gap: 56px; align-items: center; }
+  .bank-passport__title { font-family: var(--font-serif); font-size: 36px; line-height: 1.15; color: var(--color-gold-dark); margin: 0 0 24px; font-weight: 400; }
+  .bank-passport__text p { font-size: 16px; line-height: 1.65; color: var(--color-text-secondary); font-weight: 300; margin: 0 0 16px; }
   .bank-passport__text p:last-child { margin-bottom: 0; }
-  .bank-passport__media { display: flex; align-items: center; gap: 48px; }
-  .bank-passport__media img { flex: 1 1 auto; width: 100%; max-width: 560px; height: auto; display: block; }
-  .bank-passport__checklist { display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
-  .bank-passport__check-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: var(--color-text-secondary); font-weight: 400; white-space: nowrap; }
+  .bank-passport__media img { width: 100%; height: auto; display: block; }
+  .bank-passport__checklist { display: flex; flex-direction: column; gap: 20px; }
+  .bank-passport__check-item { display: flex; align-items: center; gap: 12px; font-size: 16px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 400; text-align: left; }
   .bank-passport__check-item img { width: 20px; height: 20px; flex-shrink: 0; }
 
   /* ============ EVERYONE BENEFITS ============ */
@@ -610,9 +609,8 @@
     .bank-passport__grid { grid-template-columns: 1fr; gap: 32px; }
     .bank-passport__title { font-size: 28px; margin-bottom: 16px; }
     .bank-passport__text p { font-size: 15px; }
-    .bank-passport__media { flex-direction: column; gap: 32px; }
     .bank-passport__checklist { width: 100%; }
-    .bank-passport__check-item { font-size: 15px; white-space: normal; }
+    .bank-passport__check-item { font-size: 15px; }
 
     /* everyone benefits */
     .bank-benefits { padding: 48px 20px; }
@@ -790,14 +788,14 @@
           </div>
           <div class="bank-passport__media reveal">
             <img src="assets/bank3.png" alt="Investors' Angels Homeownership Passport open to customer summary and performance overview pages">
-            <div class="bank-passport__checklist">
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Purchase Option Balance</div>
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Payment History</div>
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Customer Commitment Ratio</div>
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Income Verification</div>
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Property Information</div>
-              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Lease-to-Own Performance Summary</div>
-            </div>
+          </div>
+          <div class="bank-passport__checklist reveal">
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Purchase Option Balance</div>
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Payment History</div>
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Customer Commitment Ratio</div>
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Income Verification</div>
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Property Information</div>
+            <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Lease-to-Own Performance Summary</div>
           </div>
         </div>
       </section>
