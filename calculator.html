@@ -428,22 +428,6 @@
   .summary__icon { width: 48px; height: 48px; border: 1px solid var(--color-bronze); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gold); }
   .summary__icon svg { width: 22px; height: 22px; }
   .summary__text { font-size: 18px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; max-width: 900px; }
-  .summary__stats { position: relative; display: flex; border-radius: 8px; padding: 40px 20px; }
-  .summary__stats::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 8px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.9) 0%, rgba(211, 167, 105, 0.35) 50%, rgba(211, 167, 105, 0.05) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  .summary__stat { flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; min-width: 0; }
-  .summary__stat-value { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); }
-  .summary__stat-label { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--color-text-secondary); line-height: 1.3; }
 
   /* ============ FINAL CTA (reused pattern) ============ */
   .final-cta { position: relative; isolation: isolate; display: flex; align-items: flex-end; justify-content: space-between; height: 600px; padding: 0 var(--space-x) 80px; width: 100%; }
@@ -602,9 +586,6 @@
     .summary { padding: 48px 20px 40px; gap: 28px; }
     .summary__title { font-size: 30px; }
     .summary__block { flex-direction: column; align-items: flex-start; }
-    .summary__stats { flex-wrap: wrap; justify-content: space-evenly; gap: 28px 16px; padding: 28px 16px; }
-    .summary__stat { flex: 0 1 26%; }
-    .summary__stat-value { font-size: 20px; }
 
     /* final cta */
     .final-cta {
@@ -1033,12 +1014,59 @@
             You move into your future home today with $0 down payment. Build 35% Purchase Option over 6 years while the property grows in value. Then refinance with a mortgage and become the owner.
           </p>
         </div>
-        <div class="summary__stats">
-          <div class="summary__stat"><span class="summary__stat-value">$0</span><span class="summary__stat-label">Down<br>Payment</span></div>
-          <div class="summary__stat"><span class="summary__stat-value" id="sumMonthly">$8,450</span><span class="summary__stat-label">Monthly<br>Payment</span></div>
-          <div class="summary__stat"><span class="summary__stat-value" id="sumYears">6</span><span class="summary__stat-label">Years to<br>Ownership</span></div>
-          <div class="summary__stat"><span class="summary__stat-value" id="sumGrowth">$196,000</span><span class="summary__stat-label">Estimated<br>Value Growth</span></div>
-          <div class="summary__stat"><span class="summary__stat-value" id="sumEquity">$201,600</span><span class="summary__stat-label">Purchase Option<br>You Will Build</span></div>
+        <div class="breakdown__grid">
+          <!-- TODAY -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span class="breakdown-card__head-label">Today</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Registration Fee</span><span class="breakdown-row__value" id="sumRegistrationFee">$1,500</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="sumSecurityDeposit">$2,000</span></div>
+            </div>
+          </div>
+
+          <!-- DURING LEASE-TO-OWN -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+              <span class="breakdown-card__head-label">During Lease-to-Own</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Lease Payment</span><span class="breakdown-row__value" id="sumLeasePayment">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="sumPurchaseOptionContribution">$2,800</span></div>
+              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
+            </div>
+          </div>
+
+          <!-- AFTER N YEARS -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v1a4 4 0 0 0 4 4M17 6h3v1a4 4 0 0 1-4 4"/></svg>
+              <span class="breakdown-card__head-label">After <span id="leaseTermLabel5">6</span> Years</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Estimated Property Value</span><span class="breakdown-row__value" id="sumEstPropertyValue">$946,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Balance</span><span class="breakdown-row__value" id="sumPurchaseOptionBalance">$201,600</span></div>
+            </div>
+          </div>
+
+          <!-- MORTGAGE -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-7h6v7"/></svg>
+              <span class="breakdown-card__head-label">Mortgage</span>
+            </div>
+            <div class="breakdown-card__body">
+              <p class="breakdown-card__mini-title" style="margin-top:0;">Partner Bank Scenario</p>
+              <div class="breakdown-card__mini-box"><span>Mortgage Required</span><span id="sumPartnerBankRequired">$487,500</span></div>
+              <div class="breakdown-card__mini-box"><span>Est. Monthly Payment</span><span id="sumPartnerBankPayment">$5,171 /mo</span></div>
+              <p class="breakdown-card__mini-title">Market Value Scenario</p>
+              <div class="breakdown-card__mini-box"><span>Mortgage Required</span><span id="sumMarketValueRequired">$742,572</span></div>
+              <div class="breakdown-card__mini-box"><span>Est. Monthly Payment</span><span id="sumMarketValuePayment">$7,876 /mo</span></div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1481,10 +1509,17 @@
 
       /* --- summary --- */
       el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
-      el('sumMonthly').textContent = fmtMoney(totalMonthlyPayment);
-      el('sumYears').textContent = leaseTerm;
-      el('sumGrowth').textContent = fmtMoney(propertyValueIncrease);
-      el('sumEquity').textContent = fmtMoney(targetEquityAmount);
+      el('sumRegistrationFee').textContent = fmtMoney(dldFee);
+      el('sumSecurityDeposit').textContent = fmtMoney(securityDeposit);
+      el('sumLeasePayment').textContent = fmtMoney(leasePayment);
+      el('sumPurchaseOptionContribution').textContent = fmtMoney(equityContribution);
+      el('sumTotalMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
+      el('sumEstPropertyValue').textContent = fmtMoney(futurePropertyValue);
+      el('sumPurchaseOptionBalance').textContent = fmtMoney(targetEquityAmount);
+      el('sumPartnerBankRequired').textContent = fmtMoney(mortgagePartnerBankRequired);
+      el('sumPartnerBankPayment').textContent = fmtMoney(mortgagePartnerBank) + ' /mo';
+      el('sumMarketValueRequired').textContent = fmtMoney(mortgageRequired);
+      el('sumMarketValuePayment').textContent = fmtMoney(mortgageMarketValue) + ' /mo';
     }
 
     function drawChart(startValue, endValue, years) {
