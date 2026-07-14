@@ -884,12 +884,12 @@
             <span class="mortgage-section__title">Estimated Mortgage Payment After <span id="leaseTermLabel4">6</span> Years</span>
             <div class="mortgage-row">
               <div class="mortgage-box">
-                <span class="mortgage-box__years">10 Years</span>
-                <span class="mortgage-box__amount" id="mortgage10">$8,680<span>/mo</span></span>
+                <span class="mortgage-box__years" id="mortgagePartnerBankLabel">Partner Bank (10 Yrs)</span>
+                <span class="mortgage-box__amount" id="mortgagePartnerBank">$8,680<span>/mo</span></span>
               </div>
               <div class="mortgage-box">
-                <span class="mortgage-box__years">15 Years</span>
-                <span class="mortgage-box__amount" id="mortgage15">$6,430<span>/mo</span></span>
+                <span class="mortgage-box__years" id="mortgageMarketValueLabel">Market Value (10 Yrs)</span>
+                <span class="mortgage-box__amount" id="mortgageMarketValue">$6,430<span>/mo</span></span>
               </div>
             </div>
           </div>
@@ -989,12 +989,12 @@
               </div>
               <div>
                 <p class="breakdown-card__mini-title">Estimated Mortgage Payment</p>
-                <div class="breakdown-card__mini-box"><span>10 Years</span><span id="mtMortgage10">$8,680 /mo</span></div>
-                <div class="breakdown-card__mini-box"><span>15 Years</span><span id="mtMortgage15">$6,430 /mo</span></div>
+                <div class="breakdown-card__mini-box"><span id="mtMortgagePartnerBankLabel">Partner Bank (10 Yrs)</span><span id="mtMortgagePartnerBank">$8,680 /mo</span></div>
+                <div class="breakdown-card__mini-box"><span id="mtMortgageMarketValueLabel">Market Value (10 Yrs)</span><span id="mtMortgageMarketValue">$6,430 /mo</span></div>
               </div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
-                <span>Mortgage is based on the original property price, not the future value.</span>
+                <span>Partner Bank is based on the original property price; Market Value is based on the future appreciated value.</span>
               </div>
             </div>
           </div>
@@ -1239,14 +1239,15 @@
 
   /* ============ CALCULATOR LOGIC ============ */
   (function () {
-    var APPRECIATION_RATE = 0.0394;
-    var RENT_YIELD = 0.0904;
-    var MORTGAGE_RATE = 0.089;
-    var MIN_EQUITY_PCT = 20;
-    var DLD_FEE = 1500;
-    var SECURITY_DEPOSIT = 2000;
-    var BROKER_FEE_PCT = 0.021;
-    var HOME_INSPECTION_FEE = 3000;
+    var APPRECIATION_RATE = 0.05;
+    var RENT_YIELD = 0.16;
+    var MORTGAGE_RATE = 0.05;
+    var MORTGAGE_TERM_YEARS = 10;
+    var REGISTRATION_FEE_PCT = 0.04;
+    var FIXED_REGISTRATION_FEE = 5000;
+    var SECURITY_DEPOSIT_MONTHS = 3;
+    var BROKER_FEE_PCT = 0.04;
+    var HOME_INSPECTION_FEE = 5000;
     var APPLICATION_FEE = 0;
 
     var CURRENCY_SYMBOLS = { USD: '$', AED: 'AED ', EUR: '€' };
@@ -1263,7 +1264,7 @@
     /* Per-country constants (rates + fees). Defaults here mirror the "КОНСТАНТЫ" block
        in the shared Google Sheet and are overridden by the "--- COUNTRIES" table fetched
        below, so the country list and its numbers can be edited entirely from the sheet. */
-    var COUNTRY_DEFAULTS = { appreciationRate: 0.0394, rentYield: 0.16, mortgageRate: 0.05, brokerFeePct: 0.021, homeInspection: 3000, legalRegistration: 1500, securityDeposit: 2000, applicationFee: 0 };
+    var COUNTRY_DEFAULTS = { appreciationRate: 0.05, rentYield: 0.16, mortgageRate: 0.05, mortgageTermYears: 10, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3, applicationFee: 0 };
     var COUNTRIES_FALLBACK = [
       ['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['BH', 'Bahrain'],
       ['OM', 'Oman'], ['GB', 'United Kingdom'], ['IE', 'Ireland'], ['FR', 'France'], ['DE', 'Germany'],
@@ -1280,10 +1281,10 @@
       APPRECIATION_RATE = rec.appreciationRate;
       RENT_YIELD = rec.rentYield;
       MORTGAGE_RATE = rec.mortgageRate;
-      BROKER_FEE_PCT = rec.brokerFeePct;
-      HOME_INSPECTION_FEE = rec.homeInspection;
-      DLD_FEE = rec.legalRegistration;
-      SECURITY_DEPOSIT = rec.securityDeposit;
+      MORTGAGE_TERM_YEARS = rec.mortgageTermYears;
+      REGISTRATION_FEE_PCT = rec.registrationFeePct;
+      FIXED_REGISTRATION_FEE = rec.fixedRegistrationFee;
+      SECURITY_DEPOSIT_MONTHS = rec.securityDepositMonths;
       APPLICATION_FEE = rec.applicationFee;
       state.countryCode = rec.code;
       el('countryValue').textContent = rec.name;
@@ -1379,17 +1380,20 @@
       var equityContribution = targetEquityAmount / (leaseTerm * 12);
       var totalMonthlyPayment = leasePayment + equityContribution;
 
-      var mortgage10 = mortgagePayment(mortgageRequired, 10);
-      var mortgage15 = mortgagePayment(mortgageRequired, 15);
+      /* Two mortgage scenarios at the same admin-configured term: Partner Bank prices
+         the mortgage off today's home price, Market Value off the appreciated future value. */
+      var mortgagePartnerBank = mortgagePayment(homePrice - targetEquityAmount, MORTGAGE_TERM_YEARS);
+      var mortgageMarketValue = mortgagePayment(mortgageRequired, MORTGAGE_TERM_YEARS);
 
-      var minEquityAmount = homePrice * (MIN_EQUITY_PCT / 100);
-      var totalBenefit = minEquityAmount + propertyValueIncrease;
+      var totalBenefit = targetEquityAmount + propertyValueIncrease;
       var totalBenefitPct = (totalBenefit / homePrice) * 100;
 
       var mortgagePctOfOriginal = (mortgageRequired / homePrice) * 100;
       var brokerFee = 0;
       var homeInspectionFee = 0;
-      var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT + brokerFee + homeInspectionFee + APPLICATION_FEE;
+      var dldFee = homePrice * REGISTRATION_FEE_PCT + FIXED_REGISTRATION_FEE;
+      var securityDeposit = totalMonthlyPayment * SECURITY_DEPOSIT_MONTHS;
+      var beforeMoveInTotal = dldFee + securityDeposit + brokerFee + homeInspectionFee + APPLICATION_FEE;
 
       var leaseMonths = leaseTerm * 12;
 
@@ -1417,15 +1421,18 @@
       drawChart(homePrice, futurePropertyValue, leaseTerm);
 
       /* --- notice card --- */
-      el('noticeDesc').textContent = 'Even with ' + MIN_EQUITY_PCT + '% Purchase Option + ' + fmtPct(growthPct) + ' property appreciation…';
-      el('builtEquityMin').textContent = fmtMoney(minEquityAmount);
+      el('noticeDesc').textContent = 'Even with ' + targetEquity + '% Purchase Option + ' + fmtPct(growthPct) + ' property appreciation…';
+      el('builtEquityMin').textContent = fmtMoney(targetEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
       el('totalBenefitCaption').textContent = '(' + fmtPct(totalBenefitPct) + ' of original price)';
 
       /* --- mortgage payment boxes --- */
-      el('mortgage10').innerHTML = fmtMoney(mortgage10) + '<span>/mo</span>';
-      el('mortgage15').innerHTML = fmtMoney(mortgage15) + '<span>/mo</span>';
+      var mortgageTermLabel = MORTGAGE_TERM_YEARS + ' Yrs';
+      el('mortgagePartnerBankLabel').textContent = 'Partner Bank (' + mortgageTermLabel + ')';
+      el('mortgageMarketValueLabel').textContent = 'Market Value (' + mortgageTermLabel + ')';
+      el('mortgagePartnerBank').innerHTML = fmtMoney(mortgagePartnerBank) + '<span>/mo</span>';
+      el('mortgageMarketValue').innerHTML = fmtMoney(mortgageMarketValue) + '<span>/mo</span>';
 
       /* --- transition row --- */
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
@@ -1435,8 +1442,8 @@
       el('transLtvValue').textContent = fmtPct(ltv);
 
       /* --- breakdown: before move-in --- */
-      el('dldFeeValue').textContent = fmtMoney(DLD_FEE);
-      el('securityDepositValue').textContent = fmtMoney(SECURITY_DEPOSIT);
+      el('dldFeeValue').textContent = fmtMoney(dldFee);
+      el('securityDepositValue').textContent = fmtMoney(securityDeposit);
       el('brokerFeeValue').textContent = fmtMoney(brokerFee);
       el('homeInspectionValue').textContent = fmtMoney(homeInspectionFee);
       el('applicationFeeValue').textContent = fmtMoney(APPLICATION_FEE);
@@ -1455,8 +1462,10 @@
       el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
       el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePctOfOriginal) + ' of original price)</span>';
       el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
-      el('mtMortgage10').textContent = fmtMoney(mortgage10) + ' /mo';
-      el('mtMortgage15').textContent = fmtMoney(mortgage15) + ' /mo';
+      el('mtMortgagePartnerBankLabel').textContent = 'Partner Bank (' + mortgageTermLabel + ')';
+      el('mtMortgageMarketValueLabel').textContent = 'Market Value (' + mortgageTermLabel + ')';
+      el('mtMortgagePartnerBank').textContent = fmtMoney(mortgagePartnerBank) + ' /mo';
+      el('mtMortgageMarketValue').textContent = fmtMoney(mortgageMarketValue) + ' /mo';
 
       /* --- breakdown: results after N years --- */
       el('resFinalValue').textContent = fmtMoney(futurePropertyValue);
@@ -1630,6 +1639,10 @@
         'Appreciation Rate': 'APPRECIATION_RATE',
         'Rent Yield': 'RENT_YIELD',
         'Mortgage Rate': 'MORTGAGE_RATE',
+        'Mortgage Term (Years)': 'MORTGAGE_TERM_YEARS',
+        'Registration Fee (%)': 'REGISTRATION_FEE_PCT',
+        'Fixed Registration Fee': 'FIXED_REGISTRATION_FEE',
+        'Security Deposit (Months)': 'SECURITY_DEPOSIT_MONTHS',
         'Broker Fee': 'BROKER_FEE_PCT',
         'Home Inspection': 'HOME_INSPECTION_FEE'
       };
@@ -1660,8 +1673,18 @@
         return cells;
       }
 
+      /* The sheet mixes number formats across cells: the top constants block uses plain
+         locale decimals ("0,04"), while the COUNTRIES table uses display-formatted
+         percentages ("4,0%") and currency ("$5 000") for the same logical fields. Strip
+         everything but digits/separators, then scale percentages back down to a fraction. */
       function parseNumber(raw) {
-        return parseFloat(String(raw || '').trim().replace(',', '.'));
+        var s = String(raw || '').trim();
+        if (!s) return NaN;
+        var isPercent = s.indexOf('%') !== -1;
+        s = s.replace(/[^0-9,.\-]/g, '').replace(',', '.');
+        var n = parseFloat(s);
+        if (isNaN(n)) return NaN;
+        return isPercent ? n / 100 : n;
       }
 
       /* The sheet also has an illustrative "DETAILED BREAKDOWN" example table further down
@@ -1686,6 +1709,10 @@
             if (key === 'APPRECIATION_RATE') APPRECIATION_RATE = value;
             if (key === 'RENT_YIELD') RENT_YIELD = value;
             if (key === 'MORTGAGE_RATE') MORTGAGE_RATE = value;
+            if (key === 'MORTGAGE_TERM_YEARS') MORTGAGE_TERM_YEARS = value;
+            if (key === 'REGISTRATION_FEE_PCT') REGISTRATION_FEE_PCT = value;
+            if (key === 'FIXED_REGISTRATION_FEE') FIXED_REGISTRATION_FEE = value;
+            if (key === 'SECURITY_DEPOSIT_MONTHS') SECURITY_DEPOSIT_MONTHS = value;
             if (key === 'BROKER_FEE_PCT') BROKER_FEE_PCT = value;
             if (key === 'HOME_INSPECTION_FEE') HOME_INSPECTION_FEE = value;
             changed = true;
@@ -1708,13 +1735,13 @@
               parsedCountries.push({
                 code: code,
                 name: (rows[ri][col['Country']] || '').trim(),
-                appreciationRate: parseNumber(rows[ri][col['Appreciation Rate']]),
+                registrationFeePct: parseNumber(rows[ri][col['Registration Fee (%)']]),
+                fixedRegistrationFee: parseNumber(rows[ri][col['Fixed Registration Fee']]),
                 rentYield: parseNumber(rows[ri][col['Rent Yield']]),
+                appreciationRate: parseNumber(rows[ri][col['Appreciation Rate']]),
                 mortgageRate: parseNumber(rows[ri][col['Mortgage Rate']]),
-                brokerFeePct: parseNumber(rows[ri][col['Broker Fee %']]),
-                homeInspection: parseNumber(rows[ri][col['Home Inspection']]),
-                legalRegistration: parseNumber(rows[ri][col['Legal Registration (DLD)']]),
-                securityDeposit: parseNumber(rows[ri][col['Security Deposit']]),
+                mortgageTermYears: parseNumber(rows[ri][col['Mortgage Term (Years)']]),
+                securityDepositMonths: parseNumber(rows[ri][col['Security Deposit (Months)']]),
                 applicationFee: parseNumber(rows[ri][col['Application Fee']])
               });
             }
