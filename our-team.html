@@ -271,6 +271,7 @@
 
   /* ============ LEADERSHIP TEAM ============ */
   .leadership { position: relative; padding: var(--space-y) var(--space-x) 96px; width: 100%; }
+  .leadership::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
   .leadership__title { font-family: var(--font-serif); font-size: 48px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
   .leadership__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; }
   .team-card {
@@ -296,17 +297,17 @@
 
   /* ============ COMMITTEE + MISSION SPLIT ============ */
   .split { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; width: 100%; padding: 0 var(--space-x) var(--space-y); }
-  .split::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
+  .split::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); z-index: 2; }
   .split__col { display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 96px 0; }
   .split__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.1; margin: 0; font-weight: 400; }
   .split__desc { font-size: 18px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; }
 
-  .committee-panel { position: relative; border: 1px solid var(--color-border); border-radius: 16px; padding: 40px; background: var(--color-bg-alt); }
+  .committee-panel { position: relative; border: 1px solid var(--color-border); border-radius: 16px; padding: 40px; background: var(--color-bg-secondary); }
   .committee-panel__label { font-size: 14px; font-weight: 700; letter-spacing: 0.03em; color: var(--color-gold-brand); margin: 0 0 32px; }
   .committee-icons { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-  .committee-icons__item { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; flex: 1 0 0; min-width: 0; }
-  .committee-icons__circle { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .committee-icons__circle img { width: 26px; height: 26px; }
+  .committee-icons__item { display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; flex: 1 0 0; min-width: 0; }
+  .committee-icons__circle { display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .committee-icons__circle img { width: 44px; height: 44px; }
   .committee-icons__label { font-family: var(--font-serif); font-size: 15px; line-height: 1.35; color: var(--color-white); font-weight: 400; }
 
   .split__col--mission { position: relative; border-radius: 16px; background: #0C1614; padding: 96px 64px; gap: 28px; }
@@ -529,6 +530,7 @@
 
     /* leadership */
     .leadership { padding: 56px 20px 56px; }
+    .leadership::before { left: 20px; right: 20px; }
     .leadership__title { font-size: 32px; margin-bottom: 32px; }
     .leadership__grid { grid-template-columns: 1fr; gap: 24px; }
 
