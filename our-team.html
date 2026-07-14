@@ -225,7 +225,6 @@
     isolation: isolate;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     min-height: 880px;
     padding: 160px var(--space-x);
     width: 100%;
@@ -243,9 +242,11 @@
   .hero__content {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 40px;
     align-items: flex-start;
     width: 640px;
+    flex: 1 1 auto;
   }
   .hero__heading-block { display: flex; flex-direction: column; gap: 24px; width: 100%; }
   .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
@@ -296,7 +297,7 @@
   .team-card__list-icon { width: 12px; height: 12px; flex-shrink: 0; margin-top: 2px; }
 
   /* ============ COMMITTEE + MISSION SPLIT ============ */
-  .split { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; width: 100%; padding: 0 var(--space-x) var(--space-y); }
+  .split { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; width: 100%; padding: 0 var(--space-x); }
   .split::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); z-index: 2; }
   .split__col { display: flex; flex-direction: column; justify-content: center; gap: 24px; padding: 96px 0; }
   .split__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.1; margin: 0; font-weight: 400; }
@@ -520,7 +521,7 @@
     }
     .hero__bg { position: absolute; inset: 0; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 0 20px 0; margin-top: -190px; gap: 24px; align-items: center; }
+    .hero__content { width: 100%; padding: 0 20px 0; margin-top: -190px; gap: 24px; align-items: center; justify-content: flex-start; flex: none; }
     .hero__heading-block { align-items: center; text-align: center; }
     .hero__title { font-size: 34px; }
     .hero__subtitle { font-size: 16px; width: 100%; text-align: center; }
@@ -543,7 +544,7 @@
     .team-card__list-icon { width: 15px; height: 15px; }
 
     /* split */
-    .split { grid-template-columns: 1fr; gap: 40px; padding: 0 20px 56px; }
+    .split { grid-template-columns: 1fr; gap: 40px; padding: 0 20px; }
     .split::before { left: 20px; right: 20px; }
     .split__col { padding: 40px 0; gap: 16px; }
     .split__title { font-size: 30px; }
