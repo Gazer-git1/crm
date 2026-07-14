@@ -197,9 +197,6 @@
   .calc-hero__title { font-family: var(--font-serif); font-size: 80px; line-height: 1; margin: 0; font-weight: 400; }
   .calc-hero__title-line--gold { color: var(--color-gold); display: block; }
   .calc-hero__desc { font-size: 30px; line-height: 1.2; color: var(--color-text-secondary); font-weight: 400; width: 500px; }
-  .calc-hero__currency { position: absolute; right: var(--space-x); bottom: var(--space-y); display: flex; flex-direction: column; gap: 20px; z-index: 5; }
-  .calc-hero__field { display: flex; flex-direction: column; gap: 8px; }
-  .calc-hero__currency-label { font-size: 14px; color: var(--color-text-secondary); }
 
   .currency-select { position: relative; width: 280px; }
   .currency-select__trigger {
@@ -257,6 +254,10 @@
   .calc-main::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
   .calc-form { width: 380px; flex-shrink: 0; display: flex; flex-direction: column; gap: 40px; position: sticky; top: 120px; }
   .calc-form__group { display: flex; flex-direction: column; gap: 16px; }
+  .calc-form__location { display: flex; gap: 16px; }
+  .calc-form__location-field { flex: 1 0 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .calc-form__location-field .currency-select { width: 100%; }
+  .calc-form__location-field .currency-select__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .calc-form__label { display: flex; align-items: center; gap: 12px; font-family: var(--font-serif); font-size: 20px; color: var(--color-white); }
   .calc-form__label-note { font-size: 14px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-sans); }
   .calc-form__number {
@@ -585,13 +586,11 @@
     .calc-hero__content { width: 100%; gap: 16px; align-items: center; }
     .calc-hero__title { font-size: 34px; }
     .calc-hero__desc { font-size: 16px; width: 100%; }
-    .calc-hero__currency { position: static; margin-top: 32px; width: 100%; }
-    .calc-hero__field { width: 100%; align-items: center; }
-    .currency-select { width: 100%; max-width: 280px; }
 
     /* calc main */
     .calc-main { flex-direction: column; padding: 48px 20px; gap: 32px; }
     .calc-form { width: 100%; position: static; gap: 32px; }
+    .calc-form__location { flex-direction: column; gap: 20px; }
     .calc-results { width: 100%; gap: 16px; }
 
     .stat-grid { grid-template-columns: 1fr 1fr; }
@@ -708,70 +707,71 @@
           </h1>
           <p class="calc-hero__desc">See your monthly payment, future Purchase Option and your path to homeownership.</p>
         </div>
-        <div class="calc-hero__currency">
-          <div class="calc-hero__field">
-            <span class="calc-hero__currency-label">Country</span>
-            <div class="currency-select" id="countrySelect">
-              <button type="button" class="currency-select__trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
-                <span class="currency-select__value" id="countryValue">United Arab Emirates</span>
-                <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-              <div class="currency-select__panel" id="countryPanel" role="listbox">
-                <button type="button" class="currency-select__option is-selected" data-country="AE" role="option" aria-selected="true"><span>United Arab Emirates</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="SA" role="option" aria-selected="false"><span>Saudi Arabia</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="QA" role="option" aria-selected="false"><span>Qatar</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="KW" role="option" aria-selected="false"><span>Kuwait</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="BH" role="option" aria-selected="false"><span>Bahrain</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="OM" role="option" aria-selected="false"><span>Oman</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="GB" role="option" aria-selected="false"><span>United Kingdom</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="IE" role="option" aria-selected="false"><span>Ireland</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="FR" role="option" aria-selected="false"><span>France</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="DE" role="option" aria-selected="false"><span>Germany</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="CH" role="option" aria-selected="false"><span>Switzerland</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="ES" role="option" aria-selected="false"><span>Spain</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="IT" role="option" aria-selected="false"><span>Italy</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="NL" role="option" aria-selected="false"><span>Netherlands</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="CA" role="option" aria-selected="false"><span>Canada</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="AU" role="option" aria-selected="false"><span>Australia</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="SG" role="option" aria-selected="false"><span>Singapore</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="HK" role="option" aria-selected="false"><span>Hong Kong</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="IN" role="option" aria-selected="false"><span>India</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-                <button type="button" class="currency-select__option" data-country="OTHER" role="option" aria-selected="false"><span>Other</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
-              </div>
-            </div>
-          </div>
-          <div class="calc-hero__field">
-            <span class="calc-hero__currency-label">Currency</span>
-            <div class="currency-select" id="currencySelect">
-              <button type="button" class="currency-select__trigger" id="currencyTrigger" aria-haspopup="listbox" aria-expanded="false">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
-                <span class="currency-select__value" id="currencyValue">USD</span>
-                <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
-              </button>
-              <div class="currency-select__panel" id="currencyPanel" role="listbox">
-                <button type="button" class="currency-select__option is-selected" data-currency="USD" role="option" aria-selected="true">
-                  <span>USD — US Dollar</span>
-                  <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                </button>
-                <button type="button" class="currency-select__option" data-currency="AED" role="option" aria-selected="false">
-                  <span>AED — UAE Dirham</span>
-                  <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                </button>
-                <button type="button" class="currency-select__option" data-currency="EUR" role="option" aria-selected="false">
-                  <span>EUR — Euro</span>
-                  <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <!-- CALCULATOR MAIN -->
       <section class="calc-main">
         <!-- LEFT: FORM -->
         <div class="calc-form">
+          <div class="calc-form__location">
+            <div class="calc-form__location-field">
+              <span class="calc-form__label-note">Country</span>
+              <div class="currency-select" id="countrySelect">
+                <button type="button" class="currency-select__trigger" id="countryTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                  <span class="currency-select__value" id="countryValue">United Arab Emirates</span>
+                  <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="currency-select__panel" id="countryPanel" role="listbox">
+                  <button type="button" class="currency-select__option is-selected" data-country="AE" role="option" aria-selected="true"><span>United Arab Emirates</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="SA" role="option" aria-selected="false"><span>Saudi Arabia</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="QA" role="option" aria-selected="false"><span>Qatar</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="KW" role="option" aria-selected="false"><span>Kuwait</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="BH" role="option" aria-selected="false"><span>Bahrain</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="OM" role="option" aria-selected="false"><span>Oman</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="GB" role="option" aria-selected="false"><span>United Kingdom</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="IE" role="option" aria-selected="false"><span>Ireland</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="FR" role="option" aria-selected="false"><span>France</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="DE" role="option" aria-selected="false"><span>Germany</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="CH" role="option" aria-selected="false"><span>Switzerland</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="ES" role="option" aria-selected="false"><span>Spain</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="IT" role="option" aria-selected="false"><span>Italy</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="NL" role="option" aria-selected="false"><span>Netherlands</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="CA" role="option" aria-selected="false"><span>Canada</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="AU" role="option" aria-selected="false"><span>Australia</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="SG" role="option" aria-selected="false"><span>Singapore</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="HK" role="option" aria-selected="false"><span>Hong Kong</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="IN" role="option" aria-selected="false"><span>India</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                  <button type="button" class="currency-select__option" data-country="OTHER" role="option" aria-selected="false"><span>Other</span><svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg></button>
+                </div>
+              </div>
+            </div>
+            <div class="calc-form__location-field">
+              <span class="calc-form__label-note">Currency</span>
+              <div class="currency-select" id="currencySelect">
+                <button type="button" class="currency-select__trigger" id="currencyTrigger" aria-haspopup="listbox" aria-expanded="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
+                  <span class="currency-select__value" id="currencyValue">USD</span>
+                  <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div class="currency-select__panel" id="currencyPanel" role="listbox">
+                  <button type="button" class="currency-select__option is-selected" data-currency="USD" role="option" aria-selected="true">
+                    <span>USD — US Dollar</span>
+                    <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                  <button type="button" class="currency-select__option" data-currency="AED" role="option" aria-selected="false">
+                    <span>AED — UAE Dirham</span>
+                    <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                  <button type="button" class="currency-select__option" data-currency="EUR" role="option" aria-selected="false">
+                    <span>EUR — Euro</span>
+                    <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="calc-form__divider"></div>
           <div class="calc-form__group">
             <div class="calc-form__label"><span class="calc-form__number">1</span> Choose your home</div>
             <div>
