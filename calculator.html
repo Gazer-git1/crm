@@ -266,17 +266,6 @@
   }
   .calc-form__subtitle { font-size: 14px; color: var(--color-text-secondary); text-transform: none; }
 
-  .calc-toggle { display: flex; gap: 12px; }
-  .calc-toggle__btn {
-    flex: 1 0 0; display: flex; flex-direction: column; align-items: center; gap: 8px;
-    padding: 16px 8px; border: 1px solid var(--color-border); border-radius: 4px;
-    background: transparent; color: var(--color-text-secondary); font-size: 14px; text-align: center;
-    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-  }
-  .calc-toggle__btn svg { width: 20px; height: 20px; }
-  .calc-toggle__btn.is-active { border-color: var(--color-gold-dark); color: var(--color-white); background: rgba(250, 208, 107, 0.06); }
-  .calc-toggle__btn.is-active svg { color: var(--color-gold); }
-
   .calc-value { font-size: 32px; font-weight: 700; color: var(--color-white); }
 
   .calc-slider { position: relative; padding-top: 4px; }
@@ -775,19 +764,6 @@
           <div class="calc-form__group">
             <div class="calc-form__label"><span class="calc-form__number">1</span> Choose your home</div>
             <div>
-              <div class="calc-form__label-note" style="margin-bottom:10px;">Property Type</div>
-              <div class="calc-toggle">
-                <button class="calc-toggle__btn is-active" type="button" data-property-type="new">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V8l8-5 8 5v13"/><path d="M9 21v-7h6v7"/><path d="M9 12h.01M15 12h.01M9 8h.01M15 8h.01"/></svg>
-                  New Home
-                </button>
-                <button class="calc-toggle__btn" type="button" data-property-type="secondary">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg>
-                  Secondary Market
-                </button>
-              </div>
-            </div>
-            <div>
               <div class="calc-form__label-note" style="margin-bottom:6px;">Home Price</div>
               <div class="calc-value" id="homePriceValue">$750,000</div>
               <div class="calc-slider">
@@ -1280,7 +1256,6 @@
       homePrice: 750000,
       leaseTerm: 6,
       targetEquity: 35,
-      propertyType: 'new',
       currency: 'USD',
       countryCode: 'AE'
     };
@@ -1412,9 +1387,8 @@
       var totalBenefitPct = (totalBenefit / homePrice) * 100;
 
       var mortgagePctOfOriginal = (mortgageRequired / homePrice) * 100;
-      var isSecondary = state.propertyType === 'secondary';
-      var brokerFee = isSecondary ? homePrice * BROKER_FEE_PCT : 0;
-      var homeInspectionFee = isSecondary ? HOME_INSPECTION_FEE : 0;
+      var brokerFee = 0;
+      var homeInspectionFee = 0;
       var beforeMoveInTotal = DLD_FEE + SECURITY_DEPOSIT + brokerFee + homeInspectionFee + APPLICATION_FEE;
 
       var leaseMonths = leaseTerm * 12;
@@ -1559,15 +1533,6 @@
       state.targetEquity = parseInt(this.value, 10);
       updateSliderFill(this);
       compute();
-    });
-
-    document.querySelectorAll('.calc-toggle__btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        document.querySelectorAll('.calc-toggle__btn').forEach(function (b) { b.classList.remove('is-active'); });
-        btn.classList.add('is-active');
-        state.propertyType = btn.getAttribute('data-property-type');
-        compute();
-      });
     });
 
     document.querySelectorAll('#leaseTermSegment .calc-segment__btn').forEach(function (btn) {
