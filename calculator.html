@@ -793,7 +793,7 @@
               <div class="calc-value" id="homePriceValue">$750,000</div>
               <div class="calc-slider">
                 <input type="range" id="homePriceSlider" min="140000" max="1000000" step="10000" value="750000">
-                <div class="calc-slider__range"><span>$140,000</span><span>$1,000,000</span></div>
+                <div class="calc-slider__range"><span id="homePriceMinLabel">$140,000</span><span id="homePriceMaxLabel">$1,000,000</span></div>
               </div>
             </div>
           </div>
@@ -1355,6 +1355,30 @@
       return n.toFixed(decimals) + '%';
     }
 
+    /* Home price slider bounds/step, tuned per currency so they land on round
+       numbers instead of the USD range multiplied by the exchange rate. */
+    var HOME_PRICE_SLIDER_CONFIG = {
+      USD: { min: 140000, max: 1000000, step: 10000 },
+      AED: { min: 500000, max: 3700000, step: 50000 },
+      EUR: { min: 130000, max: 920000, step: 10000 }
+    };
+
+    function applyHomePriceSliderCurrency() {
+      var cfg = HOME_PRICE_SLIDER_CONFIG[state.currency] || HOME_PRICE_SLIDER_CONFIG.USD;
+      var rate = EXCHANGE_RATES[state.currency] || 1;
+      var slider = el('homePriceSlider');
+      var displayVal = Math.round((state.homePrice * rate) / cfg.step) * cfg.step;
+      displayVal = Math.min(cfg.max, Math.max(cfg.min, displayVal));
+      slider.min = cfg.min;
+      slider.max = cfg.max;
+      slider.step = cfg.step;
+      slider.value = displayVal;
+      state.homePrice = displayVal / rate;
+      el('homePriceMinLabel').textContent = currencySymbol() + cfg.min.toLocaleString('en-US');
+      el('homePriceMaxLabel').textContent = currencySymbol() + cfg.max.toLocaleString('en-US');
+      updateSliderFill(slider);
+    }
+
     function mortgagePayment(principal, years) {
       var n = years * 12;
       var r = MORTGAGE_RATE / 12;
@@ -1523,9 +1547,11 @@
     }
 
     [homePriceSlider, targetEquitySlider].forEach(updateSliderFill);
+    applyHomePriceSliderCurrency();
 
     homePriceSlider.addEventListener('input', function () {
-      state.homePrice = parseInt(this.value, 10);
+      var rate = EXCHANGE_RATES[state.currency] || 1;
+      state.homePrice = parseInt(this.value, 10) / rate;
       updateSliderFill(this);
       compute();
     });
@@ -1607,6 +1633,7 @@
           state.currency = code;
           valueLabel.textContent = code;
           setOpen(false);
+          applyHomePriceSliderCurrency();
           compute();
         });
       });
