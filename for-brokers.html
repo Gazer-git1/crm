@@ -8,19 +8,19 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="A dedicated partnership program for real estate brokers is on its way. Get in touch to be the first to know.">
+<meta name="description" content="Stop starting from zero after every sale. Join the Investors' Angels Partner Program for real estate brokers and build recurring income through long-term client relationships.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://i-angels.com/for-brokers">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
 <meta property="og:title" content="For Brokers — Investors' Angels">
-<meta property="og:description" content="A dedicated partnership program for real estate brokers is on its way. Get in touch to be the first to know.">
-<meta property="og:image" content="https://i-angels.com/assets/partners1.png">
+<meta property="og:description" content="Stop starting from zero after every sale. Join the Investors' Angels Partner Program for real estate brokers and build recurring income through long-term client relationships.">
+<meta property="og:image" content="https://i-angels.com/assets/BROKERS1.png">
 <meta property="og:url" content="https://i-angels.com/for-brokers">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="For Brokers — Investors' Angels">
-<meta name="twitter:description" content="A dedicated partnership program for real estate brokers is on its way. Get in touch to be the first to know.">
-<meta name="twitter:image" content="https://i-angels.com/assets/partners1.png">
+<meta name="twitter:description" content="Stop starting from zero after every sale. Join the Investors' Angels Partner Program for real estate brokers and build recurring income through long-term client relationships.">
+<meta name="twitter:image" content="https://i-angels.com/assets/BROKERS1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -223,7 +223,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 800px;
+    height: 900px;
     padding: 0 var(--space-x);
     width: 100%;
   }
@@ -240,7 +240,7 @@
   .hero__content {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 40px;
     align-items: flex-start;
     width: 844px;
   }
@@ -248,8 +248,8 @@
   .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .hero__title {
     font-family: var(--font-serif);
-    font-size: 68px;
-    line-height: 1.08;
+    font-size: 64px;
+    line-height: 1.1;
     margin: 0;
     font-weight: 400;
   }
@@ -262,11 +262,21 @@
     width: 100%;
     font-weight: 400;
   }
+  .hero__feature { display: flex; align-items: flex-start; gap: 16px; padding-top: 4px; }
+  .hero__feature-icon { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; }
+  .hero__feature-body { display: flex; flex-direction: column; gap: 8px; }
+  .hero__feature-title { font-size: 18px; line-height: 1.4; color: var(--color-white); font-weight: 700; }
+  .hero__feature-title strong { color: var(--color-gold); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .hero__feature-desc { font-size: 15px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 480px; }
   .hero__cta-row { display: flex; align-items: center; gap: 16px; }
 
-  /* ============ OUR PARTNERS GRID ============ */
-  .partners-grid { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .partners-grid::before, .partners-grid::after {
+  /* ============ REVEAL (shared scroll-in animation) ============ */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ============ A BETTER WAY TO GROW YOUR BUSINESS ============ */
+  .broker-value { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .broker-value::before, .broker-value::after {
     content: "";
     position: absolute;
     left: 0;
@@ -274,81 +284,59 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .partners-grid::before { top: 0; }
-  .partners-grid::after { bottom: 0; }
-  .partners-grid__title { font-family: var(--font-serif); font-size: 48px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
-  .partners-grid__panel {
+  .broker-value::before { top: 0; }
+  .broker-value::after { bottom: 0; }
+  .broker-value__title { font-family: var(--font-serif); font-size: 44px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
+  .broker-value__grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 64px; row-gap: 56px; }
+  .broker-value__item { display: flex; gap: 20px; align-items: flex-start; }
+  .broker-value__icon { width: 60px; height: 60px; flex-shrink: 0; }
+  .broker-value__icon img { width: 60px; height: 60px; display: block; }
+  .broker-value__body { display: flex; flex-direction: column; gap: 10px; }
+  .broker-value__item-title { font-family: var(--font-serif); font-size: 20px; line-height: 1.3; color: var(--color-white); font-weight: 400; margin: 0; }
+  .broker-value__desc { font-size: 15px; font-weight: 300; line-height: 1.55; color: var(--color-text-muted); }
+
+  /* ============ THE PARTNER PROGRAM ============ */
+  .broker-program { position: relative; background: #0C1614; padding: var(--space-y) var(--space-x); width: 100%; }
+  .broker-program__title { font-family: var(--font-serif); font-size: 44px; line-height: 1; margin: 0 0 72px; font-weight: 400; text-align: center; }
+  .broker-program__steps { display: flex; align-items: flex-start; gap: 0; }
+  .broker-program__step { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; text-align: center; gap: 20px; min-width: 0; }
+  .broker-program__card {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 40px;
-    row-gap: 64px;
-    border-radius: 24px;
-    padding: 64px 56px;
-    width: 100%;
+    width: 88px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    background: rgba(255, 255, 255, 0.02);
   }
-  .partners-grid__panel::before {
-    content: "";
+  .broker-program__number {
     position: absolute;
-    inset: 0;
-    border-radius: 24px;
-    padding: 1px;
-    background: linear-gradient(180deg, rgba(211, 167, 105, 0.72) 0%, rgba(211, 167, 105, 0.28) 50%, rgba(211, 167, 105, 0.04) 100%);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    pointer-events: none;
-  }
-  .partners-grid__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 18px;
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .partners-grid__item.is-visible { opacity: 1; transform: translateY(0); }
-  .partners-grid__logo-box { display: flex; align-items: center; justify-content: center; height: 112px; }
-  .partners-grid__logo { width: 300px; height: auto; max-height: 112px; object-fit: contain; }
-  .partners-grid__category { font-family: var(--font-serif); font-size: 20px; margin: 0; font-weight: 400; color: var(--color-white); }
-  .partners-grid__desc { font-size: 18px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 320px; }
-
-  /* ============ PARTNERS STATS BAND ============ */
-  .partners-stats {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    padding: 96px var(--space-x);
-    background: var(--color-bg);
-  }
-  .partners-stats__item { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
-  .partners-stats__value { font-family: var(--font-sans); font-weight: 700; font-size: 42px; line-height: 1; color: var(--color-gold); }
-  .partners-stats__label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  /* ============ PARTNERS CTA BAND ============ */
-  .partners-cta {
-    position: relative;
-    isolation: isolate;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 100px;
+    background: #0C1614;
+    border: 1px solid var(--color-border);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 260px;
-    padding: 0 var(--space-x);
-    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-gold-dark);
   }
-  .partners-cta::before {
+  .broker-program__icon { width: 40px; height: 40px; display: block; }
+  .broker-program__step-title { font-family: var(--font-serif); font-size: 21px; color: var(--color-white); font-weight: 400; margin: 0; }
+  .broker-program__step-desc { font-size: 14px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 220px; }
+  .broker-program__arrow { width: 24px; height: 24px; flex-shrink: 0; margin-top: 32px; opacity: 0.7; }
+
+  /* ============ FINAL CTA ============ */
+  .broker-final-cta { position: relative; isolation: isolate; width: 100%; }
+  .broker-final-cta::before {
     content: "";
     position: absolute;
     left: 0;
@@ -356,18 +344,24 @@
     top: 0;
     height: 1px;
     background: var(--divider-grad);
+    z-index: 1;
   }
-  .partners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .partners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% center; }
-  .partners-cta__overlay {
+  .broker-final-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
+  .broker-final-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .broker-final-cta__overlay {
     position: absolute;
     inset: 0;
     z-index: -1;
-    background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
+    background: linear-gradient(180deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.75) 60%, rgba(10, 8, 6, 0.92) 100%);
   }
-  .partners-cta__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.25; margin: 0; font-weight: 400; }
-  .partners-cta__title-line { display: block; }
-  .partners-cta__title-line--gold { color: var(--color-gold); }
+  .broker-final-cta__inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; padding: 120px var(--space-x) 0; }
+  .broker-final-cta__title { font-family: var(--font-serif); font-size: 42px; line-height: 1.2; margin: 0; font-weight: 400; }
+  .broker-final-cta__eyebrow { display: block; font-size: 22px; color: var(--color-gold); font-weight: 400; margin-top: 8px; }
+  .broker-final-cta__desc { font-size: 17px; line-height: 1.5; color: var(--color-text-secondary); font-weight: 300; max-width: 520px; }
+  .broker-final-cta__badges { display: flex; align-items: flex-start; justify-content: space-between; width: 100%; padding: 96px var(--space-x); gap: 32px; }
+  .broker-final-cta__badge { display: flex; flex: 1 0 0; align-items: center; gap: 14px; min-width: 0; }
+  .broker-final-cta__badge img { width: 22px; height: 22px; flex-shrink: 0; }
+  .broker-final-cta__badge-text { font-size: 14px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 400; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -578,32 +572,35 @@
     }
     .hero__bg { position: static; width: 100%; height: auto; object-fit: unset; }
     .hero__overlay { display: none; }
-    .hero__content { width: 100%; padding: 440px 20px 0; gap: 24px; align-items: center; }
+    .hero__content { width: 100%; padding: 440px 20px 0; gap: 28px; align-items: center; }
     .hero__heading-block { align-items: center; text-align: center; }
-    .hero__title { font-size: 34px; }
+    .hero__title { font-size: 32px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__cta-row { display: none; }
+    .hero__feature { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .hero__feature-body { align-items: center; }
+    .hero__feature-desc { max-width: none; }
+    .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
+    .hero__cta-row .btn { width: 100%; }
 
-    /* our partners grid */
-    .partners-grid { padding: 48px 20px; background: var(--color-bg); }
-    .partners-grid__title { font-size: 32px; margin-bottom: 32px; }
-    .partners-grid__panel { grid-template-columns: 1fr; row-gap: 40px; padding: 40px 20px; border-radius: 16px; }
-    .partners-grid__panel::before { border-radius: 16px; }
-    .partners-grid__logo { width: 300px; }
+    /* a better way to grow your business */
+    .broker-value { padding: 48px 20px; }
+    .broker-value__title { font-size: 30px; margin-bottom: 32px; }
+    .broker-value__grid { grid-template-columns: 1fr; row-gap: 36px; }
 
-    /* partners stats band */
-    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 44px 20px; }
-    .partners-stats__item { flex: 1 1 40%; min-width: 0; }
-    .partners-stats__value { font-size: 30px; }
-    .partners-stats__label { font-size: 11px; }
+    /* the partner program */
+    .broker-program { padding: 48px 20px; }
+    .broker-program__title { font-size: 30px; margin-bottom: 56px; }
+    .broker-program__steps { flex-direction: column; gap: 48px; }
+    .broker-program__step-desc { max-width: none; }
+    .broker-program__arrow { display: none; }
 
-    /* partners cta band */
-    .partners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
-    .partners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .partners-cta__bg { object-position: center center; }
-    .partners-cta__title { font-size: 28px; }
-    .partners-cta__title-line:last-child { color: var(--color-gold); }
-    .partners-cta .btn { width: 100%; }
+    /* final cta */
+    .broker-final-cta__inner { padding: 64px 20px 0; gap: 20px; }
+    .broker-final-cta__title { font-size: 28px; }
+    .broker-final-cta__eyebrow { font-size: 19px; }
+    .broker-final-cta .btn { width: 100%; }
+    .broker-final-cta__badges { flex-wrap: wrap; justify-content: space-between; gap: 24px 12px; padding: 44px 20px; }
+    .broker-final-cta__badge { flex: 1 1 40%; min-width: 0; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -662,8 +659,8 @@
       <section class="hero">
         <div class="hero__bg-wrap">
           <picture>
-            <source media="(max-width: 768px)" srcset="assets/partners1-mob.webp">
-            <img class="hero__bg" src="assets/partners1.png" alt="City skyline at night">
+            <source media="(max-width: 768px)" srcset="assets/brockers1-mob.png">
+            <img class="hero__bg" src="assets/BROKERS1.png" alt="Burj Khalifa and Dubai skyline at night">
           </picture>
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
@@ -671,58 +668,148 @@
           <div class="hero__heading-block">
             <span class="hero__eyebrow">For Brokers</span>
             <h1 class="hero__title">
-              <span class="hero__title-line">Grow your business,</span>
-              <span class="hero__title-line hero__title-line--gold">together.</span>
+              <span class="hero__title-line">Stop starting from zero</span>
+              <span class="hero__title-line hero__title-line--gold">after every sale.</span>
             </h1>
-            <p class="hero__subtitle">A dedicated partnership program for real estate<br>brokers is on its way. Get in touch to be the first to know.</p>
+            <p class="hero__subtitle">One client. One property. One commission.<br>Then everything starts again.</p>
+          </div>
+          <div class="hero__feature">
+            <img class="hero__feature-icon" src="assets/icons/icon-diamond-outline.svg" alt="">
+            <div class="hero__feature-body">
+              <p class="hero__feature-title">Become an <strong>Investors' Angels Partner.</strong></p>
+              <p class="hero__feature-desc">Help families move into their future homes years earlier. Build long-term relationships instead of one-time transactions.</p>
+            </div>
           </div>
           <div class="hero__cta-row">
             <a class="btn btn--gradient" href="contact.html">
-              Contact Us
+              Become a Partner
               <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
             </a>
+            <a class="btn btn--outline" href="for-banks.html">For Banks</a>
           </div>
         </div>
       </section>
 
-      <!-- PARTNERS STATS BAND -->
-      <section class="partners-stats">
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Priority</p>
-          <p class="partners-stats__label">Access to New<br>Listings</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Dedicated</p>
-          <p class="partners-stats__label">Broker<br>Support</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Co-Marketing</p>
-          <p class="partners-stats__label">Opportunities</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Coming</p>
-          <p class="partners-stats__label">Soon</p>
+      <!-- A BETTER WAY TO GROW YOUR BUSINESS -->
+      <section class="broker-value">
+        <h2 class="broker-value__title">A better way to grow your business</h2>
+        <div class="broker-value__grid">
+          <div class="broker-value__item reveal">
+            <div class="broker-value__icon"><img src="assets/icons/BROKERS1.svg" alt=""></div>
+            <div class="broker-value__body">
+              <p class="broker-value__item-title">Traditional brokerage rewards transactions</p>
+              <p class="broker-value__desc">We reward long-term success. Instead of earning a single commission and saying goodbye, you stay with your client throughout the Lease-to-Own journey.</p>
+            </div>
+          </div>
+          <div class="broker-value__item reveal">
+            <div class="broker-value__icon"><img src="assets/icons/BROKERS2.svg" alt=""></div>
+            <div class="broker-value__body">
+              <p class="broker-value__item-title">Grow with every successful customer</p>
+              <p class="broker-value__desc">Most people can afford monthly housing payments. Far fewer can afford a large mortgage down payment. Lease-to-Own opens the market to thousands of families.</p>
+            </div>
+          </div>
+          <div class="broker-value__item reveal">
+            <div class="broker-value__icon"><img src="assets/icons/BROKERS3.svg" alt=""></div>
+            <div class="broker-value__body">
+              <p class="broker-value__item-title">Build recurring income instead of chasing new deals</p>
+              <p class="broker-value__desc">Our Lease-to-Own programs typically last 5-8 years. Instead of relying only on new commissions, you participate in the long-term success of every customer.</p>
+            </div>
+          </div>
+          <div class="broker-value__item reveal">
+            <div class="broker-value__icon"><img src="assets/icons/BROKERS4.svg" alt=""></div>
+            <div class="broker-value__body">
+              <p class="broker-value__item-title">Become your client's lifelong property advisor</p>
+              <p class="broker-value__desc">You know their goals. You know their family. You know their financial journey. One relationship. Many years.</p>
+            </div>
+          </div>
+          <div class="broker-value__item reveal">
+            <div class="broker-value__icon"><img src="assets/icons/BROKERS5.svg" alt=""></div>
+            <div class="broker-value__body">
+              <p class="broker-value__item-title">Your reputation becomes your greatest asset</p>
+              <p class="broker-value__desc">Every successful homeowner becomes your best referral. The best clients come from people whose lives you have genuinely changed.</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- PARTNERS CTA BAND -->
-      <section class="partners-cta">
-        <div class="partners-cta__bg-wrap">
-          <picture>
-            <source media="(max-width: 768px)" srcset="assets/partnr2-mob.png">
-            <img class="partners-cta__bg" src="assets/partners2.png" alt="Handshake between two business partners">
-          </picture>
+      <!-- THE PARTNER PROGRAM -->
+      <section class="broker-program">
+        <h2 class="broker-program__title">The partner program</h2>
+        <div class="broker-program__steps">
+          <div class="broker-program__step reveal">
+            <div class="broker-program__card">
+              <span class="broker-program__number">01</span>
+              <img class="broker-program__icon" src="assets/icons/BROKERS6.svg" alt="">
+            </div>
+            <p class="broker-program__step-title">Find the right customer</p>
+            <p class="broker-program__step-desc">Understand not only what your client can afford, but where they want to build their future.</p>
+          </div>
+          <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
+          <div class="broker-program__step reveal">
+            <div class="broker-program__card">
+              <span class="broker-program__number">02</span>
+              <img class="broker-program__icon" src="assets/icons/BROKERS7.svg" alt="">
+            </div>
+            <p class="broker-program__step-title">Find the right property</p>
+            <p class="broker-program__step-desc">Recommend homes that people truly want to own, not simply rent. Strong locations. Long-term value.</p>
+          </div>
+          <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
+          <div class="broker-program__step reveal">
+            <div class="broker-program__card">
+              <span class="broker-program__number">03</span>
+              <img class="broker-program__icon" src="assets/icons/BROKERS8.svg" alt="">
+            </div>
+            <p class="broker-program__step-title">Protect the investment</p>
+            <p class="broker-program__step-desc">Help the customer stay on track throughout the program. Support communication. Solve problems early.</p>
+          </div>
+          <img class="broker-program__arrow" src="assets/icons/icon-arrow-outline.svg" alt="">
+          <div class="broker-program__step reveal">
+            <div class="broker-program__card">
+              <span class="broker-program__number">04</span>
+              <img class="broker-program__icon" src="assets/icons/BROKERS9.svg" alt="">
+            </div>
+            <p class="broker-program__step-title">Share long-term success</p>
+            <p class="broker-program__step-desc">Instead of earning once, you participate in years of successful customer relationships. Your recurring income.</p>
+          </div>
         </div>
-        <div class="partners-cta__overlay" aria-hidden="true"></div>
-        <h2 class="partners-cta__title">
-          <span class="partners-cta__title-line">We believe the future</span>
-          <span class="partners-cta__title-line partners-cta__title-line--gold">of homeownership</span>
-          <span class="partners-cta__title-line">will be built together.</span>
-        </h2>
-        <a class="btn btn--gradient" href="contact.html">
-          Contact Us
-          <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
-        </a>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="broker-final-cta">
+        <div class="broker-final-cta__bg-wrap">
+          <img class="broker-final-cta__bg" src="assets/brockers2.png" alt="Luxury villa with pool and palm trees at dusk">
+        </div>
+        <div class="broker-final-cta__overlay" aria-hidden="true"></div>
+        <div class="broker-final-cta__inner">
+          <h2 class="broker-final-cta__title">
+            <span>Ready to build something bigger</span><br>
+            <span>than commissions?</span>
+            <span class="broker-final-cta__eyebrow">Join Investors' Angels.</span>
+          </h2>
+          <p class="broker-final-cta__desc">Become a long-term partner in helping families achieve homeownership.</p>
+          <a class="btn btn--gradient" href="contact.html">
+            Become a Partner
+            <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
+          </a>
+        </div>
+        <div class="broker-final-cta__badges">
+          <div class="broker-final-cta__badge reveal">
+            <img src="assets/icons/BROKERS10.svg" alt="">
+            <p class="broker-final-cta__badge-text">Backed by real estate<br>and real people</p>
+          </div>
+          <div class="broker-final-cta__badge reveal">
+            <img src="assets/icons/BROKERS11.svg" alt="">
+            <p class="broker-final-cta__badge-text">A partnership<br>built on trust</p>
+          </div>
+          <div class="broker-final-cta__badge reveal">
+            <img src="assets/icons/BROKERS12.svg" alt="">
+            <p class="broker-final-cta__badge-text">Long-term income.<br>Real impact.</p>
+          </div>
+          <div class="broker-final-cta__badge reveal">
+            <img src="assets/icons/BROKERS13.svg" alt="">
+            <p class="broker-final-cta__badge-text">Help families<br>become homeowners</p>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -847,11 +934,11 @@
   })();
 
   (function () {
-    var items = document.querySelectorAll('.partners-grid__item');
+    var items = document.querySelectorAll('.reveal');
     if (!items.length) return;
 
     items.forEach(function (item, i) {
-      item.style.transitionDelay = (i * 60) + 'ms';
+      item.style.transitionDelay = ((i % 6) * 70) + 'ms';
     });
 
     if (!('IntersectionObserver' in window)) {
@@ -866,7 +953,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(function (item) { observer.observe(item); });
   })();
