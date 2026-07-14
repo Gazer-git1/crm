@@ -8,19 +8,19 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="description" content="A dedicated partnership program for banking institutions is on its way. Get in touch to be the first to know.">
+<meta name="description" content="Meet your future mortgage customers years before they apply. A dedicated mortgage partnership program that gives banks proven, mortgage-ready customers built through years of documented Lease-to-Own payment discipline.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://i-angels.com/for-banks">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Investors' Angels">
 <meta property="og:title" content="For Banks — Investors' Angels">
-<meta property="og:description" content="A dedicated partnership program for banking institutions is on its way. Get in touch to be the first to know.">
-<meta property="og:image" content="https://i-angels.com/assets/partners1.png">
+<meta property="og:description" content="Meet your future mortgage customers years before they apply. A dedicated mortgage partnership program that gives banks proven, mortgage-ready customers.">
+<meta property="og:image" content="https://i-angels.com/assets/bank1.png">
 <meta property="og:url" content="https://i-angels.com/for-banks">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="For Banks — Investors' Angels">
-<meta name="twitter:description" content="A dedicated partnership program for banking institutions is on its way. Get in touch to be the first to know.">
-<meta name="twitter:image" content="https://i-angels.com/assets/partners1.png">
+<meta name="twitter:description" content="Meet your future mortgage customers years before they apply. A dedicated mortgage partnership program that gives banks proven, mortgage-ready customers.">
+<meta name="twitter:image" content="https://i-angels.com/assets/bank1.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jacques+Francois&family=DM+Sans:ital,opsz,wght@0,9..40,200;0,9..40,300;0,9..40,400;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
@@ -248,8 +248,8 @@
   .hero__eyebrow { font-size: 14px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-gold); }
   .hero__title {
     font-family: var(--font-serif);
-    font-size: 68px;
-    line-height: 1.08;
+    font-size: 64px;
+    line-height: 1.1;
     margin: 0;
     font-weight: 400;
   }
@@ -264,9 +264,21 @@
   }
   .hero__cta-row { display: flex; align-items: center; gap: 16px; }
 
-  /* ============ OUR PARTNERS GRID ============ */
-  .partners-grid { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
-  .partners-grid::before, .partners-grid::after {
+  /* ============ REVEAL (shared scroll-in animation) ============ */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ============ FEATURES (3-column trust row) ============ */
+  .features {
+    position: relative;
+    background: var(--color-bg-alt);
+    display: flex;
+    height: 200px;
+    gap: 64px;
+    padding: 80px var(--space-x);
+    width: 100%;
+  }
+  .features::before, .features::after {
     content: "";
     position: absolute;
     left: 0;
@@ -274,20 +286,64 @@
     height: 1px;
     background: var(--divider-grad);
   }
-  .partners-grid::before { top: 0; }
-  .partners-grid::after { bottom: 0; }
-  .partners-grid__title { font-family: var(--font-serif); font-size: 48px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
-  .partners-grid__panel {
+  .features::before { top: 0; }
+  .features::after { bottom: 0; }
+  .features__item { display: flex; flex: 1 0 0; gap: 20px; align-items: center; min-width: 0; }
+  .features__icon { width: 60px; height: 60px; flex-shrink: 0; }
+  .features__icon img { width: 60px; height: 60px; display: block; }
+  .features__body { display: flex; flex-direction: column; gap: 8px; flex: 1 0 0; min-width: 0; }
+  .features__title { font-family: var(--font-serif); font-size: 21px; line-height: 1.3; color: var(--color-white); font-weight: 400; margin: 0; }
+  .features__desc { font-size: 14px; font-weight: 300; line-height: 1.4; color: var(--color-text-muted); }
+
+  /* ============ MORTGAGE PARTNERSHIP PROGRAM (intro split) ============ */
+  .bank-intro { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .bank-intro::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .bank-intro__grid { display: grid; grid-template-columns: 1fr 0.92fr; gap: 88px; align-items: center; }
+  .bank-intro__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.15; color: var(--color-gold-dark); margin: 0 0 24px; font-weight: 400; }
+  .bank-intro__text { display: flex; flex-direction: column; gap: 20px; }
+  .bank-intro__text p { font-size: 17px; line-height: 1.65; color: var(--color-text-secondary); font-weight: 300; margin: 0; }
+  .bank-intro__media { width: 100%; display: flex; align-items: center; justify-content: center; }
+  .bank-intro__media img { width: 100%; height: auto; display: block; }
+
+  /* ============ WHAT BANK / CUSTOMER RECEIVES ============ */
+  .bank-receives { position: relative; padding: 0 var(--space-x) var(--space-y); width: 100%; }
+  .bank-receives::before { content: ""; position: absolute; left: var(--space-x); right: var(--space-x); top: 0; height: 1px; background: var(--divider-grad); }
+  .bank-receives__grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; border-radius: 16px; overflow: hidden; }
+  .bank-receives__col { display: flex; flex-direction: column; gap: 32px; padding: 88px 64px; }
+  .bank-receives__col--tint { background: #0C1614; }
+  .bank-receives__title { font-family: var(--font-serif); font-size: 28px; line-height: 1.3; color: var(--color-white); font-weight: 400; margin: 0; }
+  .bank-receives__list { display: flex; flex-direction: column; }
+  .bank-receives__item { display: flex; align-items: center; gap: 18px; padding: 15px 0; border-bottom: 1px solid var(--color-border); font-size: 17px; line-height: 1.4; color: var(--color-text-secondary); font-weight: 300; }
+  .bank-receives__item:last-child { border-bottom: none; }
+  .bank-receives__item img { width: 24px; height: 24px; flex-shrink: 0; }
+
+  /* ============ HOMEOWNERSHIP PASSPORT ============ */
+  .bank-passport { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .bank-passport::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .bank-passport__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px; align-items: center; }
+  .bank-passport__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.15; color: var(--color-gold-dark); margin: 0 0 24px; font-weight: 400; }
+  .bank-passport__text p { font-size: 17px; line-height: 1.65; color: var(--color-text-secondary); font-weight: 300; margin: 0 0 16px; }
+  .bank-passport__text p:last-child { margin-bottom: 0; }
+  .bank-passport__media { display: flex; align-items: center; gap: 48px; }
+  .bank-passport__media img { flex: 1 1 auto; width: 100%; max-width: 560px; height: auto; display: block; }
+  .bank-passport__checklist { display: flex; flex-direction: column; gap: 20px; flex-shrink: 0; }
+  .bank-passport__check-item { display: flex; align-items: center; gap: 12px; font-size: 16px; color: var(--color-text-secondary); font-weight: 400; white-space: nowrap; }
+  .bank-passport__check-item img { width: 20px; height: 20px; flex-shrink: 0; }
+
+  /* ============ EVERYONE BENEFITS ============ */
+  .bank-benefits { position: relative; padding: var(--space-y) var(--space-x); width: 100%; }
+  .bank-benefits::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--divider-grad); }
+  .bank-benefits__title { font-family: var(--font-serif); font-size: 40px; line-height: 1; margin: 0 0 56px; font-weight: 400; }
+  .bank-benefits__panel {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 40px;
-    row-gap: 64px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
     border-radius: 24px;
     padding: 64px 56px;
     width: 100%;
   }
-  .partners-grid__panel::before {
+  .bank-benefits__panel::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -299,75 +355,16 @@
     mask-composite: exclude;
     pointer-events: none;
   }
-  .partners-grid__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 18px;
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .partners-grid__item.is-visible { opacity: 1; transform: translateY(0); }
-  .partners-grid__logo-box { display: flex; align-items: center; justify-content: center; height: 112px; }
-  .partners-grid__logo { width: 300px; height: auto; max-height: 112px; object-fit: contain; }
-  .partners-grid__category { font-family: var(--font-serif); font-size: 20px; margin: 0; font-weight: 400; color: var(--color-white); }
-  .partners-grid__desc { font-size: 18px; line-height: 1.5; color: var(--color-text-muted); font-weight: 300; max-width: 320px; }
+  .bank-benefits__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+  .bank-benefits__number { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: var(--color-gold-dark); margin-bottom: 4px; }
+  .bank-benefits__icon-circle { width: 64px; height: 64px; border-radius: 100px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; transition: transform 0.4s ease, filter 0.4s ease; }
+  .bank-benefits__item:hover .bank-benefits__icon-circle { transform: translateY(-3px); filter: drop-shadow(0 0 10px rgba(250, 208, 107, 0.45)); }
+  .bank-benefits__icon-circle img { width: 28px; height: 28px; }
+  .bank-benefits__item-title { font-family: var(--font-serif); font-size: 20px; color: var(--color-white); font-weight: 400; margin: 0; }
+  .bank-benefits__desc { font-size: 14px; line-height: 1.55; color: var(--color-text-muted); font-weight: 300; max-width: 220px; margin: 0; }
 
-  /* ============ PARTNERS STATS BAND ============ */
-  .partners-stats {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 100%;
-    padding: 96px var(--space-x);
-    background: var(--color-bg);
-  }
-  .partners-stats__item { display: flex; flex: 1 0 0; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
-  .partners-stats__value { font-family: var(--font-sans); font-weight: 700; font-size: 42px; line-height: 1; color: var(--color-gold); }
-  .partners-stats__label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    text-align: center;
-    line-height: 1.5;
-  }
-
-  /* ============ PARTNERS CTA BAND ============ */
-  .partners-cta {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 260px;
-    padding: 0 var(--space-x);
-    width: 100%;
-  }
-  .partners-cta::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 1px;
-    background: var(--divider-grad);
-  }
-  .partners-cta__bg-wrap { position: absolute; inset: 0; overflow: hidden; z-index: -2; }
-  .partners-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% center; }
-  .partners-cta__overlay {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(90deg, rgba(10, 8, 6, 0.55) 0%, rgba(10, 8, 6, 0.25) 45%, rgba(10, 8, 6, 0.05) 100%);
-  }
-  .partners-cta__title { font-family: var(--font-serif); font-size: 40px; line-height: 1.25; margin: 0; font-weight: 400; }
-  .partners-cta__title-line { display: block; }
-  .partners-cta__title-line--gold { color: var(--color-gold); }
+  /* ============ FINAL CTA ============ */
+  .bank-final-cta { position: relative; display: flex; align-items: center; justify-content: center; padding: 0 var(--space-x) var(--space-y); width: 100%; }
 
   /* ============ FOOTER ============ */
   .footer { position: relative; isolation: isolate; background: var(--color-bg-footer); display: flex; flex-direction: column; gap: 80px; padding: 100px var(--space-x) 40px; width: 100%; }
@@ -580,30 +577,54 @@
     .hero__overlay { display: none; }
     .hero__content { width: 100%; padding: 440px 20px 0; gap: 24px; align-items: center; }
     .hero__heading-block { align-items: center; text-align: center; }
-    .hero__title { font-size: 34px; }
+    .hero__title { font-size: 32px; }
     .hero__subtitle { font-size: 16px; width: 100%; }
-    .hero__cta-row { display: none; }
+    .hero__cta-row { flex-direction: column; width: 100%; gap: 12px; }
+    .hero__cta-row .btn { width: 100%; }
 
-    /* our partners grid */
-    .partners-grid { padding: 48px 20px; background: var(--color-bg); }
-    .partners-grid__title { font-size: 32px; margin-bottom: 32px; }
-    .partners-grid__panel { grid-template-columns: 1fr; row-gap: 40px; padding: 40px 20px; border-radius: 16px; }
-    .partners-grid__panel::before { border-radius: 16px; }
-    .partners-grid__logo { width: 300px; }
+    /* features */
+    .features { flex-direction: column; height: auto; gap: 28px; padding: 48px 20px; }
+    .features__icon { width: 48px; height: 48px; }
+    .features__icon img { width: 48px; height: 48px; }
+    .features__title { font-size: 19px; }
+    .features__desc { font-size: 14px; }
 
-    /* partners stats band */
-    .partners-stats { flex-wrap: wrap; justify-content: space-between; gap: 28px 12px; padding: 44px 20px; }
-    .partners-stats__item { flex: 1 1 40%; min-width: 0; }
-    .partners-stats__value { font-size: 30px; }
-    .partners-stats__label { font-size: 11px; }
+    /* mortgage partnership program */
+    .bank-intro { padding: 48px 20px; }
+    .bank-intro__grid { grid-template-columns: 1fr; gap: 32px; }
+    .bank-intro__title { font-size: 28px; margin-bottom: 16px; }
+    .bank-intro__text p { font-size: 15px; }
+    .bank-intro__media { order: -1; }
 
-    /* partners cta band */
-    .partners-cta { flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; height: 420px; padding: 190px 24px 0; gap: 28px; }
-    .partners-cta__overlay { background: linear-gradient(180deg, rgba(10, 8, 6, 0.4) 0%, rgba(10, 8, 6, 0.22) 50%, rgba(10, 8, 6, 0.4) 100%); }
-    .partners-cta__bg { object-position: center center; }
-    .partners-cta__title { font-size: 28px; }
-    .partners-cta__title-line:last-child { color: var(--color-gold); }
-    .partners-cta .btn { width: 100%; }
+    /* what bank / customer receives */
+    .bank-receives { padding: 0 20px 48px; }
+    .bank-receives::before { left: 20px; right: 20px; }
+    .bank-receives__grid { grid-template-columns: 1fr; border-radius: 16px; }
+    .bank-receives__col { padding: 40px 24px; gap: 24px; }
+    .bank-receives__title { font-size: 22px; }
+    .bank-receives__item { font-size: 15px; gap: 14px; padding: 13px 0; }
+    .bank-receives__item img { width: 20px; height: 20px; }
+
+    /* homeownership passport */
+    .bank-passport { padding: 48px 20px; }
+    .bank-passport__grid { grid-template-columns: 1fr; gap: 32px; }
+    .bank-passport__title { font-size: 28px; margin-bottom: 16px; }
+    .bank-passport__text p { font-size: 15px; }
+    .bank-passport__media { flex-direction: column; gap: 32px; }
+    .bank-passport__checklist { width: 100%; }
+    .bank-passport__check-item { font-size: 15px; white-space: normal; }
+
+    /* everyone benefits */
+    .bank-benefits { padding: 48px 20px; }
+    .bank-benefits::before { left: 20px; right: 20px; }
+    .bank-benefits__title { font-size: 30px; margin-bottom: 32px; }
+    .bank-benefits__panel { grid-template-columns: 1fr 1fr; gap: 40px 20px; padding: 40px 20px; border-radius: 16px; }
+    .bank-benefits__panel::before { border-radius: 16px; }
+    .bank-benefits__desc { max-width: none; }
+
+    /* final cta */
+    .bank-final-cta { padding: 0 20px 48px; }
+    .bank-final-cta .btn { width: 100%; }
 
     /* footer */
     .footer { padding: 64px 20px 32px; gap: 48px; }
@@ -662,8 +683,8 @@
       <section class="hero">
         <div class="hero__bg-wrap">
           <picture>
-            <source media="(max-width: 768px)" srcset="assets/partners1-mob.webp">
-            <img class="hero__bg" src="assets/partners1.png" alt="City skyline at night">
+            <source media="(max-width: 768px)" srcset="assets/bank1-mob.png">
+            <img class="hero__bg" src="assets/bank1.png" alt="Bank office tower at night in Dubai">
           </picture>
         </div>
         <div class="hero__overlay" aria-hidden="true"></div>
@@ -671,56 +692,159 @@
           <div class="hero__heading-block">
             <span class="hero__eyebrow">For Banks</span>
             <h1 class="hero__title">
-              <span class="hero__title-line">Bank on a stronger</span>
-              <span class="hero__title-line hero__title-line--gold">partnership.</span>
+              <span class="hero__title-line">Meet your future mortgage customers</span>
+              <span class="hero__title-line hero__title-line--gold">years before they apply.</span>
             </h1>
-            <p class="hero__subtitle">A dedicated partnership program for banking<br>institutions is on its way. Get in touch to be the first to know.</p>
+            <p class="hero__subtitle">We prepare future homeowners today.<br>You receive proven, mortgage-ready customers tomorrow.</p>
           </div>
           <div class="hero__cta-row">
             <a class="btn btn--gradient" href="contact.html">
-              Contact Us
+              Become a Mortgage Partner
               <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
             </a>
+            <a class="btn btn--outline" href="for-brokers.html">For Brokers</a>
           </div>
         </div>
       </section>
 
-      <!-- PARTNERS STATS BAND -->
-      <section class="partners-stats">
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Mortgage</p>
-          <p class="partners-stats__label">Refinancing<br>Pipeline</p>
+      <!-- FEATURES -->
+      <section class="features">
+        <div class="features__item reveal">
+          <div class="features__icon">
+            <img src="assets/icons/bank1.svg" alt="">
+          </div>
+          <div class="features__body">
+            <p class="features__title">We don't replace banks. We prepare future mortgage customers.</p>
+            <p class="features__desc">Every customer in our Lease-to-Own program is pre-qualified, verified and committed to homeownership.</p>
+          </div>
         </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Asset-Backed</p>
-          <p class="partners-stats__label">CLN<br>Structuring</p>
+        <div class="features__item reveal">
+          <div class="features__icon">
+            <img src="assets/icons/bank2.svg" alt="">
+          </div>
+          <div class="features__body">
+            <p class="features__title">5-8 years of verified financial discipline.</p>
+            <p class="features__desc">Customers build payment history, accumulate their Purchase Option Balance and strengthen their financial profile.</p>
+          </div>
         </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Dedicated</p>
-          <p class="partners-stats__label">Relationship<br>Manager</p>
-        </div>
-        <div class="partners-stats__item">
-          <p class="partners-stats__value">Coming</p>
-          <p class="partners-stats__label">Soon</p>
+        <div class="features__item reveal">
+          <div class="features__icon">
+            <img src="assets/icons/bank3.svg" alt="">
+          </div>
+          <div class="features__body">
+            <p class="features__title">Proven today. Mortgage-ready tomorrow.</p>
+            <p class="features__desc">By the time they apply for a mortgage, they are no longer first-time applicants. They are proven future homeowners.</p>
+          </div>
         </div>
       </section>
 
-      <!-- PARTNERS CTA BAND -->
-      <section class="partners-cta">
-        <div class="partners-cta__bg-wrap">
-          <picture>
-            <source media="(max-width: 768px)" srcset="assets/partnr2-mob.png">
-            <img class="partners-cta__bg" src="assets/partners2.png" alt="Handshake between two business partners">
-          </picture>
+      <!-- MORTGAGE PARTNERSHIP PROGRAM -->
+      <section class="bank-intro">
+        <div class="bank-intro__grid">
+          <div class="bank-intro__text reveal">
+            <h2 class="bank-intro__title">Mortgage partnership program</h2>
+            <p>Partner banks may invite Lease-to-Own customers to conduct all program payments through their bank throughout the Lease-to-Own term.</p>
+            <p>This allows the bank to build a long-term relationship and gain visibility into the customer's financial behavior years before the mortgage application.</p>
+            <p>In return, participating banks may provide customers with a Mortgage Partnership Letter confirming that, subject to the bank's lending policies and the customer's continued eligibility, the bank intends to give priority consideration to the customer's future mortgage application.</p>
+          </div>
+          <div class="bank-intro__media reveal">
+            <img src="assets/bank2.png" alt="Mortgage Partnership Letter and Investors' Angels Homeownership Passport">
+          </div>
         </div>
-        <div class="partners-cta__overlay" aria-hidden="true"></div>
-        <h2 class="partners-cta__title">
-          <span class="partners-cta__title-line">We believe the future</span>
-          <span class="partners-cta__title-line partners-cta__title-line--gold">of homeownership</span>
-          <span class="partners-cta__title-line">will be built together.</span>
-        </h2>
+      </section>
+
+      <!-- WHAT BANK / CUSTOMER RECEIVES -->
+      <section class="bank-receives">
+        <div class="bank-receives__grid">
+          <div class="bank-receives__col reveal">
+            <h2 class="bank-receives__title">What the bank receives</h2>
+            <div class="bank-receives__list">
+              <div class="bank-receives__item"><img src="assets/icons/bank4.svg" alt="">A long-term banking relationship</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank5.svg" alt="">Monthly payment flows throughout the program</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank6.svg" alt="">Verified income history</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank7.svg" alt="">Documented payment discipline</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank8.svg" alt="">A customer with accumulated Purchase Option Balance</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank9.svg" alt="">A selected property with completed due diligence</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank10.svg" alt="">Years of financial data before underwriting</div>
+            </div>
+          </div>
+          <div class="bank-receives__col bank-receives__col--tint reveal">
+            <h2 class="bank-receives__title">What the customer receives</h2>
+            <div class="bank-receives__list">
+              <div class="bank-receives__item"><img src="assets/icons/bank11.svg" alt="">A banking relationship from day one</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank12.svg" alt="">Confidence that a participating bank is familiar with their journey</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank13.svg" alt="">A stronger future mortgage application supported by years of documented payment history</div>
+              <div class="bank-receives__item"><img src="assets/icons/bank14.svg" alt="">A smoother transition from Lease-to-Own to homeownership</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOMEOWNERSHIP PASSPORT -->
+      <section class="bank-passport">
+        <div class="bank-passport__grid">
+          <div class="bank-passport__text reveal">
+            <h2 class="bank-passport__title">Homeownership passport</h2>
+            <p>At the end of every Lease-to-Own program we provide participating banks with a comprehensive Homeownership Passport.</p>
+            <p>A standardized report that gives you everything you need to make faster, more confident lending decisions.</p>
+          </div>
+          <div class="bank-passport__media reveal">
+            <img src="assets/bank3.png" alt="Investors' Angels Homeownership Passport open to customer summary and performance overview pages">
+            <div class="bank-passport__checklist">
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Purchase Option Balance</div>
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Payment History</div>
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Customer Commitment Ratio</div>
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Income Verification</div>
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Property Information</div>
+              <div class="bank-passport__check-item"><img src="assets/icons/bank15.svg" alt="">Lease-to-Own Performance Summary</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVERYONE BENEFITS -->
+      <section class="bank-benefits">
+        <h2 class="bank-benefits__title">Everyone benefits</h2>
+        <div class="bank-benefits__panel">
+          <div class="bank-benefits__item reveal">
+            <span class="bank-benefits__number">01</span>
+            <div class="bank-benefits__icon-circle">
+              <img src="assets/icons/bank16.svg" alt="">
+            </div>
+            <p class="bank-benefits__item-title">Customer</p>
+            <p class="bank-benefits__desc">Builds a stronger mortgage profile.</p>
+          </div>
+          <div class="bank-benefits__item reveal">
+            <span class="bank-benefits__number">02</span>
+            <div class="bank-benefits__icon-circle">
+              <img src="assets/icons/bank17.svg" alt="">
+            </div>
+            <p class="bank-benefits__item-title">Bank</p>
+            <p class="bank-benefits__desc">Receives a well-documented future borrower.</p>
+          </div>
+          <div class="bank-benefits__item reveal">
+            <span class="bank-benefits__number">03</span>
+            <div class="bank-benefits__icon-circle">
+              <img src="assets/icons/bank18.svg" alt="">
+            </div>
+            <p class="bank-benefits__item-title">Investor</p>
+            <p class="bank-benefits__desc">Completes the planned investment exit.</p>
+          </div>
+          <div class="bank-benefits__item reveal">
+            <span class="bank-benefits__number">04</span>
+            <div class="bank-benefits__icon-circle">
+              <img src="assets/icons/bank19.svg" alt="">
+            </div>
+            <p class="bank-benefits__item-title">Angels</p>
+            <p class="bank-benefits__desc">Coordinates the transition to mortgage.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="bank-final-cta">
         <a class="btn btn--gradient" href="contact.html">
-          Contact Us
+          Become a Mortgage Partner
           <img class="btn__icon" src="assets/icons/icon-arrow.svg" alt="">
         </a>
       </section>
@@ -847,11 +971,11 @@
   })();
 
   (function () {
-    var items = document.querySelectorAll('.partners-grid__item');
+    var items = document.querySelectorAll('.reveal');
     if (!items.length) return;
 
     items.forEach(function (item, i) {
-      item.style.transitionDelay = (i * 60) + 'ms';
+      item.style.transitionDelay = ((i % 6) * 70) + 'ms';
     });
 
     if (!('IntersectionObserver' in window)) {
@@ -866,7 +990,7 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2, rootMargin: '0px 0px -60px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
     items.forEach(function (item) { observer.observe(item); });
   })();
