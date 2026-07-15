@@ -340,7 +340,9 @@
   .chart-card__point--end { text-align: right; }
   .chart-card__svg { width: 100%; height: auto; display: block; }
   .chart-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
+  .chart-card__side-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
   .chart-card__side-delta { font-family: var(--font-sans); font-weight: 700; font-size: 26px; color: var(--color-gold); }
+  .chart-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); }
   .chart-card__side-caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
 
   /* ============ MORTGAGE NOTICE CARD ============ */
@@ -813,8 +815,35 @@
               <svg class="chart-card__svg" id="chartSvg" viewBox="0 0 640 160" preserveAspectRatio="none"></svg>
             </div>
             <div class="chart-card__side">
-              <div class="chart-card__side-delta" id="sideDelta">+$196,000</div>
+              <div class="chart-card__side-top">
+                <div class="chart-card__side-delta" id="sideDelta">+$196,000</div>
+                <div class="chart-card__side-pct" id="sidePct">+26%</div>
+              </div>
               <div class="chart-card__side-caption">Estimated increase in property value</div>
+            </div>
+          </div>
+
+          <div class="chart-card">
+            <div class="chart-card__main">
+              <span class="chart-card__title">Your Target Purchase Option Over Time</span>
+              <div class="chart-card__endpoints">
+                <div class="chart-card__point">
+                  <div class="chart-card__point-label">At Start (Today)</div>
+                  <div class="chart-card__point-value" id="poChartStartValue">$0</div>
+                </div>
+                <div class="chart-card__point chart-card__point--end">
+                  <div class="chart-card__point-label">At End of Program (<span id="leaseTermLabel4">6</span> Years)</div>
+                  <div class="chart-card__point-value" id="poChartEndValue">$262,500</div>
+                </div>
+              </div>
+              <svg class="chart-card__svg" id="poChartSvg" viewBox="0 0 640 160" preserveAspectRatio="none"></svg>
+            </div>
+            <div class="chart-card__side">
+              <div class="chart-card__side-top">
+                <div class="chart-card__side-delta" id="poSideDelta">+$262,500</div>
+                <div class="chart-card__side-pct" id="poSidePct">+35%</div>
+              </div>
+              <div class="chart-card__side-caption">Built through monthly Purchase Option contributions</div>
             </div>
           </div>
 
@@ -825,13 +854,13 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
                 </div>
                 <div>
-                  <p class="notice-card__title">You still need a mortgage.</p>
-                  <p class="notice-card__desc" id="noticeDesc">Even with 20% Purchase Option built up, a mortgage is still needed to complete the purchase…</p>
+                  <p class="notice-card__title">Your Total Benefit Over <span id="leaseTermLabel6">6</span> Years</p>
+                  <p class="notice-card__desc" id="noticeDesc">Your Purchase Option and property appreciation combine into meaningful equity by the end of the program.</p>
                 </div>
               </div>
               <div class="notice-card__breakdown">
                 <div class="notice-card__box">
-                  <span class="notice-card__box-label">Built Purchase Option (Min 20%)</span>
+                  <span class="notice-card__box-label">Built Purchase Option</span>
                   <span class="notice-card__box-value" id="builtEquityMin">$150,000</span>
                 </div>
                 <div class="notice-card__box">
@@ -839,7 +868,7 @@
                   <span class="notice-card__box-value" id="propertyIncreaseEst">$196,000</span>
                 </div>
               </div>
-              <p class="notice-card__foot">A mortgage is needed to cover the remaining amount.</p>
+              <p class="notice-card__foot">Your Purchase Option plus property appreciation, before mortgage financing.</p>
             </div>
             <div class="notice-card__side">
               <span class="notice-card__side-title">Total Benefit</span>
@@ -860,6 +889,37 @@
                 <span class="transition-box__label">Mortgage Needed</span>
                 <span class="transition-box__value" id="transMortgageValue">$683,500</span>
                 <span class="transition-box__caption" id="transMortgageCaption">10 or 15-year mortgage available</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice-card">
+            <div class="notice-card__main">
+              <div class="notice-card__head">
+                <div class="notice-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+                </div>
+                <div>
+                  <p class="notice-card__title">Your Mortgage After Program Ends</p>
+                  <p class="notice-card__desc">The mortgage required to complete your purchase is the same regardless of term — choose the length that fits your monthly budget.</p>
+                </div>
+              </div>
+              <div class="notice-card__breakdown">
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">10-Year Mortgage</span>
+                  <span class="notice-card__box-value" id="mortgage10Value">$683,500</span>
+                </div>
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">15-Year Mortgage</span>
+                  <span class="notice-card__box-value" id="mortgage15Value">$683,500</span>
+                </div>
+              </div>
+              <p class="notice-card__foot">Same mortgage amount for both terms; only the repayment length differs.</p>
+            </div>
+            <div class="notice-card__side">
+              <span class="notice-card__side-title">Mortgage Required</span>
+              <div class="notice-card__side-box">
+                <span class="notice-card__side-value" id="mortgageRequiredSideValue">$683,500</span>
               </div>
             </div>
           </div>
@@ -1372,10 +1432,17 @@
       el('chartStartValue').textContent = fmtMoney(homePrice);
       el('chartEndValue').textContent = fmtMoney(futurePropertyValue);
       el('sideDelta').textContent = '+' + fmtMoney(propertyValueIncrease);
-      drawChart(homePrice, futurePropertyValue, leaseTerm);
+      el('sidePct').textContent = '+' + Math.round((propertyValueIncrease / homePrice) * 100) + '%';
+      drawChart('chartSvg', buildExpPoints(homePrice, leaseTerm));
 
-      /* --- notice card --- */
-      el('noticeDesc').textContent = 'Even with ' + targetEquity + '% Purchase Option built up, a mortgage is still needed to complete the purchase…';
+      /* --- purchase option chart --- */
+      el('poChartStartValue').textContent = fmtMoney(0);
+      el('poChartEndValue').textContent = fmtMoney(targetEquityAmount);
+      el('poSideDelta').textContent = '+' + fmtMoney(targetEquityAmount);
+      el('poSidePct').textContent = '+' + targetEquity + '%';
+      drawChart('poChartSvg', buildLinearPoints(0, targetEquityAmount, leaseTerm));
+
+      /* --- notice card: total benefit --- */
       el('builtEquityMin').textContent = fmtMoney(targetEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
@@ -1384,6 +1451,11 @@
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
       el('transMortgageValue').textContent = fmtMoney(mortgageRequired);
       el('transMortgageCaption').textContent = mortgageTermsNote;
+
+      /* --- notice card: mortgage --- */
+      el('mortgage10Value').textContent = fmtMoney(mortgageRequired);
+      el('mortgage15Value').textContent = fmtMoney(mortgageRequired);
+      el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
 
       /* --- breakdown: before move-in --- */
       el('securityDepositValue').textContent = fmtMoney(securityDeposit);
@@ -1418,14 +1490,22 @@
       el('sumMortgageRequired').textContent = fmtMoney(mortgageRequired);
     }
 
-    function drawChart(startValue, endValue, years) {
-      var svg = el('chartSvg');
-      var W = 640, H = 160, PAD = 10;
+    function buildExpPoints(startValue, years) {
       var points = [];
-      for (var t = 0; t <= years; t++) {
-        var v = startValue * Math.pow(1 + APPRECIATION_RATE, t);
-        points.push(v);
-      }
+      for (var t = 0; t <= years; t++) points.push(startValue * Math.pow(1 + APPRECIATION_RATE, t));
+      return points;
+    }
+
+    function buildLinearPoints(startValue, endValue, years) {
+      var points = [];
+      for (var t = 0; t <= years; t++) points.push(startValue + (endValue - startValue) * (t / years));
+      return points;
+    }
+
+    function drawChart(svgId, points) {
+      var svg = el(svgId);
+      var W = 640, H = 160, PAD = 10;
+      var years = points.length - 1;
       var min = Math.min.apply(null, points);
       var max = Math.max.apply(null, points);
       var range = max - min || 1;
