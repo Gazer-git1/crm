@@ -803,7 +803,7 @@
             <div class="stat-cell">
               <span class="stat-cell__label">Mortgage Required<br>After <span id="leaseTermLabel2">6</span> Years</span>
               <span class="stat-cell__value" id="statMortgageRequired">$683,500</span>
-              <span class="stat-cell__caption">Market Value scenario</span>
+              <span class="stat-cell__caption">Partner Bank scenario</span>
             </div>
           </div>
 
@@ -1405,23 +1405,26 @@
       var growthPct = (propertyValueIncrease / homePrice) * 100;
 
       var targetEquityAmount = homePrice * (targetEquity / 100);
-      var mortgageRequired = futurePropertyValue - targetEquityAmount;
-      var ltv = (mortgageRequired / futurePropertyValue) * 100;
+
+      /* Two mortgage scenarios at the same admin-configured term: Partner Bank prices
+         the mortgage off today's home price, Market Value off the appreciated future value.
+         The top-level "Mortgage Required" headline (and LTV / "What Happens at Transition")
+         now follows the sheet's Partner Bank formula too — home price, not future value. */
+      var mortgagePartnerBankRequired = homePrice - targetEquityAmount;
+      var mortgageRequiredMarketValue = futurePropertyValue - targetEquityAmount;
+      var mortgagePartnerBank = mortgagePayment(mortgagePartnerBankRequired, MORTGAGE_TERM_YEARS);
+      var mortgageMarketValue = mortgagePayment(mortgageRequiredMarketValue, MORTGAGE_TERM_YEARS);
+
+      var ltv = (mortgagePartnerBankRequired / futurePropertyValue) * 100;
 
       var leasePayment = (homePrice * RENT_YIELD) / 12;
       var equityContribution = targetEquityAmount / (leaseTerm * 12);
       var totalMonthlyPayment = leasePayment + equityContribution;
 
-      /* Two mortgage scenarios at the same admin-configured term: Partner Bank prices
-         the mortgage off today's home price, Market Value off the appreciated future value. */
-      var mortgagePartnerBankRequired = homePrice - targetEquityAmount;
-      var mortgagePartnerBank = mortgagePayment(mortgagePartnerBankRequired, MORTGAGE_TERM_YEARS);
-      var mortgageMarketValue = mortgagePayment(mortgageRequired, MORTGAGE_TERM_YEARS);
-
       var totalBenefit = targetEquityAmount + propertyValueIncrease;
       var totalBenefitPct = (totalBenefit / homePrice) * 100;
 
-      var mortgagePctOfOriginal = (mortgageRequired / homePrice) * 100;
+      var mortgagePctOfOriginal = (mortgageRequiredMarketValue / homePrice) * 100;
       var mortgagePartnerBankPctOfOriginal = (mortgagePartnerBankRequired / homePrice) * 100;
       var brokerFee = 0;
       var homeInspectionFee = 0;
@@ -1445,7 +1448,7 @@
       el('statFutureValueDelta').textContent = '+' + fmtMoney(propertyValueIncrease) + ' (' + fmtPct(growthPct) + ')';
       el('statTargetEquityPct').textContent = targetEquity + '%';
       el('statTargetEquityAmount').textContent = fmtMoney(targetEquityAmount);
-      el('statMortgageRequired').textContent = fmtMoney(mortgageRequired);
+      el('statMortgageRequired').textContent = fmtMoney(mortgagePartnerBankRequired);
 
       /* --- chart --- */
       el('chartStartValue').textContent = fmtMoney(homePrice);
@@ -1471,8 +1474,8 @@
       /* --- transition row --- */
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
       el('transIncreaseCaption').textContent = '(+' + fmtPct(growthPct) + ')';
-      el('transMortgageValue').textContent = fmtMoney(mortgageRequired);
-      el('transMortgageCaption').textContent = '(' + fmtPct(mortgagePctOfOriginal) + ' of original price)';
+      el('transMortgageValue').textContent = fmtMoney(mortgagePartnerBankRequired);
+      el('transMortgageCaption').textContent = '(' + fmtPct(mortgagePartnerBankPctOfOriginal) + ' of original price)';
       el('transLtvValue').textContent = fmtPct(ltv);
 
       /* --- breakdown: before move-in --- */
@@ -1495,7 +1498,7 @@
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
       el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
       el('mtMortgagePartnerBankRequired').innerHTML = fmtMoney(mortgagePartnerBankRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePartnerBankPctOfOriginal) + ' of original price)</span>';
-      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePctOfOriginal) + ' of original price)</span>';
+      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequiredMarketValue) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePctOfOriginal) + ' of original price)</span>';
       el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
       el('mtMortgagePartnerBankLabel').textContent = 'Partner Bank (' + mortgageTermLabel + ')';
       el('mtMortgageMarketValueLabel').textContent = 'Market Value (' + mortgageTermLabel + ')';
@@ -1518,7 +1521,7 @@
       el('sumPurchaseOptionBalance').textContent = fmtMoney(targetEquityAmount);
       el('sumPartnerBankRequired').textContent = fmtMoney(mortgagePartnerBankRequired);
       el('sumPartnerBankPayment').textContent = fmtMoney(mortgagePartnerBank) + ' /mo';
-      el('sumMarketValueRequired').textContent = fmtMoney(mortgageRequired);
+      el('sumMarketValueRequired').textContent = fmtMoney(mortgageRequiredMarketValue);
       el('sumMarketValuePayment').textContent = fmtMoney(mortgageMarketValue) + ' /mo';
     }
 
