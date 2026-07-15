@@ -346,8 +346,7 @@
   .notice-card { display: grid; grid-template-columns: 1fr 260px; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
   .notice-card__main { padding: 32px; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 20px; min-width: 0; }
   .notice-card__head { display: flex; align-items: flex-start; gap: 16px; }
-  .notice-card__icon { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--color-bronze); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gold); }
-  .notice-card__icon svg { width: 18px; height: 18px; }
+  .notice-card__icon { width: 40px; height: 40px; flex-shrink: 0; display: block; }
   .notice-card__title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); margin: 0 0 4px; }
   .notice-card__desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.4; }
   .notice-card__breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -847,9 +846,7 @@
           <div class="notice-card">
             <div class="notice-card__main">
               <div class="notice-card__head">
-                <div class="notice-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
-                </div>
+                <img class="notice-card__icon" src="assets/icons/4.svg" alt="">
                 <div>
                   <p class="notice-card__title">Your Total Benefit Over <span id="leaseTermLabel6">6</span> Years</p>
                   <p class="notice-card__desc" id="noticeDesc">Your Purchase Option and property appreciation combine into meaningful equity by the end of the program.</p>
@@ -894,9 +891,7 @@
           <div class="notice-card">
             <div class="notice-card__main">
               <div class="notice-card__head">
-                <div class="notice-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
-                </div>
+                <img class="notice-card__icon" src="assets/icons/4.svg" alt="">
                 <div>
                   <p class="notice-card__title">Your Mortgage After Program Ends</p>
                   <p class="notice-card__desc">The mortgage amount is the same either way — a shorter term means a higher monthly payment, a longer term means a lower one.</p>
