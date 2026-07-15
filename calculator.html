@@ -937,8 +937,15 @@
               <span class="breakdown-card__head-label">Before Move-In</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="securityDepositValue">$2,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Net Initial Cash Exposure</span><span class="breakdown-row__value" id="netCashExposureValue">$470,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Downpayment</span><span class="breakdown-row__value" id="bdDownpayment">AED 0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value" id="bdBrokerFee">AED 0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Registration Fee</span><span class="breakdown-row__value" id="bdRegistrationFee">AED 0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Insurance Fee</span><span class="breakdown-row__value" id="bdInsuranceFee">AED 0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Deposit Payment (x3 months)</span><span class="breakdown-row__value" id="securityDepositValue">AED 31,000</span></div>
+            </div>
+            <div class="breakdown-card__foot">
+              <span class="breakdown-card__foot-value" id="totalBeforeMoveIn">AED 31,000</span>
+              <span class="breakdown-card__foot-caption">before move-in</span>
             </div>
           </div>
 
@@ -1458,8 +1465,12 @@
       el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
 
       /* --- breakdown: before move-in --- */
+      el('bdDownpayment').textContent = fmtMoney(0);
+      el('bdBrokerFee').textContent = fmtMoney(0);
+      el('bdRegistrationFee').textContent = fmtMoney(0);
+      el('bdInsuranceFee').textContent = fmtMoney(0);
       el('securityDepositValue').textContent = fmtMoney(securityDeposit);
-      el('netCashExposureValue').textContent = fmtMoney(netCashExposure);
+      el('totalBeforeMoveIn').textContent = fmtMoney(securityDeposit);
 
       /* --- breakdown: during lease --- */
       el('bdFinancingCharge').textContent = fmtMoney(financingCharge);
