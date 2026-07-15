@@ -713,15 +713,15 @@
               <div class="currency-select" id="currencySelect">
                 <button type="button" class="currency-select__trigger" id="currencyTrigger" aria-haspopup="listbox" aria-expanded="false">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg>
-                  <span class="currency-select__value" id="currencyValue">USD</span>
+                  <span class="currency-select__value" id="currencyValue">AED</span>
                   <svg class="currency-select__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
                 </button>
                 <div class="currency-select__panel" id="currencyPanel" role="listbox">
-                  <button type="button" class="currency-select__option is-selected" data-currency="USD" role="option" aria-selected="true">
+                  <button type="button" class="currency-select__option" data-currency="USD" role="option" aria-selected="false">
                     <span>USD — US Dollar</span>
                     <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
                   </button>
-                  <button type="button" class="currency-select__option" data-currency="AED" role="option" aria-selected="false">
+                  <button type="button" class="currency-select__option is-selected" data-currency="AED" role="option" aria-selected="true">
                     <span>AED — UAE Dirham</span>
                     <svg class="currency-select__option-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 5 5L20 7"/></svg>
                   </button>
@@ -1045,9 +1045,9 @@
               <span class="breakdown-card__head-label">During Lease-to-Own</span>
             </div>
             <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="sumFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="sumPurchaseOptionContribution">$2,800</span></div>
-              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
             </div>
           </div>
 
@@ -1291,7 +1291,7 @@
       homePrice: 750000,
       leaseTerm: 6,
       targetEquity: 35,
-      currency: 'USD',
+      currency: 'AED',
       countryCode: 'AE'
     };
 
@@ -1399,8 +1399,12 @@
       var targetEquityAmount = homePrice * (targetEquity / 100);
 
       /* Financing Charge is priced off what the investor actually funds up front — the
-         home price plus registration costs — not the home price alone. */
-      var totalRegistrationCosts = homePrice * REGISTRATION_FEE_PCT + FIXED_REGISTRATION_FEE;
+         home price plus registration costs — not the home price alone. Fixed Registration
+         Fee comes from the admin sheet in AED, while homePrice is stored internally in
+         USD-equivalent units, so it must be normalized through the AED rate before adding —
+         otherwise it gets rescaled by whatever currency the user has selected. */
+      var fixedRegistrationFeeInternal = FIXED_REGISTRATION_FEE / EXCHANGE_RATES.AED;
+      var totalRegistrationCosts = homePrice * REGISTRATION_FEE_PCT + fixedRegistrationFeeInternal;
       var grossInitialInvestorFunding = homePrice + totalRegistrationCosts;
       var financingCharge = (grossInitialInvestorFunding * CLIENT_FINANCING_RATE) / 12;
       var equityContribution = targetEquityAmount / (leaseTerm * 12);
@@ -1488,7 +1492,7 @@
       el('resIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
 
       /* --- summary --- */
-      el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
+      el('summaryText').textContent = 'You move into your future home today with ' + fmtMoney(0) + ' down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
       el('sumSecurityDeposit').textContent = fmtMoney(securityDeposit);
       el('sumNetCashExposure').textContent = fmtMoney(netCashExposure);
       el('sumFinancingCharge').textContent = fmtMoney(financingCharge);
