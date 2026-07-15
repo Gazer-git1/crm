@@ -837,8 +837,8 @@
             </div>
             <div class="chart-card__side">
               <div class="chart-card__side-top">
-                <div class="chart-card__side-delta" id="poSideDelta">+$262,500</div>
-                <div class="chart-card__side-pct" id="poSidePct">+35%</div>
+                <div class="chart-card__side-delta" id="poSideDelta">$262,500</div>
+                <div class="chart-card__side-pct" id="poSidePct">35%</div>
               </div>
               <div class="chart-card__side-caption">Built through monthly Purchase Option contributions</div>
             </div>
@@ -1454,8 +1454,8 @@
       /* --- purchase option chart --- */
       el('poChartStartValue').textContent = fmtMoney(0);
       el('poChartEndValue').textContent = fmtMoney(targetEquityAmount);
-      el('poSideDelta').textContent = '+' + fmtMoney(targetEquityAmount);
-      el('poSidePct').textContent = '+' + targetEquity + '%';
+      el('poSideDelta').textContent = fmtMoney(targetEquityAmount);
+      el('poSidePct').textContent = targetEquity + '%';
       drawChart('poChartSvg', buildLinearPoints(0, targetEquityAmount, leaseTerm));
 
       /* --- notice card: total benefit --- */
