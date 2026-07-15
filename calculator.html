@@ -752,9 +752,9 @@
             <div class="calc-form__label"><span class="calc-form__number">2</span> Lease term <span class="calc-form__label-note">(until mortgage)</span></div>
             <div class="calc-segment" id="leaseTermSegment">
               <button class="calc-segment__btn" type="button" data-lease-term="5">5 years</button>
-              <button class="calc-segment__btn is-active" type="button" data-lease-term="6">6 years</button>
+              <button class="calc-segment__btn" type="button" data-lease-term="6">6 years</button>
               <button class="calc-segment__btn" type="button" data-lease-term="7">7 years</button>
-              <button class="calc-segment__btn" type="button" data-lease-term="8">8 years</button>
+              <button class="calc-segment__btn is-active" type="button" data-lease-term="8">8 years</button>
             </div>
           </div>
 
@@ -764,7 +764,7 @@
             <div class="calc-form__label"><span class="calc-form__number">3</span> Target Purchase Option <span class="calc-form__label-note">(of property value)</span></div>
             <div class="calc-value" id="targetEquityValue">35%</div>
             <div class="calc-slider">
-              <input type="range" id="targetEquitySlider" min="20" max="40" step="1" value="35">
+              <input type="range" id="targetEquitySlider" min="20" max="40" step="1" value="20">
               <div class="calc-slider__range"><span id="equityMinLabel">20%</span><span id="equityMaxLabel">40%</span></div>
             </div>
           </div>
@@ -1288,9 +1288,9 @@
     var EXCHANGE_RATES = { USD: 1, AED: 3.6725, EUR: 0.92 };
 
     var state = {
-      homePrice: 750000,
-      leaseTerm: 6,
-      targetEquity: 35,
+      homePrice: 500000 / EXCHANGE_RATES.AED,
+      leaseTerm: 8,
+      targetEquity: 20,
       currency: 'AED',
       countryCode: 'AE'
     };
