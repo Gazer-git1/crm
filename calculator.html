@@ -357,7 +357,9 @@
   .notice-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 16px; }
   .notice-card__side-title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
   .notice-card__side-box { border: 1px solid var(--color-gold-dark); border-radius: 4px; padding: 14px 20px; width: 100%; }
+  .notice-card__side-box-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
   .notice-card__side-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-gold); }
+  .notice-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 28px; color: var(--color-gold); }
   .notice-card__side-caption { font-size: 13px; color: var(--color-text-muted); }
 
   /* ============ TRANSITION ROW ============ */
@@ -778,10 +780,9 @@
               <span class="stat-cell__caption">Includes lease payment + Purchase Option contribution</span>
             </div>
             <div class="stat-cell">
-              <span class="stat-cell__label">Estimated Property<br>Value After <span id="leaseTermLabel1">6</span> Years</span>
-              <span class="stat-cell__value" id="statFutureValue">$946,000</span>
-              <span class="stat-cell__delta" id="statFutureValueDelta">+$196,000</span>
-              <span class="stat-cell__caption">Estimated growth</span>
+              <span class="stat-cell__label">Security<br>Deposit</span>
+              <span class="stat-cell__value" id="statSecurityDeposit">$2,000</span>
+              <span class="stat-cell__caption">No broker fee, no registration fee</span>
             </div>
             <div class="stat-cell">
               <span class="stat-cell__label">Your Target<br>Purchase Option</span>
@@ -790,15 +791,16 @@
               <span class="stat-cell__caption">Of the property value</span>
             </div>
             <div class="stat-cell">
-              <span class="stat-cell__label">Mortgage Required<br>After <span id="leaseTermLabel2">6</span> Years</span>
-              <span class="stat-cell__value" id="statMortgageRequired">$683,500</span>
-              <span class="stat-cell__caption" id="statMortgageCaption">10 or 15-year mortgage available</span>
+              <span class="stat-cell__label">Estimated Property<br>Value After <span id="leaseTermLabel1">6</span> Years</span>
+              <span class="stat-cell__value" id="statFutureValue">$946,000</span>
+              <span class="stat-cell__delta" id="statFutureValueDelta">+$196,000</span>
+              <span class="stat-cell__caption">Estimated growth</span>
             </div>
           </div>
 
           <div class="chart-card">
             <div class="chart-card__main">
-              <span class="chart-card__title">Property Value Over Time</span>
+              <span class="chart-card__title">Your Property Value Over Time</span>
               <div class="chart-card__endpoints">
                 <div class="chart-card__point">
                   <div class="chart-card__point-label">At Start (Today)</div>
@@ -867,10 +869,11 @@
             </div>
             <div class="notice-card__side">
               <span class="notice-card__side-title">Total Benefit</span>
-              <div class="notice-card__side-box">
+              <div class="notice-card__side-box notice-card__side-box-row">
                 <span class="notice-card__side-value" id="totalBenefitValue">$346,000</span>
+                <span class="notice-card__side-pct" id="totalBenefitPct">69.2%</span>
               </div>
-              <span class="notice-card__side-caption" id="totalBenefitPct">(69.2% of original price)</span>
+              <span class="notice-card__side-caption">Of original price</span>
             </div>
           </div>
 
@@ -912,10 +915,11 @@
             </div>
             <div class="notice-card__side">
               <span class="notice-card__side-title">Mortgage Required</span>
-              <div class="notice-card__side-box">
+              <div class="notice-card__side-box notice-card__side-box-row">
                 <span class="notice-card__side-value" id="mortgageRequiredSideValue">$683,500</span>
+                <span class="notice-card__side-pct" id="mortgagePctOfPrice">60%</span>
               </div>
-              <span class="notice-card__side-caption" id="mortgagePctOfPrice">(60% of original price)</span>
+              <span class="notice-card__side-caption">Of original price</span>
             </div>
           </div>
         </div>
@@ -935,12 +939,13 @@
               <div class="breakdown-row"><span class="breakdown-row__label">Downpayment</span><span class="breakdown-row__value" id="bdDownpayment">AED 0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value" id="bdBrokerFee">AED 0</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Registration Fee</span><span class="breakdown-row__value" id="bdRegistrationFee">AED 0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Insurance Fee</span><span class="breakdown-row__value" id="bdInsuranceFee">AED 0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Deposit Payment (x3 months)</span><span class="breakdown-row__value" id="securityDepositValue">AED 31,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value" id="bdInsuranceFee">AED 0</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit (x3 months)</span><span class="breakdown-row__value" id="securityDepositValue">AED 31,000</span></div>
             </div>
             <div class="breakdown-card__foot">
+              <span class="breakdown-card__foot-label">Security Deposit</span>
               <span class="breakdown-card__foot-value" id="totalBeforeMoveIn">AED 31,000</span>
-              <span class="breakdown-card__foot-caption">before move-in</span>
+              <span class="breakdown-card__foot-caption">Before Move-In</span>
             </div>
           </div>
 
@@ -952,16 +957,18 @@
             </div>
             <div class="breakdown-card__body">
               <div class="breakdown-row"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="bdFinancingCharge">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Lease Charge</span><span class="breakdown-row__value" id="bdFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
               <div class="breakdown-row breakdown-row--divider"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Maintenance*</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Personal Manager</span><span class="breakdown-row__value">Included</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Annual Payment Increase</span><span class="breakdown-row__value">NO</span></div>
             </div>
             <div class="breakdown-card__foot">
               <span class="breakdown-card__foot-label">Monthly Payment</span>
               <span class="breakdown-card__foot-value" id="bdMonthlyPaymentFoot">$8,450</span>
+              <span class="breakdown-card__foot-caption">All Included</span>
             </div>
           </div>
 
@@ -978,12 +985,15 @@
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Property<br>Value Increase</span>
-                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000</span>
+                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(28%)</span></span>
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Mortgage<br>Required</span>
-                <span class="breakdown-row__value" id="mtMortgageRequired">$300,000<br><span class="breakdown-row__label-sub" style="text-align:right;">10 or 15-year mortgage available</span></span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">$300,000<br><span class="breakdown-row__label-sub" style="text-align:right;">based on the original property price</span></span>
               </div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Mortgage Rate (%)</span><span class="breakdown-row__value" id="mtMortgageRate">5%</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (10 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment10">$3,182</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (15 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment15">$2,372</span></div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
                 <span>Mortgage Required is based on the original property price, not the future appreciated value.</span>
@@ -998,8 +1008,19 @@
               <span class="breakdown-card__head-label" id="resultsHeadLabel">Results After 6 Years</span>
             </div>
             <div class="breakdown-card__body">
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Purchase Option<br>You've Built</span>
+                <span class="breakdown-row__value" id="resEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" style="text-align:right;">(35%)</span></span>
+              </div>
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Property Value<br>Increase</span>
+                <span class="breakdown-row__value" id="resIncreaseValue">+$196,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(28%)</span></span>
+              </div>
               <div class="breakdown-row"><span class="breakdown-row__label">Final Property Value</span><span class="breakdown-row__value" id="resFinalValue">$946,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Increase in Value</span><span class="breakdown-row__value" id="resIncreaseValue">+$196,000</span></div>
+              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight">
+                <span class="breakdown-row__label">Your Total<br>Benefit</span>
+                <span class="breakdown-row__value" id="resTotalBenefit">$346,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(69%)</span></span>
+              </div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
                 <span>Your Purchase Option + property growth reduce the amount you need to get a mortgage.</span>
@@ -1041,7 +1062,7 @@
             </div>
             <div class="breakdown-card__body">
               <div class="breakdown-row"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="sumFinancingCharge">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Lease Charge</span><span class="breakdown-row__value" id="sumFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="sumPurchaseOptionContribution">$2,800</span></div>
             </div>
           </div>
@@ -1437,12 +1458,11 @@
 
       /* --- stat grid --- */
       el('statMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
+      el('statSecurityDeposit').textContent = fmtMoney(securityDeposit);
       el('statFutureValue').textContent = fmtMoney(futurePropertyValue);
       el('statFutureValueDelta').textContent = '+' + fmtMoney(propertyValueIncrease);
       el('statTargetEquityPct').textContent = targetEquity + '%';
       el('statTargetEquityAmount').textContent = fmtMoney(targetEquityAmount);
-      el('statMortgageRequired').textContent = fmtMoney(mortgageRequired);
-      el('statMortgageCaption').textContent = mortgageTermsNote;
 
       /* --- chart --- */
       el('chartStartValue').textContent = fmtMoney(homePrice);
@@ -1462,7 +1482,7 @@
       el('builtEquityMin').textContent = fmtMoney(targetEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
-      el('totalBenefitPct').textContent = '(' + fmtPct((totalBenefit / homePrice) * 100, 1) + ' of original price)';
+      el('totalBenefitPct').textContent = fmtPct((totalBenefit / homePrice) * 100, 1);
 
       /* --- transition row --- */
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
@@ -1473,7 +1493,7 @@
       el('mortgage10Value').textContent = fmtMoney(mortgagePayment10);
       el('mortgage15Value').textContent = fmtMoney(mortgagePayment15);
       el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
-      el('mortgagePctOfPrice').textContent = '(' + fmtPct((mortgageRequired / homePrice) * 100, 1) + ' of original price)';
+      el('mortgagePctOfPrice').textContent = fmtPct((mortgageRequired / homePrice) * 100, 1);
       el('mortgageRateNote').textContent = 'Estimated at a ' + fmtPct(MORTGAGE_RATE * 100, 0) + ' mortgage rate over the full term.';
 
       /* --- breakdown: before move-in --- */
@@ -1493,12 +1513,17 @@
 
       /* --- breakdown: at mortgage transition --- */
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
-      el('mtPropertyIncrease').textContent = '+' + fmtMoney(propertyValueIncrease);
-      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">' + mortgageTermsNote + '</span>';
+      el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((propertyValueIncrease / homePrice) * 100) + '%)</span>';
+      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">based on the original property price</span>';
+      el('mtMortgageRate').textContent = fmtPct(MORTGAGE_RATE * 100, 0);
+      el('mtMortgagePayment10').textContent = fmtMoney(mortgagePayment10);
+      el('mtMortgagePayment15').textContent = fmtMoney(mortgagePayment15);
 
       /* --- breakdown: results after N years --- */
+      el('resEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
+      el('resIncreaseValue').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((propertyValueIncrease / homePrice) * 100) + '%)</span>';
       el('resFinalValue').textContent = fmtMoney(futurePropertyValue);
-      el('resIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
+      el('resTotalBenefit').innerHTML = fmtMoney(totalBenefit) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((totalBenefit / homePrice) * 100) + '%)</span>';
 
       /* --- summary --- */
       el('summaryText').textContent = 'You move into your future home today with ' + fmtMoney(0) + ' down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
