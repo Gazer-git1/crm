@@ -1229,9 +1229,9 @@
       countryCode: 'AE'
     };
 
-    /* Per-country constants (rates + fees). Defaults here mirror the "КОНСТАНТЫ" block
-       in the shared Google Sheet and are overridden by the "--- COUNTRIES" table fetched
-       below, so the country list and its numbers can be edited entirely from the sheet. */
+    /* Fallback constants (rates + fees) if the sheet is unreachable. Calculator v2 has a
+       single set of admin numbers, not a per-country table, so every country in the
+       dropdown shares the same values (see the fetch below) until that changes. */
     var COUNTRY_DEFAULTS = { appreciationRate: 0.05, clientFinancingRate: 0.16, mortgageTerm1: 10, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3 };
     var COUNTRIES_FALLBACK = [
       ['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['BH', 'Bahrain'],
@@ -1568,15 +1568,19 @@
 
     compute();
 
-    /* Pull Appreciation Rate / Client Financing Rate / Mortgage Term from the shared Google
-       Sheet ("КОНСТАНТЫ И НАСТРОЙКИ СИСТЕМЫ" tab) so they can be tuned there without a code
-       change. Falls back to the defaults above if the sheet is unreachable or unshared. */
+    /* Pull the admin constants from the "Calculator v2" tab, which mirrors the private
+       Financial Model sheet (IMPORTRANGE) and is the single source of truth for this
+       calculator's numbers. It only has one (currently UAE-based) set of values — no
+       per-country table yet — so that one set is applied to every country in the dropdown
+       until a real per-country table exists there too. Falls back to the defaults above if
+       the sheet is unreachable or unshared. */
     (function () {
-      var SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1YBLdvZnFzD5F4XtJgB0GmLg5YGRVm6ttrIzvri13vkU/export?format=csv&gid=1400308901';
+      var SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1YBLdvZnFzD5F4XtJgB0GmLg5YGRVm6ttrIzvri13vkU/export?format=csv&gid=498545243';
       var LABEL_MAP = {
-        'Appreciation Rate': 'APPRECIATION_RATE',
-        'Rent Yield': 'CLIENT_FINANCING_RATE',
-        'Mortgage Term (Years)': 'MORTGAGE_TERM_1',
+        'Annual Property Growth (%)': 'APPRECIATION_RATE',
+        'Client Financing Rate (%)': 'CLIENT_FINANCING_RATE',
+        'Mortgage Term 1 (Years)': 'MORTGAGE_TERM_1',
+        'Mortgage Term 2 (Years)': 'MORTGAGE_TERM_2',
         'Registration Fee (%)': 'REGISTRATION_FEE_PCT',
         'Fixed Registration Fee': 'FIXED_REGISTRATION_FEE',
         'Security Deposit (Months)': 'SECURITY_DEPOSIT_MONTHS'
@@ -1622,12 +1626,8 @@
         return isPercent ? n / 100 : n;
       }
 
-      /* The sheet also has an illustrative "DETAILED BREAKDOWN" example table further down
-         that reuses some of the same labels (e.g. "Broker Fee") for one-off dollar amounts
-         instead of the rate/fee constants — stop reading once we hit it so those don't
-         clobber the real constants above. */
-      var STOP_MARKERS = ['--- DETAILED BREAKDOWN', '--- SUMMARY'];
-
+      /* Calculator v2 lists each parameter as: Label, VISIBLE marker (col B, ignored here),
+         Value (col C). */
       fetch(SHEET_CSV_URL)
         .then(function (res) { return res.ok ? res.text() : Promise.reject(res.status); })
         .then(function (csv) {
@@ -1636,55 +1636,38 @@
           for (var i = 0; i < rows.length; i++) {
             var cells = rows[i];
             var label = (cells[0] || '').trim();
-            if (STOP_MARKERS.some(function (m) { return label.indexOf(m) === 0; })) break;
             var key = LABEL_MAP[label];
             if (!key) continue;
-            var value = parseNumber(cells[1]);
+            var value = parseNumber(cells[2]);
             if (isNaN(value)) continue;
             if (key === 'APPRECIATION_RATE') APPRECIATION_RATE = value;
             if (key === 'CLIENT_FINANCING_RATE') CLIENT_FINANCING_RATE = value;
             if (key === 'MORTGAGE_TERM_1') MORTGAGE_TERM_1 = value;
+            if (key === 'MORTGAGE_TERM_2') MORTGAGE_TERM_2 = value;
             if (key === 'REGISTRATION_FEE_PCT') REGISTRATION_FEE_PCT = value;
             if (key === 'FIXED_REGISTRATION_FEE') FIXED_REGISTRATION_FEE = value;
             if (key === 'SECURITY_DEPOSIT_MONTHS') SECURITY_DEPOSIT_MONTHS = value;
             changed = true;
           }
 
-          /* Also pull the full per-country table (the "--- COUNTRIES" block further down
-             the same sheet) so the Country dropdown and its rates/fees are driven entirely
-             by that table — add or remove a row there and the site's list follows. */
-          var countryHeaderRow = -1;
-          for (var ci = 0; ci < rows.length; ci++) {
-            if ((rows[ci][0] || '').trim().indexOf('--- COUNTRIES') === 0) { countryHeaderRow = ci + 1; break; }
+          /* No per-country table in this sheet yet — apply the one fetched set of numbers
+             to every country in the dropdown so switching countries doesn't fall back to
+             stale hardcoded defaults. */
+          if (changed) {
+            currentCountries = currentCountries.map(function (rec) {
+              return {
+                code: rec.code,
+                name: rec.name,
+                registrationFeePct: REGISTRATION_FEE_PCT,
+                fixedRegistrationFee: FIXED_REGISTRATION_FEE,
+                clientFinancingRate: CLIENT_FINANCING_RATE,
+                appreciationRate: APPRECIATION_RATE,
+                mortgageTerm1: MORTGAGE_TERM_1,
+                securityDepositMonths: SECURITY_DEPOSIT_MONTHS
+              };
+            });
+            compute();
           }
-          if (countryHeaderRow !== -1 && rows[countryHeaderRow]) {
-            var col = {};
-            rows[countryHeaderRow].forEach(function (h, idx) { col[(h || '').trim()] = idx; });
-            var parsedCountries = [];
-            for (var ri = countryHeaderRow + 1; ri < rows.length; ri++) {
-              var code = (rows[ri][col['Code']] || '').trim();
-              if (!code) break;
-              parsedCountries.push({
-                code: code,
-                name: (rows[ri][col['Country']] || '').trim(),
-                registrationFeePct: parseNumber(rows[ri][col['Registration Fee (%)']]),
-                fixedRegistrationFee: parseNumber(rows[ri][col['Fixed Registration Fee']]),
-                clientFinancingRate: parseNumber(rows[ri][col['Rent Yield']]),
-                appreciationRate: parseNumber(rows[ri][col['Appreciation Rate']]),
-                mortgageTerm1: parseNumber(rows[ri][col['Mortgage Term (Years)']]),
-                securityDepositMonths: parseNumber(rows[ri][col['Security Deposit (Months)']])
-              });
-            }
-            if (parsedCountries.length) {
-              currentCountries = parsedCountries;
-              var selected = parsedCountries.filter(function (c) { return c.code === state.countryCode; })[0] || parsedCountries[0];
-              renderCountryOptions(currentCountries, selected.code);
-              applyCountry(selected);
-              changed = true;
-            }
-          }
-
-          if (changed) compute();
         })
         .catch(function () { /* offline or sheet unavailable - keep the built-in defaults */ });
     })();
