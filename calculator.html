@@ -341,7 +341,6 @@
   .chart-card__svg { width: 100%; height: auto; display: block; }
   .chart-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
   .chart-card__side-delta { font-family: var(--font-sans); font-weight: 700; font-size: 26px; color: var(--color-gold); }
-  .chart-card__side-pct { font-size: 24px; font-weight: 600; color: var(--color-gold); }
   .chart-card__side-caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
 
   /* ============ MORTGAGE NOTICE CARD ============ */
@@ -363,19 +362,10 @@
   .notice-card__side-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-gold); }
   .notice-card__side-caption { font-size: 13px; color: var(--color-text-muted); }
 
-  /* ============ MORTGAGE PAYMENT ROW ============ */
-  .mortgage-section { display: flex; flex-direction: column; gap: 16px; }
-  .mortgage-section__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
-  .mortgage-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .mortgage-box { background: var(--color-bg-footer); border: 1px solid var(--color-border); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
-  .mortgage-box__years { font-size: 13px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .mortgage-box__amount { font-family: var(--font-sans); font-weight: 700; font-size: 22px; color: var(--color-white); }
-  .mortgage-box__amount span { font-size: 14px; color: var(--color-text-muted); font-family: var(--font-sans); }
-
   /* ============ TRANSITION ROW ============ */
   .transition-section { display: flex; flex-direction: column; gap: 16px; }
   .transition-section__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
-  .transition-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .transition-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .transition-box { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
   .transition-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
   .transition-box__value { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--color-gold); }
@@ -577,7 +567,7 @@
     .chart-card__side, .notice-card__side { padding: 24px 20px; }
     .notice-card__breakdown { grid-template-columns: 1fr; }
 
-    .mortgage-row, .transition-row { grid-template-columns: 1fr; }
+    .transition-row { grid-template-columns: 1fr; }
 
     .breakdown { padding: 48px 20px; }
     .breakdown__title { font-size: 30px; margin-bottom: 28px; }
@@ -791,7 +781,7 @@
             <div class="stat-cell">
               <span class="stat-cell__label">Estimated Property<br>Value After <span id="leaseTermLabel1">6</span> Years</span>
               <span class="stat-cell__value" id="statFutureValue">$946,000</span>
-              <span class="stat-cell__delta" id="statFutureValueDelta">+$196,000 (25%)</span>
+              <span class="stat-cell__delta" id="statFutureValueDelta">+$196,000</span>
               <span class="stat-cell__caption">Estimated growth</span>
             </div>
             <div class="stat-cell">
@@ -803,7 +793,7 @@
             <div class="stat-cell">
               <span class="stat-cell__label">Mortgage Required<br>After <span id="leaseTermLabel2">6</span> Years</span>
               <span class="stat-cell__value" id="statMortgageRequired">$683,500</span>
-              <span class="stat-cell__caption">Partner Bank scenario</span>
+              <span class="stat-cell__caption" id="statMortgageCaption">10 or 15-year mortgage available</span>
             </div>
           </div>
 
@@ -824,7 +814,6 @@
             </div>
             <div class="chart-card__side">
               <div class="chart-card__side-delta" id="sideDelta">+$196,000</div>
-              <div class="chart-card__side-pct" id="sidePct">+26%</div>
               <div class="chart-card__side-caption">Estimated increase in property value</div>
             </div>
           </div>
@@ -837,7 +826,7 @@
                 </div>
                 <div>
                   <p class="notice-card__title">You still need a mortgage.</p>
-                  <p class="notice-card__desc" id="noticeDesc">Even with 20% Purchase Option + 26% property appreciation…</p>
+                  <p class="notice-card__desc" id="noticeDesc">Even with 20% Purchase Option built up, a mortgage is still needed to complete the purchase…</p>
                 </div>
               </div>
               <div class="notice-card__breakdown">
@@ -857,21 +846,6 @@
               <div class="notice-card__side-box">
                 <span class="notice-card__side-value" id="totalBenefitValue">$346,000</span>
               </div>
-              <span class="notice-card__side-caption" id="totalBenefitCaption">(46% of original price)</span>
-            </div>
-          </div>
-
-          <div class="mortgage-section">
-            <span class="mortgage-section__title">Estimated Mortgage Payment After <span id="leaseTermLabel4">6</span> Years</span>
-            <div class="mortgage-row">
-              <div class="mortgage-box">
-                <span class="mortgage-box__years" id="mortgagePartnerBankLabel">Partner Bank (10 Yrs)</span>
-                <span class="mortgage-box__amount" id="mortgagePartnerBank">$8,680<span>/mo</span></span>
-              </div>
-              <div class="mortgage-box">
-                <span class="mortgage-box__years" id="mortgageMarketValueLabel">Market Value (10 Yrs)</span>
-                <span class="mortgage-box__amount" id="mortgageMarketValue">$6,430<span>/mo</span></span>
-              </div>
             </div>
           </div>
 
@@ -881,17 +855,11 @@
               <div class="transition-box">
                 <span class="transition-box__label">Property Value Increase</span>
                 <span class="transition-box__value" id="transIncreaseValue">+$196,000</span>
-                <span class="transition-box__caption" id="transIncreaseCaption">(+26%)</span>
               </div>
               <div class="transition-box">
                 <span class="transition-box__label">Mortgage Needed</span>
                 <span class="transition-box__value" id="transMortgageValue">$683,500</span>
-                <span class="transition-box__caption" id="transMortgageCaption">(91% of original price)</span>
-              </div>
-              <div class="transition-box">
-                <span class="transition-box__label">vs. Final Property Value</span>
-                <span class="transition-box__value" id="transLtvValue">72%</span>
-                <span class="transition-box__caption">Loan-to-Value (LTV)</span>
+                <span class="transition-box__caption" id="transMortgageCaption">10 or 15-year mortgage available</span>
               </div>
             </div>
           </div>
@@ -909,17 +877,8 @@
               <span class="breakdown-card__head-label">Before Move-In</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Application Fee</span><span class="breakdown-row__value" id="applicationFeeValue">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Down Payment</span><span class="breakdown-row__value">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Broker Fee</span><span class="breakdown-row__value" id="brokerFeeValue">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Legal Registration (DLD)</span><span class="breakdown-row__value" id="dldFeeValue">$1,500</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="securityDepositValue">$2,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Home Inspection</span><span class="breakdown-row__value" id="homeInspectionValue">$0</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Furniture &amp; Appliances</span><span class="breakdown-row__value">Optional</span></div>
-            </div>
-            <div class="breakdown-card__foot">
-              <span class="breakdown-card__foot-label">Total Before Move-In</span>
-              <span class="breakdown-card__foot-value" id="totalBeforeMoveIn">$3,500</span>
+              <div class="breakdown-row"><span class="breakdown-row__label">Net Initial Cash Exposure</span><span class="breakdown-row__value" id="netCashExposureValue">$470,000</span></div>
             </div>
           </div>
 
@@ -930,7 +889,7 @@
               <span class="breakdown-card__head-label">During Lease (Monthly)</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Lease Payment</span><span class="breakdown-row__value" id="bdLeasePayment">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="bdFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
               <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
@@ -954,32 +913,19 @@
             <div class="breakdown-card__body">
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Purchase Option<br>You've Built</span>
-                <span class="breakdown-row__value" id="mtEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" id="mtEquityBuiltPct" style="text-align:right;">(26.88%)</span></span>
+                <span class="breakdown-row__value" id="mtEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" style="text-align:right;">(26.88%)</span></span>
               </div>
               <div class="breakdown-row">
                 <span class="breakdown-row__label">Property<br>Value Increase</span>
-                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000<br><span class="breakdown-row__label-sub" id="mtPropertyIncreasePct" style="text-align:right;">(+26%)</span></span>
+                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000</span>
               </div>
               <div class="breakdown-row">
-                <span class="breakdown-row__label">Mortgage Required<br>(Partner Bank)</span>
-                <span class="breakdown-row__value" id="mtMortgagePartnerBankRequired">$487,500<br><span class="breakdown-row__label-sub" id="mtMortgagePartnerBankRequiredPct" style="text-align:right;">(65% of original price)</span></span>
-              </div>
-              <div class="breakdown-row">
-                <span class="breakdown-row__label">Mortgage Required<br>(Market Value)</span>
-                <span class="breakdown-row__value" id="mtMortgageRequired">$683,500<br><span class="breakdown-row__label-sub" id="mtMortgageRequiredPct" style="text-align:right;">(72% of original price)</span></span>
-              </div>
-              <div class="breakdown-row">
-                <span class="breakdown-row__label">vs. Final<br>Property Value</span>
-                <span class="breakdown-row__value" id="mtLtv">72%<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span></span>
-              </div>
-              <div>
-                <p class="breakdown-card__mini-title">Estimated Mortgage Payment</p>
-                <div class="breakdown-card__mini-box"><span id="mtMortgagePartnerBankLabel">Partner Bank (10 Yrs)</span><span id="mtMortgagePartnerBank">$8,680 /mo</span></div>
-                <div class="breakdown-card__mini-box"><span id="mtMortgageMarketValueLabel">Market Value (10 Yrs)</span><span id="mtMortgageMarketValue">$6,430 /mo</span></div>
+                <span class="breakdown-row__label">Mortgage<br>Required</span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">$300,000<br><span class="breakdown-row__label-sub" style="text-align:right;">10 or 15-year mortgage available</span></span>
               </div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
-                <span>Partner Bank is based on the original property price; Market Value is based on the future appreciated value.</span>
+                <span>Mortgage Required is based on the original property price, not the future appreciated value.</span>
               </div>
             </div>
           </div>
@@ -993,7 +939,6 @@
             <div class="breakdown-card__body">
               <div class="breakdown-row"><span class="breakdown-row__label">Final Property Value</span><span class="breakdown-row__value" id="resFinalValue">$946,000</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Increase in Value</span><span class="breakdown-row__value" id="resIncreaseValue">+$196,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Growth Percentage</span><span class="breakdown-row__value" id="resGrowthPct">+26%</span></div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
                 <span>Your Purchase Option + property growth reduce the amount you need to get a mortgage.</span>
@@ -1022,8 +967,8 @@
               <span class="breakdown-card__head-label">Today</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Registration Fee</span><span class="breakdown-row__value" id="sumRegistrationFee">$1,500</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="sumSecurityDeposit">$2,000</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Net Cash Exposure</span><span class="breakdown-row__value" id="sumNetCashExposure">$470,000</span></div>
             </div>
           </div>
 
@@ -1034,7 +979,7 @@
               <span class="breakdown-card__head-label">During Lease-to-Own</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Lease Payment</span><span class="breakdown-row__value" id="sumLeasePayment">$5,650</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="sumFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="sumPurchaseOptionContribution">$2,800</span></div>
               <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
             </div>
@@ -1059,12 +1004,7 @@
               <span class="breakdown-card__head-label">Mortgage</span>
             </div>
             <div class="breakdown-card__body">
-              <p class="breakdown-card__mini-title" style="margin-top:0;">Partner Bank Scenario</p>
-              <div class="breakdown-card__mini-box"><span>Mortgage Required</span><span id="sumPartnerBankRequired">$487,500</span></div>
-              <div class="breakdown-card__mini-box"><span>Est. Monthly Payment</span><span id="sumPartnerBankPayment">$5,171 /mo</span></div>
-              <p class="breakdown-card__mini-title">Market Value Scenario</p>
-              <div class="breakdown-card__mini-box"><span>Mortgage Required</span><span id="sumMarketValueRequired">$742,572</span></div>
-              <div class="breakdown-card__mini-box"><span>Est. Monthly Payment</span><span id="sumMarketValuePayment">$7,876 /mo</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Mortgage Required</span><span class="breakdown-row__value" id="sumMortgageRequired">$487,500</span></div>
             </div>
           </div>
         </div>
@@ -1272,15 +1212,12 @@
   /* ============ CALCULATOR LOGIC ============ */
   (function () {
     var APPRECIATION_RATE = 0.05;
-    var RENT_YIELD = 0.16;
-    var MORTGAGE_RATE = 0.05;
-    var MORTGAGE_TERM_YEARS = 10;
+    var CLIENT_FINANCING_RATE = 0.16;
+    var MORTGAGE_TERM_1 = 10;
+    var MORTGAGE_TERM_2 = 15;
     var REGISTRATION_FEE_PCT = 0.04;
     var FIXED_REGISTRATION_FEE = 5000;
     var SECURITY_DEPOSIT_MONTHS = 3;
-    var BROKER_FEE_PCT = 0.04;
-    var HOME_INSPECTION_FEE = 5000;
-    var APPLICATION_FEE = 0;
 
     var CURRENCY_SYMBOLS = { USD: '$', AED: 'AED ', EUR: '€' };
     var EXCHANGE_RATES = { USD: 1, AED: 3.6725, EUR: 0.92 };
@@ -1296,7 +1233,7 @@
     /* Per-country constants (rates + fees). Defaults here mirror the "КОНСТАНТЫ" block
        in the shared Google Sheet and are overridden by the "--- COUNTRIES" table fetched
        below, so the country list and its numbers can be edited entirely from the sheet. */
-    var COUNTRY_DEFAULTS = { appreciationRate: 0.05, rentYield: 0.16, mortgageRate: 0.05, mortgageTermYears: 10, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3, applicationFee: 0 };
+    var COUNTRY_DEFAULTS = { appreciationRate: 0.05, clientFinancingRate: 0.16, mortgageTerm1: 10, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3 };
     var COUNTRIES_FALLBACK = [
       ['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['BH', 'Bahrain'],
       ['OM', 'Oman'], ['GB', 'United Kingdom'], ['IE', 'Ireland'], ['FR', 'France'], ['DE', 'Germany'],
@@ -1311,13 +1248,11 @@
 
     function applyCountry(rec) {
       APPRECIATION_RATE = rec.appreciationRate;
-      RENT_YIELD = rec.rentYield;
-      MORTGAGE_RATE = rec.mortgageRate;
-      MORTGAGE_TERM_YEARS = rec.mortgageTermYears;
+      CLIENT_FINANCING_RATE = rec.clientFinancingRate;
+      MORTGAGE_TERM_1 = rec.mortgageTerm1;
       REGISTRATION_FEE_PCT = rec.registrationFeePct;
       FIXED_REGISTRATION_FEE = rec.fixedRegistrationFee;
       SECURITY_DEPOSIT_MONTHS = rec.securityDepositMonths;
-      APPLICATION_FEE = rec.applicationFee;
       state.countryCode = rec.code;
       el('countryValue').textContent = rec.name;
     }
@@ -1386,13 +1321,6 @@
       updateSliderFill(slider);
     }
 
-    function mortgagePayment(principal, years) {
-      var n = years * 12;
-      var r = MORTGAGE_RATE / 12;
-      var factor = Math.pow(1 + r, n);
-      return principal * (r * factor) / (factor - 1);
-    }
-
     function el(id) { return document.getElementById(id); }
 
     function compute() {
@@ -1402,37 +1330,27 @@
 
       var futurePropertyValue = homePrice * Math.pow(1 + APPRECIATION_RATE, leaseTerm);
       var propertyValueIncrease = futurePropertyValue - homePrice;
-      var growthPct = (propertyValueIncrease / homePrice) * 100;
 
       var targetEquityAmount = homePrice * (targetEquity / 100);
 
-      /* Two mortgage scenarios at the same admin-configured term: Partner Bank prices
-         the mortgage off today's home price, Market Value off the appreciated future value.
-         The top-level "Mortgage Required" headline (and LTV / "What Happens at Transition")
-         now follows the sheet's Partner Bank formula too — home price, not future value. */
-      var mortgagePartnerBankRequired = homePrice - targetEquityAmount;
-      var mortgageRequiredMarketValue = futurePropertyValue - targetEquityAmount;
-      var mortgagePartnerBank = mortgagePayment(mortgagePartnerBankRequired, MORTGAGE_TERM_YEARS);
-      var mortgageMarketValue = mortgagePayment(mortgageRequiredMarketValue, MORTGAGE_TERM_YEARS);
-
-      var ltv = (mortgagePartnerBankRequired / futurePropertyValue) * 100;
-
-      var leasePayment = (homePrice * RENT_YIELD) / 12;
+      /* Financing Charge is priced off what the investor actually funds up front — the
+         home price plus registration costs — not the home price alone. */
+      var totalRegistrationCosts = homePrice * REGISTRATION_FEE_PCT + FIXED_REGISTRATION_FEE;
+      var grossInitialInvestorFunding = homePrice + totalRegistrationCosts;
+      var financingCharge = (grossInitialInvestorFunding * CLIENT_FINANCING_RATE) / 12;
       var equityContribution = targetEquityAmount / (leaseTerm * 12);
-      var totalMonthlyPayment = leasePayment + equityContribution;
+      var totalMonthlyPayment = financingCharge + equityContribution;
+
+      var securityDeposit = totalMonthlyPayment * SECURITY_DEPOSIT_MONTHS;
+      var netCashExposure = homePrice - securityDeposit;
+
+      /* Mortgage Required is priced off today's home price, not the appreciated future value. */
+      var mortgageRequired = homePrice - targetEquityAmount;
 
       var totalBenefit = targetEquityAmount + propertyValueIncrease;
-      var totalBenefitPct = (totalBenefit / homePrice) * 100;
-
-      var mortgagePctOfOriginal = (mortgageRequiredMarketValue / homePrice) * 100;
-      var mortgagePartnerBankPctOfOriginal = (mortgagePartnerBankRequired / homePrice) * 100;
-      var brokerFee = 0;
-      var homeInspectionFee = 0;
-      var dldFee = homePrice * REGISTRATION_FEE_PCT + FIXED_REGISTRATION_FEE;
-      var securityDeposit = totalMonthlyPayment * SECURITY_DEPOSIT_MONTHS;
-      var beforeMoveInTotal = dldFee + securityDeposit + brokerFee + homeInspectionFee + APPLICATION_FEE;
 
       var leaseMonths = leaseTerm * 12;
+      var mortgageTermsNote = MORTGAGE_TERM_1 + ' or ' + MORTGAGE_TERM_2 + '-year mortgage available';
 
       /* --- text labels --- */
       document.querySelectorAll('[id^="leaseTermLabel"]').forEach(function (n) { n.textContent = leaseTerm; });
@@ -1445,49 +1363,35 @@
       /* --- stat grid --- */
       el('statMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
       el('statFutureValue').textContent = fmtMoney(futurePropertyValue);
-      el('statFutureValueDelta').textContent = '+' + fmtMoney(propertyValueIncrease) + ' (' + fmtPct(growthPct) + ')';
+      el('statFutureValueDelta').textContent = '+' + fmtMoney(propertyValueIncrease);
       el('statTargetEquityPct').textContent = targetEquity + '%';
       el('statTargetEquityAmount').textContent = fmtMoney(targetEquityAmount);
-      el('statMortgageRequired').textContent = fmtMoney(mortgagePartnerBankRequired);
+      el('statMortgageRequired').textContent = fmtMoney(mortgageRequired);
+      el('statMortgageCaption').textContent = mortgageTermsNote;
 
       /* --- chart --- */
       el('chartStartValue').textContent = fmtMoney(homePrice);
       el('chartEndValue').textContent = fmtMoney(futurePropertyValue);
       el('sideDelta').textContent = '+' + fmtMoney(propertyValueIncrease);
-      el('sidePct').textContent = '+' + fmtPct(growthPct);
       drawChart(homePrice, futurePropertyValue, leaseTerm);
 
       /* --- notice card --- */
-      el('noticeDesc').textContent = 'Even with ' + targetEquity + '% Purchase Option + ' + fmtPct(growthPct) + ' property appreciation…';
+      el('noticeDesc').textContent = 'Even with ' + targetEquity + '% Purchase Option built up, a mortgage is still needed to complete the purchase…';
       el('builtEquityMin').textContent = fmtMoney(targetEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
-      el('totalBenefitCaption').textContent = '(' + fmtPct(totalBenefitPct) + ' of original price)';
-
-      /* --- mortgage payment boxes --- */
-      var mortgageTermLabel = MORTGAGE_TERM_YEARS + ' Yrs';
-      el('mortgagePartnerBankLabel').textContent = 'Partner Bank (' + mortgageTermLabel + ')';
-      el('mortgageMarketValueLabel').textContent = 'Market Value (' + mortgageTermLabel + ')';
-      el('mortgagePartnerBank').innerHTML = fmtMoney(mortgagePartnerBank) + '<span>/mo</span>';
-      el('mortgageMarketValue').innerHTML = fmtMoney(mortgageMarketValue) + '<span>/mo</span>';
 
       /* --- transition row --- */
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
-      el('transIncreaseCaption').textContent = '(+' + fmtPct(growthPct) + ')';
-      el('transMortgageValue').textContent = fmtMoney(mortgagePartnerBankRequired);
-      el('transMortgageCaption').textContent = '(' + fmtPct(mortgagePartnerBankPctOfOriginal) + ' of original price)';
-      el('transLtvValue').textContent = fmtPct(ltv);
+      el('transMortgageValue').textContent = fmtMoney(mortgageRequired);
+      el('transMortgageCaption').textContent = mortgageTermsNote;
 
       /* --- breakdown: before move-in --- */
-      el('dldFeeValue').textContent = fmtMoney(dldFee);
       el('securityDepositValue').textContent = fmtMoney(securityDeposit);
-      el('brokerFeeValue').textContent = fmtMoney(brokerFee);
-      el('homeInspectionValue').textContent = fmtMoney(homeInspectionFee);
-      el('applicationFeeValue').textContent = fmtMoney(APPLICATION_FEE);
-      el('totalBeforeMoveIn').textContent = fmtMoney(beforeMoveInTotal);
+      el('netCashExposureValue').textContent = fmtMoney(netCashExposure);
 
       /* --- breakdown: during lease --- */
-      el('bdLeasePayment').textContent = fmtMoney(leasePayment);
+      el('bdFinancingCharge').textContent = fmtMoney(financingCharge);
       el('bdEquityContribution').textContent = fmtMoney(equityContribution);
       el('bdTotalMonthly').textContent = fmtMoney(totalMonthlyPayment);
       el('bdLeaseDuration').textContent = leaseMonths + ' months';
@@ -1496,33 +1400,23 @@
 
       /* --- breakdown: at mortgage transition --- */
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
-      el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(+' + fmtPct(growthPct) + ')</span>';
-      el('mtMortgagePartnerBankRequired').innerHTML = fmtMoney(mortgagePartnerBankRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePartnerBankPctOfOriginal) + ' of original price)</span>';
-      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequiredMarketValue) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(mortgagePctOfOriginal) + ' of original price)</span>';
-      el('mtLtv').innerHTML = fmtPct(ltv) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">Loan-to-Value (LTV)</span>';
-      el('mtMortgagePartnerBankLabel').textContent = 'Partner Bank (' + mortgageTermLabel + ')';
-      el('mtMortgageMarketValueLabel').textContent = 'Market Value (' + mortgageTermLabel + ')';
-      el('mtMortgagePartnerBank').textContent = fmtMoney(mortgagePartnerBank) + ' /mo';
-      el('mtMortgageMarketValue').textContent = fmtMoney(mortgageMarketValue) + ' /mo';
+      el('mtPropertyIncrease').textContent = '+' + fmtMoney(propertyValueIncrease);
+      el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">' + mortgageTermsNote + '</span>';
 
       /* --- breakdown: results after N years --- */
       el('resFinalValue').textContent = fmtMoney(futurePropertyValue);
       el('resIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
-      el('resGrowthPct').textContent = '+' + fmtPct(growthPct);
 
       /* --- summary --- */
       el('summaryText').textContent = 'You move into your future home today with $0 down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
-      el('sumRegistrationFee').textContent = fmtMoney(dldFee);
       el('sumSecurityDeposit').textContent = fmtMoney(securityDeposit);
-      el('sumLeasePayment').textContent = fmtMoney(leasePayment);
+      el('sumNetCashExposure').textContent = fmtMoney(netCashExposure);
+      el('sumFinancingCharge').textContent = fmtMoney(financingCharge);
       el('sumPurchaseOptionContribution').textContent = fmtMoney(equityContribution);
       el('sumTotalMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
       el('sumEstPropertyValue').textContent = fmtMoney(futurePropertyValue);
       el('sumPurchaseOptionBalance').textContent = fmtMoney(targetEquityAmount);
-      el('sumPartnerBankRequired').textContent = fmtMoney(mortgagePartnerBankRequired);
-      el('sumPartnerBankPayment').textContent = fmtMoney(mortgagePartnerBank) + ' /mo';
-      el('sumMarketValueRequired').textContent = fmtMoney(mortgageRequiredMarketValue);
-      el('sumMarketValuePayment').textContent = fmtMoney(mortgageMarketValue) + ' /mo';
+      el('sumMortgageRequired').textContent = fmtMoney(mortgageRequired);
     }
 
     function drawChart(startValue, endValue, years) {
@@ -1675,21 +1569,18 @@
 
     compute();
 
-    /* Pull Appreciation Rate / Rent Yield / Mortgage Rate from the shared Google Sheet
-       ("КОНСТАНТЫ И НАСТРОЙКИ СИСТЕМЫ" tab) so they can be tuned there without a code change.
-       Falls back to the defaults above if the sheet is unreachable or unshared. */
+    /* Pull Appreciation Rate / Client Financing Rate / Mortgage Term from the shared Google
+       Sheet ("КОНСТАНТЫ И НАСТРОЙКИ СИСТЕМЫ" tab) so they can be tuned there without a code
+       change. Falls back to the defaults above if the sheet is unreachable or unshared. */
     (function () {
       var SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1YBLdvZnFzD5F4XtJgB0GmLg5YGRVm6ttrIzvri13vkU/export?format=csv&gid=1400308901';
       var LABEL_MAP = {
         'Appreciation Rate': 'APPRECIATION_RATE',
-        'Rent Yield': 'RENT_YIELD',
-        'Mortgage Rate': 'MORTGAGE_RATE',
-        'Mortgage Term (Years)': 'MORTGAGE_TERM_YEARS',
+        'Rent Yield': 'CLIENT_FINANCING_RATE',
+        'Mortgage Term (Years)': 'MORTGAGE_TERM_1',
         'Registration Fee (%)': 'REGISTRATION_FEE_PCT',
         'Fixed Registration Fee': 'FIXED_REGISTRATION_FEE',
-        'Security Deposit (Months)': 'SECURITY_DEPOSIT_MONTHS',
-        'Broker Fee': 'BROKER_FEE_PCT',
-        'Home Inspection': 'HOME_INSPECTION_FEE'
+        'Security Deposit (Months)': 'SECURITY_DEPOSIT_MONTHS'
       };
 
       function parseCsvRow(line) {
@@ -1752,14 +1643,11 @@
             var value = parseNumber(cells[1]);
             if (isNaN(value)) continue;
             if (key === 'APPRECIATION_RATE') APPRECIATION_RATE = value;
-            if (key === 'RENT_YIELD') RENT_YIELD = value;
-            if (key === 'MORTGAGE_RATE') MORTGAGE_RATE = value;
-            if (key === 'MORTGAGE_TERM_YEARS') MORTGAGE_TERM_YEARS = value;
+            if (key === 'CLIENT_FINANCING_RATE') CLIENT_FINANCING_RATE = value;
+            if (key === 'MORTGAGE_TERM_1') MORTGAGE_TERM_1 = value;
             if (key === 'REGISTRATION_FEE_PCT') REGISTRATION_FEE_PCT = value;
             if (key === 'FIXED_REGISTRATION_FEE') FIXED_REGISTRATION_FEE = value;
             if (key === 'SECURITY_DEPOSIT_MONTHS') SECURITY_DEPOSIT_MONTHS = value;
-            if (key === 'BROKER_FEE_PCT') BROKER_FEE_PCT = value;
-            if (key === 'HOME_INSPECTION_FEE') HOME_INSPECTION_FEE = value;
             changed = true;
           }
 
@@ -1782,12 +1670,10 @@
                 name: (rows[ri][col['Country']] || '').trim(),
                 registrationFeePct: parseNumber(rows[ri][col['Registration Fee (%)']]),
                 fixedRegistrationFee: parseNumber(rows[ri][col['Fixed Registration Fee']]),
-                rentYield: parseNumber(rows[ri][col['Rent Yield']]),
+                clientFinancingRate: parseNumber(rows[ri][col['Rent Yield']]),
                 appreciationRate: parseNumber(rows[ri][col['Appreciation Rate']]),
-                mortgageRate: parseNumber(rows[ri][col['Mortgage Rate']]),
-                mortgageTermYears: parseNumber(rows[ri][col['Mortgage Term (Years)']]),
-                securityDepositMonths: parseNumber(rows[ri][col['Security Deposit (Months)']]),
-                applicationFee: parseNumber(rows[ri][col['Application Fee']])
+                mortgageTerm1: parseNumber(rows[ri][col['Mortgage Term (Years)']]),
+                securityDepositMonths: parseNumber(rows[ri][col['Security Deposit (Months)']])
               });
             }
             if (parsedCountries.length) {
