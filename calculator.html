@@ -956,18 +956,17 @@
               <span class="breakdown-card__head-label">During Lease (Monthly)</span>
             </div>
             <div class="breakdown-card__body">
+              <div class="breakdown-row"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Financing Charge</span><span class="breakdown-row__value" id="bdFinancingCharge">$5,650</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
-              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="bdTotalMonthly">$8,450</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Maintenance</span><span class="breakdown-row__value">Included</span></div>
+              <div class="breakdown-row breakdown-row--divider"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Maintenance*</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value">Included</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">DLD Registration</span><span class="breakdown-row__value">Included</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Personal Manager</span><span class="breakdown-row__value">Included</span></div>
             </div>
-            <div class="breakdown-card__foot breakdown-card__foot--positive">
-              <span class="breakdown-card__foot-label">Your Purchase Option at Transition</span>
-              <span class="breakdown-card__foot-value" id="equityAtTransition">$201,600</span>
-              <span class="breakdown-card__foot-caption" id="equityAtTransitionCaption">(26.88% of original price)</span>
+            <div class="breakdown-card__foot">
+              <span class="breakdown-card__foot-label">Monthly Payment</span>
+              <span class="breakdown-card__foot-value" id="bdMonthlyPaymentFoot">$8,450</span>
             </div>
           </div>
 
@@ -1477,8 +1476,7 @@
       el('bdEquityContribution').textContent = fmtMoney(equityContribution);
       el('bdTotalMonthly').textContent = fmtMoney(totalMonthlyPayment);
       el('bdLeaseDuration').textContent = leaseMonths + ' months';
-      el('equityAtTransition').textContent = fmtMoney(targetEquityAmount);
-      el('equityAtTransitionCaption').textContent = '(' + fmtPct(targetEquity, 2) + ' of original price)';
+      el('bdMonthlyPaymentFoot').textContent = fmtMoney(totalMonthlyPayment);
 
       /* --- breakdown: at mortgage transition --- */
       el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
