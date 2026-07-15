@@ -260,10 +260,7 @@
   .calc-form__location-field .currency-select__value { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .calc-form__label { display: flex; align-items: center; gap: 12px; font-family: var(--font-serif); font-size: 20px; color: var(--color-white); }
   .calc-form__label-note { font-size: 14px; font-weight: 400; color: var(--color-text-muted); font-family: var(--font-sans); }
-  .calc-form__number {
-    width: 28px; height: 28px; border-radius: 50%; border: 1px solid var(--color-bronze);
-    display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--color-gold); flex-shrink: 0;
-  }
+  .calc-form__number { width: 28px; height: 28px; flex-shrink: 0; display: block; }
   .calc-form__subtitle { font-size: 14px; color: var(--color-text-secondary); text-transform: none; }
 
   .calc-value { font-size: 32px; font-weight: 700; color: var(--color-white); }
@@ -735,7 +732,7 @@
           </div>
           <div class="calc-form__divider"></div>
           <div class="calc-form__group">
-            <div class="calc-form__label"><span class="calc-form__number">1</span> Choose your home</div>
+            <div class="calc-form__label"><img class="calc-form__number" src="assets/icons/1.svg" alt=""> Choose your home</div>
             <div>
               <div class="calc-form__label-note" style="margin-bottom:6px;">Home Price</div>
               <div class="calc-value" id="homePriceValue">$750,000</div>
@@ -749,7 +746,7 @@
           <div class="calc-form__divider"></div>
 
           <div class="calc-form__group">
-            <div class="calc-form__label"><span class="calc-form__number">2</span> Lease term <span class="calc-form__label-note">(until mortgage)</span></div>
+            <div class="calc-form__label"><img class="calc-form__number" src="assets/icons/2.svg" alt=""> Lease term <span class="calc-form__label-note">(until mortgage)</span></div>
             <div class="calc-segment" id="leaseTermSegment">
               <button class="calc-segment__btn" type="button" data-lease-term="5">5 years</button>
               <button class="calc-segment__btn" type="button" data-lease-term="6">6 years</button>
@@ -761,7 +758,7 @@
           <div class="calc-form__divider"></div>
 
           <div class="calc-form__group">
-            <div class="calc-form__label"><span class="calc-form__number">3</span> Target Purchase Option <span class="calc-form__label-note">(of property value)</span></div>
+            <div class="calc-form__label"><img class="calc-form__number" src="assets/icons/3.svg" alt=""> Target Purchase Option <span class="calc-form__label-note">(of property value)</span></div>
             <div class="calc-value" id="targetEquityValue">35%</div>
             <div class="calc-slider">
               <input type="range" id="targetEquitySlider" min="20" max="40" step="1" value="20">
