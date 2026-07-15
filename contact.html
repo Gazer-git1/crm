@@ -1203,37 +1203,16 @@
               <div class="app-step">
                 <div class="calc-form__label"><span class="calc-form__number">1</span> Choose a Property</div>
 
-                <div class="contact__field">
-                  <label class="contact__label" for="propertyUrl">Listing Link</label>
-                  <div class="app-property-row">
-                    <input class="contact__input" type="url" id="propertyUrl" placeholder="Paste a link to the property listing">
-                    <button class="app-inline-btn" type="button" id="parsePropertyBtn">Fetch Details</button>
+                <div class="contact__form-row">
+                  <div class="contact__field">
+                    <label class="contact__label" for="propertyTitleManual">Property Title</label>
+                    <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
                   </div>
-                  <span class="contact__field-error" id="propertyError"></span>
+                  <div class="contact__field">
+                    <label class="contact__label" for="propertyPriceManual">Price</label>
+                    <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
+                  </div>
                 </div>
-
-                <div class="app-property-preview" id="propertyPreview" hidden>
-                  <img class="app-property-preview__image" id="propertyPreviewImage" alt="" hidden>
-                  <div class="app-property-preview__body">
-                    <p class="app-property-preview__title" id="propertyPreviewTitle"></p>
-                    <p class="app-property-preview__price" id="propertyPreviewPrice"></p>
-                  </div>
-                  <button class="app-property-preview__clear" type="button" id="propertyClearBtn" aria-label="Remove property">&times;</button>
-                </div>
-
-                <details class="app-manual-toggle" id="propertyManualToggle">
-                  <summary>Enter details manually instead</summary>
-                  <div class="contact__form-row">
-                    <div class="contact__field">
-                      <label class="contact__label" for="propertyTitleManual">Property Title</label>
-                      <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
-                    </div>
-                    <div class="contact__field">
-                      <label class="contact__label" for="propertyPriceManual">Price</label>
-                      <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
-                    </div>
-                  </div>
-                </details>
               </div>
 
               <div class="calc-form__divider"></div>
@@ -1335,7 +1314,6 @@
             <p class="footer__column-title">Company</p>
             <ul class="footer__column-list">
               <li><a class="footer__column-link" href="about.html">About Us</a></li>
-              <li><a class="footer__column-link" href="our-team.html">Our Team</a></li>
               <li><a class="footer__column-link" href="partners.html">Partners</a></li>
               <li><a class="footer__column-link" href="news-insights.html">News &amp; Insights</a></li>
               <li><a class="footer__column-link" href="contact.html">Contact Us</a></li>
@@ -1592,15 +1570,6 @@
     var propertyStepWrap = document.getElementById('propertyStepWrap');
     var detailsStepNumber = document.getElementById('detailsStepNumber');
 
-    var propertyUrlInput = document.getElementById('propertyUrl');
-    var parsePropertyBtn = document.getElementById('parsePropertyBtn');
-    var propertyError = document.getElementById('propertyError');
-    var propertyPreview = document.getElementById('propertyPreview');
-    var propertyPreviewImage = document.getElementById('propertyPreviewImage');
-    var propertyPreviewTitle = document.getElementById('propertyPreviewTitle');
-    var propertyPreviewPrice = document.getElementById('propertyPreviewPrice');
-    var propertyClearBtn = document.getElementById('propertyClearBtn');
-    var propertyManualToggle = document.getElementById('propertyManualToggle');
     var propertyTitleManual = document.getElementById('propertyTitleManual');
     var propertyPriceManual = document.getElementById('propertyPriceManual');
 
@@ -1622,7 +1591,6 @@
     var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var PHONE_RE = /^\+?[\d\s\-()]{7,20}$/;
 
-    var parsedProperty = null;
     var emailToken = null;
     var emailProof = null;
     var smsPhoneRequired = true;
@@ -1643,12 +1611,10 @@
     }
 
     function currentProperty() {
-      if (parsedProperty) return parsedProperty;
       var title = propertyTitleManual.value.trim();
       var price = propertyPriceManual.value.trim();
-      var url = propertyUrlInput.value.trim();
-      if (!title && !url) return null;
-      return { title: title || null, price: price || null, url: url || null, image: null };
+      if (!title) return null;
+      return { title: title || null, price: price || null, url: null, image: null };
     }
 
     function refreshValidity() {
@@ -1713,58 +1679,9 @@
       });
     })();
 
-    /* ---- Property (parsed via link, or filled in manually) ---- */
-    function showPreview(p) {
-      propertyPreviewTitle.textContent = p.title || 'Property link added';
-      propertyPreviewPrice.textContent = p.price || '';
-      propertyPreviewPrice.hidden = !p.price;
-      if (p.image) {
-        propertyPreviewImage.src = p.image;
-        propertyPreviewImage.hidden = false;
-      } else {
-        propertyPreviewImage.hidden = true;
-      }
-      propertyPreview.hidden = false;
-    }
-
-    parsePropertyBtn.addEventListener('click', function () {
-      var url = propertyUrlInput.value.trim();
-      propertyError.textContent = '';
-      if (!url) {
-        propertyError.textContent = 'Paste a listing link first.';
-        return;
-      }
-      parsePropertyBtn.disabled = true;
-      parsePropertyBtn.textContent = 'Fetching…';
-      postJson('parse-property', { url: url }).then(function (res) {
-        parsePropertyBtn.disabled = false;
-        parsePropertyBtn.textContent = 'Fetch Details';
-        if (res.ok && res.data.parsed) {
-          parsedProperty = {
-            title: res.data.title,
-            price: res.data.price,
-            url: res.data.url,
-            image: res.data.image
-          };
-          showPreview(parsedProperty);
-        } else {
-          propertyError.textContent = (res.data && res.data.error) || 'Could not read this link. Please fill in the details manually.';
-          propertyManualToggle.open = true;
-        }
-        refreshValidity();
-      });
-    });
-
-    propertyClearBtn.addEventListener('click', function () {
-      parsedProperty = null;
-      propertyPreview.hidden = true;
-      refreshValidity();
-    });
-
-    [propertyTitleManual, propertyPriceManual, propertyUrlInput].forEach(function (input) {
-      input.addEventListener('input', function () {
-        if (!parsedProperty) refreshValidity();
-      });
+    /* ---- Property (filled in manually) ---- */
+    [propertyTitleManual, propertyPriceManual].forEach(function (input) {
+      input.addEventListener('input', refreshValidity);
     });
 
     /* ---- Email verification ---- */
