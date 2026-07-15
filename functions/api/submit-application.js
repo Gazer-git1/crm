@@ -35,13 +35,9 @@ export async function onRequestPost({ request, env }) {
   const email = String(body.email || '').trim().toLowerCase();
   const phone = String(body.phone || '').trim();
   const message = String(body.message || '').trim();
-  const property = body.property && typeof body.property === 'object' ? body.property : {};
 
   if (!name || !email || !EMAIL_RE.test(email)) {
     return json(400, { error: 'Please provide your name and a valid email.' });
-  }
-  if (topic === 'leasing' && !property.title && !property.url) {
-    return json(400, { error: 'Please select a property before submitting.' });
   }
 
   const secret = env.OTP_SIGNING_SECRET;
@@ -71,12 +67,6 @@ export async function onRequestPost({ request, env }) {
     .map((s) => s.trim())
     .filter(Boolean);
 
-  const propertyLines = [
-    property.title ? `Property: ${property.title}` : null,
-    property.price ? `Price: ${property.price}` : null,
-    property.url ? `Link: ${property.url}` : null
-  ].filter(Boolean).join('\n');
-
   const topicLabel = TOPIC_LABELS[topic];
   const phoneStatus = phoneVerified ? ' (verified)' : smsConfigured ? '' : ' (verification not yet enabled)';
   const notifyText = [
@@ -84,8 +74,6 @@ export async function onRequestPost({ request, env }) {
     `Interested in: ${topicLabel}`,
     `Email: ${email} (verified)`,
     `Phone: ${phone || 'not provided'}${phoneStatus}`,
-    '',
-    propertyLines,
     '',
     message ? `Message:\n${message}` : ''
   ].filter(Boolean).join('\n');
@@ -95,7 +83,7 @@ export async function onRequestPost({ request, env }) {
       await sendResendEmail(env, {
         from: `Investors' Angels Applications <${fromAddress}>`,
         to: notifyList,
-        subject: `New ${topicLabel} inquiry: ${name}${property.title ? ' — ' + property.title : ''}`,
+        subject: `New ${topicLabel} inquiry: ${name}`,
         text: notifyText
       });
     }
@@ -104,7 +92,7 @@ export async function onRequestPost({ request, env }) {
       from: `Investors' Angels <${fromAddress}>`,
       to: email,
       subject: 'We received your application',
-      text: `Hi ${name},\n\nThanks for reaching out — our team will review your submission and get back to you shortly.\n\n${propertyLines}`
+      text: `Hi ${name},\n\nThanks for reaching out — our team will review your submission and get back to you shortly.`
     });
   } catch (err) {
     return json(502, { error: 'Could not send your application. Please try again.' });

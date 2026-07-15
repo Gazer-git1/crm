@@ -832,7 +832,6 @@
   .topic-select__option.is-selected { color: var(--color-gold); font-weight: 600; }
   .topic-select__option-check { width: 14px; height: 14px; color: var(--color-gold); opacity: 0; }
   .topic-select__option.is-selected .topic-select__option-check { opacity: 1; }
-  #propertyStepWrap[hidden] { display: none; }
 
 
   /* ============ MOBILE ============ */
@@ -1199,27 +1198,8 @@
               <input type="hidden" id="topicInput" value="leasing">
             </div>
 
-            <div id="propertyStepWrap">
-              <div class="app-step">
-                <div class="calc-form__label"><span class="calc-form__number">1</span> Choose a Property</div>
-
-                <div class="contact__form-row">
-                  <div class="contact__field">
-                    <label class="contact__label" for="propertyTitleManual">Property Title</label>
-                    <input class="contact__input" type="text" id="propertyTitleManual" placeholder="e.g. 2BR Apartment, Dubai Marina">
-                  </div>
-                  <div class="contact__field">
-                    <label class="contact__label" for="propertyPriceManual">Price</label>
-                    <input class="contact__input" type="text" id="propertyPriceManual" placeholder="e.g. 1,250,000 AED">
-                  </div>
-                </div>
-              </div>
-
-              <div class="calc-form__divider"></div>
-            </div>
-
             <div class="app-step">
-              <div class="calc-form__label"><span class="calc-form__number" id="detailsStepNumber">2</span> Your Details</div>
+              <div class="calc-form__label">Your Details</div>
 
               <div class="contact__field">
                 <label class="contact__label" for="appName">Full Name</label>
@@ -1567,11 +1547,6 @@
     var submitError = document.getElementById('applicationSubmitError');
 
     var topicInput = document.getElementById('topicInput');
-    var propertyStepWrap = document.getElementById('propertyStepWrap');
-    var detailsStepNumber = document.getElementById('detailsStepNumber');
-
-    var propertyTitleManual = document.getElementById('propertyTitleManual');
-    var propertyPriceManual = document.getElementById('propertyPriceManual');
 
     var appEmailError = document.getElementById('appEmailError');
     var sendEmailCodeBtn = document.getElementById('sendEmailCodeBtn');
@@ -1610,22 +1585,14 @@
       });
     }
 
-    function currentProperty() {
-      var title = propertyTitleManual.value.trim();
-      var price = propertyPriceManual.value.trim();
-      if (!title) return null;
-      return { title: title || null, price: price || null, url: null, image: null };
-    }
-
     function refreshValidity() {
       var nameOk = nameInput.value.trim().length > 0;
-      var propertyOk = topicInput.value !== 'leasing' || !!currentProperty();
       var emailOk = !!emailProof;
       var phoneOk = !smsPhoneRequired || !!phoneProof;
-      submitBtn.disabled = !(nameOk && propertyOk && emailOk && phoneOk);
+      submitBtn.disabled = !(nameOk && emailOk && phoneOk);
     }
 
-    /* ---- Topic (property step only applies to lease applications) ---- */
+    /* ---- Topic ---- */
     (function () {
       var wrap = document.getElementById('topicSelect');
       var trigger = document.getElementById('topicTrigger');
@@ -1640,9 +1607,6 @@
 
       function applyTopic(topic) {
         topicInput.value = topic;
-        var isLeasing = topic === 'leasing';
-        propertyStepWrap.hidden = !isLeasing;
-        detailsStepNumber.textContent = isLeasing ? '2' : '1';
         refreshValidity();
       }
 
@@ -1678,11 +1642,6 @@
         if (e.key === 'Escape') setOpen(false);
       });
     })();
-
-    /* ---- Property (filled in manually) ---- */
-    [propertyTitleManual, propertyPriceManual].forEach(function (input) {
-      input.addEventListener('input', refreshValidity);
-    });
 
     /* ---- Email verification ---- */
     function invalidateEmailProof() {
@@ -1815,7 +1774,6 @@
         emailProof: emailProof,
         phone: phoneInput.value.trim(),
         phoneProof: phoneProof,
-        property: currentProperty(),
         message: messageInput.value.trim()
       }).then(function (res) {
         if (res.ok && res.data.success) {
