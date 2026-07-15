@@ -338,8 +338,8 @@
   .chart-card__svg { width: 100%; height: auto; display: block; }
   .chart-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; gap: 8px; }
   .chart-card__side-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-  .chart-card__side-delta { font-family: var(--font-sans); font-weight: 700; font-size: 26px; color: var(--color-gold); }
-  .chart-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); }
+  .chart-card__side-delta { font-family: var(--font-sans); font-weight: 700; font-size: 26px; color: var(--color-gold); white-space: nowrap; }
+  .chart-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); white-space: nowrap; }
   .chart-card__side-caption { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
 
   /* ============ MORTGAGE NOTICE CARD ============ */
@@ -357,19 +357,11 @@
   .notice-card__side { padding: 32px 24px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 16px; }
   .notice-card__side-title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); }
   .notice-card__side-box { border: 1px solid var(--color-gold-dark); border-radius: 4px; padding: 14px 20px; width: 100%; }
-  .notice-card__side-box-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
-  .notice-card__side-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-gold); }
-  .notice-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 28px; color: var(--color-gold); }
+  .notice-card__side-box-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+  .notice-card__side-value { font-family: var(--font-sans); font-weight: 700; font-size: 24px; color: var(--color-gold); white-space: nowrap; }
+  .notice-card__side-pct { font-family: var(--font-sans); font-weight: 700; font-size: 28px; color: var(--color-gold); white-space: nowrap; }
   .notice-card__side-caption { font-size: 13px; color: var(--color-text-muted); }
 
-  /* ============ TRANSITION ROW ============ */
-  .transition-section { display: flex; flex-direction: column; gap: 16px; }
-  .transition-section__title { font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
-  .transition-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .transition-box { border: 1px solid var(--color-border); border-radius: 4px; padding: 20px 24px; display: flex; flex-direction: column; gap: 8px; }
-  .transition-box__label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
-  .transition-box__value { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--color-gold); }
-  .transition-box__caption { font-size: 12px; color: var(--color-text-muted); }
 
   /* ============ DETAILED BREAKDOWN ============ */
   .breakdown { position: relative; padding: var(--space-y) var(--space-x); width: 100%; background: #161817; }
@@ -567,8 +559,6 @@
     .chart-card__main, .notice-card__main { border-right: none; border-bottom: 1px solid var(--color-border); padding: 24px 20px; }
     .chart-card__side, .notice-card__side { padding: 24px 20px; }
     .notice-card__breakdown { grid-template-columns: 1fr; }
-
-    .transition-row { grid-template-columns: 1fr; }
 
     .breakdown { padding: 48px 20px; }
     .breakdown__title { font-size: 30px; margin-bottom: 28px; }
@@ -874,21 +864,6 @@
                 <span class="notice-card__side-pct" id="totalBenefitPct">69.2%</span>
               </div>
               <span class="notice-card__side-caption">Of original price</span>
-            </div>
-          </div>
-
-          <div class="transition-section">
-            <span class="transition-section__title">What Happens at Transition</span>
-            <div class="transition-row">
-              <div class="transition-box">
-                <span class="transition-box__label">Property Value Increase</span>
-                <span class="transition-box__value" id="transIncreaseValue">+$196,000</span>
-              </div>
-              <div class="transition-box">
-                <span class="transition-box__label">Mortgage Needed</span>
-                <span class="transition-box__value" id="transMortgageValue">$683,500</span>
-                <span class="transition-box__caption" id="transMortgageCaption">10 or 15-year mortgage available</span>
-              </div>
             </div>
           </div>
 
@@ -1446,7 +1421,6 @@
       var totalBenefit = targetEquityAmount + propertyValueIncrease;
 
       var leaseMonths = leaseTerm * 12;
-      var mortgageTermsNote = MORTGAGE_TERM_1 + ' or ' + MORTGAGE_TERM_2 + '-year mortgage available';
 
       /* --- text labels --- */
       document.querySelectorAll('[id^="leaseTermLabel"]').forEach(function (n) { n.textContent = leaseTerm; });
@@ -1483,11 +1457,6 @@
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
       el('totalBenefitPct').textContent = fmtPct((totalBenefit / homePrice) * 100, 1);
-
-      /* --- transition row --- */
-      el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
-      el('transMortgageValue').textContent = fmtMoney(mortgageRequired);
-      el('transMortgageCaption').textContent = mortgageTermsNote;
 
       /* --- notice card: mortgage --- */
       el('mortgage10Value').textContent = fmtMoney(mortgagePayment10);
