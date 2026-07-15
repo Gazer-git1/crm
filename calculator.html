@@ -901,20 +901,20 @@
                 </div>
                 <div>
                   <p class="notice-card__title">Your Mortgage After Program Ends</p>
-                  <p class="notice-card__desc">The mortgage required to complete your purchase is the same regardless of term — choose the length that fits your monthly budget.</p>
+                  <p class="notice-card__desc">The mortgage amount is the same either way — a shorter term means a higher monthly payment, a longer term means a lower one.</p>
                 </div>
               </div>
               <div class="notice-card__breakdown">
                 <div class="notice-card__box">
-                  <span class="notice-card__box-label">10-Year Mortgage</span>
+                  <span class="notice-card__box-label">10-Year Monthly Payment</span>
                   <span class="notice-card__box-value" id="mortgage10Value">$683,500</span>
                 </div>
                 <div class="notice-card__box">
-                  <span class="notice-card__box-label">15-Year Mortgage</span>
+                  <span class="notice-card__box-label">15-Year Monthly Payment</span>
                   <span class="notice-card__box-value" id="mortgage15Value">$683,500</span>
                 </div>
               </div>
-              <p class="notice-card__foot">Same mortgage amount for both terms; only the repayment length differs.</p>
+              <p class="notice-card__foot" id="mortgageRateNote">Estimated at a 5% mortgage rate over the full term.</p>
             </div>
             <div class="notice-card__side">
               <span class="notice-card__side-title">Mortgage Required</span>
@@ -1280,6 +1280,7 @@
     var CLIENT_FINANCING_RATE = 0.16;
     var MORTGAGE_TERM_1 = 10;
     var MORTGAGE_TERM_2 = 15;
+    var MORTGAGE_RATE = 0.05;
     var REGISTRATION_FEE_PCT = 0.04;
     var FIXED_REGISTRATION_FEE = 5000;
     var SECURITY_DEPOSIT_MONTHS = 3;
@@ -1298,7 +1299,7 @@
     /* Fallback constants (rates + fees) if the sheet is unreachable. Calculator v2 has a
        single set of admin numbers, not a per-country table, so every country in the
        dropdown shares the same values (see the fetch below) until that changes. */
-    var COUNTRY_DEFAULTS = { appreciationRate: 0.05, clientFinancingRate: 0.16, mortgageTerm1: 10, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3 };
+    var COUNTRY_DEFAULTS = { appreciationRate: 0.05, clientFinancingRate: 0.16, mortgageTerm1: 10, mortgageRate: 0.05, registrationFeePct: 0.04, fixedRegistrationFee: 5000, securityDepositMonths: 3 };
     var COUNTRIES_FALLBACK = [
       ['AE', 'United Arab Emirates'], ['SA', 'Saudi Arabia'], ['QA', 'Qatar'], ['KW', 'Kuwait'], ['BH', 'Bahrain'],
       ['OM', 'Oman'], ['GB', 'United Kingdom'], ['IE', 'Ireland'], ['FR', 'France'], ['DE', 'Germany'],
@@ -1315,6 +1316,7 @@
       APPRECIATION_RATE = rec.appreciationRate;
       CLIENT_FINANCING_RATE = rec.clientFinancingRate;
       MORTGAGE_TERM_1 = rec.mortgageTerm1;
+      MORTGAGE_RATE = rec.mortgageRate;
       REGISTRATION_FEE_PCT = rec.registrationFeePct;
       FIXED_REGISTRATION_FEE = rec.fixedRegistrationFee;
       SECURITY_DEPOSIT_MONTHS = rec.securityDepositMonths;
@@ -1360,6 +1362,13 @@
     function fmtPct(n, decimals) {
       decimals = decimals || 0;
       return n.toFixed(decimals) + '%';
+    }
+
+    function amortizedMonthlyPayment(principal, annualRate, years) {
+      var r = annualRate / 12;
+      var n = years * 12;
+      if (r === 0) return principal / n;
+      return (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
     }
 
     /* Home price slider bounds/step, tuned per currency so they land on round
@@ -1415,6 +1424,8 @@
 
       /* Mortgage Required is priced off today's home price, not the appreciated future value. */
       var mortgageRequired = homePrice - targetEquityAmount;
+      var mortgagePayment10 = amortizedMonthlyPayment(mortgageRequired, MORTGAGE_RATE, MORTGAGE_TERM_1);
+      var mortgagePayment15 = amortizedMonthlyPayment(mortgageRequired, MORTGAGE_RATE, MORTGAGE_TERM_2);
 
       var totalBenefit = targetEquityAmount + propertyValueIncrease;
 
@@ -1463,9 +1474,10 @@
       el('transMortgageCaption').textContent = mortgageTermsNote;
 
       /* --- notice card: mortgage --- */
-      el('mortgage10Value').textContent = fmtMoney(mortgageRequired);
-      el('mortgage15Value').textContent = fmtMoney(mortgageRequired);
+      el('mortgage10Value').textContent = fmtMoney(mortgagePayment10);
+      el('mortgage15Value').textContent = fmtMoney(mortgagePayment15);
       el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
+      el('mortgageRateNote').textContent = 'Estimated at a ' + fmtPct(MORTGAGE_RATE * 100, 0) + ' mortgage rate over the full term.';
 
       /* --- breakdown: before move-in --- */
       el('bdDownpayment').textContent = fmtMoney(0);
@@ -1674,6 +1686,7 @@
         'Client Financing Rate (%)': 'CLIENT_FINANCING_RATE',
         'Mortgage Term 1 (Years)': 'MORTGAGE_TERM_1',
         'Mortgage Term 2 (Years)': 'MORTGAGE_TERM_2',
+        'Mortgage Rate (%)': 'MORTGAGE_RATE',
         'Registration Fee (%)': 'REGISTRATION_FEE_PCT',
         'Fixed Registration Fee': 'FIXED_REGISTRATION_FEE',
         'Security Deposit (Months)': 'SECURITY_DEPOSIT_MONTHS'
@@ -1737,6 +1750,7 @@
             if (key === 'CLIENT_FINANCING_RATE') CLIENT_FINANCING_RATE = value;
             if (key === 'MORTGAGE_TERM_1') MORTGAGE_TERM_1 = value;
             if (key === 'MORTGAGE_TERM_2') MORTGAGE_TERM_2 = value;
+            if (key === 'MORTGAGE_RATE') MORTGAGE_RATE = value;
             if (key === 'REGISTRATION_FEE_PCT') REGISTRATION_FEE_PCT = value;
             if (key === 'FIXED_REGISTRATION_FEE') FIXED_REGISTRATION_FEE = value;
             if (key === 'SECURITY_DEPOSIT_MONTHS') SECURITY_DEPOSIT_MONTHS = value;
@@ -1756,6 +1770,7 @@
                 clientFinancingRate: CLIENT_FINANCING_RATE,
                 appreciationRate: APPRECIATION_RATE,
                 mortgageTerm1: MORTGAGE_TERM_1,
+                mortgageRate: MORTGAGE_RATE,
                 securityDepositMonths: SECURITY_DEPOSIT_MONTHS
               };
             });
