@@ -872,6 +872,7 @@
               <div class="notice-card__side-box">
                 <span class="notice-card__side-value" id="totalBenefitValue">$346,000</span>
               </div>
+              <span class="notice-card__side-caption" id="totalBenefitPct">(69.2% of original price)</span>
             </div>
           </div>
 
@@ -918,6 +919,7 @@
               <div class="notice-card__side-box">
                 <span class="notice-card__side-value" id="mortgageRequiredSideValue">$683,500</span>
               </div>
+              <span class="notice-card__side-caption" id="mortgagePctOfPrice">(60% of original price)</span>
             </div>
           </div>
         </div>
@@ -1464,6 +1466,7 @@
       el('builtEquityMin').textContent = fmtMoney(targetEquityAmount);
       el('propertyIncreaseEst').textContent = fmtMoney(propertyValueIncrease);
       el('totalBenefitValue').textContent = fmtMoney(totalBenefit);
+      el('totalBenefitPct').textContent = '(' + fmtPct((totalBenefit / homePrice) * 100, 1) + ' of original price)';
 
       /* --- transition row --- */
       el('transIncreaseValue').textContent = '+' + fmtMoney(propertyValueIncrease);
@@ -1474,6 +1477,7 @@
       el('mortgage10Value').textContent = fmtMoney(mortgagePayment10);
       el('mortgage15Value').textContent = fmtMoney(mortgagePayment15);
       el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
+      el('mortgagePctOfPrice').textContent = '(' + fmtPct((mortgageRequired / homePrice) * 100, 1) + ' of original price)';
       el('mortgageRateNote').textContent = 'Estimated at a ' + fmtPct(MORTGAGE_RATE * 100, 0) + ' mortgage rate over the full term.';
 
       /* --- breakdown: before move-in --- */
