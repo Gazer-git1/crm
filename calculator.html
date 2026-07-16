@@ -399,6 +399,9 @@
   .breakdown-card__mini-box { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 4px; font-size: 14px; }
   .breakdown-card__mini-box + .breakdown-card__mini-box { margin-top: 8px; }
   .breakdown-card__note { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--color-text-muted); line-height: 1.4; margin-top: auto; padding-top: 16px; }
+  .summary-highlight { border: 1px solid var(--color-gold-dark); border-radius: 4px; background: var(--color-highlight-grad); padding: 20px 24px; display: flex; flex: 1 0 0; flex-direction: column; justify-content: center; gap: 8px; }
+  .summary-highlight__label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-text-secondary); }
+  .summary-highlight__value { font-family: var(--font-sans); font-weight: 700; font-size: 32px; color: var(--color-gold); }
   .breakdown-card__note svg, .breakdown-card__note img { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--color-gold); }
   .breakdown-card__foot { padding: 20px 24px; border-top: 1px solid var(--color-border); text-align: center; display: flex; flex-direction: column; gap: 6px; }
   .breakdown-card__foot-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
@@ -1013,8 +1016,10 @@
               <span class="breakdown-card__head-label">Today</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Security Deposit</span><span class="breakdown-row__value" id="sumSecurityDeposit">$2,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Net Cash Exposure</span><span class="breakdown-row__value" id="sumNetCashExposure">$470,000</span></div>
+              <div class="summary-highlight">
+                <span class="summary-highlight__label">Security Deposit</span>
+                <span class="summary-highlight__value" id="sumSecurityDeposit">$2,000</span>
+              </div>
             </div>
           </div>
 
@@ -1025,9 +1030,10 @@
               <span class="breakdown-card__head-label">During Lease-to-Own</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Total Monthly Payment</span><span class="breakdown-row__value" id="sumTotalMonthlyPayment">$8,450</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Lease Charge</span><span class="breakdown-row__value" id="sumFinancingCharge">$5,650</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="sumPurchaseOptionContribution">$2,800</span></div>
+              <div class="summary-highlight">
+                <span class="summary-highlight__label">Total Monthly Payment</span>
+                <span class="summary-highlight__value" id="sumTotalMonthlyPayment">$8,450</span>
+              </div>
             </div>
           </div>
 
@@ -1038,8 +1044,10 @@
               <span class="breakdown-card__head-label">After <span id="leaseTermLabel5">6</span> Years</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Estimated Property Value</span><span class="breakdown-row__value" id="sumEstPropertyValue">$946,000</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Balance</span><span class="breakdown-row__value" id="sumPurchaseOptionBalance">$201,600</span></div>
+              <div class="summary-highlight">
+                <span class="summary-highlight__label">Purchase Option Balance</span>
+                <span class="summary-highlight__value" id="sumPurchaseOptionBalance">$201,600</span>
+              </div>
             </div>
           </div>
 
@@ -1050,7 +1058,10 @@
               <span class="breakdown-card__head-label">Mortgage</span>
             </div>
             <div class="breakdown-card__body">
-              <div class="breakdown-row"><span class="breakdown-row__label">Mortgage Required</span><span class="breakdown-row__value" id="sumMortgageRequired">$487,500</span></div>
+              <div class="summary-highlight">
+                <span class="summary-highlight__label">Mortgage Required</span>
+                <span class="summary-highlight__value" id="sumMortgageRequired">$487,500</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1400,7 +1411,6 @@
       var totalMonthlyPayment = financingCharge + equityContribution;
 
       var securityDeposit = totalMonthlyPayment * SECURITY_DEPOSIT_MONTHS;
-      var netCashExposure = homePrice - securityDeposit;
 
       /* Mortgage Required is priced off today's home price, not the appreciated future value. */
       var mortgageRequired = homePrice - targetEquityAmount;
@@ -1483,11 +1493,7 @@
       /* --- summary --- */
       el('summaryText').textContent = 'You move into your future home today with ' + fmtMoney(0) + ' down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
       el('sumSecurityDeposit').textContent = fmtMoney(securityDeposit);
-      el('sumNetCashExposure').textContent = fmtMoney(netCashExposure);
-      el('sumFinancingCharge').textContent = fmtMoney(financingCharge);
-      el('sumPurchaseOptionContribution').textContent = fmtMoney(equityContribution);
       el('sumTotalMonthlyPayment').textContent = fmtMoney(totalMonthlyPayment);
-      el('sumEstPropertyValue').textContent = fmtMoney(futurePropertyValue);
       el('sumPurchaseOptionBalance').textContent = fmtMoney(targetEquityAmount);
       el('sumMortgageRequired').textContent = fmtMoney(mortgageRequired);
     }
