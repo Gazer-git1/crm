@@ -344,12 +344,16 @@
 
   /* ============ MORTGAGE NOTICE CARD ============ */
   .notice-card { display: grid; grid-template-columns: 1fr 260px; border: 1px solid var(--color-border); border-radius: 4px; overflow: hidden; }
+  .notice-card--full { grid-template-columns: 1fr; }
+  .notice-card--full .notice-card__main { border-right: none; }
   .notice-card__main { padding: 32px; border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: 20px; min-width: 0; }
   .notice-card__head { display: flex; align-items: flex-start; gap: 16px; }
   .notice-card__icon { width: 40px; height: 40px; flex-shrink: 0; display: block; }
   .notice-card__title { font-family: var(--font-serif); font-size: 22px; color: var(--color-white); margin: 0 0 4px; }
   .notice-card__desc { font-size: 14px; color: var(--color-text-muted); line-height: 1.4; }
   .notice-card__breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .notice-card__breakdown--triple { grid-template-columns: repeat(3, 1fr); }
+  .notice-card__breakdown--quad { grid-template-columns: repeat(4, 1fr); }
   .notice-card__box { border: 1px solid var(--color-border); border-radius: 4px; padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
   .notice-card__box-label { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-text-secondary); }
   .notice-card__box-value { font-family: var(--font-sans); font-weight: 700; font-size: 20px; color: var(--color-white); }
@@ -863,7 +867,7 @@
             </div>
           </div>
 
-          <div class="notice-card">
+          <div class="notice-card notice-card--full">
             <div class="notice-card__main">
               <div class="notice-card__head">
                 <img class="notice-card__icon" src="assets/icons/4.svg" alt="">
@@ -872,7 +876,15 @@
                   <p class="notice-card__desc">The mortgage amount is the same either way — a shorter term means a higher monthly payment, a longer term means a lower one.</p>
                 </div>
               </div>
-              <div class="notice-card__breakdown">
+              <div class="notice-card__breakdown notice-card__breakdown--quad">
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">Mortgage Needed</span>
+                  <span class="notice-card__box-value" id="mortgageRequiredSideValue">$683,500</span>
+                </div>
+                <div class="notice-card__box">
+                  <span class="notice-card__box-label">Mortgage Rate (%)</span>
+                  <span class="notice-card__box-value" id="mortgageRateValue">5%</span>
+                </div>
                 <div class="notice-card__box">
                   <span class="notice-card__box-label">10-Year Monthly Payment</span>
                   <span class="notice-card__box-value" id="mortgage10Value">$683,500</span>
@@ -882,15 +894,6 @@
                   <span class="notice-card__box-value" id="mortgage15Value">$683,500</span>
                 </div>
               </div>
-              <p class="notice-card__foot" id="mortgageRateNote">Estimated at a 5% mortgage rate over the full term.</p>
-            </div>
-            <div class="notice-card__side">
-              <span class="notice-card__side-title">Mortgage Required</span>
-              <div class="notice-card__side-box notice-card__side-box-row">
-                <span class="notice-card__side-value" id="mortgageRequiredSideValue">$683,500</span>
-                <span class="notice-card__side-pct" id="mortgagePctOfPrice">60%</span>
-              </div>
-              <span class="notice-card__side-caption">Of original price</span>
             </div>
           </div>
         </div>
@@ -1441,11 +1444,10 @@
       el('totalBenefitPct').textContent = fmtPct((totalBenefit / homePrice) * 100, 1);
 
       /* --- notice card: mortgage --- */
+      el('mortgageRateValue').textContent = fmtPct(MORTGAGE_RATE * 100, 0);
       el('mortgage10Value').textContent = fmtMoney(mortgagePayment10);
       el('mortgage15Value').textContent = fmtMoney(mortgagePayment15);
       el('mortgageRequiredSideValue').textContent = fmtMoney(mortgageRequired);
-      el('mortgagePctOfPrice').textContent = fmtPct((mortgageRequired / homePrice) * 100, 1);
-      el('mortgageRateNote').textContent = 'Estimated at a ' + fmtPct(MORTGAGE_RATE * 100, 0) + ' mortgage rate over the full term.';
 
       /* --- breakdown: before move-in --- */
       el('bdDownpayment').textContent = fmtMoney(0);
