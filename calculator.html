@@ -381,6 +381,7 @@
   .breakdown::after { bottom: 0; }
   .breakdown__title { font-family: var(--font-serif); font-size: 48px; margin: 0 0 48px; font-weight: 400; }
   .breakdown__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; align-items: stretch; }
+  .breakdown__grid--wide-last { grid-template-columns: 1fr 1fr 1fr 1.4fr; }
   .breakdown-card { border: 1px solid var(--color-border); border-radius: 4px; display: flex; flex-direction: column; min-width: 0; }
   .breakdown-card__head { display: flex; align-items: center; gap: 10px; padding: 20px 24px; border-bottom: 1px solid var(--color-border); }
   .breakdown-card__head svg { width: 18px; height: 18px; color: var(--color-gold); flex-shrink: 0; }
@@ -397,7 +398,7 @@
   .breakdown-card__mini-title { font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--color-gold); margin: 16px 0 8px; }
   .breakdown-card__mini-box { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 4px; font-size: 14px; }
   .breakdown-card__mini-box + .breakdown-card__mini-box { margin-top: 8px; }
-  .breakdown-card__note { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--color-text-muted); line-height: 1.4; margin-top: 4px; }
+  .breakdown-card__note { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: var(--color-text-muted); line-height: 1.4; margin-top: auto; padding-top: 16px; }
   .breakdown-card__note svg, .breakdown-card__note img { width: 16px; height: 16px; flex-shrink: 0; margin-top: 1px; color: var(--color-gold); }
   .breakdown-card__foot { padding: 20px 24px; border-top: 1px solid var(--color-border); text-align: center; display: flex; flex-direction: column; gap: 6px; }
   .breakdown-card__foot-label { font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-gold); }
@@ -407,6 +408,7 @@
     background: #0C1614;
     border-top: 1px solid var(--color-border);
   }
+  .breakdown-card__foot--positive .breakdown-card__foot-value { color: var(--color-gold); }
 
   /* ============ SUMMARY ============ */
   .summary { padding: var(--space-y) var(--space-x) 64px; width: 100%; background: var(--color-bg); display: flex; flex-direction: column; gap: 40px; }
@@ -902,7 +904,7 @@
       <!-- DETAILED BREAKDOWN -->
       <section class="breakdown">
         <h2 class="breakdown__title">Detailed Breakdown</h2>
-        <div class="breakdown__grid">
+        <div class="breakdown__grid breakdown__grid--wide-last">
           <!-- BEFORE MOVE-IN -->
           <div class="breakdown-card">
             <div class="breakdown-card__head">
@@ -961,10 +963,11 @@
                 <span class="breakdown-row__value" id="resIncreaseValue">+$196,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(28%)</span></span>
               </div>
               <div class="breakdown-row"><span class="breakdown-row__label">Final Property Value</span><span class="breakdown-row__value" id="resFinalValue">$946,000</span></div>
-              <div class="breakdown-row breakdown-row--divider breakdown-row--highlight">
-                <span class="breakdown-row__label">Your Total<br>Benefit</span>
-                <span class="breakdown-row__value" id="resTotalBenefit">$346,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(69%)</span></span>
-              </div>
+            </div>
+            <div class="breakdown-card__foot breakdown-card__foot--positive">
+              <span class="breakdown-card__foot-label">Your Total Benefit</span>
+              <span class="breakdown-card__foot-value" id="resTotalBenefit">$346,000</span>
+              <span class="breakdown-card__foot-caption" id="resTotalBenefitPct">69% of property value</span>
             </div>
           </div>
 
@@ -1474,7 +1477,8 @@
       el('resEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
       el('resIncreaseValue').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((propertyValueIncrease / homePrice) * 100) + '%)</span>';
       el('resFinalValue').textContent = fmtMoney(futurePropertyValue);
-      el('resTotalBenefit').innerHTML = fmtMoney(totalBenefit) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((totalBenefit / homePrice) * 100) + '%)</span>';
+      el('resTotalBenefit').textContent = fmtMoney(totalBenefit);
+      el('resTotalBenefitPct').textContent = Math.round((totalBenefit / homePrice) * 100) + '% of property value';
 
       /* --- summary --- */
       el('summaryText').textContent = 'You move into your future home today with ' + fmtMoney(0) + ' down payment. Build ' + targetEquity + '% Purchase Option over ' + leaseTerm + ' years while the property grows in value. Then refinance with a mortgage and become the owner.';
