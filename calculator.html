@@ -549,10 +549,9 @@
     .calc-form__location { flex-direction: column; gap: 20px; }
     .calc-results { width: 100%; gap: 16px; }
 
-    .stat-grid { grid-template-columns: 1fr 1fr; }
-    .stat-cell { border-bottom: 1px solid var(--color-border); padding: 20px; }
-    .stat-cell:nth-child(2n) { border-right: none; }
-    .stat-cell:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-grid { grid-template-columns: 1fr; }
+    .stat-cell { border-right: none; border-bottom: 1px solid var(--color-border); padding: 20px; }
+    .stat-cell:last-child { border-bottom: none; }
     .stat-cell__value { font-size: 22px; }
 
     .chart-card, .notice-card { grid-template-columns: 1fr; }
@@ -772,7 +771,7 @@
             <div class="stat-cell">
               <span class="stat-cell__label">Security<br>Deposit</span>
               <span class="stat-cell__value" id="statSecurityDeposit">$2,000</span>
-              <span class="stat-cell__caption">No broker fee, no registration fee</span>
+              <span class="stat-cell__caption">No broker fee<br>No registration Fee</span>
             </div>
             <div class="stat-cell">
               <span class="stat-cell__label">Your Target<br>Purchase Option</span>
@@ -828,11 +827,8 @@
               <svg class="chart-card__svg" id="poChartSvg" viewBox="0 0 640 160" preserveAspectRatio="none"></svg>
             </div>
             <div class="chart-card__side">
-              <div class="chart-card__side-top">
-                <div class="chart-card__side-delta" id="poSideDelta">$262,500</div>
-                <div class="chart-card__side-pct" id="poSidePct">35%</div>
-              </div>
-              <div class="chart-card__side-caption">Built through monthly Purchase Option contributions</div>
+              <div class="chart-card__side-pct" id="poSidePct">35%</div>
+              <div class="chart-card__side-caption">Purchase Option of property value</div>
             </div>
           </div>
 
@@ -863,7 +859,7 @@
                 <span class="notice-card__side-value" id="totalBenefitValue">$346,000</span>
                 <span class="notice-card__side-pct" id="totalBenefitPct">69.2%</span>
               </div>
-              <span class="notice-card__side-caption">Of original price</span>
+              <span class="notice-card__side-caption">Of property value</span>
             </div>
           </div>
 
@@ -936,7 +932,6 @@
               <div class="breakdown-row"><span class="breakdown-row__label">Purchase Option Contribution</span><span class="breakdown-row__value" id="bdEquityContribution">$2,800</span></div>
               <div class="breakdown-row breakdown-row--divider"><span class="breakdown-row__label">Lease Duration</span><span class="breakdown-row__value" id="bdLeaseDuration">72 months</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Maintenance*</span><span class="breakdown-row__value">Included</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Insurance</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Personal Manager</span><span class="breakdown-row__value">Included</span></div>
               <div class="breakdown-row"><span class="breakdown-row__label">Annual Payment Increase</span><span class="breakdown-row__value">NO</span></div>
             </div>
@@ -944,35 +939,6 @@
               <span class="breakdown-card__foot-label">Monthly Payment</span>
               <span class="breakdown-card__foot-value" id="bdMonthlyPaymentFoot">$8,450</span>
               <span class="breakdown-card__foot-caption">All Included</span>
-            </div>
-          </div>
-
-          <!-- AT MORTGAGE TRANSITION -->
-          <div class="breakdown-card">
-            <div class="breakdown-card__head">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-7h6v7"/></svg>
-              <span class="breakdown-card__head-label">At Mortgage Transition</span>
-            </div>
-            <div class="breakdown-card__body">
-              <div class="breakdown-row">
-                <span class="breakdown-row__label">Purchase Option<br>You've Built</span>
-                <span class="breakdown-row__value" id="mtEquityBuilt">$201,600<br><span class="breakdown-row__label-sub" style="text-align:right;">(26.88%)</span></span>
-              </div>
-              <div class="breakdown-row">
-                <span class="breakdown-row__label">Property<br>Value Increase</span>
-                <span class="breakdown-row__value" id="mtPropertyIncrease">+$196,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(28%)</span></span>
-              </div>
-              <div class="breakdown-row">
-                <span class="breakdown-row__label">Mortgage<br>Required</span>
-                <span class="breakdown-row__value" id="mtMortgageRequired">$300,000<br><span class="breakdown-row__label-sub" style="text-align:right;">based on the original property price</span></span>
-              </div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Mortgage Rate (%)</span><span class="breakdown-row__value" id="mtMortgageRate">5%</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (10 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment10">$3,182</span></div>
-              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (15 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment15">$2,372</span></div>
-              <div class="breakdown-card__note">
-                <img src="assets/icons/info.svg" alt="">
-                <span>Mortgage Required is based on the original property price, not the future appreciated value.</span>
-              </div>
             </div>
           </div>
 
@@ -996,9 +962,26 @@
                 <span class="breakdown-row__label">Your Total<br>Benefit</span>
                 <span class="breakdown-row__value" id="resTotalBenefit">$346,000<br><span class="breakdown-row__label-sub" style="text-align:right;">(69%)</span></span>
               </div>
+            </div>
+          </div>
+
+          <!-- AT MORTGAGE TRANSITION -->
+          <div class="breakdown-card">
+            <div class="breakdown-card__head">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-7h6v7"/></svg>
+              <span class="breakdown-card__head-label">At Mortgage Transition</span>
+            </div>
+            <div class="breakdown-card__body">
+              <div class="breakdown-row">
+                <span class="breakdown-row__label">Mortgage<br>Required</span>
+                <span class="breakdown-row__value" id="mtMortgageRequired">$300,000<br><span class="breakdown-row__label-sub" style="text-align:right;">based on the original property price</span></span>
+              </div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Mortgage Rate (%)</span><span class="breakdown-row__value" id="mtMortgageRate">5%</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (10 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment10">$3,182</span></div>
+              <div class="breakdown-row"><span class="breakdown-row__label">Monthly Mortgage Payment (15 Years)</span><span class="breakdown-row__value" id="mtMortgagePayment15">$2,372</span></div>
               <div class="breakdown-card__note">
                 <img src="assets/icons/info.svg" alt="">
-                <span>Your Purchase Option + property growth reduce the amount you need to get a mortgage.</span>
+                <span>Mortgage Required is based on the original property price, not the future appreciated value.</span>
               </div>
             </div>
           </div>
@@ -1448,7 +1431,6 @@
       /* --- purchase option chart --- */
       el('poChartStartValue').textContent = fmtMoney(0);
       el('poChartEndValue').textContent = fmtMoney(targetEquityAmount);
-      el('poSideDelta').textContent = fmtMoney(targetEquityAmount);
       el('poSidePct').textContent = targetEquity + '%';
       drawChart('poChartSvg', buildLinearPoints(0, targetEquityAmount, leaseTerm));
 
@@ -1481,8 +1463,6 @@
       el('bdMonthlyPaymentFoot').textContent = fmtMoney(totalMonthlyPayment);
 
       /* --- breakdown: at mortgage transition --- */
-      el('mtEquityBuilt').innerHTML = fmtMoney(targetEquityAmount) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + fmtPct(targetEquity) + ')</span>';
-      el('mtPropertyIncrease').innerHTML = '+' + fmtMoney(propertyValueIncrease) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">(' + Math.round((propertyValueIncrease / homePrice) * 100) + '%)</span>';
       el('mtMortgageRequired').innerHTML = fmtMoney(mortgageRequired) + '<br><span class="breakdown-row__label-sub" style="text-align:right;">based on the original property price</span>';
       el('mtMortgageRate').textContent = fmtPct(MORTGAGE_RATE * 100, 0);
       el('mtMortgagePayment10').textContent = fmtMoney(mortgagePayment10);
